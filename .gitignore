@@ -1,0 +1,10 @@
+# Godot 4+ specific ignores
+.godot/
+/android/
+
+# API 키 / 시크릿 — 절대 커밋 금지
+.env
+*.env
+
+# AI 도구 관련 파일 — project-jrpg랑 동일 정책, 포트폴리오 레포에 공개 안 함
+CLAUDE.md
