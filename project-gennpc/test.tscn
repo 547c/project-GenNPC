@@ -1,6 +1,6 @@
-[gd_scene load_steps=2 format=3]
+[gd_scene format=3 uid="uid://dinq5dc13rrn"]
 
-[ext_resource type="Script" path="res://gennpc_test.gd" id="1"]
+[ext_resource type="Script" uid="uid://b0h8d6j5p4q3g" path="res://gennpc_test.gd" id="1"]
 
-[node name="GenNPCTest" type="Node"]
+[node name="GenNPCTest" type="Node" unique_id=1786207567]
 script = ExtResource("1")
