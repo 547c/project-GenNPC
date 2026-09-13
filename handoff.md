@@ -84,11 +84,11 @@ project-jrpg(Godot 4.7 JRPG, flag 기반 상태관리 시스템이 백본)의 �
 ## 아직 안 정해진 것 (다음 세션에서 결정할 것들)
 
 - [x] ~~API 제공자~~ → **2026-09-13 결정: 첫 스모크 테스트는 Gemini(Google AI Studio)로.** 무료 쿼터라 계정/카드 등록 부담 없이 바로 테스트 가능해서 첫 단추로 선택. 이 프로젝트 자체가 "비교"가 목적이라, 나중에 Claude(지금 이미 쓰고 있는 것)도 같은 코드 구조에 꽂아서 비교할 계획 — GLM/Hugging Face는 후순위.
-- [ ] 계정/API 키 준비 (아직 없음 — Gemini API 키 발급이 다음 실제 스텝)
+- [x] ~~계정/API 키 준비~~ → **2026-09-13 완료.** Google AI Studio에서 "Project GenNPC" 클라우드 프로젝트 생성, Gemini API 키 발급 완료. 키는 `project-gennpc/.env`에 로컬 저장 (git에는 안 올라감, `.gitignore`로 제외).
 - [x] ~~Godot 프로젝트로 바로 시작 vs 가벼운 스크립트부터~~ → **2026-09-13 결정: Godot 프로젝트 안에서 바로 시작.** (더 안전한 "스크립트 먼저" 경로도 있었지만, 사용자가 Godot 안에서 바로 하는 쪽을 선택함 — 이러면 API 자체 문제인지 GDScript HTTPRequest 연동 문제인지 구분이 살짝 더 어려울 수 있다는 점만 감안.)
 - [x] ~~분류기 프롬프트/로직을 어디에 둘지~~ → **2026-09-13 결정: project-jrpg와 완전히 별개인 새 Godot 프로젝트(`project-GenNPC` 폴더)에서, 목업(가짜) flag 3개(go eat/go home/go watch movie)로 먼저 실험.** project-jrpg의 진짜 `GameState`/`dialogue_data.gd`는 전혀 안 건드림 — 원래 계획했던 "안전한 쪽" 그대로 확정.
-- [ ] **분류 정확도를 어떻게 테스트할지** (Pattern A 확정 후 새로 생긴 항목) — 명확한 입력("배고프다"), 애매한 입력("음... 모르겠어"), 세 선택지 어디에도 안 맞는 입력("오늘 날씨 어때?") 각각에 대해 기대 동작 정의하고 테스트 케이스 설계
-- [ ] 이 프로젝트도 git 레포로 관리할지, 커밋 규칙(AI 트레일러 금지 등)을 여기도 그대로 적용할지 — 코드 첫 파일 생기기 전에 정해야 함
+- [x] ~~분류 정확도를 어떻게 테스트할지~~ → **2026-09-13 1차 스모크 테스트 완료 (3/3 통과).** 아래 "2026-09-13 첫 프로토타입 & 스모크 테스트" 섹션 참고. (계속 늘려갈 예정 — 지금은 최소 3케이스만 확인한 상태)
+- [x] ~~git 레포 관리 여부~~ → **2026-09-13 결정: GitHub으로 관리, project-jrpg랑 같은 커밋 규칙(AI 트레일러 없이, 사람 말투).** 레포: https://github.com/547c/project-GenNPC (Public)
 
 ## 교수님 상담용 정리 (다음 미팅에서 꺼낼 내용)
 
@@ -127,11 +127,100 @@ Dr. El Ariss(state machine/statechart, 소프트웨어 테스팅 전공)와의 �
 
 **단, utility 스코어링을 GenNPC에 적용할 때 주의할 것**: 교수님이 설명한 utility system의 원래 예시(hunger/시간 같은 게임 내부 변수로 NPC가 자기 행동을 결정하는 것)와, GenNPC에 적용할 실제 방식(player가 친 텍스트와 각 후보 flag 사이의 관련도를 독립적으로 점수 매기는 것)은 **입력값 자체가 다른 별개의 계산**임 — 교수님도 "적용해볼 만하다"고 연결해준 것이지 "그대로 같은 것"이라고 하신 건 아니므로, 프로토타입 설계할 때 이 둘을 섞지 않도록 주의.
 
+## 2026-09-13 첫 프로토타입 & 스모크 테스트
+
+### 폴더 구조 (실수 하나 있었음, 정정)
+Godot 새 프로젝트 만들 때 `project.godot`이 레포 루트가 아니라 `project-gennpc/` 하위 폴더에 생겨버림 (Godot "New Project" 다이얼로그가 프로젝트 이름으로 하위 폴더를 자동 생성한 것으로 추정). 그래서 최종 구조는:
+
+```
+project-GenNPC/              (git 레포 루트)
+├── .git/
+├── .gitignore
+├── handoff.md
+└── project-gennpc/          (진짜 Godot 프로젝트, res:// 기준점)
+    ├── project.godot
+    ├── .env                 (Gemini API 키, git에 안 올라감)
+    ├── gennpc_test.gd
+    └── test.tscn
+```
+
+git 자체엔 문제없음 (`.gitignore`의 `.godot/`, `.env` 패턴은 폴더 깊이 상관없이 적용됨).
+
+### 스모크 테스트 결과 (Claude Code가 실행, Gemini API `gemini-3.6-flash` 사용)
+
+| # | 입력 | 기대 결과 | 실제 결과 | 판정 |
+|---|---|---|---|---|
+| 1 | "아 배고프다" (명확) | go_eat | go_eat | ✅ |
+| 2 | "음... 모르겠어" (애매) | none | none | ✅ |
+| 3 | "오늘 날씨 어때?" (무관) | none | none | ✅ |
+
+**3/3 통과.** 특히 2, 3번이 중요함 — 이게 이 프로젝트 시작할 때부터 걱정했던 "애매하거나 관계없는 입력이 왔을 때 안전하게 폴백하는지"에 대한 첫 실증 데이터. 명확한 입력만 맞추는 건 쉬운데, 폴백까지 확인된 건 이번이 처음.
+
+지금까지는 [go_eat]/[go_home]/[go_movie] 3개짜리 목업 flag로만 테스트한 것 — 다음 단계는 이걸 project-jrpg 실제 세계관에 맞는 flag로 바꿔서 world bible(설정 문서)이랑 안 어긋나는지 테스트하는 것 (사용자가 처음부터 계획한 방향, 아직 안 건드림).
+
+### 개발 환경 관련 참고
+Claude Code가 이 컴퓨터에서 `godot`/`godot4` 실행 파일을 자동으로 못 찾음 (PATH에도, 일반 설치 경로에도 없음) — 그래서 headless 자동 테스트는 안 되고, 사용자가 Godot 에디터에서 직접 F6으로 돌려서 결과를 Claude Code/이 세션에 복사해주는 방식으로 진행 중. `godot-ai` MCP 서버도 연결 안 된 상태(ConnectionRefused). 앞으로도 이 방식(사용자가 직접 실행 → 결과 공유)으로 계속 갈 가능성 높음.
+
+### GitHub 레포
+https://github.com/547c/project-GenNPC (Public) — `git remote add` + `git push` 진행 중.
+
 ### API 제공자 후보 갱신 (9/10 미팅 반영)
 - 지금 사용 중: Claude
 - 무료 대안으로 고려 중: GLM
 - 교수님 추가 제안: Gemini(Google AI Studio, 무료 쿼터), Hugging Face(일부 무료/일부 토큰 필요)
 - → 아래 "아직 안 정해진 것" 체크리스트의 API 제공자 항목이 Claude vs OpenAI 2개에서 Claude/GLM/Gemini/Hugging Face 4개로 확장됨. 최종 결정은 여전히 미정.
+
+## 2026-09-13 (계속) — 세계관 분리, 영어 전환, 다중 NPC, headless 자동화
+
+### 결정: project-jrpg 실제 NPC/세계관 대신 완전히 별개인 합성 판타지 세계 사용
+처음 계획은 project-jrpg의 진짜 NPC(카심 → 로한 → 엘라라 순으로 검토)를 재사용하는 것이었으나, 최종적으로 **project-jrpg 세계관/dialogue_data.gd와 완전히 무관한, 이 실험 전용의 작은 합성 판타지 세계**를 새로 만들기로 결정 (사용자 판단: "어차피 이건 교수랑 리서치하면서 정하는 프로젝트니 내 세계관 말고 jrpg랑 별개로 그냥 새로운 설정집 만들어서 새로운 npc 프로토타입을 만들까?"). 이유:
+- project-jrpg 본편 lore/스포일러 리스크를 원천 차단.
+- 리서치용 테스트베드는 검증된 메커니즘을 나중에 실제 NPC에 이식하는 게 목적이므로, 지금 단계에서 "이 NPC 써도 안전한가"를 매번 고민할 필요가 없음.
+
+### 결정: NPC 1명이 아니라 2명으로 확장
+나중에 GenNPC 메커니즘을 project-jrpg의 여러 실제 NPC에 적용할 가능성이 있으므로, 지금부터 "여러 NPC 각각 독립된 후보 목록을 갖고도 잘 작동하는지"를 검증하기로 함 (3명은 과함, 1명은 일반화 검증 불가 → 2명으로 결정).
+
+### 결정: 이 서브프로젝트는 전부 영어로 진행
+교수님(영어 사용자)과 함께하는 리서치 프로젝트이고, 테스트 입력도 영어로 칠 것이므로 **대사/설명(description) 전부 영어**로 작성하기로 함 (project-jrpg 본편은 한국어 유지, 이 서브프로젝트만 해당). 영어 난이도는 원어민 관용구 수준이 아니라 "유학 경험 있는 비원어민이 부담 없이 읽을 수 있는 평이하고 직관적인 영어"로 — 2차례 피드백 후 최종 확정 (예: "tracks" → "footprints"로 교체, 광부 스몰톡 소재를 공간적으로 모순되는 "It's dark down here"에서 "일이 힘든지" 쪽으로 교체).
+
+### 최종 합성 NPC 콘텐츠 (`gennpc_test.gd`에 구현됨)
+
+**Hunter "Daren"**
+
+| id | description | response_text |
+|---|---|---|
+| forest_animals | wants to ask about strange behavior of animals in the forest | "The animals in the forest have been acting strange. Deer, foxes, all of them keep coming toward the village. That doesn't usually happen." |
+| hunting_tips | wants to ask for hunting tips or advice | "Watch which way the wind is blowing. Check if the footprints are new or old. That's most of it." |
+| smalltalk | just wants to make small talk, like about the weather | "The weather's strange lately. It should be getting colder by now, but it isn't." |
+
+**Miner "Kor"**
+
+| id | description | response_text |
+|---|---|---|
+| cave_rumor | wants to ask about strange rumors from the abandoned mine | "People say there are strange noises deep in the old mine. Some workers are too scared to go in." |
+| equipment | wants to ask about mining equipment or tools | "You have to sharpen the pickaxe often. If you don't, you waste a lot of effort." |
+| smalltalk | wants to ask if the mining work is hard or tiring | "It is tiring work. But I'm used to it by now." |
+
+### 다중 NPC 리팩토링 + 테스트 결과
+`classify_input(npc_id, player_text)` 형태로 리팩토링, NPC별 후보 목록 분리. 각 NPC 최소 1건씩 영어 입력으로 테스트:
+
+| NPC | 입력 | 기대 결과 | 실제 결과 | 판정 |
+|---|---|---|---|---|
+| hunter | "Why are the animals acting so weird?" | forest_animals | forest_animals | ✅ |
+| miner | "Is something wrong in the mine?" | cave_rumor | cave_rumor | ✅ |
+
+**주의**: 이전 3/3 스모크 테스트(go_eat 등 목업)와 달리, 새 영어 콘텐츠로는 애매한 입력/무관한 입력(none 폴백) 케이스가 NPC별로 아직 재검증 안 됨 — 다음 테스트 라운드에서 채워야 함.
+
+### headless 자동 테스트 확보 (project-jrpg 수준으로 워크플로 개선)
+Godot 실행 파일 경로 확보: `C:\Users\조영래\OneDrive\Desktop\Godot\Godot_v4.7.1-stable_win64.exe`. Claude Code가 이 경로로 headless 실행이 되는 걸 직접 확인함:
+
+```
+"/c/Users/조영래/OneDrive/Desktop/Godot/Godot_v4.7.1-stable_win64.exe" --headless --path "/c/Users/조영래/OneDrive/문서/project-GenNPC/project-gennpc" res://test.tscn
+```
+
+`classify_input()`/`_on_request_completed()`의 모든 종료 경로(API 키 없음, 알 수 없는 npc_id, HTTP 에러 응답, 정상 완료)에 `get_tree().quit()`을 추가해서 headless 모드에서 프로세스가 안 걸리고 항상 종료되도록 수정, exit code 0 확인 완료.
+
+**이제부터 F6 + Output 패널 복붙 없이, Claude Code가 스스로 headless 실행 → 결과 확인 → 보고하는 방식으로 전환.** (아래 "개발 환경 관련 참고" 섹션에 적힌 "godot 실행 파일 못 찾음/headless 자동화 안 됨" 문제는 여기서 해결된 것으로 갱신.)
 
 ## 참고
 - project-jrpg 본편 상태: Claude Project의 `project-jrpg-handoff.md` 참고 (여긴 안 건드림).
