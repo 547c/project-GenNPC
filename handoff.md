@@ -207,9 +207,17 @@ https://github.com/547c/project-GenNPC (Public) — `git remote add` + `git push
 | NPC | 입력 | 기대 결과 | 실제 결과 | 판정 |
 |---|---|---|---|---|
 | hunter | "Why are the animals acting so weird?" | forest_animals | forest_animals | ✅ |
+| hunter | "Any tips for hunting?" | hunting_tips | hunting_tips | ✅ |
+| hunter | "How's the weather today?" | smalltalk | smalltalk | ✅ |
+| hunter | "I don't really know what to say" (애매) | none | none | ✅ |
+| hunter | "Do you sell any weapons here?" (무관) | none | none | ✅ |
 | miner | "Is something wrong in the mine?" | cave_rumor | cave_rumor | ✅ |
+| miner | "What kind of tools do you use down there?" | equipment | equipment | ✅ |
+| miner | "Isn't this work exhausting?" | smalltalk | smalltalk | ✅ |
+| miner | "Hmm, not sure" (애매) | none | none | ✅ |
+| miner | "What's your favorite food?" (무관) | none | none | ✅ |
 
-**주의**: 이전 3/3 스모크 테스트(go_eat 등 목업)와 달리, 새 영어 콘텐츠로는 애매한 입력/무관한 입력(none 폴백) 케이스가 NPC별로 아직 재검증 안 됨 — 다음 테스트 라운드에서 채워야 함.
+**10/10 통과.** hunter/miner 각각 후보 3개 전부 + 애매한 입력 + 무관한 입력까지 커버 완료. 두 NPC의 후보 목록이 서로 완전히 분리되어 있고(hunter 입력이 miner 토픽으로 새지 않음, 역도 마찬가지), 애매/무관 입력 모두 `none`으로 정확히 폴백됨을 확인. 현재 프롬프트/description 구조에서 추가로 손볼 부분 없음 — 이 라운드는 코드 변경 없이 검증만 한 것이라 커밋 대상 아님.
 
 ### headless 자동 테스트 확보 (project-jrpg 수준으로 워크플로 개선)
 Godot 실행 파일 경로 확보: `C:\Users\조영래\OneDrive\Desktop\Godot\Godot_v4.7.1-stable_win64.exe`. Claude Code가 이 경로로 headless 실행이 되는 걸 직접 확인함:
@@ -222,7 +230,37 @@ Godot 실행 파일 경로 확보: `C:\Users\조영래\OneDrive\Desktop\Godot\Go
 
 **이제부터 F6 + Output 패널 복붙 없이, Claude Code가 스스로 headless 실행 → 결과 확인 → 보고하는 방식으로 전환.** (아래 "개발 환경 관련 참고" 섹션에 적힌 "godot 실행 파일 못 찾음/headless 자동화 안 됨" 문제는 여기서 해결된 것으로 갱신.)
 
-## 참고
+## 2026-09-13 (계속 2) — Phase 2 플레이 가능한 틀 + 모델 비교/확정
+
+### Phase 2: 최소 게임 틀 구현
+project-jrpg 코드는 재사용하지 않고 project-GenNPC 안에서 완전히 새로 작성하기로 결정 (이유: project-jrpg 대화 UI는 버튼 메뉴 방식이라 자유 텍스트 입력창은 어차피 새로 만들어야 해서 절반만 재사용하는 셈이고, GameState/오토로드 참조를 떼어내는 정리 비용이 더 클 것으로 판단).
+
+새로 만든 것:
+- `npc_classifier.gd` — `gennpc_test.gd`의 분류 로직을 게임용으로 재작성. `quit()` 대신 `classification_completed`/`classification_failed` 시그널로 결과를 돌려주는 재사용 가능한 노드.
+- `player.gd` — WASD/방향키 자유 이동(충돌 무시).
+- `game.gd` — NPC 범위 감지, E/Space 상호작용, 대화 UI 열고 닫기, 분류 결과 표시.
+- `game.tscn` — Player + NPC_Hunter(Daren) + NPC_Miner(Kor) + 대화 UI.
+- `gennpc_test.gd`/`test.tscn`(headless 회귀 테스트용)은 그대로 유지, 손대지 않음.
+
+### 실제 플레이 중 발견한 버그: 인사말/추임새가 엉뚱한 답으로 새는 문제
+사전 테스트 케이스는 다 통과했지만, 실제로 자유롭게 플레이해보니 바로 문제가 나옴 — hunter(Daren)한테 "okay cool", miner(Kor)한테 "hello"라고 치니 둘 다 `smalltalk`로 잘못 분류되어 뜬금없이 날씨/피곤함 얘기를 꺼냄. **사전에 다 못 만드는 애매한 입력 문제**(handoff.md 앞부분 "교수님 상담용 정리"에 이미 적어둔 그 우려)가 실전에서 그대로 확인된 사례 — 교수님한테 가져갈 실증 사례로 기록해둠.
+
+원인: "smalltalk" 후보 설명이 제일 느슨해서, 특정 주제 없는 인사말/추임새가 들어오면 분류기가 그쪽으로 끌려감. `npc_classifier.gd`의 공용 프롬프트에 두 차례 규칙을 추가해 해결:
+1. "인사말/추임새(hello, hi, okay, cool, thanks 등)만 있고 주제가 없으면 none" 규칙 추가
+2. (1번 규칙 적용 후에도 남아있던 별개 케이스 — miner에게 "What's your favorite food?" → 여전히 `smalltalk`로 오분류) → "smalltalk는 description에 적힌 그 구체적 화제(날씨/피곤함)를 직접 언급할 때만 해당, 그 외 화제는 none" 규칙 + 반례를 추가로 명시
+
+### 모델 비교: 3.6-flash → 3.5-flash-lite → gemma-4-31b-it 검토 → 3.5-flash-lite로 확정
+개발 중 Gemini 무료 등급의 **일일 요청 한도(RPD)가 gemini-3.6-flash 기준 20건**이라는 걸 발견 — 하루 테스트만으로 바로 소진됨 (AI Studio "Rate Limit" 대시보드에서 확인: `https://aistudio.google.com` 안의 비율 제한 페이지). 이 태스크(자유 텍스트를 미리 정해진 소수 후보로 분류)가 고지능 모델이 필요한 일이 아니라는 점에 착안해 대안 모델을 조사/실측:
+
+| 모델 | 일일 한도(RPD) | 이 태스크 적합성 |
+|---|---|---|
+| gemini-3.6-flash | 20 | 정확도 좋음 (10/10), 한도가 개발 단계엔 너무 빡빡함 |
+| gemini-3.5-flash-lite | 500 | 처음엔 무관한 질문을 smalltalk로 오분류하는 문제 있었으나, 프롬프트 규칙 2차 보강 후 **14/14 통과** |
+| gemma-4-31b-it (구글 오픈 모델, 같은 API로 호출 가능) | 14,400 | 추론 자체는 정확했으나(문제의 "food" 케이스도 논리적으론 맞힘), "id만 응답" 지시를 무시하고 매번 긴 서술형 응답을 냄 + 14건 중 3건(21%)이 HTTP 500/503로 응답 자체가 안 옴 → 지금 코드베이스(정확 문자열 매칭)와 안 맞고 안정성도 부족해 **채택 안 함** |
+
+**최종 결정: `gemini-3.5-flash-lite`를 이 프로젝트의 기본 분류 모델로 확정.** 한도(500/일)와 검증된 정확도(14/14, 인사말·무관한 질문 폴백 케이스 포함) 둘 다 충족.
+
+### 참고
 - project-jrpg 본편 상태: Claude Project의 `project-jrpg-handoff.md` 참고 (여긴 안 건드림).
 - EC/지원서 서사: `ec-resume-draft.md`에 이 프로젝트가 이미 초안으로 들어가 있음. Pattern A 결정에 맞게 그 문서의 "Autonomous AI NPC Dialogue Prototype" 설명도 업데이트가 필요할 수 있음 — 실제 진행 상황에 맞춰 다른 채팅에서 관리 중이니 그쪽에 이 결정 내용 전달 필요. (GenNPC 방향 유지가 EC 서사적으로도 맞는 선택인지는 이 채팅에서 확정 짓지 않음 — EC 전략은 다른 채팅이 전담.)
 - 다음 정기 미팅: 매주 목요일 낮 12:00 (Central Time). 다음 미팅(9/17)까지 방향 결정 확정해서 알려드려야 함 (위 참고).

@@ -1,5 +1,8 @@
 extends Node
 
+signal classification_completed(npc_id: String, matched_id: String, response_text: String)
+signal classification_failed(npc_id: String, error_text: String)
+
 var npcs = {
 	"hunter": {
 		"name": "Daren",
@@ -19,9 +22,6 @@ var npcs = {
 	}
 }
 
-var test_npc_id = "miner"
-var test_input = "What's your favorite food?"
-
 var api_key: String = ""
 var http_request: HTTPRequest
 var current_npc_id: String = ""
@@ -32,8 +32,9 @@ func _ready():
 	add_child(http_request)
 	http_request.request_completed.connect(_on_request_completed)
 
-	print("Test NPC: ", test_npc_id, " | Test input: ", test_input)
-	classify_input(test_npc_id, test_input)
+
+func get_npc_name(npc_id: String) -> String:
+	return npcs[npc_id].name
 
 
 func _load_api_key():
@@ -50,13 +51,11 @@ func _load_api_key():
 
 func classify_input(npc_id: String, player_text: String):
 	if api_key == "":
-		push_error("API key is empty. Check the .env file.")
-		get_tree().quit(1)
+		classification_failed.emit(npc_id, "API key is empty. Check the .env file.")
 		return
 
 	if not npcs.has(npc_id):
-		push_error("Unknown npc_id: " + npc_id)
-		get_tree().quit(1)
+		classification_failed.emit(npc_id, "Unknown npc_id: " + npc_id)
 		return
 
 	current_npc_id = npc_id
@@ -74,6 +73,8 @@ func classify_input(npc_id: String, player_text: String):
 	prompt += "Which ONE of these candidate actions does it best match?\n"
 	prompt += options_text + "\n"
 	prompt += "If it clearly matches none of them, or is too ambiguous, answer exactly: none\n"
+	prompt += "If the sentence is only a greeting or a meaningless filler word (like hello, hi, hey, okay, cool, nice, thanks) and does not mention any specific topic from the candidates above, answer exactly: none\n"
+	prompt += "A candidate whose description is small talk (like weather, or whether the work is tiring) only applies when the sentence directly brings up that exact topic. Any other topic (food, other people, unrelated objects, etc.), no matter how casual the tone, must be classified as none. For example, \"What's your favorite food?\" is none, not smalltalk.\n"
 	prompt += "Respond with ONLY one id from this list: %s\n" % id_list_text
 	prompt += "No explanation, no extra words, just the id."
 
@@ -90,29 +91,23 @@ func classify_input(npc_id: String, player_text: String):
 
 
 func _on_request_completed(result, response_code, headers, body):
-	print("Response code: ", response_code)
 	var text_body = body.get_string_from_utf8()
 
 	if response_code != 200:
-		print("Error response: ", text_body)
-		get_tree().quit(1)
+		classification_failed.emit(current_npc_id, "Error response (%d): %s" % [response_code, text_body])
 		return
 
 	var json = JSON.parse_string(text_body)
 	if json and json.has("candidates"):
 		var answer = json["candidates"][0]["content"]["parts"][0]["text"].strip_edges()
-		print("AI classification -> ", answer)
-		_print_response(current_npc_id, answer)
+		var response_text = _find_response_text(current_npc_id, answer)
+		classification_completed.emit(current_npc_id, answer, response_text)
 	else:
-		print("Failed to parse response, raw: ", text_body)
-
-	get_tree().quit()
+		classification_failed.emit(current_npc_id, "Failed to parse response, raw: " + text_body)
 
 
-func _print_response(npc_id: String, matched_id: String):
-	var npc = npcs[npc_id]
-	for c in npc.candidates:
+func _find_response_text(npc_id: String, matched_id: String) -> String:
+	for c in npcs[npc_id].candidates:
 		if c.id == matched_id:
-			print("[%s] %s: %s" % [npc_id, npc.name, c.response_text])
-			return
-	print("[%s] %s: (no response defined for id '%s')" % [npc_id, npc.name, matched_id])
+			return c.response_text
+	return ""
