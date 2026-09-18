@@ -260,6 +260,9 @@ project-jrpg 코드는 재사용하지 않고 project-GenNPC 안에서 완전히
 
 **최종 결정: `gemini-3.5-flash-lite`를 이 프로젝트의 기본 분류 모델로 확정.** 한도(500/일)와 검증된 정확도(14/14, 인사말·무관한 질문 폴백 케이스 포함) 둘 다 충족.
 
+### Phase 2 체크리스트 — 전체 완료
+이동(WASD/방향키), NPC 범위 진입/이탈 힌트, E/Space 상호작용, 대화창 열려있을 때 이동 정지, 텍스트 입력+엔터 응답 표시, Esc로 닫기(입력창 포커스 상태에서도 정상 동작 확인), Close 버튼, 닫고 재이동/재상호작용, hunter/miner 응답 안 섞임까지 실제 플레이로 전부 확인 완료. (API 에러 시 게임이 안 멈추는지도 지난 429 rate-limit 사건 때 의도치 않게 실증됨.) **Phase 2 — 플레이 가능한 최소 틀, 완성.**
+
 ### 참고
 - project-jrpg 본편 상태: Claude Project의 `project-jrpg-handoff.md` 참고 (여긴 안 건드림).
 - EC/지원서 서사: `ec-resume-draft.md`에 이 프로젝트가 이미 초안으로 들어가 있음. Pattern A 결정에 맞게 그 문서의 "Autonomous AI NPC Dialogue Prototype" 설명도 업데이트가 필요할 수 있음 — 실제 진행 상황에 맞춰 다른 채팅에서 관리 중이니 그쪽에 이 결정 내용 전달 필요. (GenNPC 방향 유지가 EC 서사적으로도 맞는 선택인지는 이 채팅에서 확정 짓지 않음 — EC 전략은 다른 채팅이 전담.)

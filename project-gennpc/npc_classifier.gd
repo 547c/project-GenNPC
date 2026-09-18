@@ -3,6 +3,8 @@ extends Node
 signal classification_completed(npc_id: String, matched_id: String, response_text: String)
 signal classification_failed(npc_id: String, error_text: String)
 
+@export var utility_score_threshold: float = 50.0
+
 var npcs = {
 	"hunter": {
 		"name": "Daren",
@@ -25,12 +27,18 @@ var npcs = {
 var api_key: String = ""
 var http_request: HTTPRequest
 var current_npc_id: String = ""
+var http_request_utility: HTTPRequest
+var current_utility_npc_id: String = ""
 
 func _ready():
 	_load_api_key()
 	http_request = HTTPRequest.new()
 	add_child(http_request)
 	http_request.request_completed.connect(_on_request_completed)
+
+	http_request_utility = HTTPRequest.new()
+	add_child(http_request_utility)
+	http_request_utility.request_completed.connect(_on_utility_request_completed)
 
 
 func get_npc_name(npc_id: String) -> String:
@@ -111,3 +119,89 @@ func _find_response_text(npc_id: String, matched_id: String) -> String:
 		if c.id == matched_id:
 			return c.response_text
 	return ""
+
+
+func classify_with_utility_score(npc_id: String, player_text: String):
+	if api_key == "":
+		classification_failed.emit(npc_id, "API key is empty. Check the .env file.")
+		return
+
+	if not npcs.has(npc_id):
+		classification_failed.emit(npc_id, "Unknown npc_id: " + npc_id)
+		return
+
+	current_utility_npc_id = npc_id
+	var candidates = npcs[npc_id].candidates
+
+	var options_text = ""
+	var id_list_text = ""
+	for c in candidates:
+		options_text += "- %s: %s\n" % [c.id, c.description]
+		id_list_text += "\"%s\", " % c.id
+	id_list_text += "\"none\""
+
+	var prompt = "You are a strict classifier for a game dialogue system.\n"
+	prompt += "A player typed this sentence: \"%s\"\n\n" % player_text
+	prompt += "Score how well the sentence matches EACH of these candidate actions, from 0 (no match at all) to 100 (perfect match):\n"
+	prompt += options_text + "\n"
+	prompt += "Also score \"none\" the same way: how likely is it that the sentence matches none of the candidates above?\n"
+	prompt += "If the sentence is only a greeting or a meaningless filler word (like hi, hello, okay, cool, thanks) and does not mention any specific topic from the candidates above, give every candidate (including smalltalk) a low score and give \"none\" a high score.\n"
+	prompt += "Give a candidate whose description is small talk (like weather, or whether the work is tiring) a high score only when the sentence directly brings up that exact topic. For any other topic, give that smalltalk candidate a low score and give \"none\" a high score instead.\n"
+	prompt += "Respond with ONLY a single JSON object mapping every id in this list to its score: %s\n" % id_list_text
+	prompt += "Example format: {\"forest_animals\": 20, \"hunting_tips\": 15, \"smalltalk\": 85, \"none\": 10}\n"
+	prompt += "No explanation, no extra text, just the JSON object."
+
+	var url = "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash-lite:generateContent"
+	var headers = [
+		"Content-Type: application/json",
+		"x-goog-api-key: " + api_key
+	]
+	var body = JSON.stringify({
+		"contents": [{"parts": [{"text": prompt}]}]
+	})
+
+	http_request_utility.request(url, headers, HTTPClient.METHOD_POST, body)
+
+
+func _on_utility_request_completed(result, response_code, headers, body):
+	var text_body = body.get_string_from_utf8()
+
+	if response_code != 200:
+		classification_failed.emit(current_utility_npc_id, "Error response (%d): %s" % [response_code, text_body])
+		return
+
+	var json = JSON.parse_string(text_body)
+	if not (json and json.has("candidates")):
+		classification_failed.emit(current_utility_npc_id, "Failed to parse response, raw: " + text_body)
+		return
+
+	var answer_text = json["candidates"][0]["content"]["parts"][0]["text"]
+	var scores = JSON.parse_string(_strip_json_fence(answer_text))
+	if typeof(scores) != TYPE_DICTIONARY:
+		classification_failed.emit(current_utility_npc_id, "Failed to parse score JSON, raw: " + answer_text)
+		return
+
+	var best_id = "none"
+	var best_score = -1.0
+	for id in scores.keys():
+		var score = float(scores[id])
+		if score > best_score:
+			best_score = score
+			best_id = id
+
+	if best_score < utility_score_threshold:
+		best_id = "none"
+
+	var response_text = _find_response_text(current_utility_npc_id, best_id)
+	classification_completed.emit(current_utility_npc_id, best_id, response_text)
+
+
+func _strip_json_fence(text: String) -> String:
+	var t = text.strip_edges()
+	if t.begins_with("```"):
+		var first_newline = t.find("\n")
+		if first_newline != -1:
+			t = t.substr(first_newline + 1)
+		if t.ends_with("```"):
+			t = t.substr(0, t.length() - 3)
+	return t.strip_edges()
