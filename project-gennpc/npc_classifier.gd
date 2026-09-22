@@ -92,7 +92,8 @@ func classify_input(npc_id: String, player_text: String):
 		"x-goog-api-key: " + api_key
 	]
 	var body = JSON.stringify({
-		"contents": [{"parts": [{"text": prompt}]}]
+		"contents": [{"parts": [{"text": prompt}]}],
+		"generationConfig": {"temperature": 0}
 	})
 
 	http_request.request(url, headers, HTTPClient.METHOD_POST, body)
@@ -157,7 +158,8 @@ func classify_with_utility_score(npc_id: String, player_text: String):
 		"x-goog-api-key: " + api_key
 	]
 	var body = JSON.stringify({
-		"contents": [{"parts": [{"text": prompt}]}]
+		"contents": [{"parts": [{"text": prompt}]}],
+		"generationConfig": {"temperature": 0}
 	})
 
 	http_request_utility.request(url, headers, HTTPClient.METHOD_POST, body)
@@ -191,6 +193,8 @@ func _on_utility_request_completed(result, response_code, headers, body):
 
 	if best_score < utility_score_threshold:
 		best_id = "none"
+
+	print("scores: ", scores, " -> ", best_id)
 
 	var response_text = _find_response_text(current_utility_npc_id, best_id)
 	classification_completed.emit(current_utility_npc_id, best_id, response_text)

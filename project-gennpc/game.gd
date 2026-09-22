@@ -81,7 +81,8 @@ func _on_input_submitted(text: String):
 		return
 	response_label.text = "..."
 	input_field.editable = false
-	classifier.classify_input(current_dialogue_npc, text)
+	# classifier.classify_input(current_dialogue_npc, text)
+	classifier.classify_with_utility_score(current_dialogue_npc, text)
 
 
 func _on_classification_completed(npc_id: String, matched_id: String, response_text: String):
