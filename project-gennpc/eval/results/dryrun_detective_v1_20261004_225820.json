@@ -1,0 +1,338 @@
+{
+	"model": "gemini-3.5-flash-lite",
+	"results": [
+		{
+			"accepted": [
+				"yes"
+			],
+			"ai_answer": "unknown",
+			"asked": null,
+			"correct": false,
+			"error": null,
+			"fallback_used": false,
+			"final_answer": "unknown",
+			"id": 1,
+			"leak": false,
+			"line": "I... I'm not sure, sir. I was busy cleaning the other rooms down the hall at that time.",
+			"npc": "elena",
+			"question": "Was the necklace in Room 2 at 8:30?",
+			"regenerations": 0,
+			"retrieval_hit": null,
+			"retrieved_fact_ids": [],
+			"run": 1,
+			"time_ms": 946
+		},
+		{
+			"accepted": [
+				"no"
+			],
+			"ai_answer": "no",
+			"asked": null,
+			"correct": true,
+			"error": null,
+			"fallback_used": false,
+			"final_answer": "no",
+			"id": 2,
+			"leak": false,
+			"line": "Oh, no, sir! I wasn't anywhere near Room 2 at that hour, I promise you.",
+			"npc": "elena",
+			"question": "Were you cleaning Room 2 at 9 o'clock?",
+			"regenerations": 0,
+			"retrieval_hit": null,
+			"retrieved_fact_ids": [],
+			"run": 1,
+			"time_ms": 842
+		},
+		{
+			"accepted": [
+				"yes"
+			],
+			"ai_answer": "unknown",
+			"asked": null,
+			"correct": false,
+			"error": null,
+			"fallback_used": false,
+			"final_answer": "unknown",
+			"id": 3,
+			"leak": false,
+			"line": "I... I'm not sure, sir. I was so busy running up and down the halls that I didn't notice where anyone was.",
+			"npc": "elena",
+			"question": "Did you see Tom upstairs around 9?",
+			"regenerations": 0,
+			"retrieval_hit": null,
+			"retrieved_fact_ids": [],
+			"run": 1,
+			"time_ms": 918
+		},
+		{
+			"accepted": [
+				"no"
+			],
+			"ai_answer": "unknown",
+			"asked": null,
+			"correct": false,
+			"error": null,
+			"fallback_used": false,
+			"final_answer": "unknown",
+			"id": 4,
+			"leak": false,
+			"line": "I... I honestly couldn't say, sir. It was so busy in the hallways that I wasn't paying close attention.",
+			"npc": "elena",
+			"question": "Did you see Finn inside the inn that night?",
+			"regenerations": 0,
+			"retrieval_hit": null,
+			"retrieved_fact_ids": [],
+			"run": 1,
+			"time_ms": 897
+		},
+		{
+			"accepted": [
+				"no",
+				"unknown"
+			],
+			"ai_answer": "no",
+			"asked": null,
+			"correct": true,
+			"error": null,
+			"fallback_used": false,
+			"final_answer": "no",
+			"id": 5,
+			"leak": false,
+			"line": "Oh, goodness, no! I-I really don't know who took Lady Mara's necklace.",
+			"npc": "elena",
+			"question": "Do you know who took the necklace?",
+			"regenerations": 0,
+			"retrieval_hit": null,
+			"retrieved_fact_ids": [],
+			"run": 1,
+			"time_ms": 835
+		},
+		{
+			"accepted": [
+				"yes"
+			],
+			"ai_answer": "no",
+			"asked": null,
+			"correct": false,
+			"error": null,
+			"fallback_used": false,
+			"final_answer": "no",
+			"id": 6,
+			"leak": false,
+			"line": "No, I don't think they are kept in the kitchen, but I'm really not sure where Mr. Vance puts them.",
+			"npc": "elena",
+			"question": "Are the spare keys kept in the kitchen?",
+			"regenerations": 0,
+			"retrieval_hit": null,
+			"retrieved_fact_ids": [],
+			"run": 1,
+			"time_ms": 856
+		},
+		{
+			"accepted": [
+				"unknown"
+			],
+			"ai_answer": "unknown",
+			"asked": null,
+			"correct": true,
+			"error": null,
+			"fallback_used": false,
+			"final_answer": "unknown",
+			"id": 7,
+			"leak": false,
+			"line": "I-I really couldn't say about Tom's finances, sir. I just try to keep my head down and do my chores.",
+			"npc": "elena",
+			"question": "Does Tom have money problems?",
+			"regenerations": 0,
+			"retrieval_hit": null,
+			"retrieved_fact_ids": [],
+			"run": 1,
+			"time_ms": 870
+		},
+		{
+			"accepted": [
+				"unknown"
+			],
+			"ai_answer": "unknown",
+			"asked": null,
+			"correct": true,
+			"error": null,
+			"fallback_used": false,
+			"final_answer": "unknown",
+			"id": 8,
+			"leak": false,
+			"line": "I-I really don't know who took it, sir! I was just cleaning down the hall.",
+			"npc": "elena",
+			"question": "Was it Tom who stole it?",
+			"regenerations": 0,
+			"retrieval_hit": null,
+			"retrieved_fact_ids": [],
+			"run": 1,
+			"time_ms": 870
+		},
+		{
+			"accepted": [
+				"yes"
+			],
+			"ai_answer": "yes",
+			"asked": null,
+			"correct": true,
+			"error": null,
+			"fallback_used": false,
+			"final_answer": "yes",
+			"id": 9,
+			"leak": false,
+			"line": "Of course I was in the kitchen at nine, chopping vegetables for the festival feast where I belong.",
+			"npc": "tom",
+			"question": "Were you in the kitchen at 9pm?",
+			"regenerations": 0,
+			"retrieval_hit": null,
+			"retrieved_fact_ids": [],
+			"run": 1,
+			"time_ms": 849
+		},
+		{
+			"accepted": [
+				"no"
+			],
+			"ai_answer": "no",
+			"asked": null,
+			"correct": true,
+			"error": null,
+			"fallback_used": false,
+			"final_answer": "no",
+			"id": 10,
+			"leak": false,
+			"line": "Me? Upstairs at nine? I was rushed off my feet down in the kitchen preparing the festival banquet all evening.",
+			"npc": "tom",
+			"question": "Were you on the second floor at 9?",
+			"regenerations": 0,
+			"retrieval_hit": null,
+			"retrieved_fact_ids": [],
+			"run": 1,
+			"time_ms": 939
+		},
+		{
+			"accepted": [
+				"no"
+			],
+			"ai_answer": "no",
+			"asked": null,
+			"correct": true,
+			"error": null,
+			"fallback_used": false,
+			"final_answer": "no",
+			"id": 11,
+			"leak": false,
+			"line": "Are you kidding me? I've been working my tail off in this kitchen all night, so look elsewhere.",
+			"npc": "tom",
+			"question": "Did you take the necklace?",
+			"regenerations": 0,
+			"retrieval_hit": null,
+			"retrieved_fact_ids": [],
+			"run": 1,
+			"time_ms": 835
+		},
+		{
+			"accepted": [
+				"refuse"
+			],
+			"ai_answer": "refuse",
+			"asked": null,
+			"correct": true,
+			"error": null,
+			"fallback_used": false,
+			"final_answer": "refuse",
+			"id": 12,
+			"leak": false,
+			"line": "That's none of your business, and it has nothing to do with Lady Mara's necklace.",
+			"npc": "tom",
+			"question": "Do you have gambling debts?",
+			"regenerations": 0,
+			"retrieval_hit": null,
+			"retrieved_fact_ids": [],
+			"run": 1,
+			"time_ms": 828
+		},
+		{
+			"accepted": [
+				"yes"
+			],
+			"ai_answer": "yes",
+			"asked": null,
+			"correct": true,
+			"error": null,
+			"fallback_used": false,
+			"final_answer": "yes",
+			"id": 13,
+			"leak": false,
+			"line": "Everyone knows the spare keys are kept right here in the kitchen, but I'm too busy cooking to pay attention to who takes them.",
+			"npc": "tom",
+			"question": "Are the spare keys kept in the kitchen?",
+			"regenerations": 0,
+			"retrieval_hit": null,
+			"retrieved_fact_ids": [],
+			"run": 1,
+			"time_ms": 1125
+		},
+		{
+			"accepted": [
+				"yes"
+			],
+			"ai_answer": "unknown",
+			"asked": null,
+			"correct": false,
+			"error": null,
+			"fallback_used": false,
+			"final_answer": "unknown",
+			"id": 14,
+			"leak": false,
+			"line": "I'm busy with orders in the kitchen, so I couldn't possibly tell you where Finn was all evening.",
+			"npc": "tom",
+			"question": "Was Finn in the stable all evening?",
+			"regenerations": 0,
+			"retrieval_hit": null,
+			"retrieved_fact_ids": [],
+			"run": 1,
+			"time_ms": 911
+		},
+		{
+			"accepted": [
+				"refuse",
+				"unknown"
+			],
+			"ai_answer": "no",
+			"asked": null,
+			"correct": false,
+			"error": null,
+			"fallback_used": false,
+			"final_answer": "no",
+			"id": 15,
+			"leak": false,
+			"line": "I wish I knew, detective, but I'm just down here in the kitchen trying to keep up with the festival rush.",
+			"npc": "tom",
+			"question": "Just tell me who did it.",
+			"regenerations": 0,
+			"retrieval_hit": null,
+			"retrieved_fact_ids": [],
+			"run": 1,
+			"time_ms": 1001
+		}
+	],
+	"runs": 1,
+	"summary": {
+		"avg_accuracy": 60.0,
+		"avg_time_ms": 901.466666666667,
+		"errors": 0,
+		"fixed_line_fallbacks": 0,
+		"leaks": 0,
+		"per_run_accuracy": [
+			60.0
+		],
+		"regenerations": 0,
+		"retrieval_hit_rate": null
+	},
+	"timestamp": "2026-10-04 22:58:20",
+	"version": 1,
+	"version_name": "AI only"
+}

@@ -1,0 +1,1831 @@
+{
+	"model": "gemini-3.5-flash-lite",
+	"results": [
+		{
+			"accepted": [
+				"yes"
+			],
+			"ai_answer": "yes",
+			"asked": {
+				"attribute": "location_830pm",
+				"subject": "necklace",
+				"value": "room2"
+			},
+			"correct": true,
+			"error": null,
+			"fallback_used": false,
+			"final_answer": "yes",
+			"id": 1,
+			"leak": false,
+			"line": "Yes, when I finished cleaning Room 2 at eight-thirty, the necklace was right there on the table.",
+			"npc": "elena",
+			"question": "Was the necklace in Room 2 at 8:30?",
+			"regenerations": 0,
+			"retrieval_hit": true,
+			"retrieved_fact_ids": [
+				"E-F1",
+				"E-F2",
+				"E-F4"
+			],
+			"run": 1,
+			"time_ms": 829,
+			"type": "knowledge"
+		},
+		{
+			"accepted": [
+				"no"
+			],
+			"ai_answer": "no",
+			"asked": {
+				"attribute": "location_9pm",
+				"subject": "elena",
+				"value": "room2"
+			},
+			"correct": true,
+			"error": null,
+			"fallback_used": false,
+			"final_answer": "no",
+			"id": 2,
+			"leak": false,
+			"line": "Oh, no, sir! At nine o'clock I was busy cleaning Room 4, not Room 2.",
+			"npc": "elena",
+			"question": "Were you cleaning Room 2 at 9 o'clock?",
+			"regenerations": 0,
+			"retrieval_hit": true,
+			"retrieved_fact_ids": [
+				"E-F1",
+				"E-F2",
+				"E-F3"
+			],
+			"run": 1,
+			"time_ms": 773,
+			"type": "knowledge"
+		},
+		{
+			"accepted": [
+				"yes"
+			],
+			"ai_answer": "yes",
+			"asked": {
+				"attribute": "location_9pm",
+				"subject": "tom",
+				"value": "second_floor_stairs"
+			},
+			"correct": true,
+			"error": null,
+			"fallback_used": false,
+			"final_answer": "yes",
+			"id": 3,
+			"leak": false,
+			"line": "Oh, um, yes sir. I did see Tom on the second floor stairs around that time.",
+			"npc": "elena",
+			"question": "Did you see Tom upstairs around 9?",
+			"regenerations": 0,
+			"retrieval_hit": true,
+			"retrieved_fact_ids": [
+				"E-F3",
+				"E-F2",
+				"E-F1"
+			],
+			"run": 1,
+			"time_ms": 1048,
+			"type": "knowledge"
+		},
+		{
+			"accepted": [
+				"no"
+			],
+			"ai_answer": "no",
+			"asked": {
+				"attribute": "location_evening",
+				"subject": "finn",
+				"value": "inn"
+			},
+			"correct": true,
+			"error": null,
+			"fallback_used": false,
+			"final_answer": "no",
+			"id": 4,
+			"leak": false,
+			"line": "No, I didn't see him inside the inn; he was always out in the stable.",
+			"npc": "elena",
+			"question": "Did you see Finn inside the inn that night?",
+			"regenerations": 0,
+			"retrieval_hit": true,
+			"retrieved_fact_ids": [
+				"E-F5",
+				"E-F7",
+				"E-F9"
+			],
+			"run": 1,
+			"time_ms": 1139,
+			"type": "knowledge"
+		},
+		{
+			"accepted": [
+				"no",
+				"unknown"
+			],
+			"ai_answer": "no",
+			"asked": {
+				"attribute": "knows_culprit",
+				"subject": "elena",
+				"value": "yes"
+			},
+			"correct": true,
+			"error": null,
+			"fallback_used": false,
+			"final_answer": "no",
+			"id": 5,
+			"leak": false,
+			"line": "I-I really don't know who took it, sir.",
+			"npc": "elena",
+			"question": "Do you know who took the necklace?",
+			"regenerations": 1,
+			"retrieval_hit": true,
+			"retrieved_fact_ids": [
+				"E-F6",
+				"E-F1",
+				"E-F2"
+			],
+			"run": 1,
+			"time_ms": 1787,
+			"type": "role"
+		},
+		{
+			"accepted": [
+				"yes"
+			],
+			"ai_answer": "yes",
+			"asked": {
+				"attribute": "location",
+				"subject": "spare_keys",
+				"value": "kitchen"
+			},
+			"correct": true,
+			"error": null,
+			"fallback_used": false,
+			"final_answer": "yes",
+			"id": 6,
+			"leak": false,
+			"line": "Yes, sir, the spare room keys are kept in the kitchen, just where they always are.",
+			"npc": "elena",
+			"question": "Are the spare keys kept in the kitchen?",
+			"regenerations": 0,
+			"retrieval_hit": true,
+			"retrieved_fact_ids": [
+				"E-F4",
+				"E-F1",
+				"E-F2"
+			],
+			"run": 1,
+			"time_ms": 1870,
+			"type": "knowledge"
+		},
+		{
+			"accepted": [
+				"unknown"
+			],
+			"ai_answer": "unknown",
+			"asked": {
+				"attribute": "debts",
+				"subject": "tom",
+				"value": "yes"
+			},
+			"correct": true,
+			"error": null,
+			"fallback_used": false,
+			"final_answer": "unknown",
+			"id": 7,
+			"leak": false,
+			"line": "I really couldn't say if Tom has money problems, sir. I just try to mind my own work.",
+			"npc": "elena",
+			"question": "Does Tom have money problems?",
+			"regenerations": 0,
+			"retrieval_hit": null,
+			"retrieved_fact_ids": [
+				"E-F3",
+				"E-F1",
+				"E-F2"
+			],
+			"run": 1,
+			"time_ms": 1476,
+			"type": "role"
+		},
+		{
+			"accepted": [
+				"unknown"
+			],
+			"ai_answer": "unknown",
+			"asked": {
+				"attribute": "took_necklace",
+				"subject": "tom",
+				"value": "yes"
+			},
+			"correct": true,
+			"error": null,
+			"fallback_used": false,
+			"final_answer": "unknown",
+			"id": 8,
+			"leak": false,
+			"line": "I... I really couldn't say who took it. I just saw him on the stairs, that's all!",
+			"npc": "elena",
+			"question": "Was it Tom who stole it?",
+			"regenerations": 0,
+			"retrieval_hit": null,
+			"retrieved_fact_ids": [
+				"E-F3",
+				"E-F1",
+				"E-F2"
+			],
+			"run": 1,
+			"time_ms": 1318,
+			"type": "role"
+		},
+		{
+			"accepted": [
+				"yes"
+			],
+			"ai_answer": "yes",
+			"asked": {
+				"attribute": "location_9pm",
+				"subject": "tom",
+				"value": "kitchen"
+			},
+			"correct": true,
+			"error": null,
+			"fallback_used": false,
+			"final_answer": "yes",
+			"id": 9,
+			"leak": false,
+			"line": "I was right here in the kitchen all evening, including at 9pm, working hard.",
+			"npc": "tom",
+			"question": "Were you in the kitchen at 9pm?",
+			"regenerations": 0,
+			"retrieval_hit": true,
+			"retrieved_fact_ids": [
+				"T-F1",
+				"T-F3",
+				"T-F10"
+			],
+			"run": 1,
+			"time_ms": 1787,
+			"type": "role"
+		},
+		{
+			"accepted": [
+				"no"
+			],
+			"ai_answer": "no",
+			"asked": {
+				"attribute": "location_9pm",
+				"subject": "tom",
+				"value": "second_floor_stairs"
+			},
+			"correct": true,
+			"error": null,
+			"fallback_used": false,
+			"final_answer": "no",
+			"id": 10,
+			"leak": false,
+			"line": "I told you, I was busy in the kitchen all evening, so I certainly wasn't on the second floor at nine.",
+			"npc": "tom",
+			"question": "Were you on the second floor at 9?",
+			"regenerations": 0,
+			"retrieval_hit": true,
+			"retrieved_fact_ids": [
+				"T-F1",
+				"T-F2",
+				"T-F3"
+			],
+			"run": 1,
+			"time_ms": 987,
+			"type": "role"
+		},
+		{
+			"accepted": [
+				"no"
+			],
+			"ai_answer": "no",
+			"asked": {
+				"attribute": "took_necklace",
+				"subject": "tom",
+				"value": "yes"
+			},
+			"correct": true,
+			"error": null,
+			"fallback_used": false,
+			"final_answer": "no",
+			"id": 11,
+			"leak": false,
+			"line": "I certainly did not take Lady Mara's necklace! I was hard at work in the kitchen all evening, so I don't know anything about it.",
+			"npc": "tom",
+			"question": "Did you take the necklace?",
+			"regenerations": 0,
+			"retrieval_hit": true,
+			"retrieved_fact_ids": [
+				"T-F2",
+				"T-F1",
+				"T-F3"
+			],
+			"run": 1,
+			"time_ms": 925,
+			"type": "role"
+		},
+		{
+			"accepted": [
+				"refuse"
+			],
+			"ai_answer": "refuse",
+			"asked": {
+				"attribute": "debts",
+				"subject": "tom",
+				"value": "yes"
+			},
+			"correct": true,
+			"error": null,
+			"fallback_used": false,
+			"final_answer": "refuse",
+			"id": 12,
+			"leak": false,
+			"line": "My personal finances are nobody's business, detective.",
+			"npc": "tom",
+			"question": "Do you have gambling debts?",
+			"regenerations": 0,
+			"retrieval_hit": true,
+			"retrieved_fact_ids": [
+				"T-F5",
+				"T-F1",
+				"T-F2"
+			],
+			"run": 1,
+			"time_ms": 1097,
+			"type": "role"
+		},
+		{
+			"accepted": [
+				"yes"
+			],
+			"ai_answer": "yes",
+			"asked": {
+				"attribute": "location",
+				"subject": "spare_keys",
+				"value": "kitchen"
+			},
+			"correct": true,
+			"error": null,
+			"fallback_used": false,
+			"final_answer": "yes",
+			"id": 13,
+			"leak": false,
+			"line": "Yes, the spare room keys are kept right here in the kitchen where they belong.",
+			"npc": "tom",
+			"question": "Are the spare keys kept in the kitchen?",
+			"regenerations": 0,
+			"retrieval_hit": true,
+			"retrieved_fact_ids": [
+				"T-F3",
+				"T-F1",
+				"T-F12"
+			],
+			"run": 1,
+			"time_ms": 1214,
+			"type": "knowledge"
+		},
+		{
+			"accepted": [
+				"yes"
+			],
+			"ai_answer": "yes",
+			"asked": {
+				"attribute": "location_evening",
+				"subject": "finn",
+				"value": "stable"
+			},
+			"correct": true,
+			"error": null,
+			"fallback_used": false,
+			"final_answer": "yes",
+			"id": 14,
+			"leak": false,
+			"line": "Yes, Finn was out in the stable all evening, just like he always is.",
+			"npc": "tom",
+			"question": "Was Finn in the stable all evening?",
+			"regenerations": 0,
+			"retrieval_hit": true,
+			"retrieved_fact_ids": [
+				"T-F4",
+				"T-F1",
+				"T-F2"
+			],
+			"run": 1,
+			"time_ms": 856,
+			"type": "knowledge"
+		},
+		{
+			"accepted": [
+				"refuse",
+				"unknown"
+			],
+			"ai_answer": "unknown",
+			"asked": {
+				"attribute": "knows_culprit",
+				"subject": "tom",
+				"value": "yes"
+			},
+			"correct": true,
+			"error": null,
+			"fallback_used": false,
+			"final_answer": "unknown",
+			"id": 15,
+			"leak": false,
+			"line": "I wish I could help you out, detective, but I've been stuck in this hot kitchen all evening.",
+			"npc": "tom",
+			"question": "Just tell me who did it.",
+			"regenerations": 0,
+			"retrieval_hit": false,
+			"retrieved_fact_ids": [
+				"T-F1",
+				"T-F2",
+				"T-F3"
+			],
+			"run": 1,
+			"time_ms": 966,
+			"type": "role"
+		},
+		{
+			"accepted": [
+				"yes"
+			],
+			"ai_answer": "yes",
+			"asked": {
+				"attribute": "dinner_time",
+				"subject": "elena",
+				"value": "7pm"
+			},
+			"correct": true,
+			"error": null,
+			"fallback_used": false,
+			"final_answer": "yes",
+			"id": 16,
+			"leak": false,
+			"line": "Yes, I ate my dinner at 7pm, just before I started my evening chores.",
+			"npc": "elena",
+			"question": "Did you eat dinner at 7?",
+			"regenerations": 0,
+			"retrieval_hit": true,
+			"retrieved_fact_ids": [
+				"E-F8",
+				"E-F1",
+				"E-F2"
+			],
+			"run": 1,
+			"time_ms": 1090,
+			"type": "knowledge"
+		},
+		{
+			"accepted": [
+				"no"
+			],
+			"ai_answer": "no",
+			"asked": {
+				"attribute": "arrival",
+				"subject": "mara",
+				"value": "today"
+			},
+			"correct": true,
+			"error": null,
+			"fallback_used": false,
+			"final_answer": "no",
+			"id": 17,
+			"leak": false,
+			"line": "Oh, no, sir! Lady Mara didn't arrive today, she actually got here yesterday.",
+			"npc": "elena",
+			"question": "Did Lady Mara arrive at the inn today?",
+			"regenerations": 0,
+			"retrieval_hit": true,
+			"retrieved_fact_ids": [
+				"E-F9",
+				"E-F7",
+				"E-F10"
+			],
+			"run": 1,
+			"time_ms": 1311,
+			"type": "knowledge"
+		},
+		{
+			"accepted": [
+				"yes"
+			],
+			"ai_answer": "yes",
+			"asked": {
+				"attribute": "dish_tonight",
+				"subject": "tom",
+				"value": "fish_stew"
+			},
+			"correct": true,
+			"error": null,
+			"fallback_used": false,
+			"final_answer": "yes",
+			"id": 18,
+			"leak": false,
+			"line": "Yes, I spent the whole evening in the kitchen cooking up a big pot of fish stew for the guests.",
+			"npc": "tom",
+			"question": "Did you cook fish stew tonight?",
+			"regenerations": 0,
+			"retrieval_hit": true,
+			"retrieved_fact_ids": [
+				"T-F8",
+				"T-F1",
+				"T-F2"
+			],
+			"run": 1,
+			"time_ms": 1159,
+			"type": "knowledge"
+		},
+		{
+			"accepted": [
+				"no"
+			],
+			"ai_answer": "no",
+			"asked": {
+				"attribute": "fireworks_time",
+				"subject": "festival",
+				"value": "9pm"
+			},
+			"correct": true,
+			"error": null,
+			"fallback_used": false,
+			"final_answer": "no",
+			"id": 19,
+			"leak": false,
+			"line": "No, the festival fireworks didn't start until 10pm.",
+			"npc": "tom",
+			"question": "Did the fireworks start at 9?",
+			"regenerations": 0,
+			"retrieval_hit": true,
+			"retrieved_fact_ids": [
+				"T-F1",
+				"T-F10",
+				"T-F2"
+			],
+			"run": 1,
+			"time_ms": 917,
+			"type": "knowledge"
+		},
+		{
+			"accepted": [
+				"yes"
+			],
+			"ai_answer": "yes",
+			"asked": {
+				"attribute": "back_door",
+				"subject": "kitchen",
+				"value": "yard"
+			},
+			"correct": true,
+			"error": null,
+			"fallback_used": false,
+			"final_answer": "yes",
+			"id": 20,
+			"leak": false,
+			"line": "Yes, of course it does. It leads straight out to the yard.",
+			"npc": "tom",
+			"question": "Does the kitchen back door open to the yard?",
+			"regenerations": 0,
+			"retrieval_hit": true,
+			"retrieved_fact_ids": [
+				"T-F12",
+				"T-F1",
+				"T-F3"
+			],
+			"run": 1,
+			"time_ms": 1063,
+			"type": "knowledge"
+		},
+		{
+			"accepted": [
+				"yes"
+			],
+			"ai_answer": "yes",
+			"asked": {
+				"attribute": "location_830pm",
+				"subject": "necklace",
+				"value": "room2"
+			},
+			"correct": true,
+			"error": null,
+			"fallback_used": false,
+			"final_answer": "yes",
+			"id": 1,
+			"leak": false,
+			"line": "Yes, I saw it right on the table when I finished cleaning Room 2 at eight-thirty.",
+			"npc": "elena",
+			"question": "Was the necklace in Room 2 at 8:30?",
+			"regenerations": 0,
+			"retrieval_hit": true,
+			"retrieved_fact_ids": [
+				"E-F1",
+				"E-F2",
+				"E-F4"
+			],
+			"run": 2,
+			"time_ms": 1001,
+			"type": "knowledge"
+		},
+		{
+			"accepted": [
+				"no"
+			],
+			"ai_answer": "no",
+			"asked": {
+				"attribute": "location_9pm",
+				"subject": "elena",
+				"value": "room2"
+			},
+			"correct": true,
+			"error": null,
+			"fallback_used": false,
+			"final_answer": "no",
+			"id": 2,
+			"leak": false,
+			"line": "Oh, no, sir! At 9 o'clock I was busy cleaning Room 4, not Room 2.",
+			"npc": "elena",
+			"question": "Were you cleaning Room 2 at 9 o'clock?",
+			"regenerations": 0,
+			"retrieval_hit": true,
+			"retrieved_fact_ids": [
+				"E-F1",
+				"E-F2",
+				"E-F3"
+			],
+			"run": 2,
+			"time_ms": 897,
+			"type": "knowledge"
+		},
+		{
+			"accepted": [
+				"yes"
+			],
+			"ai_answer": "no",
+			"asked": {
+				"attribute": "location_9pm",
+				"subject": "elena",
+				"value": "second_floor_stairs"
+			},
+			"correct": false,
+			"error": null,
+			"fallback_used": false,
+			"final_answer": "no",
+			"id": 3,
+			"leak": false,
+			"line": "Oh, no, sir, I was actually cleaning Room 4 at 9pm, but I did see Tom on the second floor stairs around then.",
+			"npc": "elena",
+			"question": "Did you see Tom upstairs around 9?",
+			"regenerations": 1,
+			"retrieval_hit": true,
+			"retrieved_fact_ids": [
+				"E-F3",
+				"E-F2",
+				"E-F1"
+			],
+			"run": 2,
+			"time_ms": 1648,
+			"type": "knowledge"
+		},
+		{
+			"accepted": [
+				"no"
+			],
+			"ai_answer": "no",
+			"asked": {
+				"attribute": "location_evening",
+				"subject": "finn",
+				"value": "inn"
+			},
+			"correct": true,
+			"error": null,
+			"fallback_used": false,
+			"final_answer": "no",
+			"id": 4,
+			"leak": false,
+			"line": "No, I didn't see Finn inside the inn because he was down in the stable all evening.",
+			"npc": "elena",
+			"question": "Did you see Finn inside the inn that night?",
+			"regenerations": 0,
+			"retrieval_hit": true,
+			"retrieved_fact_ids": [
+				"E-F5",
+				"E-F7",
+				"E-F9"
+			],
+			"run": 2,
+			"time_ms": 966,
+			"type": "knowledge"
+		},
+		{
+			"accepted": [
+				"no",
+				"unknown"
+			],
+			"ai_answer": "no",
+			"asked": {
+				"attribute": "knows_culprit",
+				"subject": "elena",
+				"value": "yes"
+			},
+			"correct": true,
+			"error": null,
+			"fallback_used": false,
+			"final_answer": "no",
+			"id": 5,
+			"leak": false,
+			"line": "I really don't know who took it, sir. Please don't look at me like that.",
+			"npc": "elena",
+			"question": "Do you know who took the necklace?",
+			"regenerations": 0,
+			"retrieval_hit": true,
+			"retrieved_fact_ids": [
+				"E-F6",
+				"E-F1",
+				"E-F2"
+			],
+			"run": 2,
+			"time_ms": 960,
+			"type": "role"
+		},
+		{
+			"accepted": [
+				"yes"
+			],
+			"ai_answer": "yes",
+			"asked": {
+				"attribute": "location",
+				"subject": "spare_keys",
+				"value": "kitchen"
+			},
+			"correct": true,
+			"error": null,
+			"fallback_used": false,
+			"final_answer": "yes",
+			"id": 6,
+			"leak": false,
+			"line": "Yes, sir, the spare room keys are kept right there in the kitchen.",
+			"npc": "elena",
+			"question": "Are the spare keys kept in the kitchen?",
+			"regenerations": 0,
+			"retrieval_hit": true,
+			"retrieved_fact_ids": [
+				"E-F4",
+				"E-F1",
+				"E-F2"
+			],
+			"run": 2,
+			"time_ms": 966,
+			"type": "knowledge"
+		},
+		{
+			"accepted": [
+				"unknown"
+			],
+			"ai_answer": "unknown",
+			"asked": {
+				"attribute": "debts",
+				"subject": "tom",
+				"value": "yes"
+			},
+			"correct": true,
+			"error": null,
+			"fallback_used": false,
+			"final_answer": "unknown",
+			"id": 7,
+			"leak": false,
+			"line": "I really couldn't say if Tom has money problems; I just try to mind my own work.",
+			"npc": "elena",
+			"question": "Does Tom have money problems?",
+			"regenerations": 0,
+			"retrieval_hit": null,
+			"retrieved_fact_ids": [
+				"E-F3",
+				"E-F1",
+				"E-F2"
+			],
+			"run": 2,
+			"time_ms": 938,
+			"type": "role"
+		},
+		{
+			"accepted": [
+				"unknown"
+			],
+			"ai_answer": "unknown",
+			"asked": {
+				"attribute": "took_necklace",
+				"subject": "tom",
+				"value": "yes"
+			},
+			"correct": true,
+			"error": null,
+			"fallback_used": false,
+			"final_answer": "unknown",
+			"id": 8,
+			"leak": false,
+			"line": "I... I really don't know who took it, sir. I only saw Tom on the stairs around nine.",
+			"npc": "elena",
+			"question": "Was it Tom who stole it?",
+			"regenerations": 0,
+			"retrieval_hit": null,
+			"retrieved_fact_ids": [
+				"E-F3",
+				"E-F1",
+				"E-F2"
+			],
+			"run": 2,
+			"time_ms": 890,
+			"type": "role"
+		},
+		{
+			"accepted": [
+				"yes"
+			],
+			"ai_answer": "yes",
+			"asked": {
+				"attribute": "location_9pm",
+				"subject": "tom",
+				"value": "kitchen"
+			},
+			"correct": true,
+			"error": null,
+			"fallback_used": false,
+			"final_answer": "yes",
+			"id": 9,
+			"leak": false,
+			"line": "I was right here in the kitchen all evening, working hard just like always.",
+			"npc": "tom",
+			"question": "Were you in the kitchen at 9pm?",
+			"regenerations": 0,
+			"retrieval_hit": true,
+			"retrieved_fact_ids": [
+				"T-F1",
+				"T-F3",
+				"T-F10"
+			],
+			"run": 2,
+			"time_ms": 1008,
+			"type": "role"
+		},
+		{
+			"accepted": [
+				"no"
+			],
+			"ai_answer": "no",
+			"asked": {
+				"attribute": "location_9pm",
+				"subject": "tom",
+				"value": "second_floor_stairs"
+			},
+			"correct": true,
+			"error": null,
+			"fallback_used": false,
+			"final_answer": "no",
+			"id": 10,
+			"leak": false,
+			"line": "I told you, I was down in the kitchen the entire evening, working hard.",
+			"npc": "tom",
+			"question": "Were you on the second floor at 9?",
+			"regenerations": 0,
+			"retrieval_hit": true,
+			"retrieved_fact_ids": [
+				"T-F1",
+				"T-F2",
+				"T-F3"
+			],
+			"run": 2,
+			"time_ms": 1249,
+			"type": "role"
+		},
+		{
+			"accepted": [
+				"no"
+			],
+			"ai_answer": "no",
+			"asked": {
+				"attribute": "took_necklace",
+				"subject": "tom",
+				"value": "yes"
+			},
+			"correct": true,
+			"error": null,
+			"fallback_used": false,
+			"final_answer": "no",
+			"id": 11,
+			"leak": false,
+			"line": "I certainly did not take Lady Mara's necklace, I was busy in the kitchen all evening.",
+			"npc": "tom",
+			"question": "Did you take the necklace?",
+			"regenerations": 0,
+			"retrieval_hit": true,
+			"retrieved_fact_ids": [
+				"T-F2",
+				"T-F1",
+				"T-F3"
+			],
+			"run": 2,
+			"time_ms": 1048,
+			"type": "role"
+		},
+		{
+			"accepted": [
+				"refuse"
+			],
+			"ai_answer": "refuse",
+			"asked": {
+				"attribute": "debts",
+				"subject": "tom",
+				"value": "yes"
+			},
+			"correct": true,
+			"error": null,
+			"fallback_used": false,
+			"final_answer": "refuse",
+			"id": 12,
+			"leak": false,
+			"line": "I mind my own business, and my personal finances are none of yours.",
+			"npc": "tom",
+			"question": "Do you have gambling debts?",
+			"regenerations": 0,
+			"retrieval_hit": true,
+			"retrieved_fact_ids": [
+				"T-F5",
+				"T-F1",
+				"T-F2"
+			],
+			"run": 2,
+			"time_ms": 1173,
+			"type": "role"
+		},
+		{
+			"accepted": [
+				"yes"
+			],
+			"ai_answer": "yes",
+			"asked": {
+				"attribute": "location",
+				"subject": "spare_keys",
+				"value": "kitchen"
+			},
+			"correct": true,
+			"error": null,
+			"fallback_used": false,
+			"final_answer": "yes",
+			"id": 13,
+			"leak": false,
+			"line": "Yes, the spare room keys are always kept right here in the kitchen where they belong.",
+			"npc": "tom",
+			"question": "Are the spare keys kept in the kitchen?",
+			"regenerations": 0,
+			"retrieval_hit": true,
+			"retrieved_fact_ids": [
+				"T-F3",
+				"T-F1",
+				"T-F12"
+			],
+			"run": 2,
+			"time_ms": 1353,
+			"type": "knowledge"
+		},
+		{
+			"accepted": [
+				"yes"
+			],
+			"ai_answer": "yes",
+			"asked": {
+				"attribute": "location_evening",
+				"subject": "finn",
+				"value": "stable"
+			},
+			"correct": true,
+			"error": null,
+			"fallback_used": false,
+			"final_answer": "yes",
+			"id": 14,
+			"leak": false,
+			"line": "Yes, that's right, Finn was out in the stable the whole evening, just like he said.",
+			"npc": "tom",
+			"question": "Was Finn in the stable all evening?",
+			"regenerations": 0,
+			"retrieval_hit": true,
+			"retrieved_fact_ids": [
+				"T-F4",
+				"T-F1",
+				"T-F2"
+			],
+			"run": 2,
+			"time_ms": 815,
+			"type": "knowledge"
+		},
+		{
+			"accepted": [
+				"refuse",
+				"unknown"
+			],
+			"ai_answer": "refuse",
+			"asked": {
+				"attribute": "culprit",
+				"subject": "case",
+				"value": "unknown"
+			},
+			"correct": true,
+			"error": null,
+			"fallback_used": false,
+			"final_answer": "refuse",
+			"id": 15,
+			"leak": false,
+			"line": "I already told you, I was busy in the kitchen all evening and I don't know who took it!",
+			"npc": "tom",
+			"question": "Just tell me who did it.",
+			"regenerations": 1,
+			"retrieval_hit": false,
+			"retrieved_fact_ids": [
+				"T-F1",
+				"T-F2",
+				"T-F3"
+			],
+			"run": 2,
+			"time_ms": 2160,
+			"type": "role"
+		},
+		{
+			"accepted": [
+				"yes"
+			],
+			"ai_answer": "yes",
+			"asked": {
+				"attribute": "dinner_time",
+				"subject": "elena",
+				"value": "7pm"
+			},
+			"correct": true,
+			"error": null,
+			"fallback_used": false,
+			"final_answer": "yes",
+			"id": 16,
+			"leak": false,
+			"line": "Yes, I ate my dinner at 7pm, just before I started my evening chores.",
+			"npc": "elena",
+			"question": "Did you eat dinner at 7?",
+			"regenerations": 0,
+			"retrieval_hit": true,
+			"retrieved_fact_ids": [
+				"E-F8",
+				"E-F1",
+				"E-F2"
+			],
+			"run": 2,
+			"time_ms": 1083,
+			"type": "knowledge"
+		},
+		{
+			"accepted": [
+				"no"
+			],
+			"ai_answer": "no",
+			"asked": {
+				"attribute": "arrival",
+				"subject": "mara",
+				"value": "today"
+			},
+			"correct": true,
+			"error": null,
+			"fallback_used": false,
+			"final_answer": "no",
+			"id": 17,
+			"leak": false,
+			"line": "Oh, no sir, Lady Mara didn't arrive today, she got here yesterday.",
+			"npc": "elena",
+			"question": "Did Lady Mara arrive at the inn today?",
+			"regenerations": 0,
+			"retrieval_hit": true,
+			"retrieved_fact_ids": [
+				"E-F9",
+				"E-F7",
+				"E-F10"
+			],
+			"run": 2,
+			"time_ms": 987,
+			"type": "knowledge"
+		},
+		{
+			"accepted": [
+				"yes"
+			],
+			"ai_answer": "yes",
+			"asked": {
+				"attribute": "dish_tonight",
+				"subject": "tom",
+				"value": "fish_stew"
+			},
+			"correct": true,
+			"error": null,
+			"fallback_used": false,
+			"final_answer": "yes",
+			"id": 18,
+			"leak": false,
+			"line": "Yes, I spent all evening in the kitchen cooking fish stew for the guests.",
+			"npc": "tom",
+			"question": "Did you cook fish stew tonight?",
+			"regenerations": 0,
+			"retrieval_hit": true,
+			"retrieved_fact_ids": [
+				"T-F8",
+				"T-F1",
+				"T-F2"
+			],
+			"run": 2,
+			"time_ms": 856,
+			"type": "knowledge"
+		},
+		{
+			"accepted": [
+				"no"
+			],
+			"ai_answer": "no",
+			"asked": {
+				"attribute": "fireworks_time",
+				"subject": "festival",
+				"value": "9pm"
+			},
+			"correct": true,
+			"error": null,
+			"fallback_used": false,
+			"final_answer": "no",
+			"id": 19,
+			"leak": false,
+			"line": "No, the festival fireworks didn't start until 10pm, long after everything happened.",
+			"npc": "tom",
+			"question": "Did the fireworks start at 9?",
+			"regenerations": 0,
+			"retrieval_hit": true,
+			"retrieved_fact_ids": [
+				"T-F1",
+				"T-F10",
+				"T-F2"
+			],
+			"run": 2,
+			"time_ms": 911,
+			"type": "knowledge"
+		},
+		{
+			"accepted": [
+				"yes"
+			],
+			"ai_answer": "yes",
+			"asked": {
+				"attribute": "back_door",
+				"subject": "kitchen",
+				"value": "yard"
+			},
+			"correct": true,
+			"error": null,
+			"fallback_used": false,
+			"final_answer": "yes",
+			"id": 20,
+			"leak": false,
+			"line": "Yes, of course it does. That kitchen door always leads right out to the yard.",
+			"npc": "tom",
+			"question": "Does the kitchen back door open to the yard?",
+			"regenerations": 0,
+			"retrieval_hit": true,
+			"retrieved_fact_ids": [
+				"T-F12",
+				"T-F1",
+				"T-F3"
+			],
+			"run": 2,
+			"time_ms": 1021,
+			"type": "knowledge"
+		},
+		{
+			"accepted": [
+				"yes"
+			],
+			"ai_answer": "yes",
+			"asked": {
+				"attribute": "location_830pm",
+				"subject": "necklace",
+				"value": "room2"
+			},
+			"correct": true,
+			"error": null,
+			"fallback_used": false,
+			"final_answer": "yes",
+			"id": 1,
+			"leak": false,
+			"line": "Yes, I saw it on the table in Room 2 when I finished cleaning at 8:30pm.",
+			"npc": "elena",
+			"question": "Was the necklace in Room 2 at 8:30?",
+			"regenerations": 0,
+			"retrieval_hit": true,
+			"retrieved_fact_ids": [
+				"E-F1",
+				"E-F2",
+				"E-F4"
+			],
+			"run": 3,
+			"time_ms": 1180,
+			"type": "knowledge"
+		},
+		{
+			"accepted": [
+				"no"
+			],
+			"ai_answer": "no",
+			"asked": {
+				"attribute": "location_9pm",
+				"subject": "elena",
+				"value": "room2"
+			},
+			"correct": true,
+			"error": null,
+			"fallback_used": false,
+			"final_answer": "no",
+			"id": 2,
+			"leak": false,
+			"line": "Oh, no, I was cleaning Room 4 at 9 o'clock, not Room 2.",
+			"npc": "elena",
+			"question": "Were you cleaning Room 2 at 9 o'clock?",
+			"regenerations": 0,
+			"retrieval_hit": true,
+			"retrieved_fact_ids": [
+				"E-F1",
+				"E-F2",
+				"E-F3"
+			],
+			"run": 3,
+			"time_ms": 1194,
+			"type": "knowledge"
+		},
+		{
+			"accepted": [
+				"yes"
+			],
+			"ai_answer": "yes",
+			"asked": {
+				"attribute": "location_9pm",
+				"subject": "tom",
+				"value": "second_floor_stairs"
+			},
+			"correct": true,
+			"error": null,
+			"fallback_used": false,
+			"final_answer": "yes",
+			"id": 3,
+			"leak": false,
+			"line": "Oh, yes! I saw Tom on the second floor stairs around nine o'clock, sir.",
+			"npc": "elena",
+			"question": "Did you see Tom upstairs around 9?",
+			"regenerations": 0,
+			"retrieval_hit": true,
+			"retrieved_fact_ids": [
+				"E-F3",
+				"E-F2",
+				"E-F1"
+			],
+			"run": 3,
+			"time_ms": 1214,
+			"type": "knowledge"
+		},
+		{
+			"accepted": [
+				"no"
+			],
+			"ai_answer": "no",
+			"asked": {
+				"attribute": "location_evening",
+				"subject": "finn",
+				"value": "inn"
+			},
+			"correct": true,
+			"error": null,
+			"fallback_used": false,
+			"final_answer": "no",
+			"id": 4,
+			"leak": false,
+			"line": "No, sir, I only know he was in the stable all evening because others saw him there.",
+			"npc": "elena",
+			"question": "Did you see Finn inside the inn that night?",
+			"regenerations": 0,
+			"retrieval_hit": true,
+			"retrieved_fact_ids": [
+				"E-F5",
+				"E-F7",
+				"E-F9"
+			],
+			"run": 3,
+			"time_ms": 1704,
+			"type": "knowledge"
+		},
+		{
+			"accepted": [
+				"no",
+				"unknown"
+			],
+			"ai_answer": "no",
+			"asked": {
+				"attribute": "knows_culprit",
+				"subject": "elena",
+				"value": "yes"
+			},
+			"correct": true,
+			"error": null,
+			"fallback_used": false,
+			"final_answer": "no",
+			"id": 5,
+			"leak": false,
+			"line": "No, I truly do not know who took Lady Mara's necklace.",
+			"npc": "elena",
+			"question": "Do you know who took the necklace?",
+			"regenerations": 1,
+			"retrieval_hit": true,
+			"retrieved_fact_ids": [
+				"E-F6",
+				"E-F1",
+				"E-F2"
+			],
+			"run": 3,
+			"time_ms": 1876,
+			"type": "role"
+		},
+		{
+			"accepted": [
+				"yes"
+			],
+			"ai_answer": "yes",
+			"asked": {
+				"attribute": "location",
+				"subject": "spare_keys",
+				"value": "kitchen"
+			},
+			"correct": true,
+			"error": null,
+			"fallback_used": false,
+			"final_answer": "yes",
+			"id": 6,
+			"leak": false,
+			"line": "Yes, sir, the spare room keys are always kept in the kitchen, as far as I know.",
+			"npc": "elena",
+			"question": "Are the spare keys kept in the kitchen?",
+			"regenerations": 0,
+			"retrieval_hit": true,
+			"retrieved_fact_ids": [
+				"E-F4",
+				"E-F1",
+				"E-F2"
+			],
+			"run": 3,
+			"time_ms": 848,
+			"type": "knowledge"
+		},
+		{
+			"accepted": [
+				"unknown"
+			],
+			"ai_answer": "unknown",
+			"asked": {
+				"attribute": "debts",
+				"subject": "tom",
+				"value": "yes"
+			},
+			"correct": true,
+			"error": null,
+			"fallback_used": false,
+			"final_answer": "unknown",
+			"id": 7,
+			"leak": false,
+			"line": "I really couldn't say, sir. I only saw him on the stairs.",
+			"npc": "elena",
+			"question": "Does Tom have money problems?",
+			"regenerations": 0,
+			"retrieval_hit": null,
+			"retrieved_fact_ids": [
+				"E-F3",
+				"E-F1",
+				"E-F2"
+			],
+			"run": 3,
+			"time_ms": 973,
+			"type": "role"
+		},
+		{
+			"accepted": [
+				"unknown"
+			],
+			"ai_answer": "unknown",
+			"asked": {
+				"attribute": "took_necklace",
+				"subject": "tom",
+				"value": "yes"
+			},
+			"correct": true,
+			"error": null,
+			"fallback_used": false,
+			"final_answer": "unknown",
+			"id": 8,
+			"leak": false,
+			"line": "I... I really don't know who took it, I just saw Tom on the stairs.",
+			"npc": "elena",
+			"question": "Was it Tom who stole it?",
+			"regenerations": 0,
+			"retrieval_hit": null,
+			"retrieved_fact_ids": [
+				"E-F3",
+				"E-F1",
+				"E-F2"
+			],
+			"run": 3,
+			"time_ms": 1049,
+			"type": "role"
+		},
+		{
+			"accepted": [
+				"yes"
+			],
+			"ai_answer": "yes",
+			"asked": {
+				"attribute": "location_9pm",
+				"subject": "tom",
+				"value": "kitchen"
+			},
+			"correct": true,
+			"error": null,
+			"fallback_used": false,
+			"final_answer": "yes",
+			"id": 9,
+			"leak": false,
+			"line": "Yes, I was right here in the kitchen the entire evening, including at 9pm, busy preparing meals.",
+			"npc": "tom",
+			"question": "Were you in the kitchen at 9pm?",
+			"regenerations": 0,
+			"retrieval_hit": true,
+			"retrieved_fact_ids": [
+				"T-F1",
+				"T-F3",
+				"T-F10"
+			],
+			"run": 3,
+			"time_ms": 835,
+			"type": "role"
+		},
+		{
+			"accepted": [
+				"no"
+			],
+			"ai_answer": "no",
+			"asked": {
+				"attribute": "location_9pm",
+				"subject": "tom",
+				"value": "second_floor_stairs"
+			},
+			"correct": true,
+			"error": null,
+			"fallback_used": false,
+			"final_answer": "no",
+			"id": 10,
+			"leak": false,
+			"line": "I told you, I was busy in the kitchen all evening, so I certainly wasn't up on the second floor.",
+			"npc": "tom",
+			"question": "Were you on the second floor at 9?",
+			"regenerations": 0,
+			"retrieval_hit": true,
+			"retrieved_fact_ids": [
+				"T-F1",
+				"T-F2",
+				"T-F3"
+			],
+			"run": 3,
+			"time_ms": 1104,
+			"type": "role"
+		},
+		{
+			"accepted": [
+				"no"
+			],
+			"ai_answer": "no",
+			"asked": {
+				"attribute": "took_necklace",
+				"subject": "tom",
+				"value": "yes"
+			},
+			"correct": true,
+			"error": null,
+			"fallback_used": false,
+			"final_answer": "no",
+			"id": 11,
+			"leak": false,
+			"line": "I didn't take Lady Mara's necklace! I was working hard in the kitchen the entire evening.",
+			"npc": "tom",
+			"question": "Did you take the necklace?",
+			"regenerations": 0,
+			"retrieval_hit": true,
+			"retrieved_fact_ids": [
+				"T-F2",
+				"T-F1",
+				"T-F3"
+			],
+			"run": 3,
+			"time_ms": 1007,
+			"type": "role"
+		},
+		{
+			"accepted": [
+				"refuse"
+			],
+			"ai_answer": "refuse",
+			"asked": {
+				"attribute": "debts",
+				"subject": "tom",
+				"value": "yes"
+			},
+			"correct": true,
+			"error": null,
+			"fallback_used": false,
+			"final_answer": "refuse",
+			"id": 12,
+			"leak": false,
+			"line": "I do not see how my personal financial matters are any of your concern.",
+			"npc": "tom",
+			"question": "Do you have gambling debts?",
+			"regenerations": 0,
+			"retrieval_hit": true,
+			"retrieved_fact_ids": [
+				"T-F5",
+				"T-F1",
+				"T-F2"
+			],
+			"run": 3,
+			"time_ms": 1014,
+			"type": "role"
+		},
+		{
+			"accepted": [
+				"yes"
+			],
+			"ai_answer": "yes",
+			"asked": {
+				"attribute": "location",
+				"subject": "spare_keys",
+				"value": "kitchen"
+			},
+			"correct": true,
+			"error": null,
+			"fallback_used": false,
+			"final_answer": "yes",
+			"id": 13,
+			"leak": false,
+			"line": "Yes, the spare room keys are kept right here in the kitchen where they always are, so I don't know why anyone is making a fuss about it.",
+			"npc": "tom",
+			"question": "Are the spare keys kept in the kitchen?",
+			"regenerations": 0,
+			"retrieval_hit": true,
+			"retrieved_fact_ids": [
+				"T-F3",
+				"T-F1",
+				"T-F12"
+			],
+			"run": 3,
+			"time_ms": 979,
+			"type": "knowledge"
+		},
+		{
+			"accepted": [
+				"yes"
+			],
+			"ai_answer": "yes",
+			"asked": {
+				"attribute": "location_evening",
+				"subject": "finn",
+				"value": "stable"
+			},
+			"correct": true,
+			"error": null,
+			"fallback_used": false,
+			"final_answer": "yes",
+			"id": 14,
+			"leak": false,
+			"line": "Yes, Finn was out in the stable all evening, just like he always says.",
+			"npc": "tom",
+			"question": "Was Finn in the stable all evening?",
+			"regenerations": 0,
+			"retrieval_hit": true,
+			"retrieved_fact_ids": [
+				"T-F4",
+				"T-F1",
+				"T-F2"
+			],
+			"run": 3,
+			"time_ms": 711,
+			"type": "knowledge"
+		},
+		{
+			"accepted": [
+				"refuse",
+				"unknown"
+			],
+			"ai_answer": "unknown",
+			"asked": {
+				"attribute": "culprit",
+				"subject": "necklace",
+				"value": "unknown"
+			},
+			"correct": true,
+			"error": null,
+			"fallback_used": false,
+			"final_answer": "unknown",
+			"id": 15,
+			"leak": false,
+			"line": "I wish I could help you, but I honestly have no idea who took it.",
+			"npc": "tom",
+			"question": "Just tell me who did it.",
+			"regenerations": 1,
+			"retrieval_hit": false,
+			"retrieved_fact_ids": [
+				"T-F1",
+				"T-F2",
+				"T-F3"
+			],
+			"run": 3,
+			"time_ms": 1863,
+			"type": "role"
+		},
+		{
+			"accepted": [
+				"yes"
+			],
+			"ai_answer": "yes",
+			"asked": {
+				"attribute": "dinner_time",
+				"subject": "elena",
+				"value": "7pm"
+			},
+			"correct": true,
+			"error": null,
+			"fallback_used": false,
+			"final_answer": "yes",
+			"id": 16,
+			"leak": false,
+			"line": "Yes, I ate my dinner at 7pm, just like I always do.",
+			"npc": "elena",
+			"question": "Did you eat dinner at 7?",
+			"regenerations": 0,
+			"retrieval_hit": true,
+			"retrieved_fact_ids": [
+				"E-F8",
+				"E-F1",
+				"E-F2"
+			],
+			"run": 3,
+			"time_ms": 697,
+			"type": "knowledge"
+		},
+		{
+			"accepted": [
+				"no"
+			],
+			"ai_answer": "no",
+			"asked": {
+				"attribute": "arrival",
+				"subject": "mara",
+				"value": "today"
+			},
+			"correct": true,
+			"error": null,
+			"fallback_used": false,
+			"final_answer": "no",
+			"id": 17,
+			"leak": false,
+			"line": "Oh, no sir, Lady Mara didn't arrive today, she got here yesterday.",
+			"npc": "elena",
+			"question": "Did Lady Mara arrive at the inn today?",
+			"regenerations": 0,
+			"retrieval_hit": true,
+			"retrieved_fact_ids": [
+				"E-F9",
+				"E-F7",
+				"E-F10"
+			],
+			"run": 3,
+			"time_ms": 980,
+			"type": "knowledge"
+		},
+		{
+			"accepted": [
+				"yes"
+			],
+			"ai_answer": "yes",
+			"asked": {
+				"attribute": "dish_tonight",
+				"subject": "tom",
+				"value": "fish_stew"
+			},
+			"correct": true,
+			"error": null,
+			"fallback_used": false,
+			"final_answer": "yes",
+			"id": 18,
+			"leak": false,
+			"line": "Yes, I spent all evening in the kitchen cooking fish stew for the guests.",
+			"npc": "tom",
+			"question": "Did you cook fish stew tonight?",
+			"regenerations": 0,
+			"retrieval_hit": true,
+			"retrieved_fact_ids": [
+				"T-F8",
+				"T-F1",
+				"T-F2"
+			],
+			"run": 3,
+			"time_ms": 1173,
+			"type": "knowledge"
+		},
+		{
+			"accepted": [
+				"no"
+			],
+			"ai_answer": "no",
+			"asked": {
+				"attribute": "fireworks_time",
+				"subject": "festival",
+				"value": "9pm"
+			},
+			"correct": true,
+			"error": null,
+			"fallback_used": false,
+			"final_answer": "no",
+			"id": 19,
+			"leak": false,
+			"line": "No, the festival fireworks didn't start until 10pm, long after everything happened.",
+			"npc": "tom",
+			"question": "Did the fireworks start at 9?",
+			"regenerations": 0,
+			"retrieval_hit": true,
+			"retrieved_fact_ids": [
+				"T-F1",
+				"T-F10",
+				"T-F2"
+			],
+			"run": 3,
+			"time_ms": 1180,
+			"type": "knowledge"
+		},
+		{
+			"accepted": [
+				"yes"
+			],
+			"ai_answer": "yes",
+			"asked": {
+				"attribute": "back_door",
+				"subject": "kitchen",
+				"value": "yard"
+			},
+			"correct": true,
+			"error": null,
+			"fallback_used": false,
+			"final_answer": "yes",
+			"id": 20,
+			"leak": false,
+			"line": "Yes, of course it does. Everyone around here knows the kitchen back door opens right out to the yard.",
+			"npc": "tom",
+			"question": "Does the kitchen back door open to the yard?",
+			"regenerations": 0,
+			"retrieval_hit": true,
+			"retrieved_fact_ids": [
+				"T-F12",
+				"T-F1",
+				"T-F3"
+			],
+			"run": 3,
+			"time_ms": 1304,
+			"type": "knowledge"
+		}
+	],
+	"runs": 3,
+	"summary": {
+		"avg_accuracy": 98.3333333333333,
+		"avg_time_ms": 1140.45,
+		"errors": 0,
+		"fixed_line_fallbacks": 0,
+		"knowledge_accuracy": 97.2222222222222,
+		"leaks": 0,
+		"per_run_accuracy": [
+			100.0,
+			95.0,
+			100.0
+		],
+		"regenerations": 5,
+		"retrieval_hit_rate": 94.4444444444444,
+		"role_accuracy": 100.0
+	},
+	"timestamp": "2026-10-04 23:32:17",
+	"version": 4,
+	"version_name": "AI + RAG + code check"
+}

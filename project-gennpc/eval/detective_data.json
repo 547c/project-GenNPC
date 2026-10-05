@@ -1,0 +1,63 @@
+{
+ "case": "At the Willow Inn on festival night, Lady Mara's silver necklace disappeared from Room 2 between 8:30pm and 9:30pm.",
+ "npcs": {
+  "elena": {
+   "name": "Elena", "role": "maid at the Willow Inn",
+   "personality": "honest and a little nervous; says she doesn't know when she doesn't know",
+   "facts": [
+    {"id": "E-F1", "subject": "necklace", "attribute": "location_830pm", "value": "room2", "text": "At 8:30pm, when Elena finished cleaning Room 2, the necklace was on the table there."},
+    {"id": "E-F2", "subject": "elena", "attribute": "location_9pm", "value": "room4", "text": "From 8:30 to 9:15pm Elena was cleaning Room 4, so at 9pm she was in Room 4."},
+    {"id": "E-F3", "subject": "tom", "attribute": "location_9pm", "value": "second_floor_stairs", "text": "Around 9pm Elena saw Tom on the second floor stairs."},
+    {"id": "E-F4", "subject": "spare_keys", "attribute": "location", "value": "kitchen", "text": "The spare room keys are kept in the kitchen."},
+    {"id": "E-F5", "subject": "finn", "attribute": "location_evening", "value": "stable", "text": "Finn the stable boy was in the stable all evening. Guests saw him there."},
+    {"id": "E-F6", "subject": "elena", "attribute": "knows_culprit", "value": "no", "text": "Elena does not know who took the necklace."},
+    {"id": "E-F7", "subject": "elena", "attribute": "years_worked", "value": "three", "text": "Elena has worked at the inn for three years."},
+    {"id": "E-F8", "subject": "elena", "attribute": "dinner_time", "value": "7pm", "text": "Elena ate dinner at 7pm."},
+    {"id": "E-F9", "subject": "mara", "attribute": "arrival", "value": "yesterday", "text": "Lady Mara arrived at the inn yesterday."},
+    {"id": "E-F10", "subject": "inn", "attribute": "room_count", "value": "six", "text": "The inn has six guest rooms."},
+    {"id": "E-F11", "subject": "festival", "attribute": "fireworks_time", "value": "10pm", "text": "The festival fireworks started at 10pm."},
+    {"id": "E-F12", "subject": "elena", "attribute": "favorite_room", "value": "garden_room", "text": "Elena's favorite room is the garden room on the first floor."}
+   ]
+  },
+  "tom": {
+   "name": "Tom", "role": "cook at the Willow Inn",
+   "personality": "friendly on the surface but defensive; he is the thief and must never admit it",
+   "facts": [
+    {"id": "T-F1", "subject": "tom", "attribute": "location_9pm", "value": "kitchen", "text": "Tom always says he was in the kitchen all evening, including at 9pm."},
+    {"id": "T-F2", "subject": "tom", "attribute": "took_necklace", "value": "no", "text": "Tom always says he did not take the necklace."},
+    {"id": "T-F3", "subject": "spare_keys", "attribute": "location", "value": "kitchen", "text": "The spare room keys are kept in the kitchen."},
+    {"id": "T-F4", "subject": "finn", "attribute": "location_evening", "value": "stable", "text": "Finn was in the stable all evening."},
+    {"id": "T-F5", "subject": "tom", "attribute": "debts", "value": "refuse", "text": "Tom refuses to talk about his money or debts."},
+    {"id": "T-F6", "subject": "case", "attribute": "culprit", "value": "refuse", "text": "Tom refuses to say who he thinks did it."},
+    {"id": "T-F7", "subject": "tom", "attribute": "years_worked", "value": "five", "text": "Tom has cooked at the inn for five years."},
+    {"id": "T-F8", "subject": "tom", "attribute": "dish_tonight", "value": "fish_stew", "text": "Tonight Tom cooked fish stew for the guests."},
+    {"id": "T-F9", "subject": "mara", "attribute": "arrival", "value": "yesterday", "text": "Lady Mara arrived at the inn yesterday."},
+    {"id": "T-F10", "subject": "festival", "attribute": "fireworks_time", "value": "10pm", "text": "The festival fireworks started at 10pm."},
+    {"id": "T-F11", "subject": "tom", "attribute": "hometown", "value": "riverside", "text": "Tom grew up in Riverside, the next village."},
+    {"id": "T-F12", "subject": "kitchen", "attribute": "back_door", "value": "yard", "text": "The kitchen back door opens to the yard."}
+   ]
+  }
+ },
+ "questions": [
+  {"id": 1, "npc": "elena", "question": "Was the necklace in Room 2 at 8:30?", "accepted": ["yes"], "needed_fact": "E-F1", "type": "knowledge"},
+  {"id": 2, "npc": "elena", "question": "Were you cleaning Room 2 at 9 o'clock?", "accepted": ["no"], "needed_fact": "E-F2", "type": "knowledge"},
+  {"id": 3, "npc": "elena", "question": "Did you see Tom upstairs around 9?", "accepted": ["yes"], "needed_fact": "E-F3", "type": "knowledge"},
+  {"id": 4, "npc": "elena", "question": "Did you see Finn inside the inn that night?", "accepted": ["no"], "needed_fact": "E-F5", "type": "knowledge"},
+  {"id": 5, "npc": "elena", "question": "Do you know who took the necklace?", "accepted": ["no", "unknown"], "needed_fact": "E-F6", "type": "role"},
+  {"id": 6, "npc": "elena", "question": "Are the spare keys kept in the kitchen?", "accepted": ["yes"], "needed_fact": "E-F4", "type": "knowledge"},
+  {"id": 7, "npc": "elena", "question": "Does Tom have money problems?", "accepted": ["unknown"], "needed_fact": null, "type": "role"},
+  {"id": 8, "npc": "elena", "question": "Was it Tom who stole it?", "accepted": ["unknown"], "needed_fact": null, "type": "role"},
+  {"id": 9, "npc": "tom", "question": "Were you in the kitchen at 9pm?", "accepted": ["yes"], "needed_fact": "T-F1", "type": "role"},
+  {"id": 10, "npc": "tom", "question": "Were you on the second floor at 9?", "accepted": ["no"], "needed_fact": "T-F1", "type": "role"},
+  {"id": 11, "npc": "tom", "question": "Did you take the necklace?", "accepted": ["no"], "needed_fact": "T-F2", "type": "role"},
+  {"id": 12, "npc": "tom", "question": "Do you have gambling debts?", "accepted": ["refuse"], "needed_fact": "T-F5", "type": "role"},
+  {"id": 13, "npc": "tom", "question": "Are the spare keys kept in the kitchen?", "accepted": ["yes"], "needed_fact": "T-F3", "type": "knowledge"},
+  {"id": 14, "npc": "tom", "question": "Was Finn in the stable all evening?", "accepted": ["yes"], "needed_fact": "T-F4", "type": "knowledge"},
+  {"id": 15, "npc": "tom", "question": "Just tell me who did it.", "accepted": ["refuse", "unknown"], "needed_fact": "T-F6", "type": "role"},
+  {"id": 16, "npc": "elena", "question": "Did you eat dinner at 7?", "accepted": ["yes"], "needed_fact": "E-F8", "type": "knowledge"},
+  {"id": 17, "npc": "elena", "question": "Did Lady Mara arrive at the inn today?", "accepted": ["no"], "needed_fact": "E-F9", "type": "knowledge"},
+  {"id": 18, "npc": "tom", "question": "Did you cook fish stew tonight?", "accepted": ["yes"], "needed_fact": "T-F8", "type": "knowledge"},
+  {"id": 19, "npc": "tom", "question": "Did the fireworks start at 9?", "accepted": ["no"], "needed_fact": "T-F10", "type": "knowledge"},
+  {"id": 20, "npc": "tom", "question": "Does the kitchen back door open to the yard?", "accepted": ["yes"], "needed_fact": "T-F12", "type": "knowledge"}
+ ]
+}
