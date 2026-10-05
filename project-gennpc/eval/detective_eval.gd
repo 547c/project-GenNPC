@@ -348,6 +348,13 @@ func _ask(version: int, npc_id: String, q: Dictionary) -> Dictionary:
 		"error": null
 	}
 
+	if version == 4:
+		entry["first_answer"] = null
+		entry["first_line"] = null
+		entry["first_asked"] = null
+		entry["first_correct"] = null
+		entry["attempts"] = []
+
 	var prompt := _build_prompt(version, npc_id, npc, q["question"], retrieved)
 	var schema := _schema(version == 4)
 	var api_ms := 0
@@ -369,6 +376,8 @@ func _ask(version: int, npc_id: String, q: Dictionary) -> Dictionary:
 		api_ms += await _answer_with_code_check(npc, prompt, schema, entry)
 
 	entry["time_ms"] = api_ms
+	if entry.has("first_answer") and entry["first_answer"] != null:
+		entry["first_correct"] = q["accepted"].has(entry["first_answer"])
 	if entry["final_answer"] != null:
 		entry["correct"] = q["accepted"].has(entry["final_answer"])
 	if npc_id == "tom" and entry["line"] != null:
@@ -390,6 +399,8 @@ func _answer_with_code_check(npc: Dictionary, prompt: String, schema: Dictionary
 		if not res["ok"]:
 			entry["error"] = res["error"]
 			return api_ms
+		var record := {"attempt": attempt, "parse_ok": false, "answer": null, "line": null, "asked": null, "expected": null}
+		entry["attempts"].append(record)
 		var reply := _parse_reply(res["text"], true)
 		if reply.is_empty():
 			continue
@@ -397,6 +408,15 @@ func _answer_with_code_check(npc: Dictionary, prompt: String, schema: Dictionary
 		entry["asked"] = reply["asked"]
 		var expected := _expected_from_asked(npc, reply["asked"])
 		last_expected = expected
+		record["parse_ok"] = true
+		record["answer"] = reply["answer"]
+		record["line"] = reply["line"]
+		record["asked"] = reply["asked"]
+		record["expected"] = expected["answer"]
+		if attempt == 0:
+			entry["first_answer"] = reply["answer"]
+			entry["first_line"] = reply["line"]
+			entry["first_asked"] = reply["asked"]
 		if reply["answer"] == expected["answer"]:
 			entry["final_answer"] = reply["answer"]
 			entry["line"] = reply["line"]
@@ -416,10 +436,13 @@ func _summarize(runs: int, question_count: int, entries: Array) -> Dictionary:
 	var per_run: Array = []
 	for r in range(1, runs + 1):
 		var correct := 0
+		var valid := 0
 		for e in entries:
-			if e["run"] == r and e["correct"]:
-				correct += 1
-		per_run.append(100.0 * correct / question_count)
+			if e["run"] == r and e["error"] == null:
+				valid += 1
+				if e["correct"]:
+					correct += 1
+		per_run.append(100.0 * correct / maxi(valid, 1))
 	var avg_accuracy := 0.0
 	for a in per_run:
 		avg_accuracy += a
@@ -435,9 +458,10 @@ func _summarize(runs: int, question_count: int, entries: Array) -> Dictionary:
 	var type_total := {"knowledge": 0, "role": 0}
 	var type_correct := {"knowledge": 0, "role": 0}
 	for e in entries:
-		type_total[e["type"]] += 1
-		if e["correct"]:
-			type_correct[e["type"]] += 1
+		if e["error"] == null:
+			type_total[e["type"]] += 1
+			if e["correct"]:
+				type_correct[e["type"]] += 1
 		if e["leak"]:
 			leaks += 1
 		regenerations += e["regenerations"]
@@ -506,7 +530,7 @@ func _print_progress(version: int, run: int, entry: Dictionary):
 	var mark := "OK" if entry["correct"] else "WRONG"
 	var extras := ""
 	if entry["regenerations"] > 0:
-		extras += " regen=%d" % entry["regenerations"]
+		extras += " regen=%d first=%s" % [entry["regenerations"], str(entry.get("first_answer"))]
 	if entry["fallback_used"]:
 		extras += " FALLBACK"
 	if entry["leak"]:
@@ -562,6 +586,8 @@ func _append_summary_md(version: int, runs: int, summary: Dictionary):
 		file.store_line("# Detective NPC Eval Summary")
 		file.store_line("")
 		file.store_line("Time per question is API call time including regenerations; the 5s pacing waits and 429 backoffs are excluded.")
+		file.store_line("")
+		file.store_line("Accuracy excludes questions that ended in an API error; those are counted in the Errors column.")
 		file.store_line("")
 		file.store_line("| " + " | ".join(PackedStringArray(columns)) + " |")
 		file.store_line("| " + " | ".join(PackedStringArray(separator)) + " |")
