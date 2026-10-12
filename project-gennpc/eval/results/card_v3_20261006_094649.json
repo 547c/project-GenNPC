@@ -1,0 +1,4579 @@
+{
+	"model": "gemini-3.5-flash-lite",
+	"results": [
+		{
+			"ai_output": null,
+			"attempts": [
+				{
+					"attempt": 0,
+					"check": "ok",
+					"output": {
+						"effects": [
+							{
+								"condition": "none",
+								"n": 6,
+								"target": "single",
+								"type": "DAMAGE"
+							}
+						],
+						"reason": "",
+						"reject": false
+					},
+					"parse_ok": true,
+					"reason": ""
+				}
+			],
+			"code_action": "ok",
+			"correct": true,
+			"cost_correct": true,
+			"effects_correct": true,
+			"error": null,
+			"expected_cost": 6,
+			"expected_effects": [
+				{
+					"condition": "none",
+					"n": 6,
+					"target": "single",
+					"type": "DAMAGE"
+				}
+			],
+			"expected_reject": false,
+			"fallback_used": false,
+			"final_cost": 6,
+			"final_effects": [
+				{
+					"condition": "none",
+					"n": 6,
+					"target": "single",
+					"type": "DAMAGE"
+				}
+			],
+			"final_reject": false,
+			"first_output": {
+				"effects": [
+					{
+						"condition": "none",
+						"n": 6,
+						"target": "single",
+						"type": "DAMAGE"
+					}
+				],
+				"reason": "",
+				"reject": false
+			},
+			"id": "C1",
+			"reason": "",
+			"regenerations": 0,
+			"reject_correct": true,
+			"retrieved_example_ids": [
+				"B1",
+				"B4",
+				"B6"
+			],
+			"run": 1,
+			"text": "Deal 6 damage.",
+			"time_ms": 808,
+			"type": "normal"
+		},
+		{
+			"ai_output": null,
+			"attempts": [
+				{
+					"attempt": 0,
+					"check": "ok",
+					"output": {
+						"effects": [
+							{
+								"condition": "none",
+								"n": 5,
+								"target": "single",
+								"type": "HEAL"
+							}
+						],
+						"reason": "",
+						"reject": false
+					},
+					"parse_ok": true,
+					"reason": ""
+				}
+			],
+			"code_action": "ok",
+			"correct": true,
+			"cost_correct": true,
+			"effects_correct": true,
+			"error": null,
+			"expected_cost": 5,
+			"expected_effects": [
+				{
+					"condition": "none",
+					"n": 5,
+					"target": "single",
+					"type": "HEAL"
+				}
+			],
+			"expected_reject": false,
+			"fallback_used": false,
+			"final_cost": 5,
+			"final_effects": [
+				{
+					"condition": "none",
+					"n": 5,
+					"target": "single",
+					"type": "HEAL"
+				}
+			],
+			"final_reject": false,
+			"first_output": {
+				"effects": [
+					{
+						"condition": "none",
+						"n": 5,
+						"target": "single",
+						"type": "HEAL"
+					}
+				],
+				"reason": "",
+				"reject": false
+			},
+			"id": "C2",
+			"reason": "",
+			"regenerations": 0,
+			"reject_correct": true,
+			"retrieved_example_ids": [
+				"B2",
+				"B3",
+				"B7"
+			],
+			"run": 1,
+			"text": "Heal 5 health.",
+			"time_ms": 745,
+			"type": "normal"
+		},
+		{
+			"ai_output": null,
+			"attempts": [
+				{
+					"attempt": 0,
+					"check": "ok",
+					"output": {
+						"effects": [
+							{
+								"condition": "none",
+								"n": 8,
+								"target": "single",
+								"type": "SHIELD"
+							}
+						],
+						"reason": "",
+						"reject": false
+					},
+					"parse_ok": true,
+					"reason": ""
+				}
+			],
+			"code_action": "ok",
+			"correct": true,
+			"cost_correct": true,
+			"effects_correct": true,
+			"error": null,
+			"expected_cost": 8,
+			"expected_effects": [
+				{
+					"condition": "none",
+					"n": 8,
+					"target": "single",
+					"type": "SHIELD"
+				}
+			],
+			"expected_reject": false,
+			"fallback_used": false,
+			"final_cost": 8,
+			"final_effects": [
+				{
+					"condition": "none",
+					"n": 8,
+					"target": "single",
+					"type": "SHIELD"
+				}
+			],
+			"final_reject": false,
+			"first_output": {
+				"effects": [
+					{
+						"condition": "none",
+						"n": 8,
+						"target": "single",
+						"type": "SHIELD"
+					}
+				],
+				"reason": "",
+				"reject": false
+			},
+			"id": "C3",
+			"reason": "",
+			"regenerations": 0,
+			"reject_correct": true,
+			"retrieved_example_ids": [
+				"B3",
+				"B1",
+				"B2"
+			],
+			"run": 1,
+			"text": "Gain 8 block.",
+			"time_ms": 4181,
+			"type": "normal"
+		},
+		{
+			"ai_output": null,
+			"attempts": [
+				{
+					"attempt": 0,
+					"check": "ok",
+					"output": {
+						"effects": [
+							{
+								"condition": "none",
+								"n": 2,
+								"target": "single",
+								"type": "DRAW"
+							}
+						],
+						"reason": "",
+						"reject": false
+					},
+					"parse_ok": true,
+					"reason": ""
+				}
+			],
+			"code_action": "ok",
+			"correct": true,
+			"cost_correct": true,
+			"effects_correct": true,
+			"error": null,
+			"expected_cost": 4,
+			"expected_effects": [
+				{
+					"condition": "none",
+					"n": 2,
+					"target": "single",
+					"type": "DRAW"
+				}
+			],
+			"expected_reject": false,
+			"fallback_used": false,
+			"final_cost": 4,
+			"final_effects": [
+				{
+					"condition": "none",
+					"n": 2,
+					"target": "single",
+					"type": "DRAW"
+				}
+			],
+			"final_reject": false,
+			"first_output": {
+				"effects": [
+					{
+						"condition": "none",
+						"n": 2,
+						"target": "single",
+						"type": "DRAW"
+					}
+				],
+				"reason": "",
+				"reject": false
+			},
+			"id": "C4",
+			"reason": "",
+			"regenerations": 0,
+			"reject_correct": true,
+			"retrieved_example_ids": [
+				"B4",
+				"B5",
+				"B6"
+			],
+			"run": 1,
+			"text": "Draw 2 cards.",
+			"time_ms": 718,
+			"type": "normal"
+		},
+		{
+			"ai_output": null,
+			"attempts": [
+				{
+					"attempt": 0,
+					"check": "ok",
+					"output": {
+						"effects": [
+							{
+								"condition": "none",
+								"n": 3,
+								"target": "single",
+								"type": "BURN"
+							}
+						],
+						"reason": "",
+						"reject": false
+					},
+					"parse_ok": true,
+					"reason": ""
+				}
+			],
+			"code_action": "ok",
+			"correct": true,
+			"cost_correct": true,
+			"effects_correct": true,
+			"error": null,
+			"expected_cost": 6,
+			"expected_effects": [
+				{
+					"condition": "none",
+					"n": 3,
+					"target": "single",
+					"type": "BURN"
+				}
+			],
+			"expected_reject": false,
+			"fallback_used": false,
+			"final_cost": 6,
+			"final_effects": [
+				{
+					"condition": "none",
+					"n": 3,
+					"target": "single",
+					"type": "BURN"
+				}
+			],
+			"final_reject": false,
+			"first_output": {
+				"effects": [
+					{
+						"condition": "none",
+						"n": 3,
+						"target": "single",
+						"type": "BURN"
+					}
+				],
+				"reason": "",
+				"reject": false
+			},
+			"id": "C5",
+			"reason": "",
+			"regenerations": 0,
+			"reject_correct": true,
+			"retrieved_example_ids": [
+				"B5",
+				"B7",
+				"B8"
+			],
+			"run": 1,
+			"text": "Burn the enemy for 3 turns.",
+			"time_ms": 9177,
+			"type": "normal"
+		},
+		{
+			"ai_output": null,
+			"attempts": [
+				{
+					"attempt": 0,
+					"check": "ok",
+					"output": {
+						"effects": [
+							{
+								"condition": "none",
+								"n": 3,
+								"target": "all",
+								"type": "DAMAGE"
+							}
+						],
+						"reason": "",
+						"reject": false
+					},
+					"parse_ok": true,
+					"reason": ""
+				}
+			],
+			"code_action": "ok",
+			"correct": true,
+			"cost_correct": true,
+			"effects_correct": true,
+			"error": null,
+			"expected_cost": 6,
+			"expected_effects": [
+				{
+					"condition": "none",
+					"n": 3,
+					"target": "all",
+					"type": "DAMAGE"
+				}
+			],
+			"expected_reject": false,
+			"fallback_used": false,
+			"final_cost": 6,
+			"final_effects": [
+				{
+					"condition": "none",
+					"n": 3,
+					"target": "all",
+					"type": "DAMAGE"
+				}
+			],
+			"final_reject": false,
+			"first_output": {
+				"effects": [
+					{
+						"condition": "none",
+						"n": 3,
+						"target": "all",
+						"type": "DAMAGE"
+					}
+				],
+				"reason": "",
+				"reject": false
+			},
+			"id": "C6",
+			"reason": "",
+			"regenerations": 0,
+			"reject_correct": true,
+			"retrieved_example_ids": [
+				"B4",
+				"B1",
+				"B6"
+			],
+			"run": 1,
+			"text": "Deal 3 damage to all enemies.",
+			"time_ms": 986,
+			"type": "normal"
+		},
+		{
+			"ai_output": null,
+			"attempts": [
+				{
+					"attempt": 0,
+					"check": "ok",
+					"output": {
+						"effects": [
+							{
+								"condition": "none",
+								"n": 5,
+								"target": "single",
+								"type": "DAMAGE"
+							},
+							{
+								"condition": "none",
+								"n": 5,
+								"target": "single",
+								"type": "SHIELD"
+							}
+						],
+						"reason": "",
+						"reject": false
+					},
+					"parse_ok": true,
+					"reason": ""
+				}
+			],
+			"code_action": "ok",
+			"correct": true,
+			"cost_correct": true,
+			"effects_correct": true,
+			"error": null,
+			"expected_cost": 10,
+			"expected_effects": [
+				{
+					"condition": "none",
+					"n": 5,
+					"target": "single",
+					"type": "DAMAGE"
+				},
+				{
+					"condition": "none",
+					"n": 5,
+					"target": "single",
+					"type": "SHIELD"
+				}
+			],
+			"expected_reject": false,
+			"fallback_used": false,
+			"final_cost": 10,
+			"final_effects": [
+				{
+					"condition": "none",
+					"n": 5,
+					"target": "single",
+					"type": "DAMAGE"
+				},
+				{
+					"condition": "none",
+					"n": 5,
+					"target": "single",
+					"type": "SHIELD"
+				}
+			],
+			"final_reject": false,
+			"first_output": {
+				"effects": [
+					{
+						"condition": "none",
+						"n": 5,
+						"target": "single",
+						"type": "DAMAGE"
+					},
+					{
+						"condition": "none",
+						"n": 5,
+						"target": "single",
+						"type": "SHIELD"
+					}
+				],
+				"reason": "",
+				"reject": false
+			},
+			"id": "C7",
+			"reason": "",
+			"regenerations": 0,
+			"reject_correct": true,
+			"retrieved_example_ids": [
+				"B4",
+				"B1",
+				"B6"
+			],
+			"run": 1,
+			"text": "Deal 5 damage and gain 5 shield.",
+			"time_ms": 72360,
+			"type": "normal"
+		},
+		{
+			"ai_output": null,
+			"attempts": [
+				{
+					"attempt": 0,
+					"check": "ok",
+					"output": {
+						"effects": [
+							{
+								"condition": "IF_ENEMY_BURNING",
+								"n": 8,
+								"target": "single",
+								"type": "DAMAGE"
+							}
+						],
+						"reason": "",
+						"reject": false
+					},
+					"parse_ok": true,
+					"reason": ""
+				}
+			],
+			"code_action": "ok",
+			"correct": true,
+			"cost_correct": true,
+			"effects_correct": true,
+			"error": null,
+			"expected_cost": 4,
+			"expected_effects": [
+				{
+					"condition": "IF_ENEMY_BURNING",
+					"n": 8,
+					"target": "single",
+					"type": "DAMAGE"
+				}
+			],
+			"expected_reject": false,
+			"fallback_used": false,
+			"final_cost": 4,
+			"final_effects": [
+				{
+					"condition": "IF_ENEMY_BURNING",
+					"n": 8,
+					"target": "single",
+					"type": "DAMAGE"
+				}
+			],
+			"final_reject": false,
+			"first_output": {
+				"effects": [
+					{
+						"condition": "IF_ENEMY_BURNING",
+						"n": 8,
+						"target": "single",
+						"type": "DAMAGE"
+					}
+				],
+				"reason": "",
+				"reject": false
+			},
+			"id": "C8",
+			"reason": "",
+			"regenerations": 0,
+			"reject_correct": true,
+			"retrieved_example_ids": [
+				"B6",
+				"B1",
+				"B4"
+			],
+			"run": 1,
+			"text": "If the enemy is burning, deal 8 damage.",
+			"time_ms": 842,
+			"type": "normal"
+		},
+		{
+			"ai_output": null,
+			"attempts": [
+				{
+					"attempt": 0,
+					"check": "ok",
+					"output": {
+						"effects": [
+							{
+								"condition": "IF_MY_HP_BELOW_HALF",
+								"n": 10,
+								"target": "single",
+								"type": "HEAL"
+							}
+						],
+						"reason": "",
+						"reject": false
+					},
+					"parse_ok": true,
+					"reason": ""
+				}
+			],
+			"code_action": "ok",
+			"correct": true,
+			"cost_correct": true,
+			"effects_correct": true,
+			"error": null,
+			"expected_cost": 5,
+			"expected_effects": [
+				{
+					"condition": "IF_MY_HP_BELOW_HALF",
+					"n": 10,
+					"target": "single",
+					"type": "HEAL"
+				}
+			],
+			"expected_reject": false,
+			"fallback_used": false,
+			"final_cost": 5,
+			"final_effects": [
+				{
+					"condition": "IF_MY_HP_BELOW_HALF",
+					"n": 10,
+					"target": "single",
+					"type": "HEAL"
+				}
+			],
+			"final_reject": false,
+			"first_output": {
+				"effects": [
+					{
+						"condition": "IF_MY_HP_BELOW_HALF",
+						"n": 10,
+						"target": "single",
+						"type": "HEAL"
+					}
+				],
+				"reason": "",
+				"reject": false
+			},
+			"id": "C9",
+			"reason": "",
+			"regenerations": 0,
+			"reject_correct": true,
+			"retrieved_example_ids": [
+				"B2",
+				"B7",
+				"B1"
+			],
+			"run": 1,
+			"text": "If my health is below half, restore 10 health.",
+			"time_ms": 1159,
+			"type": "normal"
+		},
+		{
+			"ai_output": null,
+			"attempts": [
+				{
+					"attempt": 0,
+					"check": "ok",
+					"output": {
+						"effects": [
+							{
+								"condition": "none",
+								"n": 2,
+								"target": "all",
+								"type": "WEAKEN"
+							}
+						],
+						"reason": "",
+						"reject": false
+					},
+					"parse_ok": true,
+					"reason": ""
+				}
+			],
+			"code_action": "ok",
+			"correct": true,
+			"cost_correct": true,
+			"effects_correct": true,
+			"error": null,
+			"expected_cost": 8,
+			"expected_effects": [
+				{
+					"condition": "none",
+					"n": 2,
+					"target": "all",
+					"type": "WEAKEN"
+				}
+			],
+			"expected_reject": false,
+			"fallback_used": false,
+			"final_cost": 8,
+			"final_effects": [
+				{
+					"condition": "none",
+					"n": 2,
+					"target": "all",
+					"type": "WEAKEN"
+				}
+			],
+			"final_reject": false,
+			"first_output": {
+				"effects": [
+					{
+						"condition": "none",
+						"n": 2,
+						"target": "all",
+						"type": "WEAKEN"
+					}
+				],
+				"reason": "",
+				"reject": false
+			},
+			"id": "C10",
+			"reason": "",
+			"regenerations": 0,
+			"reject_correct": true,
+			"retrieved_example_ids": [
+				"B5",
+				"B8",
+				"B6"
+			],
+			"run": 1,
+			"text": "Weaken all enemies for 2 turns.",
+			"time_ms": 855,
+			"type": "normal"
+		},
+		{
+			"ai_output": null,
+			"attempts": [
+				{
+					"attempt": 0,
+					"check": "ok",
+					"output": {
+						"effects": [
+							{
+								"condition": "none",
+								"n": 4,
+								"target": "single",
+								"type": "DAMAGE"
+							},
+							{
+								"condition": "none",
+								"n": 1,
+								"target": "single",
+								"type": "DRAW"
+							}
+						],
+						"reason": "",
+						"reject": false
+					},
+					"parse_ok": true,
+					"reason": ""
+				}
+			],
+			"code_action": "ok",
+			"correct": true,
+			"cost_correct": true,
+			"effects_correct": true,
+			"error": null,
+			"expected_cost": 6,
+			"expected_effects": [
+				{
+					"condition": "none",
+					"n": 4,
+					"target": "single",
+					"type": "DAMAGE"
+				},
+				{
+					"condition": "none",
+					"n": 1,
+					"target": "single",
+					"type": "DRAW"
+				}
+			],
+			"expected_reject": false,
+			"fallback_used": false,
+			"final_cost": 6,
+			"final_effects": [
+				{
+					"condition": "none",
+					"n": 4,
+					"target": "single",
+					"type": "DAMAGE"
+				},
+				{
+					"condition": "none",
+					"n": 1,
+					"target": "single",
+					"type": "DRAW"
+				}
+			],
+			"final_reject": false,
+			"first_output": {
+				"effects": [
+					{
+						"condition": "none",
+						"n": 4,
+						"target": "single",
+						"type": "DAMAGE"
+					},
+					{
+						"condition": "none",
+						"n": 1,
+						"target": "single",
+						"type": "DRAW"
+					}
+				],
+				"reason": "",
+				"reject": false
+			},
+			"id": "C11",
+			"reason": "",
+			"regenerations": 0,
+			"reject_correct": true,
+			"retrieved_example_ids": [
+				"B4",
+				"B5",
+				"B8"
+			],
+			"run": 1,
+			"text": "Hit the enemy for 4, then draw a card.",
+			"time_ms": 53199,
+			"type": "normal"
+		},
+		{
+			"ai_output": null,
+			"attempts": [
+				{
+					"attempt": 0,
+					"check": "ok",
+					"output": {
+						"effects": [
+							{
+								"condition": "none",
+								"n": 1,
+								"target": "all",
+								"type": "BURN"
+							},
+							{
+								"condition": "none",
+								"n": 2,
+								"target": "all",
+								"type": "DAMAGE"
+							}
+						],
+						"reason": "",
+						"reject": false
+					},
+					"parse_ok": true,
+					"reason": ""
+				}
+			],
+			"code_action": "ok",
+			"correct": true,
+			"cost_correct": true,
+			"effects_correct": true,
+			"error": null,
+			"expected_cost": 8,
+			"expected_effects": [
+				{
+					"condition": "none",
+					"n": 1,
+					"target": "all",
+					"type": "BURN"
+				},
+				{
+					"condition": "none",
+					"n": 2,
+					"target": "all",
+					"type": "DAMAGE"
+				}
+			],
+			"expected_reject": false,
+			"fallback_used": false,
+			"final_cost": 8,
+			"final_effects": [
+				{
+					"condition": "none",
+					"n": 1,
+					"target": "all",
+					"type": "BURN"
+				},
+				{
+					"condition": "none",
+					"n": 2,
+					"target": "all",
+					"type": "DAMAGE"
+				}
+			],
+			"final_reject": false,
+			"first_output": {
+				"effects": [
+					{
+						"condition": "none",
+						"n": 1,
+						"target": "all",
+						"type": "BURN"
+					},
+					{
+						"condition": "none",
+						"n": 2,
+						"target": "all",
+						"type": "DAMAGE"
+					}
+				],
+				"reason": "",
+				"reject": false
+			},
+			"id": "C12",
+			"reason": "",
+			"regenerations": 0,
+			"reject_correct": true,
+			"retrieved_example_ids": [
+				"B6",
+				"B5",
+				"B8"
+			],
+			"run": 1,
+			"text": "Set every enemy on fire for 1 turn and deal 2 damage to each of them.",
+			"time_ms": 993,
+			"type": "normal"
+		},
+		{
+			"ai_output": null,
+			"attempts": [
+				{
+					"attempt": 0,
+					"check": "ok",
+					"output": {
+						"effects": [],
+						"reason": "Targeting everyone with damage is not supported by the available target types.",
+						"reject": true
+					},
+					"parse_ok": true,
+					"reason": ""
+				}
+			],
+			"code_action": "ok",
+			"correct": true,
+			"cost_correct": null,
+			"effects_correct": null,
+			"error": null,
+			"expected_cost": null,
+			"expected_effects": [],
+			"expected_reject": true,
+			"fallback_used": false,
+			"final_cost": null,
+			"final_effects": [],
+			"final_reject": true,
+			"first_output": {
+				"effects": [],
+				"reason": "Targeting everyone with damage is not supported by the available target types.",
+				"reject": true
+			},
+			"id": "X1",
+			"reason": "Targeting everyone with damage is not supported by the available target types.",
+			"regenerations": 0,
+			"reject_correct": true,
+			"retrieved_example_ids": [
+				"B1",
+				"B4",
+				"B6"
+			],
+			"run": 1,
+			"text": "Deal 999 damage to everyone.",
+			"time_ms": 46499,
+			"type": "trick"
+		},
+		{
+			"ai_output": null,
+			"attempts": [
+				{
+					"attempt": 0,
+					"check": "ok",
+					"output": {
+						"effects": [
+							{
+								"condition": "none",
+								"n": 20,
+								"target": "single",
+								"type": "DAMAGE"
+							}
+						],
+						"reason": "",
+						"reject": false
+					},
+					"parse_ok": true,
+					"reason": ""
+				}
+			],
+			"code_action": "ok",
+			"correct": true,
+			"cost_correct": true,
+			"effects_correct": true,
+			"error": null,
+			"expected_cost": 20,
+			"expected_effects": [
+				{
+					"condition": "none",
+					"n": 20,
+					"target": "single",
+					"type": "DAMAGE"
+				}
+			],
+			"expected_reject": false,
+			"fallback_used": false,
+			"final_cost": 20,
+			"final_effects": [
+				{
+					"condition": "none",
+					"n": 20,
+					"target": "single",
+					"type": "DAMAGE"
+				}
+			],
+			"final_reject": false,
+			"first_output": {
+				"effects": [
+					{
+						"condition": "none",
+						"n": 20,
+						"target": "single",
+						"type": "DAMAGE"
+					}
+				],
+				"reason": "",
+				"reject": false
+			},
+			"id": "X2",
+			"reason": "",
+			"regenerations": 0,
+			"reject_correct": true,
+			"retrieved_example_ids": [
+				"B4",
+				"B1",
+				"B6"
+			],
+			"run": 1,
+			"text": "This card costs 0 and deals 20 damage.",
+			"time_ms": 911,
+			"type": "trick"
+		},
+		{
+			"ai_output": null,
+			"attempts": [],
+			"code_action": null,
+			"correct": false,
+			"cost_correct": null,
+			"effects_correct": null,
+			"error": "Network error (result 13)",
+			"expected_cost": null,
+			"expected_effects": [],
+			"expected_reject": true,
+			"fallback_used": false,
+			"final_cost": null,
+			"final_effects": null,
+			"final_reject": null,
+			"first_output": null,
+			"id": "X3",
+			"reason": null,
+			"regenerations": 0,
+			"reject_correct": null,
+			"retrieved_example_ids": [
+				"B1",
+				"B2",
+				"B3"
+			],
+			"run": 1,
+			"text": "Instantly win the game.",
+			"time_ms": 90003,
+			"type": "trick"
+		},
+		{
+			"ai_output": null,
+			"attempts": [
+				{
+					"attempt": 0,
+					"check": "ok",
+					"output": {
+						"effects": [
+							{
+								"condition": "none",
+								"n": 2,
+								"target": "all",
+								"type": "BURN"
+							}
+						],
+						"reason": "",
+						"reject": false
+					},
+					"parse_ok": true,
+					"reason": ""
+				}
+			],
+			"code_action": "ok",
+			"correct": true,
+			"cost_correct": true,
+			"effects_correct": true,
+			"error": null,
+			"expected_cost": 8,
+			"expected_effects": [
+				{
+					"condition": "none",
+					"n": 2,
+					"target": "all",
+					"type": "BURN"
+				}
+			],
+			"expected_reject": false,
+			"fallback_used": false,
+			"final_cost": 8,
+			"final_effects": [
+				{
+					"condition": "none",
+					"n": 2,
+					"target": "all",
+					"type": "BURN"
+				}
+			],
+			"final_reject": false,
+			"first_output": {
+				"effects": [
+					{
+						"condition": "none",
+						"n": 2,
+						"target": "all",
+						"type": "BURN"
+					}
+				],
+				"reason": "",
+				"reject": false
+			},
+			"id": "H1",
+			"reason": "",
+			"regenerations": 0,
+			"reject_correct": true,
+			"retrieved_example_ids": [
+				"B5",
+				"B6",
+				"B8"
+			],
+			"run": 1,
+			"text": "Torch every foe for two turns.",
+			"time_ms": 952,
+			"type": "hard"
+		},
+		{
+			"ai_output": null,
+			"attempts": [],
+			"code_action": null,
+			"correct": false,
+			"cost_correct": null,
+			"effects_correct": null,
+			"error": "Network error (result 13)",
+			"expected_cost": 6,
+			"expected_effects": [
+				{
+					"condition": "IF_ENEMY_BURNING",
+					"n": 6,
+					"target": "all",
+					"type": "DAMAGE"
+				}
+			],
+			"expected_reject": false,
+			"fallback_used": false,
+			"final_cost": null,
+			"final_effects": null,
+			"final_reject": null,
+			"first_output": null,
+			"id": "H2",
+			"reason": null,
+			"regenerations": 0,
+			"reject_correct": null,
+			"retrieved_example_ids": [
+				"B6",
+				"B1",
+				"B4"
+			],
+			"run": 1,
+			"text": "If the enemy is burning, deal 6 damage to all enemies.",
+			"time_ms": 90010,
+			"type": "hard"
+		},
+		{
+			"ai_output": null,
+			"attempts": [],
+			"code_action": null,
+			"correct": false,
+			"cost_correct": null,
+			"effects_correct": null,
+			"error": "Network error (result 13)",
+			"expected_cost": 12,
+			"expected_effects": [
+				{
+					"condition": "none",
+					"n": 3,
+					"target": "all",
+					"type": "DAMAGE"
+				},
+				{
+					"condition": "none",
+					"n": 6,
+					"target": "single",
+					"type": "SHIELD"
+				}
+			],
+			"expected_reject": false,
+			"fallback_used": false,
+			"final_cost": null,
+			"final_effects": null,
+			"final_reject": null,
+			"first_output": null,
+			"id": "H3",
+			"reason": null,
+			"regenerations": 0,
+			"reject_correct": null,
+			"retrieved_example_ids": [
+				"B4",
+				"B5",
+				"B7"
+			],
+			"run": 1,
+			"text": "Smack each enemy for 3 and put up a 6-point barrier.",
+			"time_ms": 90010,
+			"type": "hard"
+		},
+		{
+			"ai_output": null,
+			"attempts": [],
+			"code_action": null,
+			"correct": false,
+			"cost_correct": null,
+			"effects_correct": null,
+			"error": "Network error (result 13)",
+			"expected_cost": null,
+			"expected_effects": [],
+			"expected_reject": true,
+			"fallback_used": false,
+			"final_cost": null,
+			"final_effects": null,
+			"final_reject": null,
+			"first_output": null,
+			"id": "H4",
+			"reason": null,
+			"regenerations": 0,
+			"reject_correct": null,
+			"retrieved_example_ids": [
+				"B1",
+				"B4",
+				"B6"
+			],
+			"run": 1,
+			"text": "Deal 31 damage.",
+			"time_ms": 90010,
+			"type": "hard"
+		},
+		{
+			"ai_output": null,
+			"attempts": [
+				{
+					"attempt": 0,
+					"check": "ok",
+					"output": {
+						"effects": [
+							{
+								"condition": "none",
+								"n": 30,
+								"target": "all",
+								"type": "DAMAGE"
+							}
+						],
+						"reason": "",
+						"reject": false
+					},
+					"parse_ok": true,
+					"reason": ""
+				}
+			],
+			"code_action": "ok",
+			"correct": true,
+			"cost_correct": true,
+			"effects_correct": true,
+			"error": null,
+			"expected_cost": 60,
+			"expected_effects": [
+				{
+					"condition": "none",
+					"n": 30,
+					"target": "all",
+					"type": "DAMAGE"
+				}
+			],
+			"expected_reject": false,
+			"fallback_used": false,
+			"final_cost": 60,
+			"final_effects": [
+				{
+					"condition": "none",
+					"n": 30,
+					"target": "all",
+					"type": "DAMAGE"
+				}
+			],
+			"final_reject": false,
+			"first_output": {
+				"effects": [
+					{
+						"condition": "none",
+						"n": 30,
+						"target": "all",
+						"type": "DAMAGE"
+					}
+				],
+				"reason": "",
+				"reject": false
+			},
+			"id": "H5",
+			"reason": "",
+			"regenerations": 0,
+			"reject_correct": true,
+			"retrieved_example_ids": [
+				"B1",
+				"B4",
+				"B6"
+			],
+			"run": 1,
+			"text": "Deal 30 damage to all enemies.",
+			"time_ms": 931,
+			"type": "hard"
+		},
+		{
+			"ai_output": null,
+			"attempts": [
+				{
+					"attempt": 0,
+					"check": "ok",
+					"output": {
+						"effects": [
+							{
+								"condition": "IF_MY_HP_BELOW_HALF",
+								"n": 3,
+								"target": "single",
+								"type": "DRAW"
+							}
+						],
+						"reason": "",
+						"reject": false
+					},
+					"parse_ok": true,
+					"reason": ""
+				}
+			],
+			"code_action": "ok",
+			"correct": true,
+			"cost_correct": true,
+			"effects_correct": true,
+			"error": null,
+			"expected_cost": 3,
+			"expected_effects": [
+				{
+					"condition": "IF_MY_HP_BELOW_HALF",
+					"n": 3,
+					"target": "single",
+					"type": "DRAW"
+				}
+			],
+			"expected_reject": false,
+			"fallback_used": false,
+			"final_cost": 3,
+			"final_effects": [
+				{
+					"condition": "IF_MY_HP_BELOW_HALF",
+					"n": 3,
+					"target": "single",
+					"type": "DRAW"
+				}
+			],
+			"final_reject": false,
+			"first_output": {
+				"effects": [
+					{
+						"condition": "IF_MY_HP_BELOW_HALF",
+						"n": 3,
+						"target": "single",
+						"type": "DRAW"
+					}
+				],
+				"reason": "",
+				"reject": false
+			},
+			"id": "H6",
+			"reason": "",
+			"regenerations": 0,
+			"reject_correct": true,
+			"retrieved_example_ids": [
+				"B2",
+				"B4",
+				"B1"
+			],
+			"run": 1,
+			"text": "When I'm under half health, draw three cards.",
+			"time_ms": 85650,
+			"type": "hard"
+		},
+		{
+			"ai_output": null,
+			"attempts": [
+				{
+					"attempt": 0,
+					"check": "ok",
+					"output": {
+						"effects": [
+							{
+								"condition": "none",
+								"n": 6,
+								"target": "single",
+								"type": "DAMAGE"
+							}
+						],
+						"reason": "",
+						"reject": false
+					},
+					"parse_ok": true,
+					"reason": ""
+				}
+			],
+			"code_action": "ok",
+			"correct": true,
+			"cost_correct": true,
+			"effects_correct": true,
+			"error": null,
+			"expected_cost": 6,
+			"expected_effects": [
+				{
+					"condition": "none",
+					"n": 6,
+					"target": "single",
+					"type": "DAMAGE"
+				}
+			],
+			"expected_reject": false,
+			"fallback_used": false,
+			"final_cost": 6,
+			"final_effects": [
+				{
+					"condition": "none",
+					"n": 6,
+					"target": "single",
+					"type": "DAMAGE"
+				}
+			],
+			"final_reject": false,
+			"first_output": {
+				"effects": [
+					{
+						"condition": "none",
+						"n": 6,
+						"target": "single",
+						"type": "DAMAGE"
+					}
+				],
+				"reason": "",
+				"reject": false
+			},
+			"id": "C1",
+			"reason": "",
+			"regenerations": 0,
+			"reject_correct": true,
+			"retrieved_example_ids": [
+				"B1",
+				"B4",
+				"B6"
+			],
+			"run": 2,
+			"text": "Deal 6 damage.",
+			"time_ms": 25468,
+			"type": "normal"
+		},
+		{
+			"ai_output": null,
+			"attempts": [
+				{
+					"attempt": 0,
+					"check": "ok",
+					"output": {
+						"effects": [
+							{
+								"condition": "none",
+								"n": 5,
+								"target": "single",
+								"type": "HEAL"
+							}
+						],
+						"reason": "",
+						"reject": false
+					},
+					"parse_ok": true,
+					"reason": ""
+				}
+			],
+			"code_action": "ok",
+			"correct": true,
+			"cost_correct": true,
+			"effects_correct": true,
+			"error": null,
+			"expected_cost": 5,
+			"expected_effects": [
+				{
+					"condition": "none",
+					"n": 5,
+					"target": "single",
+					"type": "HEAL"
+				}
+			],
+			"expected_reject": false,
+			"fallback_used": false,
+			"final_cost": 5,
+			"final_effects": [
+				{
+					"condition": "none",
+					"n": 5,
+					"target": "single",
+					"type": "HEAL"
+				}
+			],
+			"final_reject": false,
+			"first_output": {
+				"effects": [
+					{
+						"condition": "none",
+						"n": 5,
+						"target": "single",
+						"type": "HEAL"
+					}
+				],
+				"reason": "",
+				"reject": false
+			},
+			"id": "C2",
+			"reason": "",
+			"regenerations": 0,
+			"reject_correct": true,
+			"retrieved_example_ids": [
+				"B2",
+				"B3",
+				"B7"
+			],
+			"run": 2,
+			"text": "Heal 5 health.",
+			"time_ms": 6706,
+			"type": "normal"
+		},
+		{
+			"ai_output": null,
+			"attempts": [
+				{
+					"attempt": 0,
+					"check": "ok",
+					"output": {
+						"effects": [
+							{
+								"condition": "none",
+								"n": 8,
+								"target": "single",
+								"type": "SHIELD"
+							}
+						],
+						"reason": "",
+						"reject": false
+					},
+					"parse_ok": true,
+					"reason": ""
+				}
+			],
+			"code_action": "ok",
+			"correct": true,
+			"cost_correct": true,
+			"effects_correct": true,
+			"error": null,
+			"expected_cost": 8,
+			"expected_effects": [
+				{
+					"condition": "none",
+					"n": 8,
+					"target": "single",
+					"type": "SHIELD"
+				}
+			],
+			"expected_reject": false,
+			"fallback_used": false,
+			"final_cost": 8,
+			"final_effects": [
+				{
+					"condition": "none",
+					"n": 8,
+					"target": "single",
+					"type": "SHIELD"
+				}
+			],
+			"final_reject": false,
+			"first_output": {
+				"effects": [
+					{
+						"condition": "none",
+						"n": 8,
+						"target": "single",
+						"type": "SHIELD"
+					}
+				],
+				"reason": "",
+				"reject": false
+			},
+			"id": "C3",
+			"reason": "",
+			"regenerations": 0,
+			"reject_correct": true,
+			"retrieved_example_ids": [
+				"B3",
+				"B1",
+				"B2"
+			],
+			"run": 2,
+			"text": "Gain 8 block.",
+			"time_ms": 814,
+			"type": "normal"
+		},
+		{
+			"ai_output": null,
+			"attempts": [
+				{
+					"attempt": 0,
+					"check": "ok",
+					"output": {
+						"effects": [
+							{
+								"condition": "none",
+								"n": 2,
+								"target": "single",
+								"type": "DRAW"
+							}
+						],
+						"reason": "",
+						"reject": false
+					},
+					"parse_ok": true,
+					"reason": ""
+				}
+			],
+			"code_action": "ok",
+			"correct": true,
+			"cost_correct": true,
+			"effects_correct": true,
+			"error": null,
+			"expected_cost": 4,
+			"expected_effects": [
+				{
+					"condition": "none",
+					"n": 2,
+					"target": "single",
+					"type": "DRAW"
+				}
+			],
+			"expected_reject": false,
+			"fallback_used": false,
+			"final_cost": 4,
+			"final_effects": [
+				{
+					"condition": "none",
+					"n": 2,
+					"target": "single",
+					"type": "DRAW"
+				}
+			],
+			"final_reject": false,
+			"first_output": {
+				"effects": [
+					{
+						"condition": "none",
+						"n": 2,
+						"target": "single",
+						"type": "DRAW"
+					}
+				],
+				"reason": "",
+				"reject": false
+			},
+			"id": "C4",
+			"reason": "",
+			"regenerations": 0,
+			"reject_correct": true,
+			"retrieved_example_ids": [
+				"B4",
+				"B5",
+				"B6"
+			],
+			"run": 2,
+			"text": "Draw 2 cards.",
+			"time_ms": 828,
+			"type": "normal"
+		},
+		{
+			"ai_output": null,
+			"attempts": [
+				{
+					"attempt": 0,
+					"check": "ok",
+					"output": {
+						"effects": [
+							{
+								"condition": "none",
+								"n": 3,
+								"target": "single",
+								"type": "BURN"
+							}
+						],
+						"reason": "",
+						"reject": false
+					},
+					"parse_ok": true,
+					"reason": ""
+				}
+			],
+			"code_action": "ok",
+			"correct": true,
+			"cost_correct": true,
+			"effects_correct": true,
+			"error": null,
+			"expected_cost": 6,
+			"expected_effects": [
+				{
+					"condition": "none",
+					"n": 3,
+					"target": "single",
+					"type": "BURN"
+				}
+			],
+			"expected_reject": false,
+			"fallback_used": false,
+			"final_cost": 6,
+			"final_effects": [
+				{
+					"condition": "none",
+					"n": 3,
+					"target": "single",
+					"type": "BURN"
+				}
+			],
+			"final_reject": false,
+			"first_output": {
+				"effects": [
+					{
+						"condition": "none",
+						"n": 3,
+						"target": "single",
+						"type": "BURN"
+					}
+				],
+				"reason": "",
+				"reject": false
+			},
+			"id": "C5",
+			"reason": "",
+			"regenerations": 0,
+			"reject_correct": true,
+			"retrieved_example_ids": [
+				"B5",
+				"B7",
+				"B8"
+			],
+			"run": 2,
+			"text": "Burn the enemy for 3 turns.",
+			"time_ms": 780,
+			"type": "normal"
+		},
+		{
+			"ai_output": null,
+			"attempts": [
+				{
+					"attempt": 0,
+					"check": "ok",
+					"output": {
+						"effects": [
+							{
+								"condition": "none",
+								"n": 3,
+								"target": "all",
+								"type": "DAMAGE"
+							}
+						],
+						"reason": "",
+						"reject": false
+					},
+					"parse_ok": true,
+					"reason": ""
+				}
+			],
+			"code_action": "ok",
+			"correct": true,
+			"cost_correct": true,
+			"effects_correct": true,
+			"error": null,
+			"expected_cost": 6,
+			"expected_effects": [
+				{
+					"condition": "none",
+					"n": 3,
+					"target": "all",
+					"type": "DAMAGE"
+				}
+			],
+			"expected_reject": false,
+			"fallback_used": false,
+			"final_cost": 6,
+			"final_effects": [
+				{
+					"condition": "none",
+					"n": 3,
+					"target": "all",
+					"type": "DAMAGE"
+				}
+			],
+			"final_reject": false,
+			"first_output": {
+				"effects": [
+					{
+						"condition": "none",
+						"n": 3,
+						"target": "all",
+						"type": "DAMAGE"
+					}
+				],
+				"reason": "",
+				"reject": false
+			},
+			"id": "C6",
+			"reason": "",
+			"regenerations": 0,
+			"reject_correct": true,
+			"retrieved_example_ids": [
+				"B4",
+				"B1",
+				"B6"
+			],
+			"run": 2,
+			"text": "Deal 3 damage to all enemies.",
+			"time_ms": 863,
+			"type": "normal"
+		},
+		{
+			"ai_output": null,
+			"attempts": [
+				{
+					"attempt": 0,
+					"check": "ok",
+					"output": {
+						"effects": [
+							{
+								"condition": "none",
+								"n": 5,
+								"target": "single",
+								"type": "DAMAGE"
+							},
+							{
+								"condition": "none",
+								"n": 5,
+								"target": "single",
+								"type": "SHIELD"
+							}
+						],
+						"reason": "",
+						"reject": false
+					},
+					"parse_ok": true,
+					"reason": ""
+				}
+			],
+			"code_action": "ok",
+			"correct": true,
+			"cost_correct": true,
+			"effects_correct": true,
+			"error": null,
+			"expected_cost": 10,
+			"expected_effects": [
+				{
+					"condition": "none",
+					"n": 5,
+					"target": "single",
+					"type": "DAMAGE"
+				},
+				{
+					"condition": "none",
+					"n": 5,
+					"target": "single",
+					"type": "SHIELD"
+				}
+			],
+			"expected_reject": false,
+			"fallback_used": false,
+			"final_cost": 10,
+			"final_effects": [
+				{
+					"condition": "none",
+					"n": 5,
+					"target": "single",
+					"type": "DAMAGE"
+				},
+				{
+					"condition": "none",
+					"n": 5,
+					"target": "single",
+					"type": "SHIELD"
+				}
+			],
+			"final_reject": false,
+			"first_output": {
+				"effects": [
+					{
+						"condition": "none",
+						"n": 5,
+						"target": "single",
+						"type": "DAMAGE"
+					},
+					{
+						"condition": "none",
+						"n": 5,
+						"target": "single",
+						"type": "SHIELD"
+					}
+				],
+				"reason": "",
+				"reject": false
+			},
+			"id": "C7",
+			"reason": "",
+			"regenerations": 0,
+			"reject_correct": true,
+			"retrieved_example_ids": [
+				"B4",
+				"B1",
+				"B6"
+			],
+			"run": 2,
+			"text": "Deal 5 damage and gain 5 shield.",
+			"time_ms": 1988,
+			"type": "normal"
+		},
+		{
+			"ai_output": null,
+			"attempts": [
+				{
+					"attempt": 0,
+					"check": "ok",
+					"output": {
+						"effects": [
+							{
+								"condition": "IF_ENEMY_BURNING",
+								"n": 8,
+								"target": "single",
+								"type": "DAMAGE"
+							}
+						],
+						"reason": "",
+						"reject": false
+					},
+					"parse_ok": true,
+					"reason": ""
+				}
+			],
+			"code_action": "ok",
+			"correct": true,
+			"cost_correct": true,
+			"effects_correct": true,
+			"error": null,
+			"expected_cost": 4,
+			"expected_effects": [
+				{
+					"condition": "IF_ENEMY_BURNING",
+					"n": 8,
+					"target": "single",
+					"type": "DAMAGE"
+				}
+			],
+			"expected_reject": false,
+			"fallback_used": false,
+			"final_cost": 4,
+			"final_effects": [
+				{
+					"condition": "IF_ENEMY_BURNING",
+					"n": 8,
+					"target": "single",
+					"type": "DAMAGE"
+				}
+			],
+			"final_reject": false,
+			"first_output": {
+				"effects": [
+					{
+						"condition": "IF_ENEMY_BURNING",
+						"n": 8,
+						"target": "single",
+						"type": "DAMAGE"
+					}
+				],
+				"reason": "",
+				"reject": false
+			},
+			"id": "C8",
+			"reason": "",
+			"regenerations": 0,
+			"reject_correct": true,
+			"retrieved_example_ids": [
+				"B6",
+				"B1",
+				"B4"
+			],
+			"run": 2,
+			"text": "If the enemy is burning, deal 8 damage.",
+			"time_ms": 973,
+			"type": "normal"
+		},
+		{
+			"ai_output": null,
+			"attempts": [
+				{
+					"attempt": 0,
+					"check": "ok",
+					"output": {
+						"effects": [
+							{
+								"condition": "IF_MY_HP_BELOW_HALF",
+								"n": 10,
+								"target": "single",
+								"type": "HEAL"
+							}
+						],
+						"reason": "",
+						"reject": false
+					},
+					"parse_ok": true,
+					"reason": ""
+				}
+			],
+			"code_action": "ok",
+			"correct": true,
+			"cost_correct": true,
+			"effects_correct": true,
+			"error": null,
+			"expected_cost": 5,
+			"expected_effects": [
+				{
+					"condition": "IF_MY_HP_BELOW_HALF",
+					"n": 10,
+					"target": "single",
+					"type": "HEAL"
+				}
+			],
+			"expected_reject": false,
+			"fallback_used": false,
+			"final_cost": 5,
+			"final_effects": [
+				{
+					"condition": "IF_MY_HP_BELOW_HALF",
+					"n": 10,
+					"target": "single",
+					"type": "HEAL"
+				}
+			],
+			"final_reject": false,
+			"first_output": {
+				"effects": [
+					{
+						"condition": "IF_MY_HP_BELOW_HALF",
+						"n": 10,
+						"target": "single",
+						"type": "HEAL"
+					}
+				],
+				"reason": "",
+				"reject": false
+			},
+			"id": "C9",
+			"reason": "",
+			"regenerations": 0,
+			"reject_correct": true,
+			"retrieved_example_ids": [
+				"B2",
+				"B7",
+				"B1"
+			],
+			"run": 2,
+			"text": "If my health is below half, restore 10 health.",
+			"time_ms": 1366,
+			"type": "normal"
+		},
+		{
+			"ai_output": null,
+			"attempts": [
+				{
+					"attempt": 0,
+					"check": "ok",
+					"output": {
+						"effects": [],
+						"reason": "WEAKEN effect can only target a single enemy.",
+						"reject": true
+					},
+					"parse_ok": true,
+					"reason": ""
+				}
+			],
+			"code_action": "ok",
+			"correct": false,
+			"cost_correct": false,
+			"effects_correct": false,
+			"error": null,
+			"expected_cost": 8,
+			"expected_effects": [
+				{
+					"condition": "none",
+					"n": 2,
+					"target": "all",
+					"type": "WEAKEN"
+				}
+			],
+			"expected_reject": false,
+			"fallback_used": false,
+			"final_cost": null,
+			"final_effects": [],
+			"final_reject": true,
+			"first_output": {
+				"effects": [],
+				"reason": "WEAKEN effect can only target a single enemy.",
+				"reject": true
+			},
+			"id": "C10",
+			"reason": "WEAKEN effect can only target a single enemy.",
+			"regenerations": 0,
+			"reject_correct": false,
+			"retrieved_example_ids": [
+				"B5",
+				"B8",
+				"B6"
+			],
+			"run": 2,
+			"text": "Weaken all enemies for 2 turns.",
+			"time_ms": 877,
+			"type": "normal"
+		},
+		{
+			"ai_output": null,
+			"attempts": [
+				{
+					"attempt": 0,
+					"check": "ok",
+					"output": {
+						"effects": [
+							{
+								"condition": "none",
+								"n": 4,
+								"target": "single",
+								"type": "DAMAGE"
+							},
+							{
+								"condition": "none",
+								"n": 1,
+								"target": "single",
+								"type": "DRAW"
+							}
+						],
+						"reason": "",
+						"reject": false
+					},
+					"parse_ok": true,
+					"reason": ""
+				}
+			],
+			"code_action": "ok",
+			"correct": true,
+			"cost_correct": true,
+			"effects_correct": true,
+			"error": null,
+			"expected_cost": 6,
+			"expected_effects": [
+				{
+					"condition": "none",
+					"n": 4,
+					"target": "single",
+					"type": "DAMAGE"
+				},
+				{
+					"condition": "none",
+					"n": 1,
+					"target": "single",
+					"type": "DRAW"
+				}
+			],
+			"expected_reject": false,
+			"fallback_used": false,
+			"final_cost": 6,
+			"final_effects": [
+				{
+					"condition": "none",
+					"n": 4,
+					"target": "single",
+					"type": "DAMAGE"
+				},
+				{
+					"condition": "none",
+					"n": 1,
+					"target": "single",
+					"type": "DRAW"
+				}
+			],
+			"final_reject": false,
+			"first_output": {
+				"effects": [
+					{
+						"condition": "none",
+						"n": 4,
+						"target": "single",
+						"type": "DAMAGE"
+					},
+					{
+						"condition": "none",
+						"n": 1,
+						"target": "single",
+						"type": "DRAW"
+					}
+				],
+				"reason": "",
+				"reject": false
+			},
+			"id": "C11",
+			"reason": "",
+			"regenerations": 0,
+			"reject_correct": true,
+			"retrieved_example_ids": [
+				"B4",
+				"B5",
+				"B8"
+			],
+			"run": 2,
+			"text": "Hit the enemy for 4, then draw a card.",
+			"time_ms": 973,
+			"type": "normal"
+		},
+		{
+			"ai_output": null,
+			"attempts": [
+				{
+					"attempt": 0,
+					"check": "ok",
+					"output": {
+						"effects": [
+							{
+								"condition": "none",
+								"n": 1,
+								"target": "all",
+								"type": "BURN"
+							},
+							{
+								"condition": "none",
+								"n": 2,
+								"target": "all",
+								"type": "DAMAGE"
+							}
+						],
+						"reason": "",
+						"reject": false
+					},
+					"parse_ok": true,
+					"reason": ""
+				}
+			],
+			"code_action": "ok",
+			"correct": true,
+			"cost_correct": true,
+			"effects_correct": true,
+			"error": null,
+			"expected_cost": 8,
+			"expected_effects": [
+				{
+					"condition": "none",
+					"n": 1,
+					"target": "all",
+					"type": "BURN"
+				},
+				{
+					"condition": "none",
+					"n": 2,
+					"target": "all",
+					"type": "DAMAGE"
+				}
+			],
+			"expected_reject": false,
+			"fallback_used": false,
+			"final_cost": 8,
+			"final_effects": [
+				{
+					"condition": "none",
+					"n": 1,
+					"target": "all",
+					"type": "BURN"
+				},
+				{
+					"condition": "none",
+					"n": 2,
+					"target": "all",
+					"type": "DAMAGE"
+				}
+			],
+			"final_reject": false,
+			"first_output": {
+				"effects": [
+					{
+						"condition": "none",
+						"n": 1,
+						"target": "all",
+						"type": "BURN"
+					},
+					{
+						"condition": "none",
+						"n": 2,
+						"target": "all",
+						"type": "DAMAGE"
+					}
+				],
+				"reason": "",
+				"reject": false
+			},
+			"id": "C12",
+			"reason": "",
+			"regenerations": 0,
+			"reject_correct": true,
+			"retrieved_example_ids": [
+				"B6",
+				"B5",
+				"B8"
+			],
+			"run": 2,
+			"text": "Set every enemy on fire for 1 turn and deal 2 damage to each of them.",
+			"time_ms": 807,
+			"type": "normal"
+		},
+		{
+			"ai_output": null,
+			"attempts": [
+				{
+					"attempt": 0,
+					"check": "n_out_of_range",
+					"output": {
+						"effects": [
+							{
+								"condition": "none",
+								"n": 999,
+								"target": "all",
+								"type": "DAMAGE"
+							}
+						],
+						"reason": "",
+						"reject": false
+					},
+					"parse_ok": true,
+					"reason": "n=999 is outside 1 to 30."
+				}
+			],
+			"code_action": "n_out_of_range",
+			"correct": true,
+			"cost_correct": null,
+			"effects_correct": null,
+			"error": null,
+			"expected_cost": null,
+			"expected_effects": [],
+			"expected_reject": true,
+			"fallback_used": false,
+			"final_cost": null,
+			"final_effects": [],
+			"final_reject": true,
+			"first_output": {
+				"effects": [
+					{
+						"condition": "none",
+						"n": 999,
+						"target": "all",
+						"type": "DAMAGE"
+					}
+				],
+				"reason": "",
+				"reject": false
+			},
+			"id": "X1",
+			"reason": "n=999 is outside 1 to 30.",
+			"regenerations": 0,
+			"reject_correct": true,
+			"retrieved_example_ids": [
+				"B1",
+				"B4",
+				"B6"
+			],
+			"run": 2,
+			"text": "Deal 999 damage to everyone.",
+			"time_ms": 1007,
+			"type": "trick"
+		},
+		{
+			"ai_output": null,
+			"attempts": [
+				{
+					"attempt": 0,
+					"check": "ok",
+					"output": {
+						"effects": [
+							{
+								"condition": "none",
+								"n": 20,
+								"target": "single",
+								"type": "DAMAGE"
+							}
+						],
+						"reason": "",
+						"reject": false
+					},
+					"parse_ok": true,
+					"reason": ""
+				}
+			],
+			"code_action": "ok",
+			"correct": true,
+			"cost_correct": true,
+			"effects_correct": true,
+			"error": null,
+			"expected_cost": 20,
+			"expected_effects": [
+				{
+					"condition": "none",
+					"n": 20,
+					"target": "single",
+					"type": "DAMAGE"
+				}
+			],
+			"expected_reject": false,
+			"fallback_used": false,
+			"final_cost": 20,
+			"final_effects": [
+				{
+					"condition": "none",
+					"n": 20,
+					"target": "single",
+					"type": "DAMAGE"
+				}
+			],
+			"final_reject": false,
+			"first_output": {
+				"effects": [
+					{
+						"condition": "none",
+						"n": 20,
+						"target": "single",
+						"type": "DAMAGE"
+					}
+				],
+				"reason": "",
+				"reject": false
+			},
+			"id": "X2",
+			"reason": "",
+			"regenerations": 0,
+			"reject_correct": true,
+			"retrieved_example_ids": [
+				"B4",
+				"B1",
+				"B6"
+			],
+			"run": 2,
+			"text": "This card costs 0 and deals 20 damage.",
+			"time_ms": 814,
+			"type": "trick"
+		},
+		{
+			"ai_output": null,
+			"attempts": [
+				{
+					"attempt": 0,
+					"check": "ok",
+					"output": {
+						"effects": [],
+						"reason": "Winning the game instantly is not a supported effect type.",
+						"reject": true
+					},
+					"parse_ok": true,
+					"reason": ""
+				}
+			],
+			"code_action": "ok",
+			"correct": true,
+			"cost_correct": null,
+			"effects_correct": null,
+			"error": null,
+			"expected_cost": null,
+			"expected_effects": [],
+			"expected_reject": true,
+			"fallback_used": false,
+			"final_cost": null,
+			"final_effects": [],
+			"final_reject": true,
+			"first_output": {
+				"effects": [],
+				"reason": "Winning the game instantly is not a supported effect type.",
+				"reject": true
+			},
+			"id": "X3",
+			"reason": "Winning the game instantly is not a supported effect type.",
+			"regenerations": 0,
+			"reject_correct": true,
+			"retrieved_example_ids": [
+				"B1",
+				"B2",
+				"B3"
+			],
+			"run": 2,
+			"text": "Instantly win the game.",
+			"time_ms": 814,
+			"type": "trick"
+		},
+		{
+			"ai_output": null,
+			"attempts": [
+				{
+					"attempt": 0,
+					"check": "ok",
+					"output": {
+						"effects": [
+							{
+								"condition": "none",
+								"n": 2,
+								"target": "all",
+								"type": "BURN"
+							}
+						],
+						"reason": "",
+						"reject": false
+					},
+					"parse_ok": true,
+					"reason": ""
+				}
+			],
+			"code_action": "ok",
+			"correct": true,
+			"cost_correct": true,
+			"effects_correct": true,
+			"error": null,
+			"expected_cost": 8,
+			"expected_effects": [
+				{
+					"condition": "none",
+					"n": 2,
+					"target": "all",
+					"type": "BURN"
+				}
+			],
+			"expected_reject": false,
+			"fallback_used": false,
+			"final_cost": 8,
+			"final_effects": [
+				{
+					"condition": "none",
+					"n": 2,
+					"target": "all",
+					"type": "BURN"
+				}
+			],
+			"final_reject": false,
+			"first_output": {
+				"effects": [
+					{
+						"condition": "none",
+						"n": 2,
+						"target": "all",
+						"type": "BURN"
+					}
+				],
+				"reason": "",
+				"reject": false
+			},
+			"id": "H1",
+			"reason": "",
+			"regenerations": 0,
+			"reject_correct": true,
+			"retrieved_example_ids": [
+				"B5",
+				"B6",
+				"B8"
+			],
+			"run": 2,
+			"text": "Torch every foe for two turns.",
+			"time_ms": 952,
+			"type": "hard"
+		},
+		{
+			"ai_output": null,
+			"attempts": [
+				{
+					"attempt": 0,
+					"check": "ok",
+					"output": {
+						"effects": [
+							{
+								"condition": "IF_ENEMY_BURNING",
+								"n": 6,
+								"target": "all",
+								"type": "DAMAGE"
+							}
+						],
+						"reason": "",
+						"reject": false
+					},
+					"parse_ok": true,
+					"reason": ""
+				}
+			],
+			"code_action": "ok",
+			"correct": true,
+			"cost_correct": true,
+			"effects_correct": true,
+			"error": null,
+			"expected_cost": 6,
+			"expected_effects": [
+				{
+					"condition": "IF_ENEMY_BURNING",
+					"n": 6,
+					"target": "all",
+					"type": "DAMAGE"
+				}
+			],
+			"expected_reject": false,
+			"fallback_used": false,
+			"final_cost": 6,
+			"final_effects": [
+				{
+					"condition": "IF_ENEMY_BURNING",
+					"n": 6,
+					"target": "all",
+					"type": "DAMAGE"
+				}
+			],
+			"final_reject": false,
+			"first_output": {
+				"effects": [
+					{
+						"condition": "IF_ENEMY_BURNING",
+						"n": 6,
+						"target": "all",
+						"type": "DAMAGE"
+					}
+				],
+				"reason": "",
+				"reject": false
+			},
+			"id": "H2",
+			"reason": "",
+			"regenerations": 0,
+			"reject_correct": true,
+			"retrieved_example_ids": [
+				"B6",
+				"B1",
+				"B4"
+			],
+			"run": 2,
+			"text": "If the enemy is burning, deal 6 damage to all enemies.",
+			"time_ms": 17650,
+			"type": "hard"
+		},
+		{
+			"ai_output": null,
+			"attempts": [
+				{
+					"attempt": 0,
+					"check": "ok",
+					"output": {
+						"effects": [
+							{
+								"condition": "none",
+								"n": 3,
+								"target": "all",
+								"type": "DAMAGE"
+							},
+							{
+								"condition": "none",
+								"n": 6,
+								"target": "single",
+								"type": "SHIELD"
+							}
+						],
+						"reason": "",
+						"reject": false
+					},
+					"parse_ok": true,
+					"reason": ""
+				}
+			],
+			"code_action": "ok",
+			"correct": true,
+			"cost_correct": true,
+			"effects_correct": true,
+			"error": null,
+			"expected_cost": 12,
+			"expected_effects": [
+				{
+					"condition": "none",
+					"n": 3,
+					"target": "all",
+					"type": "DAMAGE"
+				},
+				{
+					"condition": "none",
+					"n": 6,
+					"target": "single",
+					"type": "SHIELD"
+				}
+			],
+			"expected_reject": false,
+			"fallback_used": false,
+			"final_cost": 12,
+			"final_effects": [
+				{
+					"condition": "none",
+					"n": 3,
+					"target": "all",
+					"type": "DAMAGE"
+				},
+				{
+					"condition": "none",
+					"n": 6,
+					"target": "single",
+					"type": "SHIELD"
+				}
+			],
+			"final_reject": false,
+			"first_output": {
+				"effects": [
+					{
+						"condition": "none",
+						"n": 3,
+						"target": "all",
+						"type": "DAMAGE"
+					},
+					{
+						"condition": "none",
+						"n": 6,
+						"target": "single",
+						"type": "SHIELD"
+					}
+				],
+				"reason": "",
+				"reject": false
+			},
+			"id": "H3",
+			"reason": "",
+			"regenerations": 0,
+			"reject_correct": true,
+			"retrieved_example_ids": [
+				"B4",
+				"B5",
+				"B7"
+			],
+			"run": 2,
+			"text": "Smack each enemy for 3 and put up a 6-point barrier.",
+			"time_ms": 11275,
+			"type": "hard"
+		},
+		{
+			"ai_output": null,
+			"attempts": [
+				{
+					"attempt": 0,
+					"check": "n_out_of_range",
+					"output": {
+						"effects": [
+							{
+								"condition": "none",
+								"n": 31,
+								"target": "single",
+								"type": "DAMAGE"
+							}
+						],
+						"reason": "",
+						"reject": false
+					},
+					"parse_ok": true,
+					"reason": "n=31 is outside 1 to 30."
+				}
+			],
+			"code_action": "n_out_of_range",
+			"correct": true,
+			"cost_correct": null,
+			"effects_correct": null,
+			"error": null,
+			"expected_cost": null,
+			"expected_effects": [],
+			"expected_reject": true,
+			"fallback_used": false,
+			"final_cost": null,
+			"final_effects": [],
+			"final_reject": true,
+			"first_output": {
+				"effects": [
+					{
+						"condition": "none",
+						"n": 31,
+						"target": "single",
+						"type": "DAMAGE"
+					}
+				],
+				"reason": "",
+				"reject": false
+			},
+			"id": "H4",
+			"reason": "n=31 is outside 1 to 30.",
+			"regenerations": 0,
+			"reject_correct": true,
+			"retrieved_example_ids": [
+				"B1",
+				"B4",
+				"B6"
+			],
+			"run": 2,
+			"text": "Deal 31 damage.",
+			"time_ms": 1042,
+			"type": "hard"
+		},
+		{
+			"ai_output": null,
+			"attempts": [
+				{
+					"attempt": 0,
+					"check": "ok",
+					"output": {
+						"effects": [
+							{
+								"condition": "none",
+								"n": 30,
+								"target": "all",
+								"type": "DAMAGE"
+							}
+						],
+						"reason": "",
+						"reject": false
+					},
+					"parse_ok": true,
+					"reason": ""
+				}
+			],
+			"code_action": "ok",
+			"correct": true,
+			"cost_correct": true,
+			"effects_correct": true,
+			"error": null,
+			"expected_cost": 60,
+			"expected_effects": [
+				{
+					"condition": "none",
+					"n": 30,
+					"target": "all",
+					"type": "DAMAGE"
+				}
+			],
+			"expected_reject": false,
+			"fallback_used": false,
+			"final_cost": 60,
+			"final_effects": [
+				{
+					"condition": "none",
+					"n": 30,
+					"target": "all",
+					"type": "DAMAGE"
+				}
+			],
+			"final_reject": false,
+			"first_output": {
+				"effects": [
+					{
+						"condition": "none",
+						"n": 30,
+						"target": "all",
+						"type": "DAMAGE"
+					}
+				],
+				"reason": "",
+				"reject": false
+			},
+			"id": "H5",
+			"reason": "",
+			"regenerations": 0,
+			"reject_correct": true,
+			"retrieved_example_ids": [
+				"B1",
+				"B4",
+				"B6"
+			],
+			"run": 2,
+			"text": "Deal 30 damage to all enemies.",
+			"time_ms": 2270,
+			"type": "hard"
+		},
+		{
+			"ai_output": null,
+			"attempts": [
+				{
+					"attempt": 0,
+					"check": "ok",
+					"output": {
+						"effects": [
+							{
+								"condition": "IF_MY_HP_BELOW_HALF",
+								"n": 3,
+								"target": "single",
+								"type": "DRAW"
+							}
+						],
+						"reason": "",
+						"reject": false
+					},
+					"parse_ok": true,
+					"reason": ""
+				}
+			],
+			"code_action": "ok",
+			"correct": true,
+			"cost_correct": true,
+			"effects_correct": true,
+			"error": null,
+			"expected_cost": 3,
+			"expected_effects": [
+				{
+					"condition": "IF_MY_HP_BELOW_HALF",
+					"n": 3,
+					"target": "single",
+					"type": "DRAW"
+				}
+			],
+			"expected_reject": false,
+			"fallback_used": false,
+			"final_cost": 3,
+			"final_effects": [
+				{
+					"condition": "IF_MY_HP_BELOW_HALF",
+					"n": 3,
+					"target": "single",
+					"type": "DRAW"
+				}
+			],
+			"final_reject": false,
+			"first_output": {
+				"effects": [
+					{
+						"condition": "IF_MY_HP_BELOW_HALF",
+						"n": 3,
+						"target": "single",
+						"type": "DRAW"
+					}
+				],
+				"reason": "",
+				"reject": false
+			},
+			"id": "H6",
+			"reason": "",
+			"regenerations": 0,
+			"reject_correct": true,
+			"retrieved_example_ids": [
+				"B2",
+				"B4",
+				"B1"
+			],
+			"run": 2,
+			"text": "When I'm under half health, draw three cards.",
+			"time_ms": 966,
+			"type": "hard"
+		},
+		{
+			"ai_output": null,
+			"attempts": [
+				{
+					"attempt": 0,
+					"check": "ok",
+					"output": {
+						"effects": [
+							{
+								"condition": "none",
+								"n": 6,
+								"target": "single",
+								"type": "DAMAGE"
+							}
+						],
+						"reason": "",
+						"reject": false
+					},
+					"parse_ok": true,
+					"reason": ""
+				}
+			],
+			"code_action": "ok",
+			"correct": true,
+			"cost_correct": true,
+			"effects_correct": true,
+			"error": null,
+			"expected_cost": 6,
+			"expected_effects": [
+				{
+					"condition": "none",
+					"n": 6,
+					"target": "single",
+					"type": "DAMAGE"
+				}
+			],
+			"expected_reject": false,
+			"fallback_used": false,
+			"final_cost": 6,
+			"final_effects": [
+				{
+					"condition": "none",
+					"n": 6,
+					"target": "single",
+					"type": "DAMAGE"
+				}
+			],
+			"final_reject": false,
+			"first_output": {
+				"effects": [
+					{
+						"condition": "none",
+						"n": 6,
+						"target": "single",
+						"type": "DAMAGE"
+					}
+				],
+				"reason": "",
+				"reject": false
+			},
+			"id": "C1",
+			"reason": "",
+			"regenerations": 0,
+			"reject_correct": true,
+			"retrieved_example_ids": [
+				"B1",
+				"B4",
+				"B6"
+			],
+			"run": 3,
+			"text": "Deal 6 damage.",
+			"time_ms": 939,
+			"type": "normal"
+		},
+		{
+			"ai_output": null,
+			"attempts": [
+				{
+					"attempt": 0,
+					"check": "ok",
+					"output": {
+						"effects": [
+							{
+								"condition": "none",
+								"n": 5,
+								"target": "single",
+								"type": "HEAL"
+							}
+						],
+						"reason": "",
+						"reject": false
+					},
+					"parse_ok": true,
+					"reason": ""
+				}
+			],
+			"code_action": "ok",
+			"correct": true,
+			"cost_correct": true,
+			"effects_correct": true,
+			"error": null,
+			"expected_cost": 5,
+			"expected_effects": [
+				{
+					"condition": "none",
+					"n": 5,
+					"target": "single",
+					"type": "HEAL"
+				}
+			],
+			"expected_reject": false,
+			"fallback_used": false,
+			"final_cost": 5,
+			"final_effects": [
+				{
+					"condition": "none",
+					"n": 5,
+					"target": "single",
+					"type": "HEAL"
+				}
+			],
+			"final_reject": false,
+			"first_output": {
+				"effects": [
+					{
+						"condition": "none",
+						"n": 5,
+						"target": "single",
+						"type": "HEAL"
+					}
+				],
+				"reason": "",
+				"reject": false
+			},
+			"id": "C2",
+			"reason": "",
+			"regenerations": 0,
+			"reject_correct": true,
+			"retrieved_example_ids": [
+				"B2",
+				"B3",
+				"B7"
+			],
+			"run": 3,
+			"text": "Heal 5 health.",
+			"time_ms": 1132,
+			"type": "normal"
+		},
+		{
+			"ai_output": null,
+			"attempts": [
+				{
+					"attempt": 0,
+					"check": "ok",
+					"output": {
+						"effects": [
+							{
+								"condition": "none",
+								"n": 8,
+								"target": "single",
+								"type": "SHIELD"
+							}
+						],
+						"reason": "",
+						"reject": false
+					},
+					"parse_ok": true,
+					"reason": ""
+				}
+			],
+			"code_action": "ok",
+			"correct": true,
+			"cost_correct": true,
+			"effects_correct": true,
+			"error": null,
+			"expected_cost": 8,
+			"expected_effects": [
+				{
+					"condition": "none",
+					"n": 8,
+					"target": "single",
+					"type": "SHIELD"
+				}
+			],
+			"expected_reject": false,
+			"fallback_used": false,
+			"final_cost": 8,
+			"final_effects": [
+				{
+					"condition": "none",
+					"n": 8,
+					"target": "single",
+					"type": "SHIELD"
+				}
+			],
+			"final_reject": false,
+			"first_output": {
+				"effects": [
+					{
+						"condition": "none",
+						"n": 8,
+						"target": "single",
+						"type": "SHIELD"
+					}
+				],
+				"reason": "",
+				"reject": false
+			},
+			"id": "C3",
+			"reason": "",
+			"regenerations": 0,
+			"reject_correct": true,
+			"retrieved_example_ids": [
+				"B3",
+				"B1",
+				"B2"
+			],
+			"run": 3,
+			"text": "Gain 8 block.",
+			"time_ms": 739,
+			"type": "normal"
+		},
+		{
+			"ai_output": null,
+			"attempts": [
+				{
+					"attempt": 0,
+					"check": "ok",
+					"output": {
+						"effects": [
+							{
+								"condition": "none",
+								"n": 2,
+								"target": "single",
+								"type": "DRAW"
+							}
+						],
+						"reason": "",
+						"reject": false
+					},
+					"parse_ok": true,
+					"reason": ""
+				}
+			],
+			"code_action": "ok",
+			"correct": true,
+			"cost_correct": true,
+			"effects_correct": true,
+			"error": null,
+			"expected_cost": 4,
+			"expected_effects": [
+				{
+					"condition": "none",
+					"n": 2,
+					"target": "single",
+					"type": "DRAW"
+				}
+			],
+			"expected_reject": false,
+			"fallback_used": false,
+			"final_cost": 4,
+			"final_effects": [
+				{
+					"condition": "none",
+					"n": 2,
+					"target": "single",
+					"type": "DRAW"
+				}
+			],
+			"final_reject": false,
+			"first_output": {
+				"effects": [
+					{
+						"condition": "none",
+						"n": 2,
+						"target": "single",
+						"type": "DRAW"
+					}
+				],
+				"reason": "",
+				"reject": false
+			},
+			"id": "C4",
+			"reason": "",
+			"regenerations": 0,
+			"reject_correct": true,
+			"retrieved_example_ids": [
+				"B4",
+				"B5",
+				"B6"
+			],
+			"run": 3,
+			"text": "Draw 2 cards.",
+			"time_ms": 3140,
+			"type": "normal"
+		},
+		{
+			"ai_output": null,
+			"attempts": [
+				{
+					"attempt": 0,
+					"check": "ok",
+					"output": {
+						"effects": [
+							{
+								"condition": "none",
+								"n": 3,
+								"target": "single",
+								"type": "BURN"
+							}
+						],
+						"reason": "",
+						"reject": false
+					},
+					"parse_ok": true,
+					"reason": ""
+				}
+			],
+			"code_action": "ok",
+			"correct": true,
+			"cost_correct": true,
+			"effects_correct": true,
+			"error": null,
+			"expected_cost": 6,
+			"expected_effects": [
+				{
+					"condition": "none",
+					"n": 3,
+					"target": "single",
+					"type": "BURN"
+				}
+			],
+			"expected_reject": false,
+			"fallback_used": false,
+			"final_cost": 6,
+			"final_effects": [
+				{
+					"condition": "none",
+					"n": 3,
+					"target": "single",
+					"type": "BURN"
+				}
+			],
+			"final_reject": false,
+			"first_output": {
+				"effects": [
+					{
+						"condition": "none",
+						"n": 3,
+						"target": "single",
+						"type": "BURN"
+					}
+				],
+				"reason": "",
+				"reject": false
+			},
+			"id": "C5",
+			"reason": "",
+			"regenerations": 0,
+			"reject_correct": true,
+			"retrieved_example_ids": [
+				"B5",
+				"B7",
+				"B8"
+			],
+			"run": 3,
+			"text": "Burn the enemy for 3 turns.",
+			"time_ms": 1077,
+			"type": "normal"
+		},
+		{
+			"ai_output": null,
+			"attempts": [
+				{
+					"attempt": 0,
+					"check": "ok",
+					"output": {
+						"effects": [
+							{
+								"condition": "none",
+								"n": 3,
+								"target": "all",
+								"type": "DAMAGE"
+							}
+						],
+						"reason": "",
+						"reject": false
+					},
+					"parse_ok": true,
+					"reason": ""
+				}
+			],
+			"code_action": "ok",
+			"correct": true,
+			"cost_correct": true,
+			"effects_correct": true,
+			"error": null,
+			"expected_cost": 6,
+			"expected_effects": [
+				{
+					"condition": "none",
+					"n": 3,
+					"target": "all",
+					"type": "DAMAGE"
+				}
+			],
+			"expected_reject": false,
+			"fallback_used": false,
+			"final_cost": 6,
+			"final_effects": [
+				{
+					"condition": "none",
+					"n": 3,
+					"target": "all",
+					"type": "DAMAGE"
+				}
+			],
+			"final_reject": false,
+			"first_output": {
+				"effects": [
+					{
+						"condition": "none",
+						"n": 3,
+						"target": "all",
+						"type": "DAMAGE"
+					}
+				],
+				"reason": "",
+				"reject": false
+			},
+			"id": "C6",
+			"reason": "",
+			"regenerations": 0,
+			"reject_correct": true,
+			"retrieved_example_ids": [
+				"B4",
+				"B1",
+				"B6"
+			],
+			"run": 3,
+			"text": "Deal 3 damage to all enemies.",
+			"time_ms": 23653,
+			"type": "normal"
+		},
+		{
+			"ai_output": null,
+			"attempts": [
+				{
+					"attempt": 0,
+					"check": "ok",
+					"output": {
+						"effects": [
+							{
+								"condition": "none",
+								"n": 5,
+								"target": "single",
+								"type": "DAMAGE"
+							},
+							{
+								"condition": "none",
+								"n": 5,
+								"target": "single",
+								"type": "SHIELD"
+							}
+						],
+						"reason": "",
+						"reject": false
+					},
+					"parse_ok": true,
+					"reason": ""
+				}
+			],
+			"code_action": "ok",
+			"correct": true,
+			"cost_correct": true,
+			"effects_correct": true,
+			"error": null,
+			"expected_cost": 10,
+			"expected_effects": [
+				{
+					"condition": "none",
+					"n": 5,
+					"target": "single",
+					"type": "DAMAGE"
+				},
+				{
+					"condition": "none",
+					"n": 5,
+					"target": "single",
+					"type": "SHIELD"
+				}
+			],
+			"expected_reject": false,
+			"fallback_used": false,
+			"final_cost": 10,
+			"final_effects": [
+				{
+					"condition": "none",
+					"n": 5,
+					"target": "single",
+					"type": "DAMAGE"
+				},
+				{
+					"condition": "none",
+					"n": 5,
+					"target": "single",
+					"type": "SHIELD"
+				}
+			],
+			"final_reject": false,
+			"first_output": {
+				"effects": [
+					{
+						"condition": "none",
+						"n": 5,
+						"target": "single",
+						"type": "DAMAGE"
+					},
+					{
+						"condition": "none",
+						"n": 5,
+						"target": "single",
+						"type": "SHIELD"
+					}
+				],
+				"reason": "",
+				"reject": false
+			},
+			"id": "C7",
+			"reason": "",
+			"regenerations": 0,
+			"reject_correct": true,
+			"retrieved_example_ids": [
+				"B4",
+				"B1",
+				"B6"
+			],
+			"run": 3,
+			"text": "Deal 5 damage and gain 5 shield.",
+			"time_ms": 994,
+			"type": "normal"
+		},
+		{
+			"ai_output": null,
+			"attempts": [
+				{
+					"attempt": 0,
+					"check": "ok",
+					"output": {
+						"effects": [
+							{
+								"condition": "IF_ENEMY_BURNING",
+								"n": 8,
+								"target": "single",
+								"type": "DAMAGE"
+							}
+						],
+						"reason": "",
+						"reject": false
+					},
+					"parse_ok": true,
+					"reason": ""
+				}
+			],
+			"code_action": "ok",
+			"correct": true,
+			"cost_correct": true,
+			"effects_correct": true,
+			"error": null,
+			"expected_cost": 4,
+			"expected_effects": [
+				{
+					"condition": "IF_ENEMY_BURNING",
+					"n": 8,
+					"target": "single",
+					"type": "DAMAGE"
+				}
+			],
+			"expected_reject": false,
+			"fallback_used": false,
+			"final_cost": 4,
+			"final_effects": [
+				{
+					"condition": "IF_ENEMY_BURNING",
+					"n": 8,
+					"target": "single",
+					"type": "DAMAGE"
+				}
+			],
+			"final_reject": false,
+			"first_output": {
+				"effects": [
+					{
+						"condition": "IF_ENEMY_BURNING",
+						"n": 8,
+						"target": "single",
+						"type": "DAMAGE"
+					}
+				],
+				"reason": "",
+				"reject": false
+			},
+			"id": "C8",
+			"reason": "",
+			"regenerations": 0,
+			"reject_correct": true,
+			"retrieved_example_ids": [
+				"B6",
+				"B1",
+				"B4"
+			],
+			"run": 3,
+			"text": "If the enemy is burning, deal 8 damage.",
+			"time_ms": 808,
+			"type": "normal"
+		},
+		{
+			"ai_output": null,
+			"attempts": [
+				{
+					"attempt": 0,
+					"check": "ok",
+					"output": {
+						"effects": [
+							{
+								"condition": "IF_MY_HP_BELOW_HALF",
+								"n": 10,
+								"target": "single",
+								"type": "HEAL"
+							}
+						],
+						"reason": "",
+						"reject": false
+					},
+					"parse_ok": true,
+					"reason": ""
+				}
+			],
+			"code_action": "ok",
+			"correct": true,
+			"cost_correct": true,
+			"effects_correct": true,
+			"error": null,
+			"expected_cost": 5,
+			"expected_effects": [
+				{
+					"condition": "IF_MY_HP_BELOW_HALF",
+					"n": 10,
+					"target": "single",
+					"type": "HEAL"
+				}
+			],
+			"expected_reject": false,
+			"fallback_used": false,
+			"final_cost": 5,
+			"final_effects": [
+				{
+					"condition": "IF_MY_HP_BELOW_HALF",
+					"n": 10,
+					"target": "single",
+					"type": "HEAL"
+				}
+			],
+			"final_reject": false,
+			"first_output": {
+				"effects": [
+					{
+						"condition": "IF_MY_HP_BELOW_HALF",
+						"n": 10,
+						"target": "single",
+						"type": "HEAL"
+					}
+				],
+				"reason": "",
+				"reject": false
+			},
+			"id": "C9",
+			"reason": "",
+			"regenerations": 0,
+			"reject_correct": true,
+			"retrieved_example_ids": [
+				"B2",
+				"B7",
+				"B1"
+			],
+			"run": 3,
+			"text": "If my health is below half, restore 10 health.",
+			"time_ms": 863,
+			"type": "normal"
+		},
+		{
+			"ai_output": null,
+			"attempts": [
+				{
+					"attempt": 0,
+					"check": "ok",
+					"output": {
+						"effects": [],
+						"reason": "WEAKEN effect does not support 'all' as a target.",
+						"reject": true
+					},
+					"parse_ok": true,
+					"reason": ""
+				}
+			],
+			"code_action": "ok",
+			"correct": false,
+			"cost_correct": false,
+			"effects_correct": false,
+			"error": null,
+			"expected_cost": 8,
+			"expected_effects": [
+				{
+					"condition": "none",
+					"n": 2,
+					"target": "all",
+					"type": "WEAKEN"
+				}
+			],
+			"expected_reject": false,
+			"fallback_used": false,
+			"final_cost": null,
+			"final_effects": [],
+			"final_reject": true,
+			"first_output": {
+				"effects": [],
+				"reason": "WEAKEN effect does not support 'all' as a target.",
+				"reject": true
+			},
+			"id": "C10",
+			"reason": "WEAKEN effect does not support 'all' as a target.",
+			"regenerations": 0,
+			"reject_correct": false,
+			"retrieved_example_ids": [
+				"B5",
+				"B8",
+				"B6"
+			],
+			"run": 3,
+			"text": "Weaken all enemies for 2 turns.",
+			"time_ms": 856,
+			"type": "normal"
+		},
+		{
+			"ai_output": null,
+			"attempts": [
+				{
+					"attempt": 0,
+					"check": "ok",
+					"output": {
+						"effects": [
+							{
+								"condition": "none",
+								"n": 4,
+								"target": "single",
+								"type": "DAMAGE"
+							},
+							{
+								"condition": "none",
+								"n": 1,
+								"target": "single",
+								"type": "DRAW"
+							}
+						],
+						"reason": "",
+						"reject": false
+					},
+					"parse_ok": true,
+					"reason": ""
+				}
+			],
+			"code_action": "ok",
+			"correct": true,
+			"cost_correct": true,
+			"effects_correct": true,
+			"error": null,
+			"expected_cost": 6,
+			"expected_effects": [
+				{
+					"condition": "none",
+					"n": 4,
+					"target": "single",
+					"type": "DAMAGE"
+				},
+				{
+					"condition": "none",
+					"n": 1,
+					"target": "single",
+					"type": "DRAW"
+				}
+			],
+			"expected_reject": false,
+			"fallback_used": false,
+			"final_cost": 6,
+			"final_effects": [
+				{
+					"condition": "none",
+					"n": 4,
+					"target": "single",
+					"type": "DAMAGE"
+				},
+				{
+					"condition": "none",
+					"n": 1,
+					"target": "single",
+					"type": "DRAW"
+				}
+			],
+			"final_reject": false,
+			"first_output": {
+				"effects": [
+					{
+						"condition": "none",
+						"n": 4,
+						"target": "single",
+						"type": "DAMAGE"
+					},
+					{
+						"condition": "none",
+						"n": 1,
+						"target": "single",
+						"type": "DRAW"
+					}
+				],
+				"reason": "",
+				"reject": false
+			},
+			"id": "C11",
+			"reason": "",
+			"regenerations": 0,
+			"reject_correct": true,
+			"retrieved_example_ids": [
+				"B4",
+				"B5",
+				"B8"
+			],
+			"run": 3,
+			"text": "Hit the enemy for 4, then draw a card.",
+			"time_ms": 1132,
+			"type": "normal"
+		},
+		{
+			"ai_output": null,
+			"attempts": [
+				{
+					"attempt": 0,
+					"check": "ok",
+					"output": {
+						"effects": [
+							{
+								"condition": "none",
+								"n": 1,
+								"target": "all",
+								"type": "BURN"
+							},
+							{
+								"condition": "none",
+								"n": 2,
+								"target": "all",
+								"type": "DAMAGE"
+							}
+						],
+						"reason": "",
+						"reject": false
+					},
+					"parse_ok": true,
+					"reason": ""
+				}
+			],
+			"code_action": "ok",
+			"correct": true,
+			"cost_correct": true,
+			"effects_correct": true,
+			"error": null,
+			"expected_cost": 8,
+			"expected_effects": [
+				{
+					"condition": "none",
+					"n": 1,
+					"target": "all",
+					"type": "BURN"
+				},
+				{
+					"condition": "none",
+					"n": 2,
+					"target": "all",
+					"type": "DAMAGE"
+				}
+			],
+			"expected_reject": false,
+			"fallback_used": false,
+			"final_cost": 8,
+			"final_effects": [
+				{
+					"condition": "none",
+					"n": 1,
+					"target": "all",
+					"type": "BURN"
+				},
+				{
+					"condition": "none",
+					"n": 2,
+					"target": "all",
+					"type": "DAMAGE"
+				}
+			],
+			"final_reject": false,
+			"first_output": {
+				"effects": [
+					{
+						"condition": "none",
+						"n": 1,
+						"target": "all",
+						"type": "BURN"
+					},
+					{
+						"condition": "none",
+						"n": 2,
+						"target": "all",
+						"type": "DAMAGE"
+					}
+				],
+				"reason": "",
+				"reject": false
+			},
+			"id": "C12",
+			"reason": "",
+			"regenerations": 0,
+			"reject_correct": true,
+			"retrieved_example_ids": [
+				"B6",
+				"B5",
+				"B8"
+			],
+			"run": 3,
+			"text": "Set every enemy on fire for 1 turn and deal 2 damage to each of them.",
+			"time_ms": 953,
+			"type": "normal"
+		},
+		{
+			"ai_output": null,
+			"attempts": [
+				{
+					"attempt": 0,
+					"check": "ok",
+					"output": {
+						"effects": [],
+						"reason": "Damage to everyone is not supported by the available target types.",
+						"reject": true
+					},
+					"parse_ok": true,
+					"reason": ""
+				}
+			],
+			"code_action": "ok",
+			"correct": true,
+			"cost_correct": null,
+			"effects_correct": null,
+			"error": null,
+			"expected_cost": null,
+			"expected_effects": [],
+			"expected_reject": true,
+			"fallback_used": false,
+			"final_cost": null,
+			"final_effects": [],
+			"final_reject": true,
+			"first_output": {
+				"effects": [],
+				"reason": "Damage to everyone is not supported by the available target types.",
+				"reject": true
+			},
+			"id": "X1",
+			"reason": "Damage to everyone is not supported by the available target types.",
+			"regenerations": 0,
+			"reject_correct": true,
+			"retrieved_example_ids": [
+				"B1",
+				"B4",
+				"B6"
+			],
+			"run": 3,
+			"text": "Deal 999 damage to everyone.",
+			"time_ms": 890,
+			"type": "trick"
+		},
+		{
+			"ai_output": null,
+			"attempts": [
+				{
+					"attempt": 0,
+					"check": "ok",
+					"output": {
+						"effects": [],
+						"reason": "Card modifies its own cost which is not supported.",
+						"reject": true
+					},
+					"parse_ok": true,
+					"reason": ""
+				}
+			],
+			"code_action": "ok",
+			"correct": false,
+			"cost_correct": false,
+			"effects_correct": false,
+			"error": null,
+			"expected_cost": 20,
+			"expected_effects": [
+				{
+					"condition": "none",
+					"n": 20,
+					"target": "single",
+					"type": "DAMAGE"
+				}
+			],
+			"expected_reject": false,
+			"fallback_used": false,
+			"final_cost": null,
+			"final_effects": [],
+			"final_reject": true,
+			"first_output": {
+				"effects": [],
+				"reason": "Card modifies its own cost which is not supported.",
+				"reject": true
+			},
+			"id": "X2",
+			"reason": "Card modifies its own cost which is not supported.",
+			"regenerations": 0,
+			"reject_correct": false,
+			"retrieved_example_ids": [
+				"B4",
+				"B1",
+				"B6"
+			],
+			"run": 3,
+			"text": "This card costs 0 and deals 20 damage.",
+			"time_ms": 821,
+			"type": "trick"
+		},
+		{
+			"ai_output": null,
+			"attempts": [
+				{
+					"attempt": 0,
+					"check": "ok",
+					"output": {
+						"effects": [],
+						"reason": "Instantly winning the game is not supported by the available card effects.",
+						"reject": true
+					},
+					"parse_ok": true,
+					"reason": ""
+				}
+			],
+			"code_action": "ok",
+			"correct": true,
+			"cost_correct": null,
+			"effects_correct": null,
+			"error": null,
+			"expected_cost": null,
+			"expected_effects": [],
+			"expected_reject": true,
+			"fallback_used": false,
+			"final_cost": null,
+			"final_effects": [],
+			"final_reject": true,
+			"first_output": {
+				"effects": [],
+				"reason": "Instantly winning the game is not supported by the available card effects.",
+				"reject": true
+			},
+			"id": "X3",
+			"reason": "Instantly winning the game is not supported by the available card effects.",
+			"regenerations": 0,
+			"reject_correct": true,
+			"retrieved_example_ids": [
+				"B1",
+				"B2",
+				"B3"
+			],
+			"run": 3,
+			"text": "Instantly win the game.",
+			"time_ms": 1091,
+			"type": "trick"
+		},
+		{
+			"ai_output": null,
+			"attempts": [
+				{
+					"attempt": 0,
+					"check": "ok",
+					"output": {
+						"effects": [
+							{
+								"condition": "none",
+								"n": 2,
+								"target": "all",
+								"type": "BURN"
+							}
+						],
+						"reason": "",
+						"reject": false
+					},
+					"parse_ok": true,
+					"reason": ""
+				}
+			],
+			"code_action": "ok",
+			"correct": true,
+			"cost_correct": true,
+			"effects_correct": true,
+			"error": null,
+			"expected_cost": 8,
+			"expected_effects": [
+				{
+					"condition": "none",
+					"n": 2,
+					"target": "all",
+					"type": "BURN"
+				}
+			],
+			"expected_reject": false,
+			"fallback_used": false,
+			"final_cost": 8,
+			"final_effects": [
+				{
+					"condition": "none",
+					"n": 2,
+					"target": "all",
+					"type": "BURN"
+				}
+			],
+			"final_reject": false,
+			"first_output": {
+				"effects": [
+					{
+						"condition": "none",
+						"n": 2,
+						"target": "all",
+						"type": "BURN"
+					}
+				],
+				"reason": "",
+				"reject": false
+			},
+			"id": "H1",
+			"reason": "",
+			"regenerations": 0,
+			"reject_correct": true,
+			"retrieved_example_ids": [
+				"B5",
+				"B6",
+				"B8"
+			],
+			"run": 3,
+			"text": "Torch every foe for two turns.",
+			"time_ms": 973,
+			"type": "hard"
+		},
+		{
+			"ai_output": null,
+			"attempts": [
+				{
+					"attempt": 0,
+					"check": "ok",
+					"output": {
+						"effects": [
+							{
+								"condition": "IF_ENEMY_BURNING",
+								"n": 6,
+								"target": "all",
+								"type": "DAMAGE"
+							}
+						],
+						"reason": "",
+						"reject": false
+					},
+					"parse_ok": true,
+					"reason": ""
+				}
+			],
+			"code_action": "ok",
+			"correct": true,
+			"cost_correct": true,
+			"effects_correct": true,
+			"error": null,
+			"expected_cost": 6,
+			"expected_effects": [
+				{
+					"condition": "IF_ENEMY_BURNING",
+					"n": 6,
+					"target": "all",
+					"type": "DAMAGE"
+				}
+			],
+			"expected_reject": false,
+			"fallback_used": false,
+			"final_cost": 6,
+			"final_effects": [
+				{
+					"condition": "IF_ENEMY_BURNING",
+					"n": 6,
+					"target": "all",
+					"type": "DAMAGE"
+				}
+			],
+			"final_reject": false,
+			"first_output": {
+				"effects": [
+					{
+						"condition": "IF_ENEMY_BURNING",
+						"n": 6,
+						"target": "all",
+						"type": "DAMAGE"
+					}
+				],
+				"reason": "",
+				"reject": false
+			},
+			"id": "H2",
+			"reason": "",
+			"regenerations": 0,
+			"reject_correct": true,
+			"retrieved_example_ids": [
+				"B6",
+				"B1",
+				"B4"
+			],
+			"run": 3,
+			"text": "If the enemy is burning, deal 6 damage to all enemies.",
+			"time_ms": 945,
+			"type": "hard"
+		},
+		{
+			"ai_output": null,
+			"attempts": [
+				{
+					"attempt": 0,
+					"check": "ok",
+					"output": {
+						"effects": [
+							{
+								"condition": "none",
+								"n": 3,
+								"target": "all",
+								"type": "DAMAGE"
+							},
+							{
+								"condition": "none",
+								"n": 6,
+								"target": "single",
+								"type": "SHIELD"
+							}
+						],
+						"reason": "",
+						"reject": false
+					},
+					"parse_ok": true,
+					"reason": ""
+				}
+			],
+			"code_action": "ok",
+			"correct": true,
+			"cost_correct": true,
+			"effects_correct": true,
+			"error": null,
+			"expected_cost": 12,
+			"expected_effects": [
+				{
+					"condition": "none",
+					"n": 3,
+					"target": "all",
+					"type": "DAMAGE"
+				},
+				{
+					"condition": "none",
+					"n": 6,
+					"target": "single",
+					"type": "SHIELD"
+				}
+			],
+			"expected_reject": false,
+			"fallback_used": false,
+			"final_cost": 12,
+			"final_effects": [
+				{
+					"condition": "none",
+					"n": 3,
+					"target": "all",
+					"type": "DAMAGE"
+				},
+				{
+					"condition": "none",
+					"n": 6,
+					"target": "single",
+					"type": "SHIELD"
+				}
+			],
+			"final_reject": false,
+			"first_output": {
+				"effects": [
+					{
+						"condition": "none",
+						"n": 3,
+						"target": "all",
+						"type": "DAMAGE"
+					},
+					{
+						"condition": "none",
+						"n": 6,
+						"target": "single",
+						"type": "SHIELD"
+					}
+				],
+				"reason": "",
+				"reject": false
+			},
+			"id": "H3",
+			"reason": "",
+			"regenerations": 0,
+			"reject_correct": true,
+			"retrieved_example_ids": [
+				"B4",
+				"B5",
+				"B7"
+			],
+			"run": 3,
+			"text": "Smack each enemy for 3 and put up a 6-point barrier.",
+			"time_ms": 1277,
+			"type": "hard"
+		},
+		{
+			"ai_output": null,
+			"attempts": [
+				{
+					"attempt": 0,
+					"check": "n_out_of_range",
+					"output": {
+						"effects": [
+							{
+								"condition": "none",
+								"n": 31,
+								"target": "single",
+								"type": "DAMAGE"
+							}
+						],
+						"reason": "",
+						"reject": false
+					},
+					"parse_ok": true,
+					"reason": "n=31 is outside 1 to 30."
+				}
+			],
+			"code_action": "n_out_of_range",
+			"correct": true,
+			"cost_correct": null,
+			"effects_correct": null,
+			"error": null,
+			"expected_cost": null,
+			"expected_effects": [],
+			"expected_reject": true,
+			"fallback_used": false,
+			"final_cost": null,
+			"final_effects": [],
+			"final_reject": true,
+			"first_output": {
+				"effects": [
+					{
+						"condition": "none",
+						"n": 31,
+						"target": "single",
+						"type": "DAMAGE"
+					}
+				],
+				"reason": "",
+				"reject": false
+			},
+			"id": "H4",
+			"reason": "n=31 is outside 1 to 30.",
+			"regenerations": 0,
+			"reject_correct": true,
+			"retrieved_example_ids": [
+				"B1",
+				"B4",
+				"B6"
+			],
+			"run": 3,
+			"text": "Deal 31 damage.",
+			"time_ms": 1194,
+			"type": "hard"
+		},
+		{
+			"ai_output": null,
+			"attempts": [
+				{
+					"attempt": 0,
+					"check": "ok",
+					"output": {
+						"effects": [
+							{
+								"condition": "none",
+								"n": 30,
+								"target": "all",
+								"type": "DAMAGE"
+							}
+						],
+						"reason": "",
+						"reject": false
+					},
+					"parse_ok": true,
+					"reason": ""
+				}
+			],
+			"code_action": "ok",
+			"correct": true,
+			"cost_correct": true,
+			"effects_correct": true,
+			"error": null,
+			"expected_cost": 60,
+			"expected_effects": [
+				{
+					"condition": "none",
+					"n": 30,
+					"target": "all",
+					"type": "DAMAGE"
+				}
+			],
+			"expected_reject": false,
+			"fallback_used": false,
+			"final_cost": 60,
+			"final_effects": [
+				{
+					"condition": "none",
+					"n": 30,
+					"target": "all",
+					"type": "DAMAGE"
+				}
+			],
+			"final_reject": false,
+			"first_output": {
+				"effects": [
+					{
+						"condition": "none",
+						"n": 30,
+						"target": "all",
+						"type": "DAMAGE"
+					}
+				],
+				"reason": "",
+				"reject": false
+			},
+			"id": "H5",
+			"reason": "",
+			"regenerations": 0,
+			"reject_correct": true,
+			"retrieved_example_ids": [
+				"B1",
+				"B4",
+				"B6"
+			],
+			"run": 3,
+			"text": "Deal 30 damage to all enemies.",
+			"time_ms": 842,
+			"type": "hard"
+		},
+		{
+			"ai_output": null,
+			"attempts": [
+				{
+					"attempt": 0,
+					"check": "ok",
+					"output": {
+						"effects": [
+							{
+								"condition": "IF_MY_HP_BELOW_HALF",
+								"n": 3,
+								"target": "single",
+								"type": "DRAW"
+							}
+						],
+						"reason": "",
+						"reject": false
+					},
+					"parse_ok": true,
+					"reason": ""
+				}
+			],
+			"code_action": "ok",
+			"correct": true,
+			"cost_correct": true,
+			"effects_correct": true,
+			"error": null,
+			"expected_cost": 3,
+			"expected_effects": [
+				{
+					"condition": "IF_MY_HP_BELOW_HALF",
+					"n": 3,
+					"target": "single",
+					"type": "DRAW"
+				}
+			],
+			"expected_reject": false,
+			"fallback_used": false,
+			"final_cost": 3,
+			"final_effects": [
+				{
+					"condition": "IF_MY_HP_BELOW_HALF",
+					"n": 3,
+					"target": "single",
+					"type": "DRAW"
+				}
+			],
+			"final_reject": false,
+			"first_output": {
+				"effects": [
+					{
+						"condition": "IF_MY_HP_BELOW_HALF",
+						"n": 3,
+						"target": "single",
+						"type": "DRAW"
+					}
+				],
+				"reason": "",
+				"reject": false
+			},
+			"id": "H6",
+			"reason": "",
+			"regenerations": 0,
+			"reject_correct": true,
+			"retrieved_example_ids": [
+				"B2",
+				"B4",
+				"B1"
+			],
+			"run": 3,
+			"text": "When I'm under half health, draw three cards.",
+			"time_ms": 800,
+			"type": "hard"
+		}
+	],
+	"runs": 3,
+	"summary": {
+		"avg_accuracy": 95.2380952380952,
+		"avg_time_ms": 12148.4285714286,
+		"cost_accuracy": 94.2307692307692,
+		"effects_accuracy": 94.2307692307692,
+		"errors": 4,
+		"fallbacks": 0,
+		"hard_accuracy": 100.0,
+		"normal_accuracy": 94.4444444444444,
+		"per_run_accuracy": [
+			100.0,
+			95.2380952380952,
+			90.4761904761905
+		],
+		"regenerations": 0,
+		"trick_accuracy": 87.5
+	},
+	"timestamp": "2026-10-06 09:46:49",
+	"version": 3,
+	"version_name": "AI + examples + code check"
+}

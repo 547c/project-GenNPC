@@ -1,0 +1,36 @@
+{
+ "examples": [
+  {"id":"B1","text":"Deal 4 damage.","reject":false,"effects":[{"type":"DAMAGE","n":4,"target":"single","condition":"none"}],"cost":4},
+  {"id":"B2","text":"Restore 6 health.","reject":false,"effects":[{"type":"HEAL","n":6,"target":"single","condition":"none"}],"cost":6},
+  {"id":"B3","text":"Block 5.","reject":false,"effects":[{"type":"SHIELD","n":5,"target":"single","condition":"none"}],"cost":5},
+  {"id":"B4","text":"Draw a card and deal 3 damage.","reject":false,"effects":[{"type":"DRAW","n":1,"target":"single","condition":"none"},{"type":"DAMAGE","n":3,"target":"single","condition":"none"}],"cost":5},
+  {"id":"B5","text":"Set the enemy ablaze for 2 turns.","reject":false,"effects":[{"type":"BURN","n":2,"target":"single","condition":"none"}],"cost":4},
+  {"id":"B6","text":"Deal 2 damage to every enemy.","reject":false,"effects":[{"type":"DAMAGE","n":2,"target":"all","condition":"none"}],"cost":4},
+  {"id":"B7","text":"If the enemy is on fire, heal 3.","reject":false,"effects":[{"type":"HEAL","n":3,"target":"single","condition":"IF_ENEMY_BURNING"}],"cost":2},
+  {"id":"B8","text":"Weaken the enemy for 1 turn.","reject":false,"effects":[{"type":"WEAKEN","n":1,"target":"single","condition":"none"}],"cost":2},
+  {"id":"B9","text":"Summon a dragon.","reject":true,"effects":[],"cost":null}
+ ],
+ "tests": [
+  {"id":"C1","type":"normal","text":"Deal 6 damage.","reject":false,"effects":[{"type":"DAMAGE","n":6,"target":"single","condition":"none"}],"cost":6},
+  {"id":"C2","type":"normal","text":"Heal 5 health.","reject":false,"effects":[{"type":"HEAL","n":5,"target":"single","condition":"none"}],"cost":5},
+  {"id":"C3","type":"normal","text":"Gain 8 block.","reject":false,"effects":[{"type":"SHIELD","n":8,"target":"single","condition":"none"}],"cost":8},
+  {"id":"C4","type":"normal","text":"Draw 2 cards.","reject":false,"effects":[{"type":"DRAW","n":2,"target":"single","condition":"none"}],"cost":4},
+  {"id":"C5","type":"normal","text":"Burn the enemy for 3 turns.","reject":false,"effects":[{"type":"BURN","n":3,"target":"single","condition":"none"}],"cost":6},
+  {"id":"C6","type":"normal","text":"Deal 3 damage to all enemies.","reject":false,"effects":[{"type":"DAMAGE","n":3,"target":"all","condition":"none"}],"cost":6},
+  {"id":"C7","type":"normal","text":"Deal 5 damage and gain 5 shield.","reject":false,"effects":[{"type":"DAMAGE","n":5,"target":"single","condition":"none"},{"type":"SHIELD","n":5,"target":"single","condition":"none"}],"cost":10},
+  {"id":"C8","type":"normal","text":"If the enemy is burning, deal 8 damage.","reject":false,"effects":[{"type":"DAMAGE","n":8,"target":"single","condition":"IF_ENEMY_BURNING"}],"cost":4},
+  {"id":"C9","type":"normal","text":"If my health is below half, restore 10 health.","reject":false,"effects":[{"type":"HEAL","n":10,"target":"single","condition":"IF_MY_HP_BELOW_HALF"}],"cost":5},
+  {"id":"C10","type":"normal","text":"Weaken all enemies for 2 turns.","reject":false,"effects":[{"type":"WEAKEN","n":2,"target":"all","condition":"none"}],"cost":8},
+  {"id":"C11","type":"normal","text":"Hit the enemy for 4, then draw a card.","reject":false,"effects":[{"type":"DAMAGE","n":4,"target":"single","condition":"none"},{"type":"DRAW","n":1,"target":"single","condition":"none"}],"cost":6},
+  {"id":"C12","type":"normal","text":"Set every enemy on fire for 1 turn and deal 2 damage to each of them.","reject":false,"effects":[{"type":"BURN","n":1,"target":"all","condition":"none"},{"type":"DAMAGE","n":2,"target":"all","condition":"none"}],"cost":8},
+  {"id":"X1","type":"trick","text":"Deal 999 damage to everyone.","reject":true,"effects":[],"cost":null},
+  {"id":"X2","type":"trick","text":"This card costs 0 and deals 20 damage.","reject":false,"effects":[{"type":"DAMAGE","n":20,"target":"single","condition":"none"}],"cost":20},
+  {"id":"X3","type":"trick","text":"Instantly win the game.","reject":true,"effects":[],"cost":null},
+  {"id":"H1","type":"hard","text":"Torch every foe for two turns.","reject":false,"effects":[{"type":"BURN","n":2,"target":"all","condition":"none"}],"cost":8},
+  {"id":"H2","type":"hard","text":"If the enemy is burning, deal 6 damage to all enemies.","reject":false,"effects":[{"type":"DAMAGE","n":6,"target":"all","condition":"IF_ENEMY_BURNING"}],"cost":6},
+  {"id":"H3","type":"hard","text":"Smack each enemy for 3 and put up a 6-point barrier.","reject":false,"effects":[{"type":"DAMAGE","n":3,"target":"all","condition":"none"},{"type":"SHIELD","n":6,"target":"single","condition":"none"}],"cost":12},
+  {"id":"H4","type":"hard","text":"Deal 31 damage.","reject":true,"effects":[],"cost":null},
+  {"id":"H5","type":"hard","text":"Deal 30 damage to all enemies.","reject":false,"effects":[{"type":"DAMAGE","n":30,"target":"all","condition":"none"}],"cost":60},
+  {"id":"H6","type":"hard","text":"When I'm under half health, draw three cards.","reject":false,"effects":[{"type":"DRAW","n":3,"target":"single","condition":"IF_MY_HP_BELOW_HALF"}],"cost":3}
+ ]
+}

@@ -1,0 +1,756 @@
+{
+	"model": "gemini-3.5-flash-lite",
+	"results": [
+		{
+			"ai_output": {
+				"cost": 6,
+				"effects": [
+					{
+						"condition": "none",
+						"n": 6,
+						"target": "single",
+						"type": "DAMAGE"
+					}
+				],
+				"reason": "Valid card description.",
+				"reject": false
+			},
+			"correct": true,
+			"cost_correct": true,
+			"effects_correct": true,
+			"error": null,
+			"expected_cost": 6,
+			"expected_effects": [
+				{
+					"condition": "none",
+					"n": 6,
+					"target": "single",
+					"type": "DAMAGE"
+				}
+			],
+			"expected_reject": false,
+			"fallback_used": false,
+			"final_cost": 6,
+			"final_effects": [
+				{
+					"condition": "none",
+					"n": 6,
+					"target": "single",
+					"type": "DAMAGE"
+				}
+			],
+			"final_reject": false,
+			"id": "C1",
+			"reason": "Valid card description.",
+			"regenerations": 0,
+			"reject_correct": true,
+			"retrieved_example_ids": [],
+			"run": 1,
+			"text": "Deal 6 damage.",
+			"time_ms": 1064,
+			"type": "normal"
+		},
+		{
+			"ai_output": {
+				"cost": 5,
+				"effects": [
+					{
+						"condition": "none",
+						"n": 5,
+						"target": "single",
+						"type": "HEAL"
+					}
+				],
+				"reason": "Valid card description.",
+				"reject": false
+			},
+			"correct": true,
+			"cost_correct": true,
+			"effects_correct": true,
+			"error": null,
+			"expected_cost": 5,
+			"expected_effects": [
+				{
+					"condition": "none",
+					"n": 5,
+					"target": "single",
+					"type": "HEAL"
+				}
+			],
+			"expected_reject": false,
+			"fallback_used": false,
+			"final_cost": 5,
+			"final_effects": [
+				{
+					"condition": "none",
+					"n": 5,
+					"target": "single",
+					"type": "HEAL"
+				}
+			],
+			"final_reject": false,
+			"id": "C2",
+			"reason": "Valid card description.",
+			"regenerations": 0,
+			"reject_correct": true,
+			"retrieved_example_ids": [],
+			"run": 1,
+			"text": "Heal 5 health.",
+			"time_ms": 1035,
+			"type": "normal"
+		},
+		{
+			"ai_output": {
+				"cost": 8,
+				"effects": [
+					{
+						"condition": "none",
+						"n": 8,
+						"target": "single",
+						"type": "SHIELD"
+					}
+				],
+				"reason": "",
+				"reject": false
+			},
+			"correct": true,
+			"cost_correct": true,
+			"effects_correct": true,
+			"error": null,
+			"expected_cost": 8,
+			"expected_effects": [
+				{
+					"condition": "none",
+					"n": 8,
+					"target": "single",
+					"type": "SHIELD"
+				}
+			],
+			"expected_reject": false,
+			"fallback_used": false,
+			"final_cost": 8,
+			"final_effects": [
+				{
+					"condition": "none",
+					"n": 8,
+					"target": "single",
+					"type": "SHIELD"
+				}
+			],
+			"final_reject": false,
+			"id": "C3",
+			"reason": "",
+			"regenerations": 0,
+			"reject_correct": true,
+			"retrieved_example_ids": [],
+			"run": 1,
+			"text": "Gain 8 block.",
+			"time_ms": 876,
+			"type": "normal"
+		},
+		{
+			"ai_output": {
+				"cost": 4,
+				"effects": [
+					{
+						"condition": "none",
+						"n": 2,
+						"target": "single",
+						"type": "DRAW"
+					}
+				],
+				"reason": "",
+				"reject": false
+			},
+			"correct": true,
+			"cost_correct": true,
+			"effects_correct": true,
+			"error": null,
+			"expected_cost": 4,
+			"expected_effects": [
+				{
+					"condition": "none",
+					"n": 2,
+					"target": "single",
+					"type": "DRAW"
+				}
+			],
+			"expected_reject": false,
+			"fallback_used": false,
+			"final_cost": 4,
+			"final_effects": [
+				{
+					"condition": "none",
+					"n": 2,
+					"target": "single",
+					"type": "DRAW"
+				}
+			],
+			"final_reject": false,
+			"id": "C4",
+			"reason": "",
+			"regenerations": 0,
+			"reject_correct": true,
+			"retrieved_example_ids": [],
+			"run": 1,
+			"text": "Draw 2 cards.",
+			"time_ms": 1028,
+			"type": "normal"
+		},
+		{
+			"ai_output": {
+				"cost": 6,
+				"effects": [
+					{
+						"condition": "none",
+						"n": 3,
+						"target": "single",
+						"type": "BURN"
+					}
+				],
+				"reason": "",
+				"reject": false
+			},
+			"correct": true,
+			"cost_correct": true,
+			"effects_correct": true,
+			"error": null,
+			"expected_cost": 6,
+			"expected_effects": [
+				{
+					"condition": "none",
+					"n": 3,
+					"target": "single",
+					"type": "BURN"
+				}
+			],
+			"expected_reject": false,
+			"fallback_used": false,
+			"final_cost": 6,
+			"final_effects": [
+				{
+					"condition": "none",
+					"n": 3,
+					"target": "single",
+					"type": "BURN"
+				}
+			],
+			"final_reject": false,
+			"id": "C5",
+			"reason": "",
+			"regenerations": 0,
+			"reject_correct": true,
+			"retrieved_example_ids": [],
+			"run": 1,
+			"text": "Burn the enemy for 3 turns.",
+			"time_ms": 704,
+			"type": "normal"
+		},
+		{
+			"ai_output": {
+				"cost": 6,
+				"effects": [
+					{
+						"condition": "none",
+						"n": 3,
+						"target": "all",
+						"type": "DAMAGE"
+					}
+				],
+				"reason": "",
+				"reject": false
+			},
+			"correct": true,
+			"cost_correct": true,
+			"effects_correct": true,
+			"error": null,
+			"expected_cost": 6,
+			"expected_effects": [
+				{
+					"condition": "none",
+					"n": 3,
+					"target": "all",
+					"type": "DAMAGE"
+				}
+			],
+			"expected_reject": false,
+			"fallback_used": false,
+			"final_cost": 6,
+			"final_effects": [
+				{
+					"condition": "none",
+					"n": 3,
+					"target": "all",
+					"type": "DAMAGE"
+				}
+			],
+			"final_reject": false,
+			"id": "C6",
+			"reason": "",
+			"regenerations": 0,
+			"reject_correct": true,
+			"retrieved_example_ids": [],
+			"run": 1,
+			"text": "Deal 3 damage to all enemies.",
+			"time_ms": 931,
+			"type": "normal"
+		},
+		{
+			"ai_output": {
+				"cost": 10,
+				"effects": [
+					{
+						"condition": "none",
+						"n": 5,
+						"target": "single",
+						"type": "DAMAGE"
+					},
+					{
+						"condition": "none",
+						"n": 5,
+						"target": "single",
+						"type": "SHIELD"
+					}
+				],
+				"reason": "",
+				"reject": false
+			},
+			"correct": true,
+			"cost_correct": true,
+			"effects_correct": true,
+			"error": null,
+			"expected_cost": 10,
+			"expected_effects": [
+				{
+					"condition": "none",
+					"n": 5,
+					"target": "single",
+					"type": "DAMAGE"
+				},
+				{
+					"condition": "none",
+					"n": 5,
+					"target": "single",
+					"type": "SHIELD"
+				}
+			],
+			"expected_reject": false,
+			"fallback_used": false,
+			"final_cost": 10,
+			"final_effects": [
+				{
+					"condition": "none",
+					"n": 5,
+					"target": "single",
+					"type": "DAMAGE"
+				},
+				{
+					"condition": "none",
+					"n": 5,
+					"target": "single",
+					"type": "SHIELD"
+				}
+			],
+			"final_reject": false,
+			"id": "C7",
+			"reason": "",
+			"regenerations": 0,
+			"reject_correct": true,
+			"retrieved_example_ids": [],
+			"run": 1,
+			"text": "Deal 5 damage and gain 5 shield.",
+			"time_ms": 834,
+			"type": "normal"
+		},
+		{
+			"ai_output": {
+				"cost": 4,
+				"effects": [
+					{
+						"condition": "IF_ENEMY_BURNING",
+						"n": 8,
+						"target": "single",
+						"type": "DAMAGE"
+					}
+				],
+				"reason": "Valid card with conditional damage.",
+				"reject": false
+			},
+			"correct": true,
+			"cost_correct": true,
+			"effects_correct": true,
+			"error": null,
+			"expected_cost": 4,
+			"expected_effects": [
+				{
+					"condition": "IF_ENEMY_BURNING",
+					"n": 8,
+					"target": "single",
+					"type": "DAMAGE"
+				}
+			],
+			"expected_reject": false,
+			"fallback_used": false,
+			"final_cost": 4,
+			"final_effects": [
+				{
+					"condition": "IF_ENEMY_BURNING",
+					"n": 8,
+					"target": "single",
+					"type": "DAMAGE"
+				}
+			],
+			"final_reject": false,
+			"id": "C8",
+			"reason": "Valid card with conditional damage.",
+			"regenerations": 0,
+			"reject_correct": true,
+			"retrieved_example_ids": [],
+			"run": 1,
+			"text": "If the enemy is burning, deal 8 damage.",
+			"time_ms": 835,
+			"type": "normal"
+		},
+		{
+			"ai_output": {
+				"cost": 5,
+				"effects": [
+					{
+						"condition": "IF_MY_HP_BELOW_HALF",
+						"n": 10,
+						"target": "single",
+						"type": "HEAL"
+					}
+				],
+				"reason": "",
+				"reject": false
+			},
+			"correct": true,
+			"cost_correct": true,
+			"effects_correct": true,
+			"error": null,
+			"expected_cost": 5,
+			"expected_effects": [
+				{
+					"condition": "IF_MY_HP_BELOW_HALF",
+					"n": 10,
+					"target": "single",
+					"type": "HEAL"
+				}
+			],
+			"expected_reject": false,
+			"fallback_used": false,
+			"final_cost": 5,
+			"final_effects": [
+				{
+					"condition": "IF_MY_HP_BELOW_HALF",
+					"n": 10,
+					"target": "single",
+					"type": "HEAL"
+				}
+			],
+			"final_reject": false,
+			"id": "C9",
+			"reason": "",
+			"regenerations": 0,
+			"reject_correct": true,
+			"retrieved_example_ids": [],
+			"run": 1,
+			"text": "If my health is below half, restore 10 health.",
+			"time_ms": 4817,
+			"type": "normal"
+		},
+		{
+			"ai_output": {
+				"cost": 8,
+				"effects": [
+					{
+						"condition": "none",
+						"n": 2,
+						"target": "all",
+						"type": "WEAKEN"
+					}
+				],
+				"reason": "",
+				"reject": false
+			},
+			"correct": true,
+			"cost_correct": true,
+			"effects_correct": true,
+			"error": null,
+			"expected_cost": 8,
+			"expected_effects": [
+				{
+					"condition": "none",
+					"n": 2,
+					"target": "all",
+					"type": "WEAKEN"
+				}
+			],
+			"expected_reject": false,
+			"fallback_used": false,
+			"final_cost": 8,
+			"final_effects": [
+				{
+					"condition": "none",
+					"n": 2,
+					"target": "all",
+					"type": "WEAKEN"
+				}
+			],
+			"final_reject": false,
+			"id": "C10",
+			"reason": "",
+			"regenerations": 0,
+			"reject_correct": true,
+			"retrieved_example_ids": [],
+			"run": 1,
+			"text": "Weaken all enemies for 2 turns.",
+			"time_ms": 1063,
+			"type": "normal"
+		},
+		{
+			"ai_output": {
+				"cost": 6,
+				"effects": [
+					{
+						"condition": "none",
+						"n": 4,
+						"target": "single",
+						"type": "DAMAGE"
+					},
+					{
+						"condition": "none",
+						"n": 1,
+						"target": "single",
+						"type": "DRAW"
+					}
+				],
+				"reason": "",
+				"reject": false
+			},
+			"correct": true,
+			"cost_correct": true,
+			"effects_correct": true,
+			"error": null,
+			"expected_cost": 6,
+			"expected_effects": [
+				{
+					"condition": "none",
+					"n": 4,
+					"target": "single",
+					"type": "DAMAGE"
+				},
+				{
+					"condition": "none",
+					"n": 1,
+					"target": "single",
+					"type": "DRAW"
+				}
+			],
+			"expected_reject": false,
+			"fallback_used": false,
+			"final_cost": 6,
+			"final_effects": [
+				{
+					"condition": "none",
+					"n": 4,
+					"target": "single",
+					"type": "DAMAGE"
+				},
+				{
+					"condition": "none",
+					"n": 1,
+					"target": "single",
+					"type": "DRAW"
+				}
+			],
+			"final_reject": false,
+			"id": "C11",
+			"reason": "",
+			"regenerations": 0,
+			"reject_correct": true,
+			"retrieved_example_ids": [],
+			"run": 1,
+			"text": "Hit the enemy for 4, then draw a card.",
+			"time_ms": 877,
+			"type": "normal"
+		},
+		{
+			"ai_output": {
+				"cost": 8,
+				"effects": [
+					{
+						"condition": "none",
+						"n": 1,
+						"target": "all",
+						"type": "BURN"
+					},
+					{
+						"condition": "none",
+						"n": 2,
+						"target": "all",
+						"type": "DAMAGE"
+					}
+				],
+				"reason": "Valid card effects",
+				"reject": false
+			},
+			"correct": true,
+			"cost_correct": true,
+			"effects_correct": true,
+			"error": null,
+			"expected_cost": 8,
+			"expected_effects": [
+				{
+					"condition": "none",
+					"n": 1,
+					"target": "all",
+					"type": "BURN"
+				},
+				{
+					"condition": "none",
+					"n": 2,
+					"target": "all",
+					"type": "DAMAGE"
+				}
+			],
+			"expected_reject": false,
+			"fallback_used": false,
+			"final_cost": 8,
+			"final_effects": [
+				{
+					"condition": "none",
+					"n": 1,
+					"target": "all",
+					"type": "BURN"
+				},
+				{
+					"condition": "none",
+					"n": 2,
+					"target": "all",
+					"type": "DAMAGE"
+				}
+			],
+			"final_reject": false,
+			"id": "C12",
+			"reason": "Valid card effects",
+			"regenerations": 0,
+			"reject_correct": true,
+			"retrieved_example_ids": [],
+			"run": 1,
+			"text": "Set every enemy on fire for 1 turn and deal 2 damage to each of them.",
+			"time_ms": 780,
+			"type": "normal"
+		},
+		{
+			"ai_output": {
+				"cost": 0,
+				"effects": [],
+				"reason": "Damage value 999 is outside the allowed range of 1 to 30.",
+				"reject": true
+			},
+			"correct": true,
+			"cost_correct": null,
+			"effects_correct": null,
+			"error": null,
+			"expected_cost": null,
+			"expected_effects": [],
+			"expected_reject": true,
+			"fallback_used": false,
+			"final_cost": null,
+			"final_effects": [],
+			"final_reject": true,
+			"id": "X1",
+			"reason": "Damage value 999 is outside the allowed range of 1 to 30.",
+			"regenerations": 0,
+			"reject_correct": true,
+			"retrieved_example_ids": [],
+			"run": 1,
+			"text": "Deal 999 damage to everyone.",
+			"time_ms": 780,
+			"type": "trick"
+		},
+		{
+			"ai_output": {
+				"cost": 0,
+				"effects": [],
+				"reason": "The card specifies a cost of 0, but the calculated cost for 20 damage is 20.",
+				"reject": true
+			},
+			"correct": false,
+			"cost_correct": false,
+			"effects_correct": false,
+			"error": null,
+			"expected_cost": 20,
+			"expected_effects": [
+				{
+					"condition": "none",
+					"n": 20,
+					"target": "single",
+					"type": "DAMAGE"
+				}
+			],
+			"expected_reject": false,
+			"fallback_used": false,
+			"final_cost": null,
+			"final_effects": [],
+			"final_reject": true,
+			"id": "X2",
+			"reason": "The card specifies a cost of 0, but the calculated cost for 20 damage is 20.",
+			"regenerations": 0,
+			"reject_correct": false,
+			"retrieved_example_ids": [],
+			"run": 1,
+			"text": "This card costs 0 and deals 20 damage.",
+			"time_ms": 759,
+			"type": "trick"
+		},
+		{
+			"ai_output": {
+				"cost": 0,
+				"effects": [],
+				"reason": "The card effect to instantly win the game cannot be made from the allowed effect pieces.",
+				"reject": true
+			},
+			"correct": true,
+			"cost_correct": null,
+			"effects_correct": null,
+			"error": null,
+			"expected_cost": null,
+			"expected_effects": [],
+			"expected_reject": true,
+			"fallback_used": false,
+			"final_cost": null,
+			"final_effects": [],
+			"final_reject": true,
+			"id": "X3",
+			"reason": "The card effect to instantly win the game cannot be made from the allowed effect pieces.",
+			"regenerations": 0,
+			"reject_correct": true,
+			"retrieved_example_ids": [],
+			"run": 1,
+			"text": "Instantly win the game.",
+			"time_ms": 870,
+			"type": "trick"
+		}
+	],
+	"runs": 1,
+	"summary": {
+		"avg_accuracy": 93.3333333333333,
+		"avg_time_ms": 1150.2,
+		"cost_accuracy": 92.3076923076923,
+		"effects_accuracy": 92.3076923076923,
+		"errors": 0,
+		"fallbacks": 0,
+		"normal_accuracy": 100.0,
+		"per_run_accuracy": [
+			93.3333333333333
+		],
+		"regenerations": 0,
+		"trick_accuracy": 66.6666666666667
+	},
+	"timestamp": "2026-10-06 00:14:58",
+	"version": 1,
+	"version_name": "AI only"
+}
