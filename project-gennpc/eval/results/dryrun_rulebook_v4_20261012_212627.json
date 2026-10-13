@@ -1,0 +1,516 @@
+{
+	"model": "gemini-3.5-flash-lite",
+	"results": [
+		{
+			"accepted": [
+				[
+					{
+						"condition": "NONE",
+						"keyword": "STRIKE",
+						"n": 7,
+						"target": "enemy"
+					}
+				]
+			],
+			"ai_cost": 7,
+			"ai_output": {
+				"cost": 7,
+				"effects": [
+					{
+						"condition": "NONE",
+						"keyword": "STRIKE",
+						"n": 7,
+						"target": "enemy"
+					}
+				],
+				"reason": "Valid card description mapping directly to a STRIKE effect.",
+				"reject": false
+			},
+			"attempts": [
+				{
+					"attempt": 0,
+					"output": {
+						"cost": 7,
+						"effects": [
+							{
+								"condition": "NONE",
+								"keyword": "STRIKE",
+								"n": 7,
+								"target": "enemy"
+							}
+						],
+						"reason": "Valid card description mapping directly to a STRIKE effect.",
+						"reject": false
+					},
+					"parse_ok": true,
+					"prompt_chars": 2452,
+					"violations": []
+				}
+			],
+			"category": "direct",
+			"code_action": "ok",
+			"correct": true,
+			"cost_correct": true,
+			"effects_correct": true,
+			"error": null,
+			"expected_cost": 7,
+			"expected_reject": false,
+			"fallback_used": false,
+			"final_cost": 7,
+			"final_effects": [
+				{
+					"condition": "NONE",
+					"keyword": "STRIKE",
+					"n": 7,
+					"target": "enemy"
+				}
+			],
+			"final_reject": false,
+			"id": "T1",
+			"needed_rules": [
+				"STRIKE"
+			],
+			"prompt_chars": 2452,
+			"rag_hit": true,
+			"reason": "Valid card description mapping directly to a STRIKE effect.",
+			"regenerations": 0,
+			"retrieved_rule_keywords": [
+				"STRIKE",
+				"PIERCE",
+				"CLEAVE",
+				"VOLLEY",
+				"SIPHON"
+			],
+			"run": 1,
+			"text": "Deal 7 damage.",
+			"time_ms": 932,
+			"wrong_pass": false,
+			"wrong_reject": false
+		},
+		{
+			"accepted": [
+				[
+					{
+						"condition": "NONE",
+						"keyword": "SIPHON",
+						"n": 6,
+						"target": "enemy"
+					}
+				]
+			],
+			"ai_cost": 0,
+			"ai_output": {
+				"cost": 0,
+				"effects": [],
+				"reason": "There is no keyword for draining life from the enemy.",
+				"reject": true
+			},
+			"attempts": [
+				{
+					"attempt": 0,
+					"output": {
+						"cost": 0,
+						"effects": [],
+						"reason": "There is no keyword for draining life from the enemy.",
+						"reject": true
+					},
+					"parse_ok": true,
+					"prompt_chars": 2448,
+					"violations": []
+				}
+			],
+			"category": "paraphrase",
+			"code_action": "ai_reject",
+			"correct": false,
+			"cost_correct": false,
+			"effects_correct": false,
+			"error": null,
+			"expected_cost": 12,
+			"expected_reject": false,
+			"fallback_used": false,
+			"final_cost": null,
+			"final_effects": [],
+			"final_reject": true,
+			"id": "P1",
+			"needed_rules": [
+				"SIPHON"
+			],
+			"prompt_chars": 2448,
+			"rag_hit": false,
+			"reason": "There is no keyword for draining life from the enemy.",
+			"regenerations": 0,
+			"retrieved_rule_keywords": [
+				"CLEANSE",
+				"STRIKE",
+				"PIERCE",
+				"CLEAVE",
+				"VOLLEY"
+			],
+			"run": 1,
+			"text": "Drain 6 life from the enemy.",
+			"time_ms": 1067,
+			"wrong_pass": false,
+			"wrong_reject": true
+		},
+		{
+			"accepted": [
+				[
+					{
+						"condition": "NONE",
+						"keyword": "STRIKE",
+						"n": 6,
+						"target": "enemy"
+					},
+					{
+						"condition": "NONE",
+						"keyword": "ECHO",
+						"n": null,
+						"target": "none"
+					}
+				],
+				[
+					{
+						"condition": "NONE",
+						"keyword": "STRIKE",
+						"n": 6,
+						"target": "enemy"
+					},
+					{
+						"condition": "NONE",
+						"keyword": "STRIKE",
+						"n": 6,
+						"target": "enemy"
+					}
+				]
+			],
+			"ai_cost": 12,
+			"ai_output": {
+				"cost": 12,
+				"effects": [
+					{
+						"condition": "NONE",
+						"keyword": "STRIKE",
+						"n": 6,
+						"target": "enemy"
+					},
+					{
+						"condition": "NONE",
+						"keyword": "ECHO",
+						"n": null,
+						"target": "none"
+					}
+				],
+				"reason": "Valid card with two effects, the second being an ECHO.",
+				"reject": false
+			},
+			"attempts": [
+				{
+					"attempt": 0,
+					"output": {
+						"cost": 12,
+						"effects": [
+							{
+								"condition": "NONE",
+								"keyword": "STRIKE",
+								"n": 6,
+								"target": "enemy"
+							},
+							{
+								"condition": "NONE",
+								"keyword": "ECHO",
+								"n": null,
+								"target": "none"
+							}
+						],
+						"reason": "Valid card with two effects, the second being an ECHO.",
+						"reject": false
+					},
+					"parse_ok": true,
+					"prompt_chars": 2617,
+					"violations": []
+				}
+			],
+			"category": "confusing",
+			"code_action": "ok",
+			"correct": true,
+			"cost_correct": true,
+			"effects_correct": true,
+			"error": null,
+			"expected_cost": 12,
+			"expected_reject": false,
+			"fallback_used": false,
+			"final_cost": 12,
+			"final_effects": [
+				{
+					"condition": "NONE",
+					"keyword": "STRIKE",
+					"n": 6,
+					"target": "enemy"
+				},
+				{
+					"condition": "NONE",
+					"keyword": "ECHO",
+					"n": null,
+					"target": "none"
+				}
+			],
+			"final_reject": false,
+			"id": "N6",
+			"needed_rules": [
+				"STRIKE",
+				"ECHO"
+			],
+			"prompt_chars": 2617,
+			"rag_hit": true,
+			"reason": "Valid card with two effects, the second being an ECHO.",
+			"regenerations": 0,
+			"retrieved_rule_keywords": [
+				"ECHO",
+				"STRIKE",
+				"PIERCE",
+				"CLEAVE",
+				"VOLLEY"
+			],
+			"run": 1,
+			"text": "Deal 6 damage. Repeat it.",
+			"time_ms": 3001,
+			"wrong_pass": false,
+			"wrong_reject": false
+		},
+		{
+			"accepted": [
+				[
+					{
+						"condition": "IF_ENEMY_CHILLED",
+						"keyword": "FREEZE",
+						"n": null,
+						"target": "enemy"
+					}
+				]
+			],
+			"ai_cost": 4,
+			"ai_output": {
+				"cost": 4,
+				"effects": [
+					{
+						"condition": "IF_ENEMY_CHILLED",
+						"keyword": "FREEZE",
+						"n": null,
+						"target": "enemy"
+					}
+				],
+				"reason": "Valid card description mapping to condition and freeze effect",
+				"reject": false
+			},
+			"attempts": [
+				{
+					"attempt": 0,
+					"output": {
+						"cost": 4,
+						"effects": [
+							{
+								"condition": "IF_ENEMY_CHILLED",
+								"keyword": "FREEZE",
+								"n": null,
+								"target": "enemy"
+							}
+						],
+						"reason": "Valid card description mapping to condition and freeze effect",
+						"reject": false
+					},
+					"parse_ok": true,
+					"prompt_chars": 2534,
+					"violations": []
+				}
+			],
+			"category": "condition",
+			"code_action": "ok",
+			"correct": true,
+			"cost_correct": true,
+			"effects_correct": true,
+			"error": null,
+			"expected_cost": 4,
+			"expected_reject": false,
+			"fallback_used": false,
+			"final_cost": 4,
+			"final_effects": [
+				{
+					"condition": "IF_ENEMY_CHILLED",
+					"keyword": "FREEZE",
+					"n": null,
+					"target": "enemy"
+				}
+			],
+			"final_reject": false,
+			"id": "D2",
+			"needed_rules": [
+				"FREEZE"
+			],
+			"prompt_chars": 2534,
+			"rag_hit": true,
+			"reason": "Valid card description mapping to condition and freeze effect",
+			"regenerations": 0,
+			"retrieved_rule_keywords": [
+				"EXECUTE",
+				"SCORCH",
+				"CHILL",
+				"FREEZE",
+				"STRIKE"
+			],
+			"run": 1,
+			"text": "If the enemy is chilled, freeze it.",
+			"time_ms": 1037,
+			"wrong_pass": false,
+			"wrong_reject": false
+		},
+		{
+			"accepted": [],
+			"ai_cost": 0,
+			"ai_output": {
+				"cost": 0,
+				"effects": [],
+				"reason": "FREEZE can only target a single enemy, not all enemies.",
+				"reject": true
+			},
+			"attempts": [
+				{
+					"attempt": 0,
+					"output": {
+						"cost": 0,
+						"effects": [],
+						"reason": "FREEZE can only target a single enemy, not all enemies.",
+						"reject": true
+					},
+					"parse_ok": true,
+					"prompt_chars": 2522,
+					"violations": []
+				}
+			],
+			"category": "illegal",
+			"code_action": "ai_reject",
+			"correct": true,
+			"cost_correct": null,
+			"effects_correct": null,
+			"error": null,
+			"expected_cost": null,
+			"expected_reject": true,
+			"fallback_used": false,
+			"final_cost": null,
+			"final_effects": [],
+			"final_reject": true,
+			"id": "V1",
+			"needed_rules": [
+				"FREEZE"
+			],
+			"prompt_chars": 2522,
+			"rag_hit": true,
+			"reason": "FREEZE can only target a single enemy, not all enemies.",
+			"regenerations": 0,
+			"retrieved_rule_keywords": [
+				"STRIKE",
+				"CLEANSE",
+				"IGNITE",
+				"CHILL",
+				"FREEZE"
+			],
+			"run": 1,
+			"text": "Freeze all enemies.",
+			"time_ms": 860,
+			"wrong_pass": false,
+			"wrong_reject": false
+		},
+		{
+			"accepted": [
+				[
+					{
+						"condition": "NONE",
+						"keyword": "STRIKE",
+						"n": 12,
+						"target": "enemy"
+					}
+				]
+			],
+			"ai_cost": 0,
+			"ai_output": {
+				"cost": 0,
+				"effects": [],
+				"reason": "The specified effect 'Deal 12 damage' does not match any valid keyword in the rulebook.",
+				"reject": true
+			},
+			"attempts": [
+				{
+					"attempt": 0,
+					"output": {
+						"cost": 0,
+						"effects": [],
+						"reason": "The specified effect 'Deal 12 damage' does not match any valid keyword in the rulebook.",
+						"reject": true
+					},
+					"parse_ok": true,
+					"prompt_chars": 2605,
+					"violations": []
+				}
+			],
+			"category": "trick",
+			"code_action": "ai_reject",
+			"correct": false,
+			"cost_correct": false,
+			"effects_correct": false,
+			"error": null,
+			"expected_cost": 12,
+			"expected_reject": false,
+			"fallback_used": false,
+			"final_cost": null,
+			"final_effects": [],
+			"final_reject": true,
+			"id": "X1",
+			"needed_rules": [
+				"STRIKE"
+			],
+			"prompt_chars": 2605,
+			"rag_hit": false,
+			"reason": "The specified effect 'Deal 12 damage' does not match any valid keyword in the rulebook.",
+			"regenerations": 0,
+			"retrieved_rule_keywords": [
+				"HASTE",
+				"ECHO",
+				"DODGE",
+				"SILENCE",
+				"RECYCLE"
+			],
+			"run": 1,
+			"text": "This card costs 0. Deal 12 damage.",
+			"time_ms": 906,
+			"wrong_pass": false,
+			"wrong_reject": true
+		}
+	],
+	"runs": 1,
+	"summary": {
+		"avg_accuracy": 66.6666666666667,
+		"avg_time_ms": 1300.5,
+		"category_accuracy": {
+			"condition": 100.0,
+			"confusing": 100.0,
+			"direct": 100.0,
+			"illegal": 100.0,
+			"paraphrase": 0.0,
+			"trick": 0.0
+		},
+		"code_rejections": 0,
+		"cost_accuracy": 60.0,
+		"effects_accuracy": 60.0,
+		"errors": 0,
+		"median_time_ms": 984.5,
+		"per_run_accuracy": [
+			66.6666666666667
+		],
+		"rag_hit_rate": 66.6666666666667,
+		"regenerations": 0,
+		"wrong_passes": 0,
+		"wrong_rejects": 2
+	},
+	"timestamp": "2026-10-12 21:26:27",
+	"version": 4,
+	"version_name": "AI + RAG rules + code check"
+}

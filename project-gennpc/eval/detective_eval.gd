@@ -22,8 +22,10 @@ const FALLBACK_LINES := {
 	"refuse": "I'd rather not talk about that."
 }
 const LEAK_PHRASES := ["i took", "i stole", "i did it", "it was me"]
-const VERSION_NAMES := {1: "AI only", 2: "AI + all facts", 3: "AI + RAG", 4: "AI + RAG + code check"}
-const TABLE_COLUMNS := ["Version", "Runs", "Accuracy per run (%)", "Avg accuracy (%)", "Knowledge accuracy (%)", "Role accuracy (%)", "Leaks", "Avg time/question (ms)", "Regenerations", "Fixed-line fallbacks", "Retrieval hit rate (%)", "Errors"]
+const VERSION_NAMES := {1: "AI only", 2: "AI + all facts", 3: "AI + RAG", 4: "AI + RAG + code check", 5: "AI + RAG (1 fact)", 6: "AI + RAG (2 facts)", 7: "AI + single fact (A/B/C)"}
+const RETRIEVE_COUNT := {3: 3, 4: 3, 5: 1, 6: 2}
+const TABLE_COLUMNS := ["Version", "Runs", "Accuracy per run (%)", "Avg accuracy (%)", "Knowledge accuracy (%)", "Role accuracy (%)", "Leaks", "Avg time/question (ms)", "Median time/question (ms)", "Regenerations", "Fixed-line fallbacks", "Retrieval hit rate (%)", "Errors"]
+const SINGLE_TABLE_COLUMNS := ["Version", "Runs", "Knowledge, needed fact given: accuracy (%)", "Knowledge, needed fact not given: answered unknown/refuse (%)", "Knowledge, needed fact not given: answered yes/no (correct) (%)", "Knowledge, needed fact not given: answered yes/no (wrong) (%)", "Role: accuracy (%)", "Avg time/call (ms)", "Median time/call (ms)", "Calls", "Errors"]
 
 var api_key := ""
 var data: Dictionary = {}
@@ -35,6 +37,8 @@ var letter_digit_re := RegEx.new()
 var first_call := true
 var aborted := false
 var abort_message := ""
+var summary_path := RESULTS_DIR + "/detective_summary.md"
+var single_summary_path := RESULTS_DIR + "/detective_v7_summary.md"
 
 
 func _ready():
@@ -50,8 +54,10 @@ func _main() -> int:
 	var args := _parse_args()
 	var version: int = args["version"]
 	var runs: int = args["runs"]
-	if version < 1 or version > 4 or runs < 1:
-		print("Usage: -- --version=1..4 [--runs=R]")
+	var dryrun: bool = args["dryrun"]
+	var only_ids: Array = args["questions"]
+	if version < 1 or version > 7 or runs < 1:
+		print("Usage: -- --version=1..7 [--runs=R] [--questions=1,2,3] [--dryrun]")
 		return 1
 
 	_load_api_key()
@@ -67,14 +73,30 @@ func _main() -> int:
 
 	print("=== Detective eval: version %d (%s), runs %d, model %s ===" % [version, VERSION_NAMES[version], runs, MODEL])
 
+	var questions: Array = []
+	for q in data["questions"]:
+		if only_ids.is_empty() or only_ids.has(int(q["id"])):
+			questions.append(q)
+	if questions.is_empty():
+		print("No questions selected.")
+		return 1
+
 	var entries: Array = []
-	var question_count: int = data["questions"].size()
+	var question_count: int = questions.size()
 	for run in range(1, runs + 1):
-		for q in data["questions"]:
-			var entry: Dictionary = await _ask(version, q["npc"], q)
-			entry["run"] = run
-			entries.append(entry)
-			_print_progress(version, run, entry)
+		for q in questions:
+			var group: Array = []
+			if version == 7:
+				group = await _ask_single_facts(q)
+			else:
+				group = [await _ask(version, q["npc"], q)]
+			for entry in group:
+				entry["run"] = run
+				entries.append(entry)
+				if version == 7:
+					_print_single_progress(run, entry)
+				else:
+					_print_progress(version, run, entry)
 			if aborted:
 				break
 		if aborted:
@@ -85,21 +107,35 @@ func _main() -> int:
 		print("responseSchema was kept in the request; nothing was removed. Fix the schema/request and rerun.")
 		return 2
 
-	var summary := _summarize(runs, question_count, entries)
 	var stamp := _timestamp(true)
+	if version == 7:
+		var single_summary := _summarize_single(entries)
+		_print_single_table(runs, single_summary)
+		_write_results(version, runs, stamp, entries, single_summary, dryrun)
+		if not dryrun:
+			_append_single_summary_md(runs, single_summary)
+		return 0
+
+	var summary := _summarize(runs, question_count, entries)
 	_print_table(version, runs, summary)
-	_write_results(version, runs, stamp, entries, summary)
-	_append_summary_md(version, runs, summary)
+	_write_results(version, runs, stamp, entries, summary, dryrun)
+	if not dryrun:
+		_append_summary_md(version, runs, summary)
 	return 0
 
 
 func _parse_args() -> Dictionary:
-	var out := {"version": 0, "runs": 3}
+	var out := {"version": 0, "runs": 3, "questions": [], "dryrun": false}
 	for arg in OS.get_cmdline_user_args():
 		if arg.begins_with("--version="):
 			out["version"] = int(arg.substr("--version=".length()))
 		elif arg.begins_with("--runs="):
 			out["runs"] = int(arg.substr("--runs=".length()))
+		elif arg.begins_with("--questions="):
+			for part in arg.substr("--questions=".length()).split(",", false):
+				out["questions"].append(int(part))
+		elif arg == "--dryrun":
+			out["dryrun"] = true
 	return out
 
 
@@ -271,7 +307,7 @@ func _content_words(text: String) -> Dictionary:
 	return words
 
 
-func _retrieve(npc: Dictionary, question: String) -> Array:
+func _retrieve(npc: Dictionary, question: String, count: int = 3) -> Array:
 	var q_words := _content_words(question)
 	var scored: Array = []
 	var facts: Array = npc["facts"]
@@ -284,7 +320,7 @@ func _retrieve(npc: Dictionary, question: String) -> Array:
 		scored.append({"index": i, "overlap": overlap})
 	scored.sort_custom(func(a, b): return a["overlap"] > b["overlap"] or (a["overlap"] == b["overlap"] and a["index"] < b["index"]))
 	var top: Array = []
-	for s in scored.slice(0, 3):
+	for s in scored.slice(0, count):
 		top.append(facts[s["index"]])
 	return top
 
@@ -320,7 +356,7 @@ func _ask(version: int, npc_id: String, q: Dictionary) -> Dictionary:
 	var npc: Dictionary = data["npcs"][npc_id]
 	var retrieved: Array = []
 	if version >= 3:
-		retrieved = _retrieve(npc, q["question"])
+		retrieved = _retrieve(npc, q["question"], RETRIEVE_COUNT[version])
 	var retrieved_ids: Array = []
 	for f in retrieved:
 		retrieved_ids.append(f["id"])
@@ -359,7 +395,7 @@ func _ask(version: int, npc_id: String, q: Dictionary) -> Dictionary:
 	var schema := _schema(version == 4)
 	var api_ms := 0
 
-	if version < 4:
+	if version != 4:
 		var res: Dictionary = await _call_gemini(prompt, schema)
 		api_ms += res["api_ms"]
 		if not res["ok"]:
@@ -452,7 +488,7 @@ func _summarize(runs: int, question_count: int, entries: Array) -> Dictionary:
 	var regenerations := 0
 	var fallbacks := 0
 	var errors := 0
-	var total_ms := 0
+	var valid_times: Array = []
 	var needed := 0
 	var hits := 0
 	var type_total := {"knowledge": 0, "role": 0}
@@ -469,7 +505,8 @@ func _summarize(runs: int, question_count: int, entries: Array) -> Dictionary:
 			fallbacks += 1
 		if e["error"] != null:
 			errors += 1
-		total_ms += e["time_ms"]
+		else:
+			valid_times.append(e["time_ms"])
 		if e["retrieval_hit"] != null:
 			needed += 1
 			if e["retrieval_hit"]:
@@ -484,7 +521,8 @@ func _summarize(runs: int, question_count: int, entries: Array) -> Dictionary:
 		"knowledge_accuracy": 100.0 * type_correct["knowledge"] / maxi(type_total["knowledge"], 1),
 		"role_accuracy": 100.0 * type_correct["role"] / maxi(type_total["role"], 1),
 		"leaks": leaks,
-		"avg_time_ms": float(total_ms) / entries.size(),
+		"avg_time_ms": _mean(valid_times),
+		"median_time_ms": _median(valid_times),
 		"regenerations": regenerations,
 		"fixed_line_fallbacks": fallbacks,
 		"retrieval_hit_rate": hit_rate,
@@ -508,6 +546,7 @@ func _row_cells(version: int, runs: int, s: Dictionary) -> Array:
 		"%.1f" % s["role_accuracy"],
 		str(s["leaks"]),
 		"%.0f" % s["avg_time_ms"],
+		"%.0f" % s["median_time_ms"],
 		str(s["regenerations"]),
 		str(s["fixed_line_fallbacks"]),
 		hit_text,
@@ -547,9 +586,10 @@ func _timestamp(for_filename: bool) -> String:
 	return "%04d-%02d-%02d %02d:%02d:%02d" % [t["year"], t["month"], t["day"], t["hour"], t["minute"], t["second"]]
 
 
-func _write_results(version: int, runs: int, stamp: String, entries: Array, summary: Dictionary):
+func _write_results(version: int, runs: int, stamp: String, entries: Array, summary: Dictionary, dryrun: bool = false):
 	DirAccess.make_dir_recursive_absolute(ProjectSettings.globalize_path(RESULTS_DIR))
-	var path := "%s/detective_v%d_%s.json" % [RESULTS_DIR, version, stamp]
+	var prefix := "dryrun_" if dryrun else ""
+	var path := "%s/%sdetective_v%d_%s.json" % [RESULTS_DIR, prefix, version, stamp]
 	var file := FileAccess.open(path, FileAccess.WRITE)
 	if file == null:
 		push_error("Cannot write " + path)
@@ -569,7 +609,7 @@ func _write_results(version: int, runs: int, stamp: String, entries: Array, summ
 
 func _append_summary_md(version: int, runs: int, summary: Dictionary):
 	DirAccess.make_dir_recursive_absolute(ProjectSettings.globalize_path(RESULTS_DIR))
-	var path := RESULTS_DIR + "/detective_summary.md"
+	var path := summary_path
 	var exists := FileAccess.file_exists(path)
 	var file := FileAccess.open(path, FileAccess.READ_WRITE if exists else FileAccess.WRITE)
 	if file == null:
@@ -587,12 +627,203 @@ func _append_summary_md(version: int, runs: int, summary: Dictionary):
 		file.store_line("")
 		file.store_line("Time per question is API call time including regenerations; the 5s pacing waits and 429 backoffs are excluded.")
 		file.store_line("")
+		file.store_line("Time per question (average and median) excludes questions that ended in an API error.")
+		file.store_line("")
 		file.store_line("Accuracy excludes questions that ended in an API error; those are counted in the Errors column.")
 		file.store_line("")
 		file.store_line("| " + " | ".join(PackedStringArray(columns)) + " |")
 		file.store_line("| " + " | ".join(PackedStringArray(separator)) + " |")
 	var cells: Array = [_timestamp(false)]
 	cells.append_array(_row_cells(version, runs, summary))
+	file.store_line("| " + " | ".join(PackedStringArray(cells)) + " |")
+	file.close()
+	print("Updated " + path)
+
+
+func _median(values: Array) -> float:
+	if values.is_empty():
+		return 0.0
+	var sorted_values := values.duplicate()
+	sorted_values.sort()
+	var mid := sorted_values.size() / 2
+	if sorted_values.size() % 2 == 1:
+		return float(sorted_values[mid])
+	return (sorted_values[mid - 1] + sorted_values[mid]) / 2.0
+
+
+func _mean(values: Array) -> float:
+	if values.is_empty():
+		return 0.0
+	var total := 0.0
+	for v in values:
+		total += v
+	return total / values.size()
+
+
+func _ask_single_facts(q: Dictionary) -> Array:
+	var npc_id: String = q["npc"]
+	var npc: Dictionary = data["npcs"][npc_id]
+	var top: Array = _retrieve(npc, q["question"], 3)
+	var top_ids: Array = []
+	for f in top:
+		top_ids.append(f["id"])
+	var slots := ["A", "B", "C"]
+	var group: Array = []
+	for i in top.size():
+		var fact: Dictionary = top[i]
+		var needed_given: bool = q["needed_fact"] != null and fact["id"] == q["needed_fact"]
+		var entry := {
+			"id": int(q["id"]),
+			"npc": npc_id,
+			"question": q["question"],
+			"type": q["type"],
+			"accepted": q["accepted"],
+			"slot": slots[i],
+			"fact_id": fact["id"],
+			"fact_text": fact["text"],
+			"needed_fact": q["needed_fact"],
+			"needed_given": needed_given,
+			"retrieved_fact_ids": top_ids,
+			"ai_answer": null,
+			"line": null,
+			"correct": false,
+			"time_ms": 0,
+			"error": null
+		}
+		var prompt := _build_prompt(7, npc_id, npc, q["question"], [fact])
+		var res: Dictionary = await _call_gemini(prompt, _schema(false))
+		entry["time_ms"] = res["api_ms"]
+		if not res["ok"]:
+			entry["error"] = res["error"]
+		else:
+			var reply := _parse_reply(res["text"], false)
+			if reply.is_empty():
+				entry["error"] = "Invalid JSON reply: " + str(res["text"]).left(200)
+			else:
+				entry["ai_answer"] = reply["answer"]
+				entry["line"] = reply["line"]
+				entry["correct"] = q["accepted"].has(reply["answer"])
+		group.append(entry)
+		if aborted:
+			break
+	return group
+
+
+func _summarize_single(entries: Array) -> Dictionary:
+	var given_total := 0
+	var given_correct := 0
+	var not_total := 0
+	var declined := 0
+	var yes_no_correct := 0
+	var yes_no_wrong := 0
+	var role_total := 0
+	var role_correct := 0
+	var errors := 0
+	var valid_times: Array = []
+	for e in entries:
+		if e["error"] != null:
+			errors += 1
+			continue
+		valid_times.append(e["time_ms"])
+		if e["type"] == "role":
+			role_total += 1
+			if e["correct"]:
+				role_correct += 1
+		elif e["needed_given"]:
+			given_total += 1
+			if e["correct"]:
+				given_correct += 1
+		else:
+			not_total += 1
+			if e["ai_answer"] == "unknown" or e["ai_answer"] == "refuse":
+				declined += 1
+			elif e["correct"]:
+				yes_no_correct += 1
+			else:
+				yes_no_wrong += 1
+	return {
+		"knowledge_given": {"n": given_total, "correct": given_correct, "accuracy": 100.0 * given_correct / maxi(given_total, 1)},
+		"knowledge_not_given": {
+			"n": not_total,
+			"declined": declined,
+			"yes_no_correct": yes_no_correct,
+			"yes_no_wrong": yes_no_wrong,
+			"declined_rate": 100.0 * declined / maxi(not_total, 1),
+			"yes_no_correct_rate": 100.0 * yes_no_correct / maxi(not_total, 1),
+			"yes_no_wrong_rate": 100.0 * yes_no_wrong / maxi(not_total, 1)
+		},
+		"role": {"n": role_total, "correct": role_correct, "accuracy": 100.0 * role_correct / maxi(role_total, 1)},
+		"avg_time_ms": _mean(valid_times),
+		"median_time_ms": _median(valid_times),
+		"calls": entries.size(),
+		"errors": errors
+	}
+
+
+func _single_row_cells(runs: int, s: Dictionary) -> Array:
+	var given: Dictionary = s["knowledge_given"]
+	var not_given: Dictionary = s["knowledge_not_given"]
+	var role: Dictionary = s["role"]
+	return [
+		"v7 (%s)" % VERSION_NAMES[7],
+		str(runs),
+		"%.1f (%d/%d)" % [given["accuracy"], given["correct"], given["n"]],
+		"%.1f (%d/%d)" % [not_given["declined_rate"], not_given["declined"], not_given["n"]],
+		"%.1f (%d/%d)" % [not_given["yes_no_correct_rate"], not_given["yes_no_correct"], not_given["n"]],
+		"%.1f (%d/%d)" % [not_given["yes_no_wrong_rate"], not_given["yes_no_wrong"], not_given["n"]],
+		"%.1f (%d/%d)" % [role["accuracy"], role["correct"], role["n"]],
+		"%.0f" % s["avg_time_ms"],
+		"%.0f" % s["median_time_ms"],
+		str(s["calls"]),
+		str(s["errors"])
+	]
+
+
+func _print_single_table(runs: int, s: Dictionary):
+	print("")
+	print("| " + " | ".join(PackedStringArray(SINGLE_TABLE_COLUMNS)) + " |")
+	var separator: Array = []
+	for c in SINGLE_TABLE_COLUMNS:
+		separator.append("---")
+	print("| " + " | ".join(PackedStringArray(separator)) + " |")
+	print("| " + " | ".join(PackedStringArray(_single_row_cells(runs, s))) + " |")
+	print("")
+
+
+func _print_single_progress(run: int, entry: Dictionary):
+	var mark := "OK" if entry["correct"] else "WRONG"
+	var extras := ""
+	if entry["error"] != null:
+		extras += " ERROR=" + str(entry["error"]).left(120)
+	print("[v7 r%d] Q%d %s fact=%s needed_given=%s -> %s accepted=%s %s %dms%s" % [run, entry["id"], entry["slot"], entry["fact_id"], str(entry["needed_given"]), str(entry["ai_answer"]), str(entry["accepted"]), mark, entry["time_ms"], extras])
+
+
+func _append_single_summary_md(runs: int, summary: Dictionary):
+	DirAccess.make_dir_recursive_absolute(ProjectSettings.globalize_path(RESULTS_DIR))
+	var path := single_summary_path
+	var exists := FileAccess.file_exists(path)
+	var file := FileAccess.open(path, FileAccess.READ_WRITE if exists else FileAccess.WRITE)
+	if file == null:
+		push_error("Cannot write " + path)
+		return
+	if exists:
+		file.seek_end()
+	else:
+		var columns: Array = ["Time"]
+		columns.append_array(SINGLE_TABLE_COLUMNS)
+		var separator: Array = []
+		for c in columns:
+			separator.append("---")
+		file.store_line("# Detective NPC Eval Summary: single-fact experiment (v7)")
+		file.store_line("")
+		file.store_line("Each question is asked three times, each time with only one of the three facts the RAG step picks (A, B, C). Percentages exclude calls that ended in an API error; those are counted in the Errors column.")
+		file.store_line("")
+		file.store_line("Knowledge questions are split by whether the needed fact was the one given. Role questions are shown by accuracy only. Time per call excludes API errors, the 5s pacing waits and 429 backoffs.")
+		file.store_line("")
+		file.store_line("| " + " | ".join(PackedStringArray(columns)) + " |")
+		file.store_line("| " + " | ".join(PackedStringArray(separator)) + " |")
+	var cells: Array = [_timestamp(false)]
+	cells.append_array(_single_row_cells(runs, summary))
 	file.store_line("| " + " | ".join(PackedStringArray(cells)) + " |")
 	file.close()
 	print("Updated " + path)

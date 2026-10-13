@@ -19,7 +19,7 @@ const DOUBLE_COST_TYPES := ["DRAW", "BURN", "WEAKEN"]
 const SINGLE_ONLY_TYPES := ["HEAL", "SHIELD", "DRAW"]
 const STOPWORDS := ["a", "an", "the", "was", "were", "is", "are", "did", "do", "does", "you", "i", "it", "at", "in", "on", "of", "to", "that", "who", "what", "me", "my", "your", "around", "just", "tell"]
 const VERSION_NAMES := {1: "AI only", 2: "AI + examples", 3: "AI + examples + code check"}
-const TABLE_COLUMNS := ["Version", "Runs", "Accuracy per run (%)", "Avg accuracy (%)", "Normal accuracy (%)", "Hard accuracy (%)", "Trick accuracy (%)", "Effects accuracy (%)", "Cost accuracy (%)", "Avg time/card (ms)", "Regenerations", "Fallbacks", "Errors"]
+const TABLE_COLUMNS := ["Version", "Runs", "Accuracy per run (%)", "Avg accuracy (%)", "Normal accuracy (%)", "Hard accuracy (%)", "Trick accuracy (%)", "Effects accuracy (%)", "Cost accuracy (%)", "Avg time/card (ms)", "Median time/card (ms)", "Regenerations", "Fallbacks", "Errors"]
 
 var api_key := ""
 var data: Dictionary = {}
@@ -30,6 +30,7 @@ var letter_digit_re := RegEx.new()
 var first_call := true
 var aborted := false
 var abort_message := ""
+var summary_path := RESULTS_DIR + "/card_summary.md"
 
 
 func _ready():
@@ -510,6 +511,26 @@ func _percent(correct: int, total: int) -> float:
 	return 100.0 * correct / maxi(total, 1)
 
 
+func _mean(values: Array) -> float:
+	if values.is_empty():
+		return 0.0
+	var total := 0.0
+	for v in values:
+		total += v
+	return total / values.size()
+
+
+func _median(values: Array) -> float:
+	if values.is_empty():
+		return 0.0
+	var sorted_values := values.duplicate()
+	sorted_values.sort()
+	var mid := sorted_values.size() / 2
+	if sorted_values.size() % 2 == 1:
+		return float(sorted_values[mid])
+	return (sorted_values[mid - 1] + sorted_values[mid]) / 2.0
+
+
 func _summarize(runs: int, entries: Array) -> Dictionary:
 	var per_run: Array = []
 	for r in range(1, runs + 1):
@@ -534,15 +555,15 @@ func _summarize(runs: int, entries: Array) -> Dictionary:
 	var regenerations := 0
 	var fallbacks := 0
 	var errors := 0
-	var total_ms := 0
+	var valid_times: Array = []
 	for e in entries:
 		regenerations += e["regenerations"]
-		total_ms += e["time_ms"]
 		if e["fallback_used"]:
 			fallbacks += 1
 		if e["error"] != null:
 			errors += 1
 			continue
+		valid_times.append(e["time_ms"])
 		type_total[e["type"]] += 1
 		if e["correct"]:
 			type_correct[e["type"]] += 1
@@ -561,7 +582,8 @@ func _summarize(runs: int, entries: Array) -> Dictionary:
 		"trick_accuracy": _percent(type_correct["trick"], type_total["trick"]),
 		"effects_accuracy": _percent(effects_correct, piece_total),
 		"cost_accuracy": _percent(cost_correct, piece_total),
-		"avg_time_ms": float(total_ms) / entries.size(),
+		"avg_time_ms": _mean(valid_times),
+		"median_time_ms": _median(valid_times),
 		"regenerations": regenerations,
 		"fallbacks": fallbacks,
 		"errors": errors
@@ -583,6 +605,7 @@ func _row_cells(version: int, runs: int, s: Dictionary) -> Array:
 		"%.1f" % s["effects_accuracy"],
 		"%.1f" % s["cost_accuracy"],
 		"%.0f" % s["avg_time_ms"],
+		"%.0f" % s["median_time_ms"],
 		str(s["regenerations"]),
 		str(s["fallbacks"]),
 		str(s["errors"])
@@ -642,7 +665,7 @@ func _write_results(version: int, runs: int, stamp: String, entries: Array, summ
 
 func _append_summary_md(version: int, runs: int, summary: Dictionary):
 	DirAccess.make_dir_recursive_absolute(ProjectSettings.globalize_path(RESULTS_DIR))
-	var path := RESULTS_DIR + "/card_summary.md"
+	var path := summary_path
 	var exists := FileAccess.file_exists(path)
 	var file := FileAccess.open(path, FileAccess.READ_WRITE if exists else FileAccess.WRITE)
 	if file == null:
@@ -659,6 +682,8 @@ func _append_summary_md(version: int, runs: int, summary: Dictionary):
 		file.store_line("# Card Eval Summary")
 		file.store_line("")
 		file.store_line("Time per card is API call time including regenerations; the 5s pacing waits and 429 backoffs are excluded.")
+		file.store_line("")
+		file.store_line("Time per card (average and median) excludes cards that ended in an API error.")
 		file.store_line("")
 		file.store_line("Accuracy excludes cards that ended in an API error; those are counted in the Errors column.")
 		file.store_line("")

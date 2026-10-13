@@ -1,0 +1,403 @@
+{
+	"model": "gemini-3.5-flash-lite",
+	"results": [
+		{
+			"accepted": [
+				[
+					{
+						"condition": "NONE",
+						"keyword": "STRIKE",
+						"n": 7,
+						"target": "enemy"
+					}
+				]
+			],
+			"ai_cost": 7,
+			"ai_output": {
+				"cost": 7,
+				"effects": [
+					{
+						"condition": "NONE",
+						"keyword": "STRIKE",
+						"n": 7,
+						"target": "enemy"
+					}
+				],
+				"reason": "Valid card with single strike effect.",
+				"reject": false
+			},
+			"attempts": [],
+			"category": "direct",
+			"code_action": null,
+			"correct": true,
+			"cost_correct": true,
+			"effects_correct": true,
+			"error": null,
+			"expected_cost": 7,
+			"expected_reject": false,
+			"fallback_used": false,
+			"final_cost": 7,
+			"final_effects": [
+				{
+					"condition": "NONE",
+					"keyword": "STRIKE",
+					"n": 7,
+					"target": "enemy"
+				}
+			],
+			"final_reject": false,
+			"id": "T1",
+			"needed_rules": [
+				"STRIKE"
+			],
+			"prompt_chars": 5303,
+			"rag_hit": null,
+			"reason": "Valid card with single strike effect.",
+			"regenerations": 0,
+			"retrieved_rule_keywords": [],
+			"run": 1,
+			"text": "Deal 7 damage.",
+			"time_ms": 1105,
+			"wrong_pass": false,
+			"wrong_reject": false
+		},
+		{
+			"accepted": [
+				[
+					{
+						"condition": "NONE",
+						"keyword": "SIPHON",
+						"n": 6,
+						"target": "enemy"
+					}
+				]
+			],
+			"ai_cost": 12,
+			"ai_output": {
+				"cost": 12,
+				"effects": [
+					{
+						"condition": "NONE",
+						"keyword": "SIPHON",
+						"n": 6,
+						"target": "enemy"
+					}
+				],
+				"reason": "Valid siphon effect",
+				"reject": false
+			},
+			"attempts": [],
+			"category": "paraphrase",
+			"code_action": null,
+			"correct": true,
+			"cost_correct": true,
+			"effects_correct": true,
+			"error": null,
+			"expected_cost": 12,
+			"expected_reject": false,
+			"fallback_used": false,
+			"final_cost": 12,
+			"final_effects": [
+				{
+					"condition": "NONE",
+					"keyword": "SIPHON",
+					"n": 6,
+					"target": "enemy"
+				}
+			],
+			"final_reject": false,
+			"id": "P1",
+			"needed_rules": [
+				"SIPHON"
+			],
+			"prompt_chars": 5317,
+			"rag_hit": null,
+			"reason": "Valid siphon effect",
+			"regenerations": 0,
+			"retrieved_rule_keywords": [],
+			"run": 1,
+			"text": "Drain 6 life from the enemy.",
+			"time_ms": 1070,
+			"wrong_pass": false,
+			"wrong_reject": false
+		},
+		{
+			"accepted": [
+				[
+					{
+						"condition": "NONE",
+						"keyword": "STRIKE",
+						"n": 6,
+						"target": "enemy"
+					},
+					{
+						"condition": "NONE",
+						"keyword": "ECHO",
+						"n": null,
+						"target": "none"
+					}
+				],
+				[
+					{
+						"condition": "NONE",
+						"keyword": "STRIKE",
+						"n": 6,
+						"target": "enemy"
+					},
+					{
+						"condition": "NONE",
+						"keyword": "STRIKE",
+						"n": 6,
+						"target": "enemy"
+					}
+				]
+			],
+			"ai_cost": 12,
+			"ai_output": {
+				"cost": 12,
+				"effects": [
+					{
+						"condition": "NONE",
+						"keyword": "STRIKE",
+						"n": 6,
+						"target": "enemy"
+					},
+					{
+						"condition": "NONE",
+						"keyword": "ECHO",
+						"n": null,
+						"target": "none"
+					}
+				],
+				"reason": "Valid card with strike and echo",
+				"reject": false
+			},
+			"attempts": [],
+			"category": "confusing",
+			"code_action": null,
+			"correct": true,
+			"cost_correct": true,
+			"effects_correct": true,
+			"error": null,
+			"expected_cost": 12,
+			"expected_reject": false,
+			"fallback_used": false,
+			"final_cost": 12,
+			"final_effects": [
+				{
+					"condition": "NONE",
+					"keyword": "STRIKE",
+					"n": 6,
+					"target": "enemy"
+				},
+				{
+					"condition": "NONE",
+					"keyword": "ECHO",
+					"n": null,
+					"target": "none"
+				}
+			],
+			"final_reject": false,
+			"id": "N6",
+			"needed_rules": [
+				"STRIKE",
+				"ECHO"
+			],
+			"prompt_chars": 5314,
+			"rag_hit": null,
+			"reason": "Valid card with strike and echo",
+			"regenerations": 0,
+			"retrieved_rule_keywords": [],
+			"run": 1,
+			"text": "Deal 6 damage. Repeat it.",
+			"time_ms": 1096,
+			"wrong_pass": false,
+			"wrong_reject": false
+		},
+		{
+			"accepted": [
+				[
+					{
+						"condition": "IF_ENEMY_CHILLED",
+						"keyword": "FREEZE",
+						"n": null,
+						"target": "enemy"
+					}
+				]
+			],
+			"ai_cost": 4,
+			"ai_output": {
+				"cost": 4,
+				"effects": [
+					{
+						"condition": "IF_ENEMY_CHILLED",
+						"keyword": "FREEZE",
+						"n": null,
+						"target": "enemy"
+					}
+				],
+				"reason": "Valid card with a condition",
+				"reject": false
+			},
+			"attempts": [],
+			"category": "condition",
+			"code_action": null,
+			"correct": true,
+			"cost_correct": true,
+			"effects_correct": true,
+			"error": null,
+			"expected_cost": 4,
+			"expected_reject": false,
+			"fallback_used": false,
+			"final_cost": 4,
+			"final_effects": [
+				{
+					"condition": "IF_ENEMY_CHILLED",
+					"keyword": "FREEZE",
+					"n": null,
+					"target": "enemy"
+				}
+			],
+			"final_reject": false,
+			"id": "D2",
+			"needed_rules": [
+				"FREEZE"
+			],
+			"prompt_chars": 5324,
+			"rag_hit": null,
+			"reason": "Valid card with a condition",
+			"regenerations": 0,
+			"retrieved_rule_keywords": [],
+			"run": 1,
+			"text": "If the enemy is chilled, freeze it.",
+			"time_ms": 1115,
+			"wrong_pass": false,
+			"wrong_reject": false
+		},
+		{
+			"accepted": [],
+			"ai_cost": 0,
+			"ai_output": {
+				"cost": 0,
+				"effects": [],
+				"reason": "FREEZE can only target one enemy, not all enemies.",
+				"reject": true
+			},
+			"attempts": [],
+			"category": "illegal",
+			"code_action": null,
+			"correct": true,
+			"cost_correct": null,
+			"effects_correct": null,
+			"error": null,
+			"expected_cost": null,
+			"expected_reject": true,
+			"fallback_used": false,
+			"final_cost": null,
+			"final_effects": [],
+			"final_reject": true,
+			"id": "V1",
+			"needed_rules": [
+				"FREEZE"
+			],
+			"prompt_chars": 5308,
+			"rag_hit": null,
+			"reason": "FREEZE can only target one enemy, not all enemies.",
+			"regenerations": 0,
+			"retrieved_rule_keywords": [],
+			"run": 1,
+			"text": "Freeze all enemies.",
+			"time_ms": 968,
+			"wrong_pass": false,
+			"wrong_reject": false
+		},
+		{
+			"accepted": [
+				[
+					{
+						"condition": "NONE",
+						"keyword": "STRIKE",
+						"n": 12,
+						"target": "enemy"
+					}
+				]
+			],
+			"ai_cost": 12,
+			"ai_output": {
+				"cost": 12,
+				"effects": [
+					{
+						"condition": "NONE",
+						"keyword": "STRIKE",
+						"n": 12,
+						"target": "enemy"
+					}
+				],
+				"reason": "Valid card with a single strike effect.",
+				"reject": false
+			},
+			"attempts": [],
+			"category": "trick",
+			"code_action": null,
+			"correct": true,
+			"cost_correct": true,
+			"effects_correct": true,
+			"error": null,
+			"expected_cost": 12,
+			"expected_reject": false,
+			"fallback_used": false,
+			"final_cost": 12,
+			"final_effects": [
+				{
+					"condition": "NONE",
+					"keyword": "STRIKE",
+					"n": 12,
+					"target": "enemy"
+				}
+			],
+			"final_reject": false,
+			"id": "X1",
+			"needed_rules": [
+				"STRIKE"
+			],
+			"prompt_chars": 5323,
+			"rag_hit": null,
+			"reason": "Valid card with a single strike effect.",
+			"regenerations": 0,
+			"retrieved_rule_keywords": [],
+			"run": 1,
+			"text": "This card costs 0. Deal 12 damage.",
+			"time_ms": 843,
+			"wrong_pass": false,
+			"wrong_reject": false
+		}
+	],
+	"runs": 1,
+	"summary": {
+		"avg_accuracy": 100.0,
+		"avg_time_ms": 1032.83333333333,
+		"category_accuracy": {
+			"condition": 100.0,
+			"confusing": 100.0,
+			"direct": 100.0,
+			"illegal": 100.0,
+			"paraphrase": 100.0,
+			"trick": 100.0
+		},
+		"code_rejections": 0,
+		"cost_accuracy": 100.0,
+		"effects_accuracy": 100.0,
+		"errors": 0,
+		"median_time_ms": 1083.0,
+		"per_run_accuracy": [
+			100.0
+		],
+		"rag_hit_rate": null,
+		"regenerations": 0,
+		"wrong_passes": 0,
+		"wrong_rejects": 0
+	},
+	"timestamp": "2026-10-12 21:25:54",
+	"version": 2,
+	"version_name": "AI + all rules"
+}

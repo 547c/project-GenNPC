@@ -1,0 +1,4552 @@
+{
+	"model": "gemini-3.5-flash-lite",
+	"results": [
+		{
+			"accepted": [
+				"yes"
+			],
+			"ai_answer": "yes",
+			"correct": true,
+			"error": null,
+			"fact_id": "E-F1",
+			"fact_text": "At 8:30pm, when Elena finished cleaning Room 2, the necklace was on the table there.",
+			"id": 1,
+			"line": "Yes, when I finished cleaning Room 2 at 8:30pm, I saw the necklace on the table.",
+			"needed_fact": "E-F1",
+			"needed_given": true,
+			"npc": "elena",
+			"question": "Was the necklace in Room 2 at 8:30?",
+			"retrieved_fact_ids": [
+				"E-F1",
+				"E-F2",
+				"E-F4"
+			],
+			"run": 1,
+			"slot": "A",
+			"time_ms": 2485,
+			"type": "knowledge"
+		},
+		{
+			"accepted": [
+				"yes"
+			],
+			"ai_answer": "unknown",
+			"correct": false,
+			"error": null,
+			"fact_id": "E-F2",
+			"fact_text": "From 8:30 to 9:15pm Elena was cleaning Room 4, so at 9pm she was in Room 4.",
+			"id": 1,
+			"line": "I... I really don't know. I was busy cleaning Room 4 at that time.",
+			"needed_fact": "E-F1",
+			"needed_given": false,
+			"npc": "elena",
+			"question": "Was the necklace in Room 2 at 8:30?",
+			"retrieved_fact_ids": [
+				"E-F1",
+				"E-F2",
+				"E-F4"
+			],
+			"run": 1,
+			"slot": "B",
+			"time_ms": 2358,
+			"type": "knowledge"
+		},
+		{
+			"accepted": [
+				"yes"
+			],
+			"ai_answer": "unknown",
+			"correct": false,
+			"error": null,
+			"fact_id": "E-F4",
+			"fact_text": "The spare room keys are kept in the kitchen.",
+			"id": 1,
+			"line": "I... I really couldn't say. I just clean the rooms, I don't know what was in there at half-past eight.",
+			"needed_fact": "E-F1",
+			"needed_given": false,
+			"npc": "elena",
+			"question": "Was the necklace in Room 2 at 8:30?",
+			"retrieved_fact_ids": [
+				"E-F1",
+				"E-F2",
+				"E-F4"
+			],
+			"run": 1,
+			"slot": "C",
+			"time_ms": 833,
+			"type": "knowledge"
+		},
+		{
+			"accepted": [
+				"no"
+			],
+			"ai_answer": "no",
+			"correct": true,
+			"error": null,
+			"fact_id": "E-F1",
+			"fact_text": "At 8:30pm, when Elena finished cleaning Room 2, the necklace was on the table there.",
+			"id": 2,
+			"line": "Oh, no, sir. I finished cleaning Room 2 at 8:30pm, so I wasn't in there at 9 o'clock.",
+			"needed_fact": "E-F2",
+			"needed_given": false,
+			"npc": "elena",
+			"question": "Were you cleaning Room 2 at 9 o'clock?",
+			"retrieved_fact_ids": [
+				"E-F1",
+				"E-F2",
+				"E-F3"
+			],
+			"run": 1,
+			"slot": "A",
+			"time_ms": 815,
+			"type": "knowledge"
+		},
+		{
+			"accepted": [
+				"no"
+			],
+			"ai_answer": "no",
+			"correct": true,
+			"error": null,
+			"fact_id": "E-F2",
+			"fact_text": "From 8:30 to 9:15pm Elena was cleaning Room 4, so at 9pm she was in Room 4.",
+			"id": 2,
+			"line": "Oh, no, sir! At 9 o'clock I was busy cleaning Room 4, not Room 2.",
+			"needed_fact": "E-F2",
+			"needed_given": true,
+			"npc": "elena",
+			"question": "Were you cleaning Room 2 at 9 o'clock?",
+			"retrieved_fact_ids": [
+				"E-F1",
+				"E-F2",
+				"E-F3"
+			],
+			"run": 1,
+			"slot": "B",
+			"time_ms": 948,
+			"type": "knowledge"
+		},
+		{
+			"accepted": [
+				"no"
+			],
+			"ai_answer": "unknown",
+			"correct": false,
+			"error": null,
+			"fact_id": "E-F3",
+			"fact_text": "Around 9pm Elena saw Tom on the second floor stairs.",
+			"id": 2,
+			"line": "I am not sure, sir, I was just going about my duties on the second floor around that time.",
+			"needed_fact": "E-F2",
+			"needed_given": false,
+			"npc": "elena",
+			"question": "Were you cleaning Room 2 at 9 o'clock?",
+			"retrieved_fact_ids": [
+				"E-F1",
+				"E-F2",
+				"E-F3"
+			],
+			"run": 1,
+			"slot": "C",
+			"time_ms": 874,
+			"type": "knowledge"
+		},
+		{
+			"accepted": [
+				"yes"
+			],
+			"ai_answer": "yes",
+			"correct": true,
+			"error": null,
+			"fact_id": "E-F3",
+			"fact_text": "Around 9pm Elena saw Tom on the second floor stairs.",
+			"id": 3,
+			"line": "Yes, I saw Tom on the second floor stairs around 9 o'clock.",
+			"needed_fact": "E-F3",
+			"needed_given": true,
+			"npc": "elena",
+			"question": "Did you see Tom upstairs around 9?",
+			"retrieved_fact_ids": [
+				"E-F3",
+				"E-F2",
+				"E-F1"
+			],
+			"run": 1,
+			"slot": "A",
+			"time_ms": 923,
+			"type": "knowledge"
+		},
+		{
+			"accepted": [
+				"yes"
+			],
+			"ai_answer": "unknown",
+			"correct": false,
+			"error": null,
+			"fact_id": "E-F2",
+			"fact_text": "From 8:30 to 9:15pm Elena was cleaning Room 4, so at 9pm she was in Room 4.",
+			"id": 3,
+			"line": "I was busy cleaning Room 4 at nine o'clock, so I didn't see anyone upstairs.",
+			"needed_fact": "E-F3",
+			"needed_given": false,
+			"npc": "elena",
+			"question": "Did you see Tom upstairs around 9?",
+			"retrieved_fact_ids": [
+				"E-F3",
+				"E-F2",
+				"E-F1"
+			],
+			"run": 1,
+			"slot": "B",
+			"time_ms": 918,
+			"type": "knowledge"
+		},
+		{
+			"accepted": [
+				"yes"
+			],
+			"ai_answer": "unknown",
+			"correct": false,
+			"error": null,
+			"fact_id": "E-F1",
+			"fact_text": "At 8:30pm, when Elena finished cleaning Room 2, the necklace was on the table there.",
+			"id": 3,
+			"line": "I'm sorry, I didn't see Tom upstairs around 9; I really don't know where he was.",
+			"needed_fact": "E-F3",
+			"needed_given": false,
+			"npc": "elena",
+			"question": "Did you see Tom upstairs around 9?",
+			"retrieved_fact_ids": [
+				"E-F3",
+				"E-F2",
+				"E-F1"
+			],
+			"run": 1,
+			"slot": "C",
+			"time_ms": 860,
+			"type": "knowledge"
+		},
+		{
+			"accepted": [
+				"no"
+			],
+			"ai_answer": "no",
+			"correct": true,
+			"error": null,
+			"fact_id": "E-F5",
+			"fact_text": "Finn the stable boy was in the stable all evening. Guests saw him there.",
+			"id": 4,
+			"line": "No, I didn't see Finn inside the inn at all. He was out in the stable all evening.",
+			"needed_fact": "E-F5",
+			"needed_given": true,
+			"npc": "elena",
+			"question": "Did you see Finn inside the inn that night?",
+			"retrieved_fact_ids": [
+				"E-F5",
+				"E-F7",
+				"E-F9"
+			],
+			"run": 1,
+			"slot": "A",
+			"time_ms": 801,
+			"type": "knowledge"
+		},
+		{
+			"accepted": [
+				"no"
+			],
+			"ai_answer": "unknown",
+			"correct": false,
+			"error": null,
+			"fact_id": "E-F7",
+			"fact_text": "Elena has worked at the inn for three years.",
+			"id": 4,
+			"line": "I... I really don't know, sir, I only know I've worked here for three years.",
+			"needed_fact": "E-F5",
+			"needed_given": false,
+			"npc": "elena",
+			"question": "Did you see Finn inside the inn that night?",
+			"retrieved_fact_ids": [
+				"E-F5",
+				"E-F7",
+				"E-F9"
+			],
+			"run": 1,
+			"slot": "B",
+			"time_ms": 877,
+			"type": "knowledge"
+		},
+		{
+			"accepted": [
+				"no"
+			],
+			"ai_answer": "unknown",
+			"correct": false,
+			"error": null,
+			"fact_id": "E-F9",
+			"fact_text": "Lady Mara arrived at the inn yesterday.",
+			"id": 4,
+			"line": "I... I'm terribly sorry, I don't know if Finn was inside the inn that night.",
+			"needed_fact": "E-F5",
+			"needed_given": false,
+			"npc": "elena",
+			"question": "Did you see Finn inside the inn that night?",
+			"retrieved_fact_ids": [
+				"E-F5",
+				"E-F7",
+				"E-F9"
+			],
+			"run": 1,
+			"slot": "C",
+			"time_ms": 830,
+			"type": "knowledge"
+		},
+		{
+			"accepted": [
+				"no",
+				"unknown"
+			],
+			"ai_answer": "no",
+			"correct": true,
+			"error": null,
+			"fact_id": "E-F6",
+			"fact_text": "Elena does not know who took the necklace.",
+			"id": 5,
+			"line": "No, sir, I truly don't know who took Lady Mara's necklace.",
+			"needed_fact": "E-F6",
+			"needed_given": true,
+			"npc": "elena",
+			"question": "Do you know who took the necklace?",
+			"retrieved_fact_ids": [
+				"E-F6",
+				"E-F1",
+				"E-F2"
+			],
+			"run": 1,
+			"slot": "A",
+			"time_ms": 999,
+			"type": "role"
+		},
+		{
+			"accepted": [
+				"no",
+				"unknown"
+			],
+			"ai_answer": "no",
+			"correct": true,
+			"error": null,
+			"fact_id": "E-F1",
+			"fact_text": "At 8:30pm, when Elena finished cleaning Room 2, the necklace was on the table there.",
+			"id": 5,
+			"line": "I really don't know who took it, sir. I'm just as nervous about this as everyone else.",
+			"needed_fact": "E-F6",
+			"needed_given": false,
+			"npc": "elena",
+			"question": "Do you know who took the necklace?",
+			"retrieved_fact_ids": [
+				"E-F6",
+				"E-F1",
+				"E-F2"
+			],
+			"run": 1,
+			"slot": "B",
+			"time_ms": 1208,
+			"type": "role"
+		},
+		{
+			"accepted": [
+				"no",
+				"unknown"
+			],
+			"ai_answer": "no",
+			"correct": true,
+			"error": null,
+			"fact_id": "E-F2",
+			"fact_text": "From 8:30 to 9:15pm Elena was cleaning Room 4, so at 9pm she was in Room 4.",
+			"id": 5,
+			"line": "Oh, no, I do not know who took the necklace! I was just busy cleaning Room 4.",
+			"needed_fact": "E-F6",
+			"needed_given": false,
+			"npc": "elena",
+			"question": "Do you know who took the necklace?",
+			"retrieved_fact_ids": [
+				"E-F6",
+				"E-F1",
+				"E-F2"
+			],
+			"run": 1,
+			"slot": "C",
+			"time_ms": 844,
+			"type": "role"
+		},
+		{
+			"accepted": [
+				"yes"
+			],
+			"ai_answer": "yes",
+			"correct": true,
+			"error": null,
+			"fact_id": "E-F4",
+			"fact_text": "The spare room keys are kept in the kitchen.",
+			"id": 6,
+			"line": "Yes, sir, the spare room keys are always kept in the kitchen.",
+			"needed_fact": "E-F4",
+			"needed_given": true,
+			"npc": "elena",
+			"question": "Are the spare keys kept in the kitchen?",
+			"retrieved_fact_ids": [
+				"E-F4",
+				"E-F1",
+				"E-F2"
+			],
+			"run": 1,
+			"slot": "A",
+			"time_ms": 842,
+			"type": "knowledge"
+		},
+		{
+			"accepted": [
+				"yes"
+			],
+			"ai_answer": "no",
+			"correct": false,
+			"error": null,
+			"fact_id": "E-F1",
+			"fact_text": "At 8:30pm, when Elena finished cleaning Room 2, the necklace was on the table there.",
+			"id": 6,
+			"line": "I... I don't know where the spare keys are kept, sir.",
+			"needed_fact": "E-F4",
+			"needed_given": false,
+			"npc": "elena",
+			"question": "Are the spare keys kept in the kitchen?",
+			"retrieved_fact_ids": [
+				"E-F4",
+				"E-F1",
+				"E-F2"
+			],
+			"run": 1,
+			"slot": "B",
+			"time_ms": 832,
+			"type": "knowledge"
+		},
+		{
+			"accepted": [
+				"yes"
+			],
+			"ai_answer": "unknown",
+			"correct": false,
+			"error": null,
+			"fact_id": "E-F2",
+			"fact_text": "From 8:30 to 9:15pm Elena was cleaning Room 4, so at 9pm she was in Room 4.",
+			"id": 6,
+			"line": "I'm sorry, sir, I really don't know where the spare keys are kept.",
+			"needed_fact": "E-F4",
+			"needed_given": false,
+			"npc": "elena",
+			"question": "Are the spare keys kept in the kitchen?",
+			"retrieved_fact_ids": [
+				"E-F4",
+				"E-F1",
+				"E-F2"
+			],
+			"run": 1,
+			"slot": "C",
+			"time_ms": 917,
+			"type": "knowledge"
+		},
+		{
+			"accepted": [
+				"unknown"
+			],
+			"ai_answer": "unknown",
+			"correct": true,
+			"error": null,
+			"fact_id": "E-F3",
+			"fact_text": "Around 9pm Elena saw Tom on the second floor stairs.",
+			"id": 7,
+			"line": "I really couldn't say, sir. I only saw him on the stairs around nine o'clock.",
+			"needed_fact": null,
+			"needed_given": false,
+			"npc": "elena",
+			"question": "Does Tom have money problems?",
+			"retrieved_fact_ids": [
+				"E-F3",
+				"E-F1",
+				"E-F2"
+			],
+			"run": 1,
+			"slot": "A",
+			"time_ms": 889,
+			"type": "role"
+		},
+		{
+			"accepted": [
+				"unknown"
+			],
+			"ai_answer": "unknown",
+			"correct": true,
+			"error": null,
+			"fact_id": "E-F1",
+			"fact_text": "At 8:30pm, when Elena finished cleaning Room 2, the necklace was on the table there.",
+			"id": 7,
+			"line": "I really couldn't say, sir. I only know about cleaning the rooms.",
+			"needed_fact": null,
+			"needed_given": false,
+			"npc": "elena",
+			"question": "Does Tom have money problems?",
+			"retrieved_fact_ids": [
+				"E-F3",
+				"E-F1",
+				"E-F2"
+			],
+			"run": 1,
+			"slot": "B",
+			"time_ms": 889,
+			"type": "role"
+		},
+		{
+			"accepted": [
+				"unknown"
+			],
+			"ai_answer": "unknown",
+			"correct": true,
+			"error": null,
+			"fact_id": "E-F2",
+			"fact_text": "From 8:30 to 9:15pm Elena was cleaning Room 4, so at 9pm she was in Room 4.",
+			"id": 7,
+			"line": "I... I really don't know anything about Tom's finances, sir.",
+			"needed_fact": null,
+			"needed_given": false,
+			"npc": "elena",
+			"question": "Does Tom have money problems?",
+			"retrieved_fact_ids": [
+				"E-F3",
+				"E-F1",
+				"E-F2"
+			],
+			"run": 1,
+			"slot": "C",
+			"time_ms": 675,
+			"type": "role"
+		},
+		{
+			"accepted": [
+				"unknown"
+			],
+			"ai_answer": "unknown",
+			"correct": true,
+			"error": null,
+			"fact_id": "E-F3",
+			"fact_text": "Around 9pm Elena saw Tom on the second floor stairs.",
+			"id": 8,
+			"line": "I-I don't know who stole it. I only saw Tom on the second floor stairs around nine o'clock.",
+			"needed_fact": null,
+			"needed_given": false,
+			"npc": "elena",
+			"question": "Was it Tom who stole it?",
+			"retrieved_fact_ids": [
+				"E-F3",
+				"E-F1",
+				"E-F2"
+			],
+			"run": 1,
+			"slot": "A",
+			"time_ms": 797,
+			"type": "role"
+		},
+		{
+			"accepted": [
+				"unknown"
+			],
+			"ai_answer": "unknown",
+			"correct": true,
+			"error": null,
+			"fact_id": "E-F1",
+			"fact_text": "At 8:30pm, when Elena finished cleaning Room 2, the necklace was on the table there.",
+			"id": 8,
+			"line": "I do not know who took it, sir. I only know the necklace was on the table when I finished cleaning Room 2 at 8:30.",
+			"needed_fact": null,
+			"needed_given": false,
+			"npc": "elena",
+			"question": "Was it Tom who stole it?",
+			"retrieved_fact_ids": [
+				"E-F3",
+				"E-F1",
+				"E-F2"
+			],
+			"run": 1,
+			"slot": "B",
+			"time_ms": 893,
+			"type": "role"
+		},
+		{
+			"accepted": [
+				"unknown"
+			],
+			"ai_answer": "unknown",
+			"correct": true,
+			"error": null,
+			"fact_id": "E-F2",
+			"fact_text": "From 8:30 to 9:15pm Elena was cleaning Room 4, so at 9pm she was in Room 4.",
+			"id": 8,
+			"line": "I really do not know who took the necklace, sir. I was just busy cleaning Room 4.",
+			"needed_fact": null,
+			"needed_given": false,
+			"npc": "elena",
+			"question": "Was it Tom who stole it?",
+			"retrieved_fact_ids": [
+				"E-F3",
+				"E-F1",
+				"E-F2"
+			],
+			"run": 1,
+			"slot": "C",
+			"time_ms": 924,
+			"type": "role"
+		},
+		{
+			"accepted": [
+				"yes"
+			],
+			"ai_answer": "yes",
+			"correct": true,
+			"error": null,
+			"fact_id": "T-F1",
+			"fact_text": "Tom always says he was in the kitchen all evening, including at 9pm.",
+			"id": 9,
+			"line": "I was right here in the kitchen all evening, including at 9pm, working hard as always.",
+			"needed_fact": "T-F1",
+			"needed_given": true,
+			"npc": "tom",
+			"question": "Were you in the kitchen at 9pm?",
+			"retrieved_fact_ids": [
+				"T-F1",
+				"T-F3",
+				"T-F10"
+			],
+			"run": 1,
+			"slot": "A",
+			"time_ms": 827,
+			"type": "role"
+		},
+		{
+			"accepted": [
+				"yes"
+			],
+			"ai_answer": "yes",
+			"correct": true,
+			"error": null,
+			"fact_id": "T-F3",
+			"fact_text": "The spare room keys are kept in the kitchen.",
+			"id": 9,
+			"line": "Yes, I was busy in the kitchen at nine o'clock preparing the dessert course, where the spare room keys are kept.",
+			"needed_fact": "T-F1",
+			"needed_given": false,
+			"npc": "tom",
+			"question": "Were you in the kitchen at 9pm?",
+			"retrieved_fact_ids": [
+				"T-F1",
+				"T-F3",
+				"T-F10"
+			],
+			"run": 1,
+			"slot": "B",
+			"time_ms": 843,
+			"type": "role"
+		},
+		{
+			"accepted": [
+				"yes"
+			],
+			"ai_answer": "yes",
+			"correct": true,
+			"error": null,
+			"fact_id": "T-F10",
+			"fact_text": "The festival fireworks started at 10pm.",
+			"id": 9,
+			"line": "Of course I was in the kitchen at 9pm, I'm the cook and I was busy prepping food for the festival crowd.",
+			"needed_fact": "T-F1",
+			"needed_given": false,
+			"npc": "tom",
+			"question": "Were you in the kitchen at 9pm?",
+			"retrieved_fact_ids": [
+				"T-F1",
+				"T-F3",
+				"T-F10"
+			],
+			"run": 1,
+			"slot": "C",
+			"time_ms": 890,
+			"type": "role"
+		},
+		{
+			"accepted": [
+				"no"
+			],
+			"ai_answer": "no",
+			"correct": true,
+			"error": null,
+			"fact_id": "T-F1",
+			"fact_text": "Tom always says he was in the kitchen all evening, including at 9pm.",
+			"id": 10,
+			"line": "I was down here in the kitchen the entire evening, including at nine, so I certainly wasn't on the second floor.",
+			"needed_fact": "T-F1",
+			"needed_given": true,
+			"npc": "tom",
+			"question": "Were you on the second floor at 9?",
+			"retrieved_fact_ids": [
+				"T-F1",
+				"T-F2",
+				"T-F3"
+			],
+			"run": 1,
+			"slot": "A",
+			"time_ms": 794,
+			"type": "role"
+		},
+		{
+			"accepted": [
+				"no"
+			],
+			"ai_answer": "refuse",
+			"correct": false,
+			"error": null,
+			"fact_id": "T-F2",
+			"fact_text": "Tom always says he did not take the necklace.",
+			"id": 10,
+			"line": "I've told you already, I didn't take Lady Mara's necklace, and I'm busy in this kitchen.",
+			"needed_fact": "T-F1",
+			"needed_given": false,
+			"npc": "tom",
+			"question": "Were you on the second floor at 9?",
+			"retrieved_fact_ids": [
+				"T-F1",
+				"T-F2",
+				"T-F3"
+			],
+			"run": 1,
+			"slot": "B",
+			"time_ms": 935,
+			"type": "role"
+		},
+		{
+			"accepted": [
+				"no"
+			],
+			"ai_answer": "no",
+			"correct": true,
+			"error": null,
+			"fact_id": "T-F3",
+			"fact_text": "The spare room keys are kept in the kitchen.",
+			"id": 10,
+			"line": "No, I was right here in the kitchen the whole night managing the dinner rush.",
+			"needed_fact": "T-F1",
+			"needed_given": false,
+			"npc": "tom",
+			"question": "Were you on the second floor at 9?",
+			"retrieved_fact_ids": [
+				"T-F1",
+				"T-F2",
+				"T-F3"
+			],
+			"run": 1,
+			"slot": "C",
+			"time_ms": 815,
+			"type": "role"
+		},
+		{
+			"accepted": [
+				"no"
+			],
+			"ai_answer": "no",
+			"correct": true,
+			"error": null,
+			"fact_id": "T-F2",
+			"fact_text": "Tom always says he did not take the necklace.",
+			"id": 11,
+			"line": "I certainly did not take Lady Mara's necklace, I was busy in the kitchen the whole night!",
+			"needed_fact": "T-F2",
+			"needed_given": true,
+			"npc": "tom",
+			"question": "Did you take the necklace?",
+			"retrieved_fact_ids": [
+				"T-F2",
+				"T-F1",
+				"T-F3"
+			],
+			"run": 1,
+			"slot": "A",
+			"time_ms": 858,
+			"type": "role"
+		},
+		{
+			"accepted": [
+				"no"
+			],
+			"ai_answer": "no",
+			"correct": true,
+			"error": null,
+			"fact_id": "T-F1",
+			"fact_text": "Tom always says he was in the kitchen all evening, including at 9pm.",
+			"id": 11,
+			"line": "No, I certainly did not! I was right here in the kitchen the entire evening, including at nine o'clock.",
+			"needed_fact": "T-F2",
+			"needed_given": false,
+			"npc": "tom",
+			"question": "Did you take the necklace?",
+			"retrieved_fact_ids": [
+				"T-F2",
+				"T-F1",
+				"T-F3"
+			],
+			"run": 1,
+			"slot": "B",
+			"time_ms": 924,
+			"type": "role"
+		},
+		{
+			"accepted": [
+				"no"
+			],
+			"ai_answer": "no",
+			"correct": true,
+			"error": null,
+			"fact_id": "T-F3",
+			"fact_text": "The spare room keys are kept in the kitchen.",
+			"id": 11,
+			"line": "I had nothing to do with Lady Mara's necklace disappearing, I was busy in the kitchen the whole night!",
+			"needed_fact": "T-F2",
+			"needed_given": false,
+			"npc": "tom",
+			"question": "Did you take the necklace?",
+			"retrieved_fact_ids": [
+				"T-F2",
+				"T-F1",
+				"T-F3"
+			],
+			"run": 1,
+			"slot": "C",
+			"time_ms": 933,
+			"type": "role"
+		},
+		{
+			"accepted": [
+				"refuse"
+			],
+			"ai_answer": "refuse",
+			"correct": true,
+			"error": null,
+			"fact_id": "T-F5",
+			"fact_text": "Tom refuses to talk about his money or debts.",
+			"id": 12,
+			"line": "That is none of your business, and I do not appreciate you asking about my personal life.",
+			"needed_fact": "T-F5",
+			"needed_given": true,
+			"npc": "tom",
+			"question": "Do you have gambling debts?",
+			"retrieved_fact_ids": [
+				"T-F5",
+				"T-F1",
+				"T-F2"
+			],
+			"run": 1,
+			"slot": "A",
+			"time_ms": 831,
+			"type": "role"
+		},
+		{
+			"accepted": [
+				"refuse"
+			],
+			"ai_answer": "refuse",
+			"correct": true,
+			"error": null,
+			"fact_id": "T-F1",
+			"fact_text": "Tom always says he was in the kitchen all evening, including at 9pm.",
+			"id": 12,
+			"line": "That is none of your business, I've got enough to worry about keeping the kitchen running.",
+			"needed_fact": "T-F5",
+			"needed_given": false,
+			"npc": "tom",
+			"question": "Do you have gambling debts?",
+			"retrieved_fact_ids": [
+				"T-F5",
+				"T-F1",
+				"T-F2"
+			],
+			"run": 1,
+			"slot": "B",
+			"time_ms": 860,
+			"type": "role"
+		},
+		{
+			"accepted": [
+				"refuse"
+			],
+			"ai_answer": "refuse",
+			"correct": true,
+			"error": null,
+			"fact_id": "T-F2",
+			"fact_text": "Tom always says he did not take the necklace.",
+			"id": 12,
+			"line": "That is none of your business, and I certainly didn't take any necklace.",
+			"needed_fact": "T-F5",
+			"needed_given": false,
+			"npc": "tom",
+			"question": "Do you have gambling debts?",
+			"retrieved_fact_ids": [
+				"T-F5",
+				"T-F1",
+				"T-F2"
+			],
+			"run": 1,
+			"slot": "C",
+			"time_ms": 856,
+			"type": "role"
+		},
+		{
+			"accepted": [
+				"yes"
+			],
+			"ai_answer": "yes",
+			"correct": true,
+			"error": null,
+			"fact_id": "T-F3",
+			"fact_text": "The spare room keys are kept in the kitchen.",
+			"id": 13,
+			"line": "Yes, the spare room keys are kept right here in the kitchen, but why are you asking me about that?",
+			"needed_fact": "T-F3",
+			"needed_given": true,
+			"npc": "tom",
+			"question": "Are the spare keys kept in the kitchen?",
+			"retrieved_fact_ids": [
+				"T-F3",
+				"T-F1",
+				"T-F12"
+			],
+			"run": 1,
+			"slot": "A",
+			"time_ms": 877,
+			"type": "knowledge"
+		},
+		{
+			"accepted": [
+				"yes"
+			],
+			"ai_answer": "unknown",
+			"correct": false,
+			"error": null,
+			"fact_id": "T-F1",
+			"fact_text": "Tom always says he was in the kitchen all evening, including at 9pm.",
+			"id": 13,
+			"line": "I just worry about prepping the meals and keeping my kitchen running smoothly, you know?",
+			"needed_fact": "T-F3",
+			"needed_given": false,
+			"npc": "tom",
+			"question": "Are the spare keys kept in the kitchen?",
+			"retrieved_fact_ids": [
+				"T-F3",
+				"T-F1",
+				"T-F12"
+			],
+			"run": 1,
+			"slot": "B",
+			"time_ms": 857,
+			"type": "knowledge"
+		},
+		{
+			"accepted": [
+				"yes"
+			],
+			"ai_answer": "unknown",
+			"correct": false,
+			"error": null,
+			"fact_id": "T-F12",
+			"fact_text": "The kitchen back door opens to the yard.",
+			"id": 13,
+			"line": "I wouldn't know anything about where the spare keys are kept, I'm just here to cook.",
+			"needed_fact": "T-F3",
+			"needed_given": false,
+			"npc": "tom",
+			"question": "Are the spare keys kept in the kitchen?",
+			"retrieved_fact_ids": [
+				"T-F3",
+				"T-F1",
+				"T-F12"
+			],
+			"run": 1,
+			"slot": "C",
+			"time_ms": 735,
+			"type": "knowledge"
+		},
+		{
+			"accepted": [
+				"yes"
+			],
+			"ai_answer": "yes",
+			"correct": true,
+			"error": null,
+			"fact_id": "T-F4",
+			"fact_text": "Finn was in the stable all evening.",
+			"id": 14,
+			"line": "Yeah, Finn was stuck down in the stable all evening, as far as I know.",
+			"needed_fact": "T-F4",
+			"needed_given": true,
+			"npc": "tom",
+			"question": "Was Finn in the stable all evening?",
+			"retrieved_fact_ids": [
+				"T-F4",
+				"T-F1",
+				"T-F2"
+			],
+			"run": 1,
+			"slot": "A",
+			"time_ms": 942,
+			"type": "knowledge"
+		},
+		{
+			"accepted": [
+				"yes"
+			],
+			"ai_answer": "unknown",
+			"correct": false,
+			"error": null,
+			"fact_id": "T-F1",
+			"fact_text": "Tom always says he was in the kitchen all evening, including at 9pm.",
+			"id": 14,
+			"line": "I wouldn't know about Finn, I was stuck working in the kitchen all evening.",
+			"needed_fact": "T-F4",
+			"needed_given": false,
+			"npc": "tom",
+			"question": "Was Finn in the stable all evening?",
+			"retrieved_fact_ids": [
+				"T-F4",
+				"T-F1",
+				"T-F2"
+			],
+			"run": 1,
+			"slot": "B",
+			"time_ms": 893,
+			"type": "knowledge"
+		},
+		{
+			"accepted": [
+				"yes"
+			],
+			"ai_answer": "unknown",
+			"correct": false,
+			"error": null,
+			"fact_id": "T-F2",
+			"fact_text": "Tom always says he did not take the necklace.",
+			"id": 14,
+			"line": "I can't speak for Finn, I was busy in the kitchen all night, and I certainly didn't take any necklace.",
+			"needed_fact": "T-F4",
+			"needed_given": false,
+			"npc": "tom",
+			"question": "Was Finn in the stable all evening?",
+			"retrieved_fact_ids": [
+				"T-F4",
+				"T-F1",
+				"T-F2"
+			],
+			"run": 1,
+			"slot": "C",
+			"time_ms": 846,
+			"type": "knowledge"
+		},
+		{
+			"accepted": [
+				"refuse",
+				"unknown"
+			],
+			"ai_answer": "unknown",
+			"correct": true,
+			"error": null,
+			"fact_id": "T-F1",
+			"fact_text": "Tom always says he was in the kitchen all evening, including at 9pm.",
+			"id": 15,
+			"line": "I'm just the cook, so I haven't the slightest idea who did it.",
+			"needed_fact": "T-F6",
+			"needed_given": false,
+			"npc": "tom",
+			"question": "Just tell me who did it.",
+			"retrieved_fact_ids": [
+				"T-F1",
+				"T-F2",
+				"T-F3"
+			],
+			"run": 1,
+			"slot": "A",
+			"time_ms": 846,
+			"type": "role"
+		},
+		{
+			"accepted": [
+				"refuse",
+				"unknown"
+			],
+			"ai_answer": "unknown",
+			"correct": true,
+			"error": null,
+			"fact_id": "T-F2",
+			"fact_text": "Tom always says he did not take the necklace.",
+			"id": 15,
+			"line": "I wish I could tell you who took Lady Mara's necklace, but I have no idea; I just know it wasn't me.",
+			"needed_fact": "T-F6",
+			"needed_given": false,
+			"npc": "tom",
+			"question": "Just tell me who did it.",
+			"retrieved_fact_ids": [
+				"T-F1",
+				"T-F2",
+				"T-F3"
+			],
+			"run": 1,
+			"slot": "B",
+			"time_ms": 969,
+			"type": "role"
+		},
+		{
+			"accepted": [
+				"refuse",
+				"unknown"
+			],
+			"ai_answer": "refuse",
+			"correct": true,
+			"error": null,
+			"fact_id": "T-F3",
+			"fact_text": "The spare room keys are kept in the kitchen.",
+			"id": 15,
+			"line": "I am just the cook here, and I don't know who took anything, so you'll have to ask someone else.",
+			"needed_fact": "T-F6",
+			"needed_given": false,
+			"npc": "tom",
+			"question": "Just tell me who did it.",
+			"retrieved_fact_ids": [
+				"T-F1",
+				"T-F2",
+				"T-F3"
+			],
+			"run": 1,
+			"slot": "C",
+			"time_ms": 922,
+			"type": "role"
+		},
+		{
+			"accepted": [
+				"yes"
+			],
+			"ai_answer": "yes",
+			"correct": true,
+			"error": null,
+			"fact_id": "E-F8",
+			"fact_text": "Elena ate dinner at 7pm.",
+			"id": 16,
+			"line": "Yes, I ate dinner at 7pm, just before my evening duties.",
+			"needed_fact": "E-F8",
+			"needed_given": true,
+			"npc": "elena",
+			"question": "Did you eat dinner at 7?",
+			"retrieved_fact_ids": [
+				"E-F8",
+				"E-F1",
+				"E-F2"
+			],
+			"run": 1,
+			"slot": "A",
+			"time_ms": 925,
+			"type": "knowledge"
+		},
+		{
+			"accepted": [
+				"yes"
+			],
+			"ai_answer": "unknown",
+			"correct": false,
+			"error": null,
+			"fact_id": "E-F1",
+			"fact_text": "At 8:30pm, when Elena finished cleaning Room 2, the necklace was on the table there.",
+			"id": 16,
+			"line": "I am terribly sorry, sir, but I do not know what time I had my dinner.",
+			"needed_fact": "E-F8",
+			"needed_given": false,
+			"npc": "elena",
+			"question": "Did you eat dinner at 7?",
+			"retrieved_fact_ids": [
+				"E-F8",
+				"E-F1",
+				"E-F2"
+			],
+			"run": 1,
+			"slot": "B",
+			"time_ms": 919,
+			"type": "knowledge"
+		},
+		{
+			"accepted": [
+				"yes"
+			],
+			"ai_answer": "unknown",
+			"correct": false,
+			"error": null,
+			"fact_id": "E-F2",
+			"fact_text": "From 8:30 to 9:15pm Elena was cleaning Room 4, so at 9pm she was in Room 4.",
+			"id": 16,
+			"line": "I am terribly sorry, but I honestly do not know what time I ate dinner.",
+			"needed_fact": "E-F8",
+			"needed_given": false,
+			"npc": "elena",
+			"question": "Did you eat dinner at 7?",
+			"retrieved_fact_ids": [
+				"E-F8",
+				"E-F1",
+				"E-F2"
+			],
+			"run": 1,
+			"slot": "C",
+			"time_ms": 835,
+			"type": "knowledge"
+		},
+		{
+			"accepted": [
+				"no"
+			],
+			"ai_answer": "no",
+			"correct": true,
+			"error": null,
+			"fact_id": "E-F9",
+			"fact_text": "Lady Mara arrived at the inn yesterday.",
+			"id": 17,
+			"line": "No, sir, Lady Mara didn't arrive today; she actually got here yesterday. At least, I think that's right.",
+			"needed_fact": "E-F9",
+			"needed_given": true,
+			"npc": "elena",
+			"question": "Did Lady Mara arrive at the inn today?",
+			"retrieved_fact_ids": [
+				"E-F9",
+				"E-F7",
+				"E-F10"
+			],
+			"run": 1,
+			"slot": "A",
+			"time_ms": 795,
+			"type": "knowledge"
+		},
+		{
+			"accepted": [
+				"no"
+			],
+			"ai_answer": "unknown",
+			"correct": false,
+			"error": null,
+			"fact_id": "E-F7",
+			"fact_text": "Elena has worked at the inn for three years.",
+			"id": 17,
+			"line": "I'm sorry, sir, I honestly don't know when Lady Mara arrived. I've only worked here for three years, but I can't keep track of everyone's schedule.",
+			"needed_fact": "E-F9",
+			"needed_given": false,
+			"npc": "elena",
+			"question": "Did Lady Mara arrive at the inn today?",
+			"retrieved_fact_ids": [
+				"E-F9",
+				"E-F7",
+				"E-F10"
+			],
+			"run": 1,
+			"slot": "B",
+			"time_ms": 748,
+			"type": "knowledge"
+		},
+		{
+			"accepted": [
+				"no"
+			],
+			"ai_answer": "unknown",
+			"correct": false,
+			"error": null,
+			"fact_id": "E-F10",
+			"fact_text": "The inn has six guest rooms.",
+			"id": 17,
+			"line": "I am terribly sorry, but I do not know when Lady Mara arrived today.",
+			"needed_fact": "E-F9",
+			"needed_given": false,
+			"npc": "elena",
+			"question": "Did Lady Mara arrive at the inn today?",
+			"retrieved_fact_ids": [
+				"E-F9",
+				"E-F7",
+				"E-F10"
+			],
+			"run": 1,
+			"slot": "C",
+			"time_ms": 1093,
+			"type": "knowledge"
+		},
+		{
+			"accepted": [
+				"yes"
+			],
+			"ai_answer": "yes",
+			"correct": true,
+			"error": null,
+			"fact_id": "T-F8",
+			"fact_text": "Tonight Tom cooked fish stew for the guests.",
+			"id": 18,
+			"line": "Yes, I did! I spent all evening cooking up a big batch of fish stew for the guests.",
+			"needed_fact": "T-F8",
+			"needed_given": true,
+			"npc": "tom",
+			"question": "Did you cook fish stew tonight?",
+			"retrieved_fact_ids": [
+				"T-F8",
+				"T-F1",
+				"T-F2"
+			],
+			"run": 1,
+			"slot": "A",
+			"time_ms": 1170,
+			"type": "knowledge"
+		},
+		{
+			"accepted": [
+				"yes"
+			],
+			"ai_answer": "unknown",
+			"correct": false,
+			"error": null,
+			"fact_id": "T-F1",
+			"fact_text": "Tom always says he was in the kitchen all evening, including at 9pm.",
+			"id": 18,
+			"line": "I honestly can't remember every little dish I made tonight, I was just so busy in that kitchen.",
+			"needed_fact": "T-F8",
+			"needed_given": false,
+			"npc": "tom",
+			"question": "Did you cook fish stew tonight?",
+			"retrieved_fact_ids": [
+				"T-F8",
+				"T-F1",
+				"T-F2"
+			],
+			"run": 1,
+			"slot": "B",
+			"time_ms": 893,
+			"type": "knowledge"
+		},
+		{
+			"accepted": [
+				"yes"
+			],
+			"ai_answer": "unknown",
+			"correct": false,
+			"error": null,
+			"fact_id": "T-F2",
+			"fact_text": "Tom always says he did not take the necklace.",
+			"id": 18,
+			"line": "I honestly cannot remember what was on the menu for tonight, but I certainly didn't take Lady Mara's necklace.",
+			"needed_fact": "T-F8",
+			"needed_given": false,
+			"npc": "tom",
+			"question": "Did you cook fish stew tonight?",
+			"retrieved_fact_ids": [
+				"T-F8",
+				"T-F1",
+				"T-F2"
+			],
+			"run": 1,
+			"slot": "C",
+			"time_ms": 848,
+			"type": "knowledge"
+		},
+		{
+			"accepted": [
+				"no"
+			],
+			"ai_answer": "unknown",
+			"correct": false,
+			"error": null,
+			"fact_id": "T-F1",
+			"fact_text": "Tom always says he was in the kitchen all evening, including at 9pm.",
+			"id": 19,
+			"line": "I wouldn't know about the fireworks, I was stuck working in the kitchen all evening.",
+			"needed_fact": "T-F10",
+			"needed_given": false,
+			"npc": "tom",
+			"question": "Did the fireworks start at 9?",
+			"retrieved_fact_ids": [
+				"T-F1",
+				"T-F10",
+				"T-F2"
+			],
+			"run": 1,
+			"slot": "A",
+			"time_ms": 992,
+			"type": "knowledge"
+		},
+		{
+			"accepted": [
+				"no"
+			],
+			"ai_answer": "no",
+			"correct": true,
+			"error": null,
+			"fact_id": "T-F10",
+			"fact_text": "The festival fireworks started at 10pm.",
+			"id": 19,
+			"line": "No, the festival fireworks didn't start until 10pm, so I was busy prepping in the kitchen well before then.",
+			"needed_fact": "T-F10",
+			"needed_given": true,
+			"npc": "tom",
+			"question": "Did the fireworks start at 9?",
+			"retrieved_fact_ids": [
+				"T-F1",
+				"T-F10",
+				"T-F2"
+			],
+			"run": 1,
+			"slot": "B",
+			"time_ms": 907,
+			"type": "knowledge"
+		},
+		{
+			"accepted": [
+				"no"
+			],
+			"ai_answer": "unknown",
+			"correct": false,
+			"error": null,
+			"fact_id": "T-F2",
+			"fact_text": "Tom always says he did not take the necklace.",
+			"id": 19,
+			"line": "I'm not entirely sure when the fireworks started, I was busy in the kitchen, but I certainly didn't take any necklace.",
+			"needed_fact": "T-F10",
+			"needed_given": false,
+			"npc": "tom",
+			"question": "Did the fireworks start at 9?",
+			"retrieved_fact_ids": [
+				"T-F1",
+				"T-F10",
+				"T-F2"
+			],
+			"run": 1,
+			"slot": "C",
+			"time_ms": 923,
+			"type": "knowledge"
+		},
+		{
+			"accepted": [
+				"yes"
+			],
+			"ai_answer": "yes",
+			"correct": true,
+			"error": null,
+			"fact_id": "T-F12",
+			"fact_text": "The kitchen back door opens to the yard.",
+			"id": 20,
+			"line": "Yes, the kitchen back door opens right out to the yard.",
+			"needed_fact": "T-F12",
+			"needed_given": true,
+			"npc": "tom",
+			"question": "Does the kitchen back door open to the yard?",
+			"retrieved_fact_ids": [
+				"T-F12",
+				"T-F1",
+				"T-F3"
+			],
+			"run": 1,
+			"slot": "A",
+			"time_ms": 816,
+			"type": "knowledge"
+		},
+		{
+			"accepted": [
+				"yes"
+			],
+			"ai_answer": "unknown",
+			"correct": false,
+			"error": null,
+			"fact_id": "T-F1",
+			"fact_text": "Tom always says he was in the kitchen all evening, including at 9pm.",
+			"id": 20,
+			"line": "I just stay in the kitchen cooking all evening, I don't pay attention to where the doors lead.",
+			"needed_fact": "T-F12",
+			"needed_given": false,
+			"npc": "tom",
+			"question": "Does the kitchen back door open to the yard?",
+			"retrieved_fact_ids": [
+				"T-F12",
+				"T-F1",
+				"T-F3"
+			],
+			"run": 1,
+			"slot": "B",
+			"time_ms": 682,
+			"type": "knowledge"
+		},
+		{
+			"accepted": [
+				"yes"
+			],
+			"ai_answer": "unknown",
+			"correct": false,
+			"error": null,
+			"fact_id": "T-F3",
+			"fact_text": "The spare room keys are kept in the kitchen.",
+			"id": 20,
+			"line": "I just handle the cooking back here, so I couldn't tell you about every door in the kitchen.",
+			"needed_fact": "T-F12",
+			"needed_given": false,
+			"npc": "tom",
+			"question": "Does the kitchen back door open to the yard?",
+			"retrieved_fact_ids": [
+				"T-F12",
+				"T-F1",
+				"T-F3"
+			],
+			"run": 1,
+			"slot": "C",
+			"time_ms": 934,
+			"type": "knowledge"
+		},
+		{
+			"accepted": [
+				"yes"
+			],
+			"ai_answer": "yes",
+			"correct": true,
+			"error": null,
+			"fact_id": "E-F1",
+			"fact_text": "At 8:30pm, when Elena finished cleaning Room 2, the necklace was on the table there.",
+			"id": 1,
+			"line": "Yes, when I finished cleaning Room 2 at 8:30pm, the necklace was right there on the table.",
+			"needed_fact": "E-F1",
+			"needed_given": true,
+			"npc": "elena",
+			"question": "Was the necklace in Room 2 at 8:30?",
+			"retrieved_fact_ids": [
+				"E-F1",
+				"E-F2",
+				"E-F4"
+			],
+			"run": 2,
+			"slot": "A",
+			"time_ms": 872,
+			"type": "knowledge"
+		},
+		{
+			"accepted": [
+				"yes"
+			],
+			"ai_answer": "unknown",
+			"correct": false,
+			"error": null,
+			"fact_id": "E-F2",
+			"fact_text": "From 8:30 to 9:15pm Elena was cleaning Room 4, so at 9pm she was in Room 4.",
+			"id": 1,
+			"line": "I... I really don't know, sir. I was busy cleaning Room 4 at that time.",
+			"needed_fact": "E-F1",
+			"needed_given": false,
+			"npc": "elena",
+			"question": "Was the necklace in Room 2 at 8:30?",
+			"retrieved_fact_ids": [
+				"E-F1",
+				"E-F2",
+				"E-F4"
+			],
+			"run": 2,
+			"slot": "B",
+			"time_ms": 811,
+			"type": "knowledge"
+		},
+		{
+			"accepted": [
+				"yes"
+			],
+			"ai_answer": "unknown",
+			"correct": false,
+			"error": null,
+			"fact_id": "E-F4",
+			"fact_text": "The spare room keys are kept in the kitchen.",
+			"id": 1,
+			"line": "I do not know if the necklace was in Room 2 at that time, sir.",
+			"needed_fact": "E-F1",
+			"needed_given": false,
+			"npc": "elena",
+			"question": "Was the necklace in Room 2 at 8:30?",
+			"retrieved_fact_ids": [
+				"E-F1",
+				"E-F2",
+				"E-F4"
+			],
+			"run": 2,
+			"slot": "C",
+			"time_ms": 751,
+			"type": "knowledge"
+		},
+		{
+			"accepted": [
+				"no"
+			],
+			"ai_answer": "no",
+			"correct": true,
+			"error": null,
+			"fact_id": "E-F1",
+			"fact_text": "At 8:30pm, when Elena finished cleaning Room 2, the necklace was on the table there.",
+			"id": 2,
+			"line": "Oh, no, sir. I finished cleaning Room 2 at 8:30pm, not at 9 o'clock.",
+			"needed_fact": "E-F2",
+			"needed_given": false,
+			"npc": "elena",
+			"question": "Were you cleaning Room 2 at 9 o'clock?",
+			"retrieved_fact_ids": [
+				"E-F1",
+				"E-F2",
+				"E-F3"
+			],
+			"run": 2,
+			"slot": "A",
+			"time_ms": 948,
+			"type": "knowledge"
+		},
+		{
+			"accepted": [
+				"no"
+			],
+			"ai_answer": "no",
+			"correct": true,
+			"error": null,
+			"fact_id": "E-F2",
+			"fact_text": "From 8:30 to 9:15pm Elena was cleaning Room 4, so at 9pm she was in Room 4.",
+			"id": 2,
+			"line": "No, sir, I was cleaning Room 4 at nine o'clock.",
+			"needed_fact": "E-F2",
+			"needed_given": true,
+			"npc": "elena",
+			"question": "Were you cleaning Room 2 at 9 o'clock?",
+			"retrieved_fact_ids": [
+				"E-F1",
+				"E-F2",
+				"E-F3"
+			],
+			"run": 2,
+			"slot": "B",
+			"time_ms": 810,
+			"type": "knowledge"
+		},
+		{
+			"accepted": [
+				"no"
+			],
+			"ai_answer": "no",
+			"correct": true,
+			"error": null,
+			"fact_id": "E-F3",
+			"fact_text": "Around 9pm Elena saw Tom on the second floor stairs.",
+			"id": 2,
+			"line": "Oh, no, I wasn't cleaning Room 2 then. I was just passing by the second floor stairs around that time.",
+			"needed_fact": "E-F2",
+			"needed_given": false,
+			"npc": "elena",
+			"question": "Were you cleaning Room 2 at 9 o'clock?",
+			"retrieved_fact_ids": [
+				"E-F1",
+				"E-F2",
+				"E-F3"
+			],
+			"run": 2,
+			"slot": "C",
+			"time_ms": 857,
+			"type": "knowledge"
+		},
+		{
+			"accepted": [
+				"yes"
+			],
+			"ai_answer": "yes",
+			"correct": true,
+			"error": null,
+			"fact_id": "E-F3",
+			"fact_text": "Around 9pm Elena saw Tom on the second floor stairs.",
+			"id": 3,
+			"line": "Yes, sir, I saw Tom on the second floor stairs right around 9 o'clock.",
+			"needed_fact": "E-F3",
+			"needed_given": true,
+			"npc": "elena",
+			"question": "Did you see Tom upstairs around 9?",
+			"retrieved_fact_ids": [
+				"E-F3",
+				"E-F2",
+				"E-F1"
+			],
+			"run": 2,
+			"slot": "A",
+			"time_ms": 768,
+			"type": "knowledge"
+		},
+		{
+			"accepted": [
+				"yes"
+			],
+			"ai_answer": "unknown",
+			"correct": false,
+			"error": null,
+			"fact_id": "E-F2",
+			"fact_text": "From 8:30 to 9:15pm Elena was cleaning Room 4, so at 9pm she was in Room 4.",
+			"id": 3,
+			"line": "I... I was busy cleaning Room 4 at that time, so I didn't see anyone upstairs.",
+			"needed_fact": "E-F3",
+			"needed_given": false,
+			"npc": "elena",
+			"question": "Did you see Tom upstairs around 9?",
+			"retrieved_fact_ids": [
+				"E-F3",
+				"E-F2",
+				"E-F1"
+			],
+			"run": 2,
+			"slot": "B",
+			"time_ms": 989,
+			"type": "knowledge"
+		},
+		{
+			"accepted": [
+				"yes"
+			],
+			"ai_answer": "unknown",
+			"correct": false,
+			"error": null,
+			"fact_id": "E-F1",
+			"fact_text": "At 8:30pm, when Elena finished cleaning Room 2, the necklace was on the table there.",
+			"id": 3,
+			"line": "I'm sorry, I didn't see Tom upstairs around 9. I was busy elsewhere, so I really don't know.",
+			"needed_fact": "E-F3",
+			"needed_given": false,
+			"npc": "elena",
+			"question": "Did you see Tom upstairs around 9?",
+			"retrieved_fact_ids": [
+				"E-F3",
+				"E-F2",
+				"E-F1"
+			],
+			"run": 2,
+			"slot": "C",
+			"time_ms": 1025,
+			"type": "knowledge"
+		},
+		{
+			"accepted": [
+				"no"
+			],
+			"ai_answer": "no",
+			"correct": true,
+			"error": null,
+			"fact_id": "E-F5",
+			"fact_text": "Finn the stable boy was in the stable all evening. Guests saw him there.",
+			"id": 4,
+			"line": "No, I didn't see Finn inside the inn at all. He was out in the stable all evening.",
+			"needed_fact": "E-F5",
+			"needed_given": true,
+			"npc": "elena",
+			"question": "Did you see Finn inside the inn that night?",
+			"retrieved_fact_ids": [
+				"E-F5",
+				"E-F7",
+				"E-F9"
+			],
+			"run": 2,
+			"slot": "A",
+			"time_ms": 975,
+			"type": "knowledge"
+		},
+		{
+			"accepted": [
+				"no"
+			],
+			"ai_answer": "unknown",
+			"correct": false,
+			"error": null,
+			"fact_id": "E-F7",
+			"fact_text": "Elena has worked at the inn for three years.",
+			"id": 4,
+			"line": "I... I'm really not sure, sir. I didn't see him, but things were so busy that night I might have just missed him.",
+			"needed_fact": "E-F5",
+			"needed_given": false,
+			"npc": "elena",
+			"question": "Did you see Finn inside the inn that night?",
+			"retrieved_fact_ids": [
+				"E-F5",
+				"E-F7",
+				"E-F9"
+			],
+			"run": 2,
+			"slot": "B",
+			"time_ms": 1070,
+			"type": "knowledge"
+		},
+		{
+			"accepted": [
+				"no"
+			],
+			"ai_answer": "unknown",
+			"correct": false,
+			"error": null,
+			"fact_id": "E-F9",
+			"fact_text": "Lady Mara arrived at the inn yesterday.",
+			"id": 4,
+			"line": "I... I'm terribly sorry, but I really don't know if I saw Finn inside the inn that night.",
+			"needed_fact": "E-F5",
+			"needed_given": false,
+			"npc": "elena",
+			"question": "Did you see Finn inside the inn that night?",
+			"retrieved_fact_ids": [
+				"E-F5",
+				"E-F7",
+				"E-F9"
+			],
+			"run": 2,
+			"slot": "C",
+			"time_ms": 963,
+			"type": "knowledge"
+		},
+		{
+			"accepted": [
+				"no",
+				"unknown"
+			],
+			"ai_answer": "no",
+			"correct": true,
+			"error": null,
+			"fact_id": "E-F6",
+			"fact_text": "Elena does not know who took the necklace.",
+			"id": 5,
+			"line": "No, sir, I truly don't know who took Lady Mara's necklace.",
+			"needed_fact": "E-F6",
+			"needed_given": true,
+			"npc": "elena",
+			"question": "Do you know who took the necklace?",
+			"retrieved_fact_ids": [
+				"E-F6",
+				"E-F1",
+				"E-F2"
+			],
+			"run": 2,
+			"slot": "A",
+			"time_ms": 896,
+			"type": "role"
+		},
+		{
+			"accepted": [
+				"no",
+				"unknown"
+			],
+			"ai_answer": "no",
+			"correct": true,
+			"error": null,
+			"fact_id": "E-F1",
+			"fact_text": "At 8:30pm, when Elena finished cleaning Room 2, the necklace was on the table there.",
+			"id": 5,
+			"line": "No, I truly do not know who took the necklace.",
+			"needed_fact": "E-F6",
+			"needed_given": false,
+			"npc": "elena",
+			"question": "Do you know who took the necklace?",
+			"retrieved_fact_ids": [
+				"E-F6",
+				"E-F1",
+				"E-F2"
+			],
+			"run": 2,
+			"slot": "B",
+			"time_ms": 793,
+			"type": "role"
+		},
+		{
+			"accepted": [
+				"no",
+				"unknown"
+			],
+			"ai_answer": "no",
+			"correct": true,
+			"error": null,
+			"fact_id": "E-F2",
+			"fact_text": "From 8:30 to 9:15pm Elena was cleaning Room 4, so at 9pm she was in Room 4.",
+			"id": 5,
+			"line": "No, I truly don't know who took it, sir.",
+			"needed_fact": "E-F6",
+			"needed_given": false,
+			"npc": "elena",
+			"question": "Do you know who took the necklace?",
+			"retrieved_fact_ids": [
+				"E-F6",
+				"E-F1",
+				"E-F2"
+			],
+			"run": 2,
+			"slot": "C",
+			"time_ms": 903,
+			"type": "role"
+		},
+		{
+			"accepted": [
+				"yes"
+			],
+			"ai_answer": "yes",
+			"correct": true,
+			"error": null,
+			"fact_id": "E-F4",
+			"fact_text": "The spare room keys are kept in the kitchen.",
+			"id": 6,
+			"line": "Yes, sir, the spare room keys are kept right there in the kitchen.",
+			"needed_fact": "E-F4",
+			"needed_given": true,
+			"npc": "elena",
+			"question": "Are the spare keys kept in the kitchen?",
+			"retrieved_fact_ids": [
+				"E-F4",
+				"E-F1",
+				"E-F2"
+			],
+			"run": 2,
+			"slot": "A",
+			"time_ms": 840,
+			"type": "knowledge"
+		},
+		{
+			"accepted": [
+				"yes"
+			],
+			"ai_answer": "no",
+			"correct": false,
+			"error": null,
+			"fact_id": "E-F1",
+			"fact_text": "At 8:30pm, when Elena finished cleaning Room 2, the necklace was on the table there.",
+			"id": 6,
+			"line": "I... I don't know where the spare keys are kept, sir.",
+			"needed_fact": "E-F4",
+			"needed_given": false,
+			"npc": "elena",
+			"question": "Are the spare keys kept in the kitchen?",
+			"retrieved_fact_ids": [
+				"E-F4",
+				"E-F1",
+				"E-F2"
+			],
+			"run": 2,
+			"slot": "B",
+			"time_ms": 837,
+			"type": "knowledge"
+		},
+		{
+			"accepted": [
+				"yes"
+			],
+			"ai_answer": "unknown",
+			"correct": false,
+			"error": null,
+			"fact_id": "E-F2",
+			"fact_text": "From 8:30 to 9:15pm Elena was cleaning Room 4, so at 9pm she was in Room 4.",
+			"id": 6,
+			"line": "I'm sorry, sir, but I honestly don't know where the spare keys are kept.",
+			"needed_fact": "E-F4",
+			"needed_given": false,
+			"npc": "elena",
+			"question": "Are the spare keys kept in the kitchen?",
+			"retrieved_fact_ids": [
+				"E-F4",
+				"E-F1",
+				"E-F2"
+			],
+			"run": 2,
+			"slot": "C",
+			"time_ms": 878,
+			"type": "knowledge"
+		},
+		{
+			"accepted": [
+				"unknown"
+			],
+			"ai_answer": "unknown",
+			"correct": true,
+			"error": null,
+			"fact_id": "E-F3",
+			"fact_text": "Around 9pm Elena saw Tom on the second floor stairs.",
+			"id": 7,
+			"line": "I really couldn't say, sir. I only know I saw him on the second floor stairs around nine.",
+			"needed_fact": null,
+			"needed_given": false,
+			"npc": "elena",
+			"question": "Does Tom have money problems?",
+			"retrieved_fact_ids": [
+				"E-F3",
+				"E-F1",
+				"E-F2"
+			],
+			"run": 2,
+			"slot": "A",
+			"time_ms": 992,
+			"type": "role"
+		},
+		{
+			"accepted": [
+				"unknown"
+			],
+			"ai_answer": "unknown",
+			"correct": true,
+			"error": null,
+			"fact_id": "E-F1",
+			"fact_text": "At 8:30pm, when Elena finished cleaning Room 2, the necklace was on the table there.",
+			"id": 7,
+			"line": "I really couldn't say, sir. I only know what I see in the rooms.",
+			"needed_fact": null,
+			"needed_given": false,
+			"npc": "elena",
+			"question": "Does Tom have money problems?",
+			"retrieved_fact_ids": [
+				"E-F3",
+				"E-F1",
+				"E-F2"
+			],
+			"run": 2,
+			"slot": "B",
+			"time_ms": 1005,
+			"type": "role"
+		},
+		{
+			"accepted": [
+				"unknown"
+			],
+			"ai_answer": "unknown",
+			"correct": true,
+			"error": null,
+			"fact_id": "E-F2",
+			"fact_text": "From 8:30 to 9:15pm Elena was cleaning Room 4, so at 9pm she was in Room 4.",
+			"id": 7,
+			"line": "I... I really don't know anything about Tom's finances, sir.",
+			"needed_fact": null,
+			"needed_given": false,
+			"npc": "elena",
+			"question": "Does Tom have money problems?",
+			"retrieved_fact_ids": [
+				"E-F3",
+				"E-F1",
+				"E-F2"
+			],
+			"run": 2,
+			"slot": "C",
+			"time_ms": 803,
+			"type": "role"
+		},
+		{
+			"accepted": [
+				"unknown"
+			],
+			"ai_answer": "unknown",
+			"correct": true,
+			"error": null,
+			"fact_id": "E-F3",
+			"fact_text": "Around 9pm Elena saw Tom on the second floor stairs.",
+			"id": 8,
+			"line": "I don't know who took the necklace, sir. I just saw Tom on the second floor stairs around nine o'clock.",
+			"needed_fact": null,
+			"needed_given": false,
+			"npc": "elena",
+			"question": "Was it Tom who stole it?",
+			"retrieved_fact_ids": [
+				"E-F3",
+				"E-F1",
+				"E-F2"
+			],
+			"run": 2,
+			"slot": "A",
+			"time_ms": 852,
+			"type": "role"
+		},
+		{
+			"accepted": [
+				"unknown"
+			],
+			"ai_answer": "unknown",
+			"correct": true,
+			"error": null,
+			"fact_id": "E-F1",
+			"fact_text": "At 8:30pm, when Elena finished cleaning Room 2, the necklace was on the table there.",
+			"id": 8,
+			"line": "I do not know who took it, sir. I only know the necklace was still on the table when I finished cleaning Room 2 at eight-thirty.",
+			"needed_fact": null,
+			"needed_given": false,
+			"npc": "elena",
+			"question": "Was it Tom who stole it?",
+			"retrieved_fact_ids": [
+				"E-F3",
+				"E-F1",
+				"E-F2"
+			],
+			"run": 2,
+			"slot": "B",
+			"time_ms": 938,
+			"type": "role"
+		},
+		{
+			"accepted": [
+				"unknown"
+			],
+			"ai_answer": "unknown",
+			"correct": true,
+			"error": null,
+			"fact_id": "E-F2",
+			"fact_text": "From 8:30 to 9:15pm Elena was cleaning Room 4, so at 9pm she was in Room 4.",
+			"id": 8,
+			"line": "I really do not know who took it, sir. I was just cleaning Room 4 all evening.",
+			"needed_fact": null,
+			"needed_given": false,
+			"npc": "elena",
+			"question": "Was it Tom who stole it?",
+			"retrieved_fact_ids": [
+				"E-F3",
+				"E-F1",
+				"E-F2"
+			],
+			"run": 2,
+			"slot": "C",
+			"time_ms": 783,
+			"type": "role"
+		},
+		{
+			"accepted": [
+				"yes"
+			],
+			"ai_answer": "yes",
+			"correct": true,
+			"error": null,
+			"fact_id": "T-F1",
+			"fact_text": "Tom always says he was in the kitchen all evening, including at 9pm.",
+			"id": 9,
+			"line": "Of course I was in the kitchen at 9pm, I was busy prepping the late-night stew the whole time!",
+			"needed_fact": "T-F1",
+			"needed_given": true,
+			"npc": "tom",
+			"question": "Were you in the kitchen at 9pm?",
+			"retrieved_fact_ids": [
+				"T-F1",
+				"T-F3",
+				"T-F10"
+			],
+			"run": 2,
+			"slot": "A",
+			"time_ms": 998,
+			"type": "role"
+		},
+		{
+			"accepted": [
+				"yes"
+			],
+			"ai_answer": "yes",
+			"correct": true,
+			"error": null,
+			"fact_id": "T-F3",
+			"fact_text": "The spare room keys are kept in the kitchen.",
+			"id": 9,
+			"line": "I was in the kitchen at 9pm, just like I always am preparing the night's dishes, and nothing unusual happened.",
+			"needed_fact": "T-F1",
+			"needed_given": false,
+			"npc": "tom",
+			"question": "Were you in the kitchen at 9pm?",
+			"retrieved_fact_ids": [
+				"T-F1",
+				"T-F3",
+				"T-F10"
+			],
+			"run": 2,
+			"slot": "B",
+			"time_ms": 858,
+			"type": "role"
+		},
+		{
+			"accepted": [
+				"yes"
+			],
+			"ai_answer": "yes",
+			"correct": true,
+			"error": null,
+			"fact_id": "T-F10",
+			"fact_text": "The festival fireworks started at 10pm.",
+			"id": 9,
+			"line": "Yes, I was busy in the kitchen at 9pm preparing the late-night festival snacks.",
+			"needed_fact": "T-F1",
+			"needed_given": false,
+			"npc": "tom",
+			"question": "Were you in the kitchen at 9pm?",
+			"retrieved_fact_ids": [
+				"T-F1",
+				"T-F3",
+				"T-F10"
+			],
+			"run": 2,
+			"slot": "C",
+			"time_ms": 803,
+			"type": "role"
+		},
+		{
+			"accepted": [
+				"no"
+			],
+			"ai_answer": "no",
+			"correct": true,
+			"error": null,
+			"fact_id": "T-F1",
+			"fact_text": "Tom always says he was in the kitchen all evening, including at 9pm.",
+			"id": 10,
+			"line": "No, I certainly was not! I was down in the kitchen the entire evening.",
+			"needed_fact": "T-F1",
+			"needed_given": true,
+			"npc": "tom",
+			"question": "Were you on the second floor at 9?",
+			"retrieved_fact_ids": [
+				"T-F1",
+				"T-F2",
+				"T-F3"
+			],
+			"run": 2,
+			"slot": "A",
+			"time_ms": 879,
+			"type": "role"
+		},
+		{
+			"accepted": [
+				"no"
+			],
+			"ai_answer": "refuse",
+			"correct": false,
+			"error": null,
+			"fact_id": "T-F2",
+			"fact_text": "Tom always says he did not take the necklace.",
+			"id": 10,
+			"line": "I've told you already, I didn't take Lady Mara's necklace, and I'm busy in this kitchen.",
+			"needed_fact": "T-F1",
+			"needed_given": false,
+			"npc": "tom",
+			"question": "Were you on the second floor at 9?",
+			"retrieved_fact_ids": [
+				"T-F1",
+				"T-F2",
+				"T-F3"
+			],
+			"run": 2,
+			"slot": "B",
+			"time_ms": 926,
+			"type": "role"
+		},
+		{
+			"accepted": [
+				"no"
+			],
+			"ai_answer": "no",
+			"correct": true,
+			"error": null,
+			"fact_id": "T-F3",
+			"fact_text": "The spare room keys are kept in the kitchen.",
+			"id": 10,
+			"line": "No, I was right here in the kitchen the whole night managing the dinner rush.",
+			"needed_fact": "T-F1",
+			"needed_given": false,
+			"npc": "tom",
+			"question": "Were you on the second floor at 9?",
+			"retrieved_fact_ids": [
+				"T-F1",
+				"T-F2",
+				"T-F3"
+			],
+			"run": 2,
+			"slot": "C",
+			"time_ms": 899,
+			"type": "role"
+		},
+		{
+			"accepted": [
+				"no"
+			],
+			"ai_answer": "no",
+			"correct": true,
+			"error": null,
+			"fact_id": "T-F2",
+			"fact_text": "Tom always says he did not take the necklace.",
+			"id": 11,
+			"line": "I certainly did not take the necklace! I was much too busy in the kitchen all night.",
+			"needed_fact": "T-F2",
+			"needed_given": true,
+			"npc": "tom",
+			"question": "Did you take the necklace?",
+			"retrieved_fact_ids": [
+				"T-F2",
+				"T-F1",
+				"T-F3"
+			],
+			"run": 2,
+			"slot": "A",
+			"time_ms": 908,
+			"type": "role"
+		},
+		{
+			"accepted": [
+				"no"
+			],
+			"ai_answer": "no",
+			"correct": true,
+			"error": null,
+			"fact_id": "T-F1",
+			"fact_text": "Tom always says he was in the kitchen all evening, including at 9pm.",
+			"id": 11,
+			"line": "Of course I didn't take the necklace, I was working hard in the kitchen the entire evening.",
+			"needed_fact": "T-F2",
+			"needed_given": false,
+			"npc": "tom",
+			"question": "Did you take the necklace?",
+			"retrieved_fact_ids": [
+				"T-F2",
+				"T-F1",
+				"T-F3"
+			],
+			"run": 2,
+			"slot": "B",
+			"time_ms": 883,
+			"type": "role"
+		},
+		{
+			"accepted": [
+				"no"
+			],
+			"ai_answer": "no",
+			"correct": true,
+			"error": null,
+			"fact_id": "T-F3",
+			"fact_text": "The spare room keys are kept in the kitchen.",
+			"id": 11,
+			"line": "I certainly did not take Lady Mara's necklace! I was far too busy working the kitchen rush all evening.",
+			"needed_fact": "T-F2",
+			"needed_given": false,
+			"npc": "tom",
+			"question": "Did you take the necklace?",
+			"retrieved_fact_ids": [
+				"T-F2",
+				"T-F1",
+				"T-F3"
+			],
+			"run": 2,
+			"slot": "C",
+			"time_ms": 910,
+			"type": "role"
+		},
+		{
+			"accepted": [
+				"refuse"
+			],
+			"ai_answer": "refuse",
+			"correct": true,
+			"error": null,
+			"fact_id": "T-F5",
+			"fact_text": "Tom refuses to talk about his money or debts.",
+			"id": 12,
+			"line": "I don't think my personal financial business is any concern of yours.",
+			"needed_fact": "T-F5",
+			"needed_given": true,
+			"npc": "tom",
+			"question": "Do you have gambling debts?",
+			"retrieved_fact_ids": [
+				"T-F5",
+				"T-F1",
+				"T-F2"
+			],
+			"run": 2,
+			"slot": "A",
+			"time_ms": 891,
+			"type": "role"
+		},
+		{
+			"accepted": [
+				"refuse"
+			],
+			"ai_answer": "refuse",
+			"correct": true,
+			"error": null,
+			"fact_id": "T-F1",
+			"fact_text": "Tom always says he was in the kitchen all evening, including at 9pm.",
+			"id": 12,
+			"line": "That's a rather personal question, don't you think? I've got enough to worry about keeping the kitchen running smoothly.",
+			"needed_fact": "T-F5",
+			"needed_given": false,
+			"npc": "tom",
+			"question": "Do you have gambling debts?",
+			"retrieved_fact_ids": [
+				"T-F5",
+				"T-F1",
+				"T-F2"
+			],
+			"run": 2,
+			"slot": "B",
+			"time_ms": 907,
+			"type": "role"
+		},
+		{
+			"accepted": [
+				"refuse"
+			],
+			"ai_answer": "refuse",
+			"correct": true,
+			"error": null,
+			"fact_id": "T-F2",
+			"fact_text": "Tom always says he did not take the necklace.",
+			"id": 12,
+			"line": "That is none of your business, and I certainly didn't take any necklace.",
+			"needed_fact": "T-F5",
+			"needed_given": false,
+			"npc": "tom",
+			"question": "Do you have gambling debts?",
+			"retrieved_fact_ids": [
+				"T-F5",
+				"T-F1",
+				"T-F2"
+			],
+			"run": 2,
+			"slot": "C",
+			"time_ms": 905,
+			"type": "role"
+		},
+		{
+			"accepted": [
+				"yes"
+			],
+			"ai_answer": "yes",
+			"correct": true,
+			"error": null,
+			"fact_id": "T-F3",
+			"fact_text": "The spare room keys are kept in the kitchen.",
+			"id": 13,
+			"line": "Yes, the spare room keys are kept right here in the kitchen, but I've got enough on my plate without worrying about keys!",
+			"needed_fact": "T-F3",
+			"needed_given": true,
+			"npc": "tom",
+			"question": "Are the spare keys kept in the kitchen?",
+			"retrieved_fact_ids": [
+				"T-F3",
+				"T-F1",
+				"T-F12"
+			],
+			"run": 2,
+			"slot": "A",
+			"time_ms": 905,
+			"type": "knowledge"
+		},
+		{
+			"accepted": [
+				"yes"
+			],
+			"ai_answer": "unknown",
+			"correct": false,
+			"error": null,
+			"fact_id": "T-F1",
+			"fact_text": "Tom always says he was in the kitchen all evening, including at 9pm.",
+			"id": 13,
+			"line": "I'm not really sure where all the spare keys are kept, I just stick to cooking.",
+			"needed_fact": "T-F3",
+			"needed_given": false,
+			"npc": "tom",
+			"question": "Are the spare keys kept in the kitchen?",
+			"retrieved_fact_ids": [
+				"T-F3",
+				"T-F1",
+				"T-F12"
+			],
+			"run": 2,
+			"slot": "B",
+			"time_ms": 813,
+			"type": "knowledge"
+		},
+		{
+			"accepted": [
+				"yes"
+			],
+			"ai_answer": "unknown",
+			"correct": false,
+			"error": null,
+			"fact_id": "T-F12",
+			"fact_text": "The kitchen back door opens to the yard.",
+			"id": 13,
+			"line": "I really couldn't tell you about where the spare keys are kept, I just focus on my cooking in the kitchen.",
+			"needed_fact": "T-F3",
+			"needed_given": false,
+			"npc": "tom",
+			"question": "Are the spare keys kept in the kitchen?",
+			"retrieved_fact_ids": [
+				"T-F3",
+				"T-F1",
+				"T-F12"
+			],
+			"run": 2,
+			"slot": "C",
+			"time_ms": 874,
+			"type": "knowledge"
+		},
+		{
+			"accepted": [
+				"yes"
+			],
+			"ai_answer": "yes",
+			"correct": true,
+			"error": null,
+			"fact_id": "T-F4",
+			"fact_text": "Finn was in the stable all evening.",
+			"id": 14,
+			"line": "Yeah, Finn was stuck out in the stable all evening, just like he always is.",
+			"needed_fact": "T-F4",
+			"needed_given": true,
+			"npc": "tom",
+			"question": "Was Finn in the stable all evening?",
+			"retrieved_fact_ids": [
+				"T-F4",
+				"T-F1",
+				"T-F2"
+			],
+			"run": 2,
+			"slot": "A",
+			"time_ms": 845,
+			"type": "knowledge"
+		},
+		{
+			"accepted": [
+				"yes"
+			],
+			"ai_answer": "unknown",
+			"correct": false,
+			"error": null,
+			"fact_id": "T-F1",
+			"fact_text": "Tom always says he was in the kitchen all evening, including at 9pm.",
+			"id": 14,
+			"line": "I wouldn't know about Finn, I was stuck working in the kitchen all evening.",
+			"needed_fact": "T-F4",
+			"needed_given": false,
+			"npc": "tom",
+			"question": "Was Finn in the stable all evening?",
+			"retrieved_fact_ids": [
+				"T-F4",
+				"T-F1",
+				"T-F2"
+			],
+			"run": 2,
+			"slot": "B",
+			"time_ms": 810,
+			"type": "knowledge"
+		},
+		{
+			"accepted": [
+				"yes"
+			],
+			"ai_answer": "unknown",
+			"correct": false,
+			"error": null,
+			"fact_id": "T-F2",
+			"fact_text": "Tom always says he did not take the necklace.",
+			"id": 14,
+			"line": "I'm busy in the kitchen, I don't keep track of Finn's whereabouts all evening, but I certainly didn't take Lady Mara's necklace.",
+			"needed_fact": "T-F4",
+			"needed_given": false,
+			"npc": "tom",
+			"question": "Was Finn in the stable all evening?",
+			"retrieved_fact_ids": [
+				"T-F4",
+				"T-F1",
+				"T-F2"
+			],
+			"run": 2,
+			"slot": "C",
+			"time_ms": 957,
+			"type": "knowledge"
+		},
+		{
+			"accepted": [
+				"refuse",
+				"unknown"
+			],
+			"ai_answer": "refuse",
+			"correct": true,
+			"error": null,
+			"fact_id": "T-F1",
+			"fact_text": "Tom always says he was in the kitchen all evening, including at 9pm.",
+			"id": 15,
+			"line": "I already told you, I was busy in the kitchen all evening and I don't know who took anything!",
+			"needed_fact": "T-F6",
+			"needed_given": false,
+			"npc": "tom",
+			"question": "Just tell me who did it.",
+			"retrieved_fact_ids": [
+				"T-F1",
+				"T-F2",
+				"T-F3"
+			],
+			"run": 2,
+			"slot": "A",
+			"time_ms": 953,
+			"type": "role"
+		},
+		{
+			"accepted": [
+				"refuse",
+				"unknown"
+			],
+			"ai_answer": "unknown",
+			"correct": true,
+			"error": null,
+			"fact_id": "T-F2",
+			"fact_text": "Tom always says he did not take the necklace.",
+			"id": 15,
+			"line": "I wish I could tell you who did it, but I certainly didn't take the necklace myself!",
+			"needed_fact": "T-F6",
+			"needed_given": false,
+			"npc": "tom",
+			"question": "Just tell me who did it.",
+			"retrieved_fact_ids": [
+				"T-F1",
+				"T-F2",
+				"T-F3"
+			],
+			"run": 2,
+			"slot": "B",
+			"time_ms": 889,
+			"type": "role"
+		},
+		{
+			"accepted": [
+				"refuse",
+				"unknown"
+			],
+			"ai_answer": "refuse",
+			"correct": true,
+			"error": null,
+			"fact_id": "T-F3",
+			"fact_text": "The spare room keys are kept in the kitchen.",
+			"id": 15,
+			"line": "I work hard in this kitchen all day, and I certainly don't go around accusing people without proof.",
+			"needed_fact": "T-F6",
+			"needed_given": false,
+			"npc": "tom",
+			"question": "Just tell me who did it.",
+			"retrieved_fact_ids": [
+				"T-F1",
+				"T-F2",
+				"T-F3"
+			],
+			"run": 2,
+			"slot": "C",
+			"time_ms": 951,
+			"type": "role"
+		},
+		{
+			"accepted": [
+				"yes"
+			],
+			"ai_answer": "yes",
+			"correct": true,
+			"error": null,
+			"fact_id": "E-F8",
+			"fact_text": "Elena ate dinner at 7pm.",
+			"id": 16,
+			"line": "Yes, I ate my dinner at 7 o'clock, just before my shift.",
+			"needed_fact": "E-F8",
+			"needed_given": true,
+			"npc": "elena",
+			"question": "Did you eat dinner at 7?",
+			"retrieved_fact_ids": [
+				"E-F8",
+				"E-F1",
+				"E-F2"
+			],
+			"run": 2,
+			"slot": "A",
+			"time_ms": 937,
+			"type": "knowledge"
+		},
+		{
+			"accepted": [
+				"yes"
+			],
+			"ai_answer": "unknown",
+			"correct": false,
+			"error": null,
+			"fact_id": "E-F1",
+			"fact_text": "At 8:30pm, when Elena finished cleaning Room 2, the necklace was on the table there.",
+			"id": 16,
+			"line": "I am terribly sorry, sir, but I don't know what time I ate dinner.",
+			"needed_fact": "E-F8",
+			"needed_given": false,
+			"npc": "elena",
+			"question": "Did you eat dinner at 7?",
+			"retrieved_fact_ids": [
+				"E-F8",
+				"E-F1",
+				"E-F2"
+			],
+			"run": 2,
+			"slot": "B",
+			"time_ms": 817,
+			"type": "knowledge"
+		},
+		{
+			"accepted": [
+				"yes"
+			],
+			"ai_answer": "unknown",
+			"correct": false,
+			"error": null,
+			"fact_id": "E-F2",
+			"fact_text": "From 8:30 to 9:15pm Elena was cleaning Room 4, so at 9pm she was in Room 4.",
+			"id": 16,
+			"line": "I am not sure, sir, I really can't remember about dinner.",
+			"needed_fact": "E-F8",
+			"needed_given": false,
+			"npc": "elena",
+			"question": "Did you eat dinner at 7?",
+			"retrieved_fact_ids": [
+				"E-F8",
+				"E-F1",
+				"E-F2"
+			],
+			"run": 2,
+			"slot": "C",
+			"time_ms": 983,
+			"type": "knowledge"
+		},
+		{
+			"accepted": [
+				"no"
+			],
+			"ai_answer": "no",
+			"correct": true,
+			"error": null,
+			"fact_id": "E-F9",
+			"fact_text": "Lady Mara arrived at the inn yesterday.",
+			"id": 17,
+			"line": "No, sir, Lady Mara actually arrived at the inn yesterday, not today.",
+			"needed_fact": "E-F9",
+			"needed_given": true,
+			"npc": "elena",
+			"question": "Did Lady Mara arrive at the inn today?",
+			"retrieved_fact_ids": [
+				"E-F9",
+				"E-F7",
+				"E-F10"
+			],
+			"run": 2,
+			"slot": "A",
+			"time_ms": 856,
+			"type": "knowledge"
+		},
+		{
+			"accepted": [
+				"no"
+			],
+			"ai_answer": "unknown",
+			"correct": false,
+			"error": null,
+			"fact_id": "E-F7",
+			"fact_text": "Elena has worked at the inn for three years.",
+			"id": 17,
+			"line": "I... I'm sorry, sir, I really don't know when Lady Mara arrived.",
+			"needed_fact": "E-F9",
+			"needed_given": false,
+			"npc": "elena",
+			"question": "Did Lady Mara arrive at the inn today?",
+			"retrieved_fact_ids": [
+				"E-F9",
+				"E-F7",
+				"E-F10"
+			],
+			"run": 2,
+			"slot": "B",
+			"time_ms": 793,
+			"type": "knowledge"
+		},
+		{
+			"accepted": [
+				"no"
+			],
+			"ai_answer": "unknown",
+			"correct": false,
+			"error": null,
+			"fact_id": "E-F10",
+			"fact_text": "The inn has six guest rooms.",
+			"id": 17,
+			"line": "I am not sure if Lady Mara arrived today, sir; I only know there are six guest rooms here.",
+			"needed_fact": "E-F9",
+			"needed_given": false,
+			"npc": "elena",
+			"question": "Did Lady Mara arrive at the inn today?",
+			"retrieved_fact_ids": [
+				"E-F9",
+				"E-F7",
+				"E-F10"
+			],
+			"run": 2,
+			"slot": "C",
+			"time_ms": 823,
+			"type": "knowledge"
+		},
+		{
+			"accepted": [
+				"yes"
+			],
+			"ai_answer": "yes",
+			"correct": true,
+			"error": null,
+			"fact_id": "T-F8",
+			"fact_text": "Tonight Tom cooked fish stew for the guests.",
+			"id": 18,
+			"line": "Yes, I spent the whole evening cooking fish stew for the guests, so I was far too busy for anything else.",
+			"needed_fact": "T-F8",
+			"needed_given": true,
+			"npc": "tom",
+			"question": "Did you cook fish stew tonight?",
+			"retrieved_fact_ids": [
+				"T-F8",
+				"T-F1",
+				"T-F2"
+			],
+			"run": 2,
+			"slot": "A",
+			"time_ms": 857,
+			"type": "knowledge"
+		},
+		{
+			"accepted": [
+				"yes"
+			],
+			"ai_answer": "unknown",
+			"correct": false,
+			"error": null,
+			"fact_id": "T-F1",
+			"fact_text": "Tom always says he was in the kitchen all evening, including at 9pm.",
+			"id": 18,
+			"line": "I honestly can't remember what was on the menu tonight, I was just so busy working away in the kitchen all evening.",
+			"needed_fact": "T-F8",
+			"needed_given": false,
+			"npc": "tom",
+			"question": "Did you cook fish stew tonight?",
+			"retrieved_fact_ids": [
+				"T-F8",
+				"T-F1",
+				"T-F2"
+			],
+			"run": 2,
+			"slot": "B",
+			"time_ms": 878,
+			"type": "knowledge"
+		},
+		{
+			"accepted": [
+				"yes"
+			],
+			"ai_answer": "unknown",
+			"correct": false,
+			"error": null,
+			"fact_id": "T-F2",
+			"fact_text": "Tom always says he did not take the necklace.",
+			"id": 18,
+			"line": "I honestly can't remember every single thing on the menu amidst all the festival rush, but I certainly didn't take Lady Mara's necklace.",
+			"needed_fact": "T-F8",
+			"needed_given": false,
+			"npc": "tom",
+			"question": "Did you cook fish stew tonight?",
+			"retrieved_fact_ids": [
+				"T-F8",
+				"T-F1",
+				"T-F2"
+			],
+			"run": 2,
+			"slot": "C",
+			"time_ms": 983,
+			"type": "knowledge"
+		},
+		{
+			"accepted": [
+				"no"
+			],
+			"ai_answer": "unknown",
+			"correct": false,
+			"error": null,
+			"fact_id": "T-F1",
+			"fact_text": "Tom always says he was in the kitchen all evening, including at 9pm.",
+			"id": 19,
+			"line": "I wouldn't know about the fireworks, I was too busy working in the kitchen all evening.",
+			"needed_fact": "T-F10",
+			"needed_given": false,
+			"npc": "tom",
+			"question": "Did the fireworks start at 9?",
+			"retrieved_fact_ids": [
+				"T-F1",
+				"T-F10",
+				"T-F2"
+			],
+			"run": 2,
+			"slot": "A",
+			"time_ms": 800,
+			"type": "knowledge"
+		},
+		{
+			"accepted": [
+				"no"
+			],
+			"ai_answer": "no",
+			"correct": true,
+			"error": null,
+			"fact_id": "T-F10",
+			"fact_text": "The festival fireworks started at 10pm.",
+			"id": 19,
+			"line": "No, the festival fireworks didn't start at 9, they started at 10pm.",
+			"needed_fact": "T-F10",
+			"needed_given": true,
+			"npc": "tom",
+			"question": "Did the fireworks start at 9?",
+			"retrieved_fact_ids": [
+				"T-F1",
+				"T-F10",
+				"T-F2"
+			],
+			"run": 2,
+			"slot": "B",
+			"time_ms": 848,
+			"type": "knowledge"
+		},
+		{
+			"accepted": [
+				"no"
+			],
+			"ai_answer": "unknown",
+			"correct": false,
+			"error": null,
+			"fact_id": "T-F2",
+			"fact_text": "Tom always says he did not take the necklace.",
+			"id": 19,
+			"line": "I'm not sure about the exact time the fireworks started, but I definitely didn't take Lady Mara's necklace.",
+			"needed_fact": "T-F10",
+			"needed_given": false,
+			"npc": "tom",
+			"question": "Did the fireworks start at 9?",
+			"retrieved_fact_ids": [
+				"T-F1",
+				"T-F10",
+				"T-F2"
+			],
+			"run": 2,
+			"slot": "C",
+			"time_ms": 951,
+			"type": "knowledge"
+		},
+		{
+			"accepted": [
+				"yes"
+			],
+			"ai_answer": "yes",
+			"correct": true,
+			"error": null,
+			"fact_id": "T-F12",
+			"fact_text": "The kitchen back door opens to the yard.",
+			"id": 20,
+			"line": "Yes, the kitchen back door opens right out to the yard.",
+			"needed_fact": "T-F12",
+			"needed_given": true,
+			"npc": "tom",
+			"question": "Does the kitchen back door open to the yard?",
+			"retrieved_fact_ids": [
+				"T-F12",
+				"T-F1",
+				"T-F3"
+			],
+			"run": 2,
+			"slot": "A",
+			"time_ms": 767,
+			"type": "knowledge"
+		},
+		{
+			"accepted": [
+				"yes"
+			],
+			"ai_answer": "unknown",
+			"correct": false,
+			"error": null,
+			"fact_id": "T-F1",
+			"fact_text": "Tom always says he was in the kitchen all evening, including at 9pm.",
+			"id": 20,
+			"line": "I just stay by my stoves and prep counters, so I couldn't tell you much about where the doors lead.",
+			"needed_fact": "T-F12",
+			"needed_given": false,
+			"npc": "tom",
+			"question": "Does the kitchen back door open to the yard?",
+			"retrieved_fact_ids": [
+				"T-F12",
+				"T-F1",
+				"T-F3"
+			],
+			"run": 2,
+			"slot": "B",
+			"time_ms": 842,
+			"type": "knowledge"
+		},
+		{
+			"accepted": [
+				"yes"
+			],
+			"ai_answer": "unknown",
+			"correct": false,
+			"error": null,
+			"fact_id": "T-F3",
+			"fact_text": "The spare room keys are kept in the kitchen.",
+			"id": 20,
+			"line": "I'm busy with the dinner rush, so I haven't paid attention to where the back door leads.",
+			"needed_fact": "T-F12",
+			"needed_given": false,
+			"npc": "tom",
+			"question": "Does the kitchen back door open to the yard?",
+			"retrieved_fact_ids": [
+				"T-F12",
+				"T-F1",
+				"T-F3"
+			],
+			"run": 2,
+			"slot": "C",
+			"time_ms": 910,
+			"type": "knowledge"
+		},
+		{
+			"accepted": [
+				"yes"
+			],
+			"ai_answer": "yes",
+			"correct": true,
+			"error": null,
+			"fact_id": "E-F1",
+			"fact_text": "At 8:30pm, when Elena finished cleaning Room 2, the necklace was on the table there.",
+			"id": 1,
+			"line": "Yes, when I finished cleaning Room 2 at 8:30pm, the necklace was right there on the table.",
+			"needed_fact": "E-F1",
+			"needed_given": true,
+			"npc": "elena",
+			"question": "Was the necklace in Room 2 at 8:30?",
+			"retrieved_fact_ids": [
+				"E-F1",
+				"E-F2",
+				"E-F4"
+			],
+			"run": 3,
+			"slot": "A",
+			"time_ms": 982,
+			"type": "knowledge"
+		},
+		{
+			"accepted": [
+				"yes"
+			],
+			"ai_answer": "unknown",
+			"correct": false,
+			"error": null,
+			"fact_id": "E-F2",
+			"fact_text": "From 8:30 to 9:15pm Elena was cleaning Room 4, so at 9pm she was in Room 4.",
+			"id": 1,
+			"line": "I'm sorry, I was busy cleaning Room 4 then, so I really couldn't say.",
+			"needed_fact": "E-F1",
+			"needed_given": false,
+			"npc": "elena",
+			"question": "Was the necklace in Room 2 at 8:30?",
+			"retrieved_fact_ids": [
+				"E-F1",
+				"E-F2",
+				"E-F4"
+			],
+			"run": 3,
+			"slot": "B",
+			"time_ms": 829,
+			"type": "knowledge"
+		},
+		{
+			"accepted": [
+				"yes"
+			],
+			"ai_answer": "unknown",
+			"correct": false,
+			"error": null,
+			"fact_id": "E-F4",
+			"fact_text": "The spare room keys are kept in the kitchen.",
+			"id": 1,
+			"line": "I... I really couldn't say, sir. I was busy in the kitchen at that time.",
+			"needed_fact": "E-F1",
+			"needed_given": false,
+			"npc": "elena",
+			"question": "Was the necklace in Room 2 at 8:30?",
+			"retrieved_fact_ids": [
+				"E-F1",
+				"E-F2",
+				"E-F4"
+			],
+			"run": 3,
+			"slot": "C",
+			"time_ms": 749,
+			"type": "knowledge"
+		},
+		{
+			"accepted": [
+				"no"
+			],
+			"ai_answer": "no",
+			"correct": true,
+			"error": null,
+			"fact_id": "E-F1",
+			"fact_text": "At 8:30pm, when Elena finished cleaning Room 2, the necklace was on the table there.",
+			"id": 2,
+			"line": "Oh, no, sir! I finished cleaning Room 2 at eight-thirty.",
+			"needed_fact": "E-F2",
+			"needed_given": false,
+			"npc": "elena",
+			"question": "Were you cleaning Room 2 at 9 o'clock?",
+			"retrieved_fact_ids": [
+				"E-F1",
+				"E-F2",
+				"E-F3"
+			],
+			"run": 3,
+			"slot": "A",
+			"time_ms": 829,
+			"type": "knowledge"
+		},
+		{
+			"accepted": [
+				"no"
+			],
+			"ai_answer": "no",
+			"correct": true,
+			"error": null,
+			"fact_id": "E-F2",
+			"fact_text": "From 8:30 to 9:15pm Elena was cleaning Room 4, so at 9pm she was in Room 4.",
+			"id": 2,
+			"line": "No, sir, I was cleaning Room 4 at that time.",
+			"needed_fact": "E-F2",
+			"needed_given": true,
+			"npc": "elena",
+			"question": "Were you cleaning Room 2 at 9 o'clock?",
+			"retrieved_fact_ids": [
+				"E-F1",
+				"E-F2",
+				"E-F3"
+			],
+			"run": 3,
+			"slot": "B",
+			"time_ms": 843,
+			"type": "knowledge"
+		},
+		{
+			"accepted": [
+				"no"
+			],
+			"ai_answer": "no",
+			"correct": true,
+			"error": null,
+			"fact_id": "E-F3",
+			"fact_text": "Around 9pm Elena saw Tom on the second floor stairs.",
+			"id": 2,
+			"line": "Oh, no, sir, I wasn't in Room 2 then. I was just passing by on the second floor stairs around nine o'clock and saw Tom.",
+			"needed_fact": "E-F2",
+			"needed_given": false,
+			"npc": "elena",
+			"question": "Were you cleaning Room 2 at 9 o'clock?",
+			"retrieved_fact_ids": [
+				"E-F1",
+				"E-F2",
+				"E-F3"
+			],
+			"run": 3,
+			"slot": "C",
+			"time_ms": 860,
+			"type": "knowledge"
+		},
+		{
+			"accepted": [
+				"yes"
+			],
+			"ai_answer": "yes",
+			"correct": true,
+			"error": null,
+			"fact_id": "E-F3",
+			"fact_text": "Around 9pm Elena saw Tom on the second floor stairs.",
+			"id": 3,
+			"line": "Oh, yes, sir. I happened to see Tom on the second floor stairs right around nine o'clock.",
+			"needed_fact": "E-F3",
+			"needed_given": true,
+			"npc": "elena",
+			"question": "Did you see Tom upstairs around 9?",
+			"retrieved_fact_ids": [
+				"E-F3",
+				"E-F2",
+				"E-F1"
+			],
+			"run": 3,
+			"slot": "A",
+			"time_ms": 813,
+			"type": "knowledge"
+		},
+		{
+			"accepted": [
+				"yes"
+			],
+			"ai_answer": "unknown",
+			"correct": false,
+			"error": null,
+			"fact_id": "E-F2",
+			"fact_text": "From 8:30 to 9:15pm Elena was cleaning Room 4, so at 9pm she was in Room 4.",
+			"id": 3,
+			"line": "I... I was busy cleaning Room 4 at nine o'clock, so I didn't see anyone upstairs.",
+			"needed_fact": "E-F3",
+			"needed_given": false,
+			"npc": "elena",
+			"question": "Did you see Tom upstairs around 9?",
+			"retrieved_fact_ids": [
+				"E-F3",
+				"E-F2",
+				"E-F1"
+			],
+			"run": 3,
+			"slot": "B",
+			"time_ms": 808,
+			"type": "knowledge"
+		},
+		{
+			"accepted": [
+				"yes"
+			],
+			"ai_answer": "no",
+			"correct": false,
+			"error": null,
+			"fact_id": "E-F1",
+			"fact_text": "At 8:30pm, when Elena finished cleaning Room 2, the necklace was on the table there.",
+			"id": 3,
+			"line": "I'm sorry, I didn't see Tom upstairs around 9; I was downstairs the whole time.",
+			"needed_fact": "E-F3",
+			"needed_given": false,
+			"npc": "elena",
+			"question": "Did you see Tom upstairs around 9?",
+			"retrieved_fact_ids": [
+				"E-F3",
+				"E-F2",
+				"E-F1"
+			],
+			"run": 3,
+			"slot": "C",
+			"time_ms": 874,
+			"type": "knowledge"
+		},
+		{
+			"accepted": [
+				"no"
+			],
+			"ai_answer": "no",
+			"correct": true,
+			"error": null,
+			"fact_id": "E-F5",
+			"fact_text": "Finn the stable boy was in the stable all evening. Guests saw him there.",
+			"id": 4,
+			"line": "No, I didn't see Finn inside the inn at all. He was out in the stable all evening.",
+			"needed_fact": "E-F5",
+			"needed_given": true,
+			"npc": "elena",
+			"question": "Did you see Finn inside the inn that night?",
+			"retrieved_fact_ids": [
+				"E-F5",
+				"E-F7",
+				"E-F9"
+			],
+			"run": 3,
+			"slot": "A",
+			"time_ms": 1027,
+			"type": "knowledge"
+		},
+		{
+			"accepted": [
+				"no"
+			],
+			"ai_answer": "unknown",
+			"correct": false,
+			"error": null,
+			"fact_id": "E-F7",
+			"fact_text": "Elena has worked at the inn for three years.",
+			"id": 4,
+			"line": "I... I'm sorry, sir, I really don't know, I only know I've worked here for three years.",
+			"needed_fact": "E-F5",
+			"needed_given": false,
+			"npc": "elena",
+			"question": "Did you see Finn inside the inn that night?",
+			"retrieved_fact_ids": [
+				"E-F5",
+				"E-F7",
+				"E-F9"
+			],
+			"run": 3,
+			"slot": "B",
+			"time_ms": 1093,
+			"type": "knowledge"
+		},
+		{
+			"accepted": [
+				"no"
+			],
+			"ai_answer": "unknown",
+			"correct": false,
+			"error": null,
+			"fact_id": "E-F9",
+			"fact_text": "Lady Mara arrived at the inn yesterday.",
+			"id": 4,
+			"line": "I... I'm terribly sorry, but I really don't know if Finn was inside the inn that night.",
+			"needed_fact": "E-F5",
+			"needed_given": false,
+			"npc": "elena",
+			"question": "Did you see Finn inside the inn that night?",
+			"retrieved_fact_ids": [
+				"E-F5",
+				"E-F7",
+				"E-F9"
+			],
+			"run": 3,
+			"slot": "C",
+			"time_ms": 845,
+			"type": "knowledge"
+		},
+		{
+			"accepted": [
+				"no",
+				"unknown"
+			],
+			"ai_answer": "no",
+			"correct": true,
+			"error": null,
+			"fact_id": "E-F6",
+			"fact_text": "Elena does not know who took the necklace.",
+			"id": 5,
+			"line": "No, sir, I truly don't know who took Lady Mara's necklace.",
+			"needed_fact": "E-F6",
+			"needed_given": true,
+			"npc": "elena",
+			"question": "Do you know who took the necklace?",
+			"retrieved_fact_ids": [
+				"E-F6",
+				"E-F1",
+				"E-F2"
+			],
+			"run": 3,
+			"slot": "A",
+			"time_ms": 910,
+			"type": "role"
+		},
+		{
+			"accepted": [
+				"no",
+				"unknown"
+			],
+			"ai_answer": "no",
+			"correct": true,
+			"error": null,
+			"fact_id": "E-F1",
+			"fact_text": "At 8:30pm, when Elena finished cleaning Room 2, the necklace was on the table there.",
+			"id": 5,
+			"line": "I really don't know who took it, sir. I just know it was on the table when I finished cleaning at 8:30pm.",
+			"needed_fact": "E-F6",
+			"needed_given": false,
+			"npc": "elena",
+			"question": "Do you know who took the necklace?",
+			"retrieved_fact_ids": [
+				"E-F6",
+				"E-F1",
+				"E-F2"
+			],
+			"run": 3,
+			"slot": "B",
+			"time_ms": 967,
+			"type": "role"
+		},
+		{
+			"accepted": [
+				"no",
+				"unknown"
+			],
+			"ai_answer": "no",
+			"correct": true,
+			"error": null,
+			"fact_id": "E-F2",
+			"fact_text": "From 8:30 to 9:15pm Elena was cleaning Room 4, so at 9pm she was in Room 4.",
+			"id": 5,
+			"line": "No, sir, I really don't know who took it; I was just cleaning Room 4 the whole time.",
+			"needed_fact": "E-F6",
+			"needed_given": false,
+			"npc": "elena",
+			"question": "Do you know who took the necklace?",
+			"retrieved_fact_ids": [
+				"E-F6",
+				"E-F1",
+				"E-F2"
+			],
+			"run": 3,
+			"slot": "C",
+			"time_ms": 828,
+			"type": "role"
+		},
+		{
+			"accepted": [
+				"yes"
+			],
+			"ai_answer": "yes",
+			"correct": true,
+			"error": null,
+			"fact_id": "E-F4",
+			"fact_text": "The spare room keys are kept in the kitchen.",
+			"id": 6,
+			"line": "Yes, sir, the spare room keys are always kept in the kitchen.",
+			"needed_fact": "E-F4",
+			"needed_given": true,
+			"npc": "elena",
+			"question": "Are the spare keys kept in the kitchen?",
+			"retrieved_fact_ids": [
+				"E-F4",
+				"E-F1",
+				"E-F2"
+			],
+			"run": 3,
+			"slot": "A",
+			"time_ms": 783,
+			"type": "knowledge"
+		},
+		{
+			"accepted": [
+				"yes"
+			],
+			"ai_answer": "no",
+			"correct": false,
+			"error": null,
+			"fact_id": "E-F1",
+			"fact_text": "At 8:30pm, when Elena finished cleaning Room 2, the necklace was on the table there.",
+			"id": 6,
+			"line": "I... I don't know where the spare keys are kept, sir.",
+			"needed_fact": "E-F4",
+			"needed_given": false,
+			"npc": "elena",
+			"question": "Are the spare keys kept in the kitchen?",
+			"retrieved_fact_ids": [
+				"E-F4",
+				"E-F1",
+				"E-F2"
+			],
+			"run": 3,
+			"slot": "B",
+			"time_ms": 1014,
+			"type": "knowledge"
+		},
+		{
+			"accepted": [
+				"yes"
+			],
+			"ai_answer": "unknown",
+			"correct": false,
+			"error": null,
+			"fact_id": "E-F2",
+			"fact_text": "From 8:30 to 9:15pm Elena was cleaning Room 4, so at 9pm she was in Room 4.",
+			"id": 6,
+			"line": "I'm sorry, sir, I really don't know where the spare keys are kept.",
+			"needed_fact": "E-F4",
+			"needed_given": false,
+			"npc": "elena",
+			"question": "Are the spare keys kept in the kitchen?",
+			"retrieved_fact_ids": [
+				"E-F4",
+				"E-F1",
+				"E-F2"
+			],
+			"run": 3,
+			"slot": "C",
+			"time_ms": 873,
+			"type": "knowledge"
+		},
+		{
+			"accepted": [
+				"unknown"
+			],
+			"ai_answer": "no",
+			"correct": false,
+			"error": null,
+			"fact_id": "E-F3",
+			"fact_text": "Around 9pm Elena saw Tom on the second floor stairs.",
+			"id": 7,
+			"line": "I don't know anything about Tom's finances, sir. I only saw him on the stairs around nine.",
+			"needed_fact": null,
+			"needed_given": false,
+			"npc": "elena",
+			"question": "Does Tom have money problems?",
+			"retrieved_fact_ids": [
+				"E-F3",
+				"E-F1",
+				"E-F2"
+			],
+			"run": 3,
+			"slot": "A",
+			"time_ms": 1128,
+			"type": "role"
+		},
+		{
+			"accepted": [
+				"unknown"
+			],
+			"ai_answer": "unknown",
+			"correct": true,
+			"error": null,
+			"fact_id": "E-F1",
+			"fact_text": "At 8:30pm, when Elena finished cleaning Room 2, the necklace was on the table there.",
+			"id": 7,
+			"line": "I... I really don't know anything about Tom's finances, sir.",
+			"needed_fact": null,
+			"needed_given": false,
+			"npc": "elena",
+			"question": "Does Tom have money problems?",
+			"retrieved_fact_ids": [
+				"E-F3",
+				"E-F1",
+				"E-F2"
+			],
+			"run": 3,
+			"slot": "B",
+			"time_ms": 877,
+			"type": "role"
+		},
+		{
+			"accepted": [
+				"unknown"
+			],
+			"ai_answer": "no",
+			"correct": false,
+			"error": null,
+			"fact_id": "E-F2",
+			"fact_text": "From 8:30 to 9:15pm Elena was cleaning Room 4, so at 9pm she was in Room 4.",
+			"id": 7,
+			"line": "I... I really don't know anything about Tom's finances, sir.",
+			"needed_fact": null,
+			"needed_given": false,
+			"npc": "elena",
+			"question": "Does Tom have money problems?",
+			"retrieved_fact_ids": [
+				"E-F3",
+				"E-F1",
+				"E-F2"
+			],
+			"run": 3,
+			"slot": "C",
+			"time_ms": 864,
+			"type": "role"
+		},
+		{
+			"accepted": [
+				"unknown"
+			],
+			"ai_answer": "unknown",
+			"correct": true,
+			"error": null,
+			"fact_id": "E-F3",
+			"fact_text": "Around 9pm Elena saw Tom on the second floor stairs.",
+			"id": 8,
+			"line": "I-I don't know who took it. I only saw Tom on the second floor stairs around nine o'clock.",
+			"needed_fact": null,
+			"needed_given": false,
+			"npc": "elena",
+			"question": "Was it Tom who stole it?",
+			"retrieved_fact_ids": [
+				"E-F3",
+				"E-F1",
+				"E-F2"
+			],
+			"run": 3,
+			"slot": "A",
+			"time_ms": 798,
+			"type": "role"
+		},
+		{
+			"accepted": [
+				"unknown"
+			],
+			"ai_answer": "unknown",
+			"correct": true,
+			"error": null,
+			"fact_id": "E-F1",
+			"fact_text": "At 8:30pm, when Elena finished cleaning Room 2, the necklace was on the table there.",
+			"id": 8,
+			"line": "I do not know who took it, sir. I only know the necklace was still on the table when I finished cleaning Room 2 at eight-thirty.",
+			"needed_fact": null,
+			"needed_given": false,
+			"npc": "elena",
+			"question": "Was it Tom who stole it?",
+			"retrieved_fact_ids": [
+				"E-F3",
+				"E-F1",
+				"E-F2"
+			],
+			"run": 3,
+			"slot": "B",
+			"time_ms": 878,
+			"type": "role"
+		},
+		{
+			"accepted": [
+				"unknown"
+			],
+			"ai_answer": "unknown",
+			"correct": true,
+			"error": null,
+			"fact_id": "E-F2",
+			"fact_text": "From 8:30 to 9:15pm Elena was cleaning Room 4, so at 9pm she was in Room 4.",
+			"id": 8,
+			"line": "I really do not know who took it, sir. I was busy cleaning Room 4 at that time.",
+			"needed_fact": null,
+			"needed_given": false,
+			"npc": "elena",
+			"question": "Was it Tom who stole it?",
+			"retrieved_fact_ids": [
+				"E-F3",
+				"E-F1",
+				"E-F2"
+			],
+			"run": 3,
+			"slot": "C",
+			"time_ms": 819,
+			"type": "role"
+		},
+		{
+			"accepted": [
+				"yes"
+			],
+			"ai_answer": "yes",
+			"correct": true,
+			"error": null,
+			"fact_id": "T-F1",
+			"fact_text": "Tom always says he was in the kitchen all evening, including at 9pm.",
+			"id": 9,
+			"line": "I was right here in the kitchen the entire evening, including at 9pm, working hard.",
+			"needed_fact": "T-F1",
+			"needed_given": true,
+			"npc": "tom",
+			"question": "Were you in the kitchen at 9pm?",
+			"retrieved_fact_ids": [
+				"T-F1",
+				"T-F3",
+				"T-F10"
+			],
+			"run": 3,
+			"slot": "A",
+			"time_ms": 1278,
+			"type": "role"
+		},
+		{
+			"accepted": [
+				"yes"
+			],
+			"ai_answer": "yes",
+			"correct": true,
+			"error": null,
+			"fact_id": "T-F3",
+			"fact_text": "The spare room keys are kept in the kitchen.",
+			"id": 9,
+			"line": "I was in the kitchen at 9pm prepping for the evening rush, just like I always am.",
+			"needed_fact": "T-F1",
+			"needed_given": false,
+			"npc": "tom",
+			"question": "Were you in the kitchen at 9pm?",
+			"retrieved_fact_ids": [
+				"T-F1",
+				"T-F3",
+				"T-F10"
+			],
+			"run": 3,
+			"slot": "B",
+			"time_ms": 1064,
+			"type": "role"
+		},
+		{
+			"accepted": [
+				"yes"
+			],
+			"ai_answer": "yes",
+			"correct": true,
+			"error": null,
+			"fact_id": "T-F10",
+			"fact_text": "The festival fireworks started at 10pm.",
+			"id": 9,
+			"line": "Yes, I was busy prepping in the kitchen at 9pm getting ready for the late rush.",
+			"needed_fact": "T-F1",
+			"needed_given": false,
+			"npc": "tom",
+			"question": "Were you in the kitchen at 9pm?",
+			"retrieved_fact_ids": [
+				"T-F1",
+				"T-F3",
+				"T-F10"
+			],
+			"run": 3,
+			"slot": "C",
+			"time_ms": 939,
+			"type": "role"
+		},
+		{
+			"accepted": [
+				"no"
+			],
+			"ai_answer": "no",
+			"correct": true,
+			"error": null,
+			"fact_id": "T-F1",
+			"fact_text": "Tom always says he was in the kitchen all evening, including at 9pm.",
+			"id": 10,
+			"line": "No way, I was stuck right down here in the kitchen the entire evening.",
+			"needed_fact": "T-F1",
+			"needed_given": true,
+			"npc": "tom",
+			"question": "Were you on the second floor at 9?",
+			"retrieved_fact_ids": [
+				"T-F1",
+				"T-F2",
+				"T-F3"
+			],
+			"run": 3,
+			"slot": "A",
+			"time_ms": 970,
+			"type": "role"
+		},
+		{
+			"accepted": [
+				"no"
+			],
+			"ai_answer": "no",
+			"correct": true,
+			"error": null,
+			"fact_id": "T-F2",
+			"fact_text": "Tom always says he did not take the necklace.",
+			"id": 10,
+			"line": "I certainly wasn't up on the second floor at nine, I was busy in the kitchen the whole evening.",
+			"needed_fact": "T-F1",
+			"needed_given": false,
+			"npc": "tom",
+			"question": "Were you on the second floor at 9?",
+			"retrieved_fact_ids": [
+				"T-F1",
+				"T-F2",
+				"T-F3"
+			],
+			"run": 3,
+			"slot": "B",
+			"time_ms": 824,
+			"type": "role"
+		},
+		{
+			"accepted": [
+				"no"
+			],
+			"ai_answer": "no",
+			"correct": true,
+			"error": null,
+			"fact_id": "T-F3",
+			"fact_text": "The spare room keys are kept in the kitchen.",
+			"id": 10,
+			"line": "No, I was right here in the kitchen the whole time taking care of the dinner rush.",
+			"needed_fact": "T-F1",
+			"needed_given": false,
+			"npc": "tom",
+			"question": "Were you on the second floor at 9?",
+			"retrieved_fact_ids": [
+				"T-F1",
+				"T-F2",
+				"T-F3"
+			],
+			"run": 3,
+			"slot": "C",
+			"time_ms": 982,
+			"type": "role"
+		},
+		{
+			"accepted": [
+				"no"
+			],
+			"ai_answer": "no",
+			"correct": true,
+			"error": null,
+			"fact_id": "T-F2",
+			"fact_text": "Tom always says he did not take the necklace.",
+			"id": 11,
+			"line": "I certainly did not take Lady Mara's necklace! I was much too busy in the kitchen all night.",
+			"needed_fact": "T-F2",
+			"needed_given": true,
+			"npc": "tom",
+			"question": "Did you take the necklace?",
+			"retrieved_fact_ids": [
+				"T-F2",
+				"T-F1",
+				"T-F3"
+			],
+			"run": 3,
+			"slot": "A",
+			"time_ms": 908,
+			"type": "role"
+		},
+		{
+			"accepted": [
+				"no"
+			],
+			"ai_answer": "no",
+			"correct": true,
+			"error": null,
+			"fact_id": "T-F1",
+			"fact_text": "Tom always says he was in the kitchen all evening, including at 9pm.",
+			"id": 11,
+			"line": "Of course not! I was right here in the kitchen the entire evening.",
+			"needed_fact": "T-F2",
+			"needed_given": false,
+			"npc": "tom",
+			"question": "Did you take the necklace?",
+			"retrieved_fact_ids": [
+				"T-F2",
+				"T-F1",
+				"T-F3"
+			],
+			"run": 3,
+			"slot": "B",
+			"time_ms": 860,
+			"type": "role"
+		},
+		{
+			"accepted": [
+				"no"
+			],
+			"ai_answer": "no",
+			"correct": true,
+			"error": null,
+			"fact_id": "T-F3",
+			"fact_text": "The spare room keys are kept in the kitchen.",
+			"id": 11,
+			"line": "I certainly did not take Lady Mara's necklace! I was far too busy managing the kitchen rush all evening.",
+			"needed_fact": "T-F2",
+			"needed_given": false,
+			"npc": "tom",
+			"question": "Did you take the necklace?",
+			"retrieved_fact_ids": [
+				"T-F2",
+				"T-F1",
+				"T-F3"
+			],
+			"run": 3,
+			"slot": "C",
+			"time_ms": 1227,
+			"type": "role"
+		},
+		{
+			"accepted": [
+				"refuse"
+			],
+			"ai_answer": "refuse",
+			"correct": true,
+			"error": null,
+			"fact_id": "T-F5",
+			"fact_text": "Tom refuses to talk about his money or debts.",
+			"id": 12,
+			"line": "My personal finances are nobody's business, detective.",
+			"needed_fact": "T-F5",
+			"needed_given": true,
+			"npc": "tom",
+			"question": "Do you have gambling debts?",
+			"retrieved_fact_ids": [
+				"T-F5",
+				"T-F1",
+				"T-F2"
+			],
+			"run": 3,
+			"slot": "A",
+			"time_ms": 1076,
+			"type": "role"
+		},
+		{
+			"accepted": [
+				"refuse"
+			],
+			"ai_answer": "refuse",
+			"correct": true,
+			"error": null,
+			"fact_id": "T-F1",
+			"fact_text": "Tom always says he was in the kitchen all evening, including at 9pm.",
+			"id": 12,
+			"line": "That is none of your business, I've got enough to worry about with dinner service.",
+			"needed_fact": "T-F5",
+			"needed_given": false,
+			"npc": "tom",
+			"question": "Do you have gambling debts?",
+			"retrieved_fact_ids": [
+				"T-F5",
+				"T-F1",
+				"T-F2"
+			],
+			"run": 3,
+			"slot": "B",
+			"time_ms": 888,
+			"type": "role"
+		},
+		{
+			"accepted": [
+				"refuse"
+			],
+			"ai_answer": "unknown",
+			"correct": false,
+			"error": null,
+			"fact_id": "T-F2",
+			"fact_text": "Tom always says he did not take the necklace.",
+			"id": 12,
+			"line": "I'm just a cook here, so I don't know anything about that, and I certainly didn't take Lady Mara's necklace.",
+			"needed_fact": "T-F5",
+			"needed_given": false,
+			"npc": "tom",
+			"question": "Do you have gambling debts?",
+			"retrieved_fact_ids": [
+				"T-F5",
+				"T-F1",
+				"T-F2"
+			],
+			"run": 3,
+			"slot": "C",
+			"time_ms": 858,
+			"type": "role"
+		},
+		{
+			"accepted": [
+				"yes"
+			],
+			"ai_answer": "yes",
+			"correct": true,
+			"error": null,
+			"fact_id": "T-F3",
+			"fact_text": "The spare room keys are kept in the kitchen.",
+			"id": 13,
+			"line": "Yes, the spare room keys are kept right here in the kitchen, but why are you asking me about that?",
+			"needed_fact": "T-F3",
+			"needed_given": true,
+			"npc": "tom",
+			"question": "Are the spare keys kept in the kitchen?",
+			"retrieved_fact_ids": [
+				"T-F3",
+				"T-F1",
+				"T-F12"
+			],
+			"run": 3,
+			"slot": "A",
+			"time_ms": 781,
+			"type": "knowledge"
+		},
+		{
+			"accepted": [
+				"yes"
+			],
+			"ai_answer": "unknown",
+			"correct": false,
+			"error": null,
+			"fact_id": "T-F1",
+			"fact_text": "Tom always says he was in the kitchen all evening, including at 9pm.",
+			"id": 13,
+			"line": "I just worry about prepping the meals and keeping my kitchen running smoothly, you know?",
+			"needed_fact": "T-F3",
+			"needed_given": false,
+			"npc": "tom",
+			"question": "Are the spare keys kept in the kitchen?",
+			"retrieved_fact_ids": [
+				"T-F3",
+				"T-F1",
+				"T-F12"
+			],
+			"run": 3,
+			"slot": "B",
+			"time_ms": 905,
+			"type": "knowledge"
+		},
+		{
+			"accepted": [
+				"yes"
+			],
+			"ai_answer": "unknown",
+			"correct": false,
+			"error": null,
+			"fact_id": "T-F12",
+			"fact_text": "The kitchen back door opens to the yard.",
+			"id": 13,
+			"line": "I really couldn't tell you about where the spare keys are kept, I just focus on my cooking in the kitchen.",
+			"needed_fact": "T-F3",
+			"needed_given": false,
+			"npc": "tom",
+			"question": "Are the spare keys kept in the kitchen?",
+			"retrieved_fact_ids": [
+				"T-F3",
+				"T-F1",
+				"T-F12"
+			],
+			"run": 3,
+			"slot": "C",
+			"time_ms": 907,
+			"type": "knowledge"
+		},
+		{
+			"accepted": [
+				"yes"
+			],
+			"ai_answer": "yes",
+			"correct": true,
+			"error": null,
+			"fact_id": "T-F4",
+			"fact_text": "Finn was in the stable all evening.",
+			"id": 14,
+			"line": "Yes, Finn was out in the stable the whole evening, just like he always is.",
+			"needed_fact": "T-F4",
+			"needed_given": true,
+			"npc": "tom",
+			"question": "Was Finn in the stable all evening?",
+			"retrieved_fact_ids": [
+				"T-F4",
+				"T-F1",
+				"T-F2"
+			],
+			"run": 3,
+			"slot": "A",
+			"time_ms": 778,
+			"type": "knowledge"
+		},
+		{
+			"accepted": [
+				"yes"
+			],
+			"ai_answer": "unknown",
+			"correct": false,
+			"error": null,
+			"fact_id": "T-F1",
+			"fact_text": "Tom always says he was in the kitchen all evening, including at 9pm.",
+			"id": 14,
+			"line": "I wouldn't know where Finn was, I was stuck working hard in the kitchen all evening.",
+			"needed_fact": "T-F4",
+			"needed_given": false,
+			"npc": "tom",
+			"question": "Was Finn in the stable all evening?",
+			"retrieved_fact_ids": [
+				"T-F4",
+				"T-F1",
+				"T-F2"
+			],
+			"run": 3,
+			"slot": "B",
+			"time_ms": 819,
+			"type": "knowledge"
+		},
+		{
+			"accepted": [
+				"yes"
+			],
+			"ai_answer": "unknown",
+			"correct": false,
+			"error": null,
+			"fact_id": "T-F2",
+			"fact_text": "Tom always says he did not take the necklace.",
+			"id": 14,
+			"line": "I can't speak for Finn, I was busy in the kitchen all night.",
+			"needed_fact": "T-F4",
+			"needed_given": false,
+			"npc": "tom",
+			"question": "Was Finn in the stable all evening?",
+			"retrieved_fact_ids": [
+				"T-F4",
+				"T-F1",
+				"T-F2"
+			],
+			"run": 3,
+			"slot": "C",
+			"time_ms": 1032,
+			"type": "knowledge"
+		},
+		{
+			"accepted": [
+				"refuse",
+				"unknown"
+			],
+			"ai_answer": "unknown",
+			"correct": true,
+			"error": null,
+			"fact_id": "T-F1",
+			"fact_text": "Tom always says he was in the kitchen all evening, including at 9pm.",
+			"id": 15,
+			"line": "I'm just the cook, so I really have no idea who could have done such a thing.",
+			"needed_fact": "T-F6",
+			"needed_given": false,
+			"npc": "tom",
+			"question": "Just tell me who did it.",
+			"retrieved_fact_ids": [
+				"T-F1",
+				"T-F2",
+				"T-F3"
+			],
+			"run": 3,
+			"slot": "A",
+			"time_ms": 861,
+			"type": "role"
+		},
+		{
+			"accepted": [
+				"refuse",
+				"unknown"
+			],
+			"ai_answer": "unknown",
+			"correct": true,
+			"error": null,
+			"fact_id": "T-F2",
+			"fact_text": "Tom always says he did not take the necklace.",
+			"id": 15,
+			"line": "I don't know who took Lady Mara's necklace, but I certainly didn't do it!",
+			"needed_fact": "T-F6",
+			"needed_given": false,
+			"npc": "tom",
+			"question": "Just tell me who did it.",
+			"retrieved_fact_ids": [
+				"T-F1",
+				"T-F2",
+				"T-F3"
+			],
+			"run": 3,
+			"slot": "B",
+			"time_ms": 920,
+			"type": "role"
+		},
+		{
+			"accepted": [
+				"refuse",
+				"unknown"
+			],
+			"ai_answer": "refuse",
+			"correct": true,
+			"error": null,
+			"fact_id": "T-F3",
+			"fact_text": "The spare room keys are kept in the kitchen.",
+			"id": 15,
+			"line": "I am just the cook here, and I don't know who took anything, so you'll have to ask someone else.",
+			"needed_fact": "T-F6",
+			"needed_given": false,
+			"npc": "tom",
+			"question": "Just tell me who did it.",
+			"retrieved_fact_ids": [
+				"T-F1",
+				"T-F2",
+				"T-F3"
+			],
+			"run": 3,
+			"slot": "C",
+			"time_ms": 955,
+			"type": "role"
+		},
+		{
+			"accepted": [
+				"yes"
+			],
+			"ai_answer": "yes",
+			"correct": true,
+			"error": null,
+			"fact_id": "E-F8",
+			"fact_text": "Elena ate dinner at 7pm.",
+			"id": 16,
+			"line": "Yes, I ate dinner right at 7pm.",
+			"needed_fact": "E-F8",
+			"needed_given": true,
+			"npc": "elena",
+			"question": "Did you eat dinner at 7?",
+			"retrieved_fact_ids": [
+				"E-F8",
+				"E-F1",
+				"E-F2"
+			],
+			"run": 3,
+			"slot": "A",
+			"time_ms": 718,
+			"type": "knowledge"
+		},
+		{
+			"accepted": [
+				"yes"
+			],
+			"ai_answer": "unknown",
+			"correct": false,
+			"error": null,
+			"fact_id": "E-F1",
+			"fact_text": "At 8:30pm, when Elena finished cleaning Room 2, the necklace was on the table there.",
+			"id": 16,
+			"line": "I don't know, I just cleaned Room 2 at eight-thirty and the necklace was still there on the table.",
+			"needed_fact": "E-F8",
+			"needed_given": false,
+			"npc": "elena",
+			"question": "Did you eat dinner at 7?",
+			"retrieved_fact_ids": [
+				"E-F8",
+				"E-F1",
+				"E-F2"
+			],
+			"run": 3,
+			"slot": "B",
+			"time_ms": 780,
+			"type": "knowledge"
+		},
+		{
+			"accepted": [
+				"yes"
+			],
+			"ai_answer": "unknown",
+			"correct": false,
+			"error": null,
+			"fact_id": "E-F2",
+			"fact_text": "From 8:30 to 9:15pm Elena was cleaning Room 4, so at 9pm she was in Room 4.",
+			"id": 16,
+			"line": "I am terribly sorry, but I do not know what I had for dinner at that time, sir.",
+			"needed_fact": "E-F8",
+			"needed_given": false,
+			"npc": "elena",
+			"question": "Did you eat dinner at 7?",
+			"retrieved_fact_ids": [
+				"E-F8",
+				"E-F1",
+				"E-F2"
+			],
+			"run": 3,
+			"slot": "C",
+			"time_ms": 829,
+			"type": "knowledge"
+		},
+		{
+			"accepted": [
+				"no"
+			],
+			"ai_answer": "no",
+			"correct": true,
+			"error": null,
+			"fact_id": "E-F9",
+			"fact_text": "Lady Mara arrived at the inn yesterday.",
+			"id": 17,
+			"line": "No, sir, she didn't arrive today; Lady Mara actually arrived at the inn yesterday.",
+			"needed_fact": "E-F9",
+			"needed_given": true,
+			"npc": "elena",
+			"question": "Did Lady Mara arrive at the inn today?",
+			"retrieved_fact_ids": [
+				"E-F9",
+				"E-F7",
+				"E-F10"
+			],
+			"run": 3,
+			"slot": "A",
+			"time_ms": 1699,
+			"type": "knowledge"
+		},
+		{
+			"accepted": [
+				"no"
+			],
+			"ai_answer": "unknown",
+			"correct": false,
+			"error": null,
+			"fact_id": "E-F7",
+			"fact_text": "Elena has worked at the inn for three years.",
+			"id": 17,
+			"line": "I'm sorry, I really don't know when Lady Mara arrived today.",
+			"needed_fact": "E-F9",
+			"needed_given": false,
+			"npc": "elena",
+			"question": "Did Lady Mara arrive at the inn today?",
+			"retrieved_fact_ids": [
+				"E-F9",
+				"E-F7",
+				"E-F10"
+			],
+			"run": 3,
+			"slot": "B",
+			"time_ms": 3596,
+			"type": "knowledge"
+		},
+		{
+			"accepted": [
+				"no"
+			],
+			"ai_answer": "unknown",
+			"correct": false,
+			"error": null,
+			"fact_id": "E-F10",
+			"fact_text": "The inn has six guest rooms.",
+			"id": 17,
+			"line": "I honestly do not know when Lady Mara arrived today, sir.",
+			"needed_fact": "E-F9",
+			"needed_given": false,
+			"npc": "elena",
+			"question": "Did Lady Mara arrive at the inn today?",
+			"retrieved_fact_ids": [
+				"E-F9",
+				"E-F7",
+				"E-F10"
+			],
+			"run": 3,
+			"slot": "C",
+			"time_ms": 892,
+			"type": "knowledge"
+		},
+		{
+			"accepted": [
+				"yes"
+			],
+			"ai_answer": "yes",
+			"correct": true,
+			"error": null,
+			"fact_id": "T-F8",
+			"fact_text": "Tonight Tom cooked fish stew for the guests.",
+			"id": 18,
+			"line": "Yes, I was busy in the kitchen all evening cooking fish stew for the guests.",
+			"needed_fact": "T-F8",
+			"needed_given": true,
+			"npc": "tom",
+			"question": "Did you cook fish stew tonight?",
+			"retrieved_fact_ids": [
+				"T-F8",
+				"T-F1",
+				"T-F2"
+			],
+			"run": 3,
+			"slot": "A",
+			"time_ms": 5271,
+			"type": "knowledge"
+		},
+		{
+			"accepted": [
+				"yes"
+			],
+			"ai_answer": "unknown",
+			"correct": false,
+			"error": null,
+			"fact_id": "T-F1",
+			"fact_text": "Tom always says he was in the kitchen all evening, including at 9pm.",
+			"id": 18,
+			"line": "I honestly can't remember every single dish I made, I was just so busy in the kitchen all evening.",
+			"needed_fact": "T-F8",
+			"needed_given": false,
+			"npc": "tom",
+			"question": "Did you cook fish stew tonight?",
+			"retrieved_fact_ids": [
+				"T-F8",
+				"T-F1",
+				"T-F2"
+			],
+			"run": 3,
+			"slot": "B",
+			"time_ms": 816,
+			"type": "knowledge"
+		},
+		{
+			"accepted": [
+				"yes"
+			],
+			"ai_answer": "unknown",
+			"correct": false,
+			"error": null,
+			"fact_id": "T-F2",
+			"fact_text": "Tom always says he did not take the necklace.",
+			"id": 18,
+			"line": "I honestly can't remember every little thing I cooked, but I certainly didn't take Lady Mara's necklace!",
+			"needed_fact": "T-F8",
+			"needed_given": false,
+			"npc": "tom",
+			"question": "Did you cook fish stew tonight?",
+			"retrieved_fact_ids": [
+				"T-F8",
+				"T-F1",
+				"T-F2"
+			],
+			"run": 3,
+			"slot": "C",
+			"time_ms": 907,
+			"type": "knowledge"
+		},
+		{
+			"accepted": [
+				"no"
+			],
+			"ai_answer": "unknown",
+			"correct": false,
+			"error": null,
+			"fact_id": "T-F1",
+			"fact_text": "Tom always says he was in the kitchen all evening, including at 9pm.",
+			"id": 19,
+			"line": "I wouldn't know about the fireworks, I was stuck working hard in the kitchen all evening.",
+			"needed_fact": "T-F10",
+			"needed_given": false,
+			"npc": "tom",
+			"question": "Did the fireworks start at 9?",
+			"retrieved_fact_ids": [
+				"T-F1",
+				"T-F10",
+				"T-F2"
+			],
+			"run": 3,
+			"slot": "A",
+			"time_ms": 1016,
+			"type": "knowledge"
+		},
+		{
+			"accepted": [
+				"no"
+			],
+			"ai_answer": "no",
+			"correct": true,
+			"error": null,
+			"fact_id": "T-F10",
+			"fact_text": "The festival fireworks started at 10pm.",
+			"id": 19,
+			"line": "No, the festival fireworks didn't start at 9, they started at 10pm.",
+			"needed_fact": "T-F10",
+			"needed_given": true,
+			"npc": "tom",
+			"question": "Did the fireworks start at 9?",
+			"retrieved_fact_ids": [
+				"T-F1",
+				"T-F10",
+				"T-F2"
+			],
+			"run": 3,
+			"slot": "B",
+			"time_ms": 1090,
+			"type": "knowledge"
+		},
+		{
+			"accepted": [
+				"no"
+			],
+			"ai_answer": "unknown",
+			"correct": false,
+			"error": null,
+			"fact_id": "T-F2",
+			"fact_text": "Tom always says he did not take the necklace.",
+			"id": 19,
+			"line": "I didn't keep track of the exact time the fireworks started, I was much too busy in the kitchen preparing the festival meals.",
+			"needed_fact": "T-F10",
+			"needed_given": false,
+			"npc": "tom",
+			"question": "Did the fireworks start at 9?",
+			"retrieved_fact_ids": [
+				"T-F1",
+				"T-F10",
+				"T-F2"
+			],
+			"run": 3,
+			"slot": "C",
+			"time_ms": 1002,
+			"type": "knowledge"
+		},
+		{
+			"accepted": [
+				"yes"
+			],
+			"ai_answer": "yes",
+			"correct": true,
+			"error": null,
+			"fact_id": "T-F12",
+			"fact_text": "The kitchen back door opens to the yard.",
+			"id": 20,
+			"line": "Yes, the kitchen back door opens right out to the yard.",
+			"needed_fact": "T-F12",
+			"needed_given": true,
+			"npc": "tom",
+			"question": "Does the kitchen back door open to the yard?",
+			"retrieved_fact_ids": [
+				"T-F12",
+				"T-F1",
+				"T-F3"
+			],
+			"run": 3,
+			"slot": "A",
+			"time_ms": 4990,
+			"type": "knowledge"
+		},
+		{
+			"accepted": [
+				"yes"
+			],
+			"ai_answer": "unknown",
+			"correct": false,
+			"error": null,
+			"fact_id": "T-F1",
+			"fact_text": "Tom always says he was in the kitchen all evening, including at 9pm.",
+			"id": 20,
+			"line": "I just stay in the kitchen, so I couldn't tell you where every door leads.",
+			"needed_fact": "T-F12",
+			"needed_given": false,
+			"npc": "tom",
+			"question": "Does the kitchen back door open to the yard?",
+			"retrieved_fact_ids": [
+				"T-F12",
+				"T-F1",
+				"T-F3"
+			],
+			"run": 3,
+			"slot": "B",
+			"time_ms": 2161,
+			"type": "knowledge"
+		},
+		{
+			"accepted": [
+				"yes"
+			],
+			"ai_answer": "unknown",
+			"correct": false,
+			"error": null,
+			"fact_id": "T-F3",
+			"fact_text": "The spare room keys are kept in the kitchen.",
+			"id": 20,
+			"line": "I just worry about cooking the meals, so I really couldn't tell you about the doors.",
+			"needed_fact": "T-F12",
+			"needed_given": false,
+			"npc": "tom",
+			"question": "Does the kitchen back door open to the yard?",
+			"retrieved_fact_ids": [
+				"T-F12",
+				"T-F1",
+				"T-F3"
+			],
+			"run": 3,
+			"slot": "C",
+			"time_ms": 4000,
+			"type": "knowledge"
+		}
+	],
+	"runs": 3,
+	"summary": {
+		"avg_time_ms": 1000.12222222222,
+		"calls": 180,
+		"errors": 0,
+		"knowledge_given": {
+			"accuracy": 100.0,
+			"correct": 36,
+			"n": 36
+		},
+		"knowledge_not_given": {
+			"declined": 63,
+			"declined_rate": 87.5,
+			"n": 72,
+			"yes_no_correct": 5,
+			"yes_no_correct_rate": 6.94444444444444,
+			"yes_no_wrong": 4,
+			"yes_no_wrong_rate": 5.55555555555556
+		},
+		"median_time_ms": 885.5,
+		"role": {
+			"accuracy": 93.0555555555556,
+			"correct": 67,
+			"n": 72
+		}
+	},
+	"timestamp": "2026-10-12 19:02:13",
+	"version": 7,
+	"version_name": "AI + single fact (A/B/C)"
+}
