@@ -15,7 +15,7 @@ const RAG_RULE_COUNT := 5
 const TARGETS := ["self", "enemy", "all_enemies", "none"]
 const CONDITIONS := ["NONE", "IF_ENEMY_BURNING", "IF_ENEMY_CHILLED", "IF_MY_HP_BELOW_HALF", "IF_ENEMY_HP_BELOW_HALF", "IF_FIRST_CARD"]
 const CATEGORIES := ["direct", "paraphrase", "confusing", "condition", "illegal", "trick"]
-const STOPWORDS := ["a", "an", "the", "was", "were", "is", "are", "did", "do", "does", "you", "i", "it", "at", "in", "on", "of", "to", "that", "who", "what", "me", "my", "your", "around", "just", "tell", "deal", "damage", "enemy", "enemies", "n", "turn", "turns", "cost", "target"]
+const STOPWORDS := ["a", "an", "the", "was", "were", "is", "are", "did", "do", "does", "you", "i", "it", "at", "in", "on", "of", "to", "that", "who", "what", "me", "my", "your", "around", "just", "tell", "enemy", "enemies", "n", "turn", "turns", "cost", "target"]
 const VERSION_NAMES := {1: "AI only", 2: "AI + all rules", 3: "AI + RAG rules", 4: "AI + RAG rules + code check", 5: "AI + all rules + code check"}
 const TABLE_COLUMNS := ["Version", "Runs", "Accuracy per run (%)", "Avg accuracy (%)", "Direct (%)", "Paraphrase (%)", "Confusing (%)", "Condition (%)", "Illegal (%)", "Trick (%)", "Effects accuracy (%)", "Cost accuracy (%)", "Wrongly rejected", "Wrongly passed", "RAG hit rate (%)", "Regenerations", "Code rejections", "Avg time/card (ms)", "Median time/card (ms)", "Errors"]
 
