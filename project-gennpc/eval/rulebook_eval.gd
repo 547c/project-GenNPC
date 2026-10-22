@@ -11,12 +11,18 @@ const MAX_REGENERATIONS := 2
 const REQUEST_TIMEOUT_SEC := 90.0
 const MAX_EFFECTS := 3
 const RAG_RULE_COUNT := 5
+const EMBED_MODEL := "gemini-embedding-001"
+const EMBED_URL := "https://generativelanguage.googleapis.com/v1beta/models/" + EMBED_MODEL + ":batchEmbedContents"
+const EMBED_PATH := "res://eval/embeddings_rulebook_v1.json"
+const RAG_VERSIONS := [3, 4, 6, 7]
+const EMBEDDING_VERSIONS := [6, 7]
+const CODE_CHECK_VERSIONS := [4, 5, 7]
 
 const TARGETS := ["self", "enemy", "all_enemies", "none"]
 const CONDITIONS := ["NONE", "IF_ENEMY_BURNING", "IF_ENEMY_CHILLED", "IF_MY_HP_BELOW_HALF", "IF_ENEMY_HP_BELOW_HALF", "IF_FIRST_CARD"]
 const CATEGORIES := ["direct", "paraphrase", "confusing", "condition", "illegal", "trick"]
 const STOPWORDS := ["a", "an", "the", "was", "were", "is", "are", "did", "do", "does", "you", "i", "it", "at", "in", "on", "of", "to", "that", "who", "what", "me", "my", "your", "around", "just", "tell", "enemy", "enemies", "n", "turn", "turns", "cost", "target"]
-const VERSION_NAMES := {1: "AI only", 2: "AI + all rules", 3: "AI + RAG rules", 4: "AI + RAG rules + code check", 5: "AI + all rules + code check"}
+const VERSION_NAMES := {1: "AI only", 2: "AI + all rules", 3: "AI + RAG rules", 4: "AI + RAG rules + code check", 5: "AI + all rules + code check", 6: "AI + embedding RAG rules", 7: "AI + embedding RAG rules + code check"}
 const TABLE_COLUMNS := ["Version", "Runs", "Accuracy per run (%)", "Avg accuracy (%)", "Direct (%)", "Paraphrase (%)", "Confusing (%)", "Condition (%)", "Illegal (%)", "Trick (%)", "Effects accuracy (%)", "Cost accuracy (%)", "Wrongly rejected", "Wrongly passed", "RAG hit rate (%)", "Regenerations", "Code rejections", "Avg time/card (ms)", "Median time/card (ms)", "Errors"]
 
 var api_key := ""
@@ -31,6 +37,8 @@ var first_call := true
 var aborted := false
 var abort_message := ""
 var summary_path := RESULTS_DIR + "/rulebook_summary.md"
+var embeddings: Dictionary = {}
+var rule_vectors: Dictionary = {}
 
 
 func _ready():
@@ -51,8 +59,9 @@ func _main() -> int:
 	var runs: int = args["runs"]
 	var dryrun: bool = args["dryrun"]
 	var only_ids: Array = args["cards"]
-	if version < 1 or version > 5 or runs < 1:
-		print("Usage: -- --version=1..5 [--runs=R] [--cards=T1,P1] [--dryrun]")
+	var fetch: bool = args["fetch_embeddings"]
+	if not fetch and (version < 1 or version > 7 or runs < 1):
+		print("Usage: -- --version=1..7 [--runs=R] [--cards=T1,P1] [--dryrun] | --fetch-embeddings")
 		return 1
 
 	_load_api_key()
@@ -66,6 +75,11 @@ func _main() -> int:
 	http.timeout = REQUEST_TIMEOUT_SEC
 	add_child(http)
 
+	if fetch:
+		return await _fetch_embeddings()
+	if EMBEDDING_VERSIONS.has(version) and not _load_embeddings():
+		return 1
+
 	var cards: Array = []
 	for card in data["tests"]:
 		if only_ids.is_empty() or only_ids.has(card["id"]):
@@ -77,6 +91,29 @@ func _main() -> int:
 	print("=== Rulebook eval: version %d (%s), runs %d, cards %d, model %s ===" % [version, VERSION_NAMES[version], runs, cards.size(), MODEL])
 
 	var entries: Array = []
+	var pairs: Array = args["pairs"]
+	if not pairs.is_empty():
+		for pair in pairs:
+			var pair_card: Dictionary = {}
+			for card in data["tests"]:
+				if card["id"] == pair["id"]:
+					pair_card = card
+			if pair_card.is_empty():
+				print("Unknown card in --pairs: %s" % pair["id"])
+				return 1
+			var retry_entry: Dictionary = await _ask(version, pair_card)
+			retry_entry["run"] = pair["run"]
+			retry_entry["retried"] = true
+			entries.append(retry_entry)
+			_print_progress(version, pair["run"], retry_entry)
+			if aborted:
+				break
+		if aborted:
+			print("STOPPED: %s" % abort_message)
+			return 2
+		_write_results(version, runs, _timestamp(true), entries, {}, false, "retry_")
+		return 0
+
 	for run in range(1, runs + 1):
 		for card in cards:
 			var entry: Dictionary = await _ask(version, card)
@@ -104,12 +141,19 @@ func _main() -> int:
 
 
 func _parse_args() -> Dictionary:
-	var out := {"version": 0, "runs": 3, "cards": [], "dryrun": false}
+	var out := {"version": 0, "runs": 3, "cards": [], "dryrun": false, "pairs": [], "fetch_embeddings": false}
 	for arg in OS.get_cmdline_user_args():
-		if arg.begins_with("--version="):
+		if arg == "--fetch-embeddings":
+			out["fetch_embeddings"] = true
+		elif arg.begins_with("--version="):
 			out["version"] = int(arg.substr("--version=".length()))
 		elif arg.begins_with("--runs="):
 			out["runs"] = int(arg.substr("--runs=".length()))
+		elif arg.begins_with("--pairs="):
+			for part in arg.substr("--pairs=".length()).split(",", false):
+				var bits := part.split(":")
+				if bits.size() == 2:
+					out["pairs"].append({"id": bits[0].strip_edges(), "run": int(bits[1])})
 		elif arg.begins_with("--cards="):
 			for part in arg.substr("--cards=".length()).split(",", false):
 				out["cards"].append(part.strip_edges())
@@ -365,7 +409,7 @@ func _build_prompt(version: int, card_text: String, picked: Array) -> String:
 		p += "\nRules of the game:\n"
 		for rule_sentence in data["core_rules"]:
 			p += "- %s\n" % rule_sentence
-		if version == 3 or version == 4:
+		if RAG_VERSIONS.has(version):
 			p += "\nEffect rules (the ones most relevant to this card):\n"
 			for r in picked:
 				p += "- %s\n" % r["text"]
@@ -407,6 +451,174 @@ func _retrieve_rules(card_text: String) -> Array:
 	return top
 
 
+func _normalized(values: Array) -> PackedFloat32Array:
+	var out := PackedFloat32Array()
+	out.resize(values.size())
+	var total := 0.0
+	for i in values.size():
+		out[i] = values[i]
+		total += float(values[i]) * float(values[i])
+	var norm := sqrt(total)
+	if norm > 0.0:
+		for i in out.size():
+			out[i] = out[i] / norm
+	return out
+
+
+func _embed_batch(texts: Array, task_type: String) -> Dictionary:
+	var requests: Array = []
+	for t in texts:
+		var req := {"model": "models/" + EMBED_MODEL, "content": {"parts": [{"text": t}]}}
+		if task_type != "":
+			req["taskType"] = task_type
+		requests.append(req)
+	var body := JSON.stringify({"requests": requests})
+	var headers := ["Content-Type: application/json", "x-goog-api-key: " + api_key]
+	var retries := 0
+	while true:
+		var err := http.request(EMBED_URL, headers, HTTPClient.METHOD_POST, body)
+		if err != OK:
+			return {"ok": false, "code": 0, "error": "request() failed: %d" % err}
+		var res = await http.request_completed
+		var result: int = res[0]
+		var code: int = res[1]
+		var text_body: String = res[3].get_string_from_utf8()
+		if result != HTTPRequest.RESULT_SUCCESS:
+			return {"ok": false, "code": 0, "error": "Network error (result %d)" % result}
+		if code == 429 and retries < MAX_RATE_LIMIT_RETRIES:
+			retries += 1
+			print("  429 rate limited. Waiting %ds (retry %d/%d)" % [int(RATE_LIMIT_WAIT_SEC), retries, MAX_RATE_LIMIT_RETRIES])
+			await get_tree().create_timer(RATE_LIMIT_WAIT_SEC).timeout
+			continue
+		if code != 200:
+			return {"ok": false, "code": code, "error": "HTTP %d: %s" % [code, text_body.left(400)]}
+		var json = JSON.parse_string(text_body)
+		if typeof(json) != TYPE_DICTIONARY or typeof(json.get("embeddings")) != TYPE_ARRAY:
+			return {"ok": false, "code": code, "error": "Unexpected response: " + text_body.left(300)}
+		var vectors: Array = []
+		for item in json["embeddings"]:
+			vectors.append(item["values"])
+		if vectors.size() != texts.size():
+			return {"ok": false, "code": code, "error": "Expected %d embeddings, got %d" % [texts.size(), vectors.size()]}
+		return {"ok": true, "vectors": vectors}
+	return {"ok": false, "code": 0, "error": "unreachable"}
+
+
+func _fetch_embeddings() -> int:
+	if FileAccess.file_exists(EMBED_PATH):
+		print("%s already exists. Not calling the embedding API again." % EMBED_PATH)
+		return 0
+
+	var rule_keys: Array = []
+	var rule_texts: Array = []
+	for rule in data["rules"]:
+		rule_keys.append(rule["keyword"])
+		rule_texts.append(rule["text"])
+	var card_ids: Array = []
+	var card_texts: Array = []
+	for card in data["tests"]:
+		card_ids.append(card["id"])
+		card_texts.append(card["text"])
+
+	var rule_task := "RETRIEVAL_DOCUMENT"
+	var card_task := "RETRIEVAL_QUERY"
+	var rules_res: Dictionary = await _embed_batch(rule_texts, rule_task)
+	await get_tree().create_timer(CALL_GAP_SEC).timeout
+	var cards_res: Dictionary = {"ok": false, "code": 0, "error": "not called"}
+	if rules_res["ok"]:
+		cards_res = await _embed_batch(card_texts, card_task)
+	if not rules_res["ok"] or not cards_res["ok"]:
+		var rejected_code: int = rules_res["code"] if not rules_res["ok"] else cards_res["code"]
+		print("Embedding request failed: %s" % (rules_res["error"] if not rules_res["ok"] else cards_res["error"]))
+		if rejected_code != 400:
+			return 2
+		print("HTTP 400 with taskType. Retrying both batches without taskType.")
+		rule_task = ""
+		card_task = ""
+		rules_res = await _embed_batch(rule_texts, "")
+		await get_tree().create_timer(CALL_GAP_SEC).timeout
+		cards_res = await _embed_batch(card_texts, "")
+		if not rules_res["ok"] or not cards_res["ok"]:
+			print("Embedding request failed again: %s" % (rules_res["error"] if not rules_res["ok"] else cards_res["error"]))
+			return 2
+
+	var dims: int = rules_res["vectors"][0].size()
+	for vec in rules_res["vectors"] + cards_res["vectors"]:
+		if vec.size() != dims:
+			print("Embedding sizes differ: %d vs %d" % [vec.size(), dims])
+			return 2
+
+	var out := {
+		"model": EMBED_MODEL,
+		"dimensions": dims,
+		"fetched_at": _timestamp(false),
+		"task_types": {"rules": rule_task if rule_task != "" else "none", "cards": card_task if card_task != "" else "none"},
+		"rule_texts": {},
+		"card_texts": {},
+		"rules": {},
+		"cards": {}
+	}
+	for i in rule_keys.size():
+		out["rule_texts"][rule_keys[i]] = rule_texts[i]
+		out["rules"][rule_keys[i]] = rules_res["vectors"][i]
+	for i in card_ids.size():
+		out["card_texts"][card_ids[i]] = card_texts[i]
+		out["cards"][card_ids[i]] = cards_res["vectors"][i]
+	var file := FileAccess.open(EMBED_PATH, FileAccess.WRITE)
+	if file == null:
+		push_error("Cannot write " + EMBED_PATH)
+		return 1
+	file.store_string(JSON.stringify(out, "", false, true))
+	file.close()
+	print("Saved %s (model %s, %d dimensions, %d rules, %d cards, taskType rules=%s cards=%s)" % [EMBED_PATH, EMBED_MODEL, dims, rule_keys.size(), card_ids.size(), out["task_types"]["rules"], out["task_types"]["cards"]])
+	return 0
+
+
+func _load_embeddings() -> bool:
+	var file := FileAccess.open(EMBED_PATH, FileAccess.READ)
+	if file == null:
+		push_error("%s not found. Run with --fetch-embeddings first." % EMBED_PATH)
+		return false
+	var parsed = JSON.parse_string(file.get_as_text())
+	file.close()
+	if typeof(parsed) != TYPE_DICTIONARY:
+		push_error("Invalid JSON in " + EMBED_PATH)
+		return false
+	embeddings = parsed
+	rule_vectors = {}
+	for rule in data["rules"]:
+		if not embeddings["rules"].has(rule["keyword"]) or embeddings["rule_texts"][rule["keyword"]] != rule["text"]:
+			push_error("Embedding file does not match the rule %s. Delete it and fetch again." % rule["keyword"])
+			return false
+		rule_vectors[rule["keyword"]] = _normalized(embeddings["rules"][rule["keyword"]])
+	for card in data["tests"]:
+		if not embeddings["cards"].has(card["id"]) or embeddings["card_texts"][card["id"]] != card["text"]:
+			push_error("Embedding file does not match the card %s. Delete it and fetch again." % card["id"])
+			return false
+	return true
+
+
+func _rank_by_embedding(card_id: String) -> Array:
+	var q := _normalized(embeddings["cards"][card_id])
+	var scored: Array = []
+	var rules: Array = data["rules"]
+	for i in rules.size():
+		var v: PackedFloat32Array = rule_vectors[rules[i]["keyword"]]
+		var dot := 0.0
+		for j in v.size():
+			dot += q[j] * v[j]
+		scored.append({"index": i, "score": dot})
+	scored.sort_custom(func(a, b): return a["score"] > b["score"] or (a["score"] == b["score"] and a["index"] < b["index"]))
+	return scored
+
+
+func _retrieve_rules_by_embedding(card_id: String) -> Array:
+	var top: Array = []
+	for s in _rank_by_embedding(card_id).slice(0, RAG_RULE_COUNT):
+		top.append(data["rules"][s["index"]])
+	return top
+
+
 func _effect_keys(effects: Array) -> Array:
 	var keys: Array = []
 	for e in effects:
@@ -437,8 +649,11 @@ func _ask(version: int, card: Dictionary) -> Dictionary:
 	var picked: Array = []
 	var picked_keywords: Array = []
 	var rag_hit = null
-	if version == 3 or version == 4:
-		picked = _retrieve_rules(card["text"])
+	if RAG_VERSIONS.has(version):
+		if EMBEDDING_VERSIONS.has(version):
+			picked = _retrieve_rules_by_embedding(card["id"])
+		else:
+			picked = _retrieve_rules(card["text"])
 		for r in picked:
 			picked_keywords.append(r["keyword"])
 		if not card["needed_rules"].is_empty():
@@ -483,7 +698,7 @@ func _ask(version: int, card: Dictionary) -> Dictionary:
 	}
 
 	var api_ms := 0
-	if version >= 4:
+	if CODE_CHECK_VERSIONS.has(version):
 		api_ms += await _answer_with_code_check(prompt, entry)
 	else:
 		var res: Dictionary = await _call_gemini(prompt, _schema())
@@ -748,9 +963,9 @@ func _timestamp(for_filename: bool) -> String:
 	return "%04d-%02d-%02d %02d:%02d:%02d" % [t["year"], t["month"], t["day"], t["hour"], t["minute"], t["second"]]
 
 
-func _write_results(version: int, runs: int, stamp: String, entries: Array, summary: Dictionary, dryrun: bool):
+func _write_results(version: int, runs: int, stamp: String, entries: Array, summary: Dictionary, dryrun: bool, prefix_name: String = ""):
 	DirAccess.make_dir_recursive_absolute(ProjectSettings.globalize_path(RESULTS_DIR))
-	var prefix := "dryrun_" if dryrun else ""
+	var prefix := prefix_name if prefix_name != "" else ("dryrun_" if dryrun else "")
 	var path := "%s/%srulebook_v%d_%s.json" % [RESULTS_DIR, prefix, version, stamp]
 	var file := FileAccess.open(path, FileAccess.WRITE)
 	if file == null:
@@ -849,7 +1064,7 @@ func _append_summary_md(version: int, runs: int, summary: Dictionary):
 		file.store_line("")
 		file.store_line("Accuracy excludes cards that ended in an API error; those are counted in the Errors column.")
 		file.store_line("")
-		file.store_line("Effects and cost accuracy are computed over the cards that should not be rejected. RAG hit rate counts cards whose needed rules were all among the picked rules (v3 and v4 only).")
+		file.store_line("Effects and cost accuracy are computed over the cards that should not be rejected. RAG hit rate counts cards whose needed rules were all among the picked rules (RAG versions).")
 		file.store_line("")
 		file.store_line("| " + " | ".join(PackedStringArray(columns)) + " |")
 		file.store_line("| " + " | ".join(PackedStringArray(separator)) + " |")

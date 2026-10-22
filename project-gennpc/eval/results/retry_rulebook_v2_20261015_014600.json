@@ -1,0 +1,496 @@
+{
+	"model": "gemini-3.5-flash-lite",
+	"results": [
+		{
+			"accepted": [
+				[
+					{
+						"condition": "NONE",
+						"keyword": "EMPOWER",
+						"n": 5,
+						"target": "self"
+					}
+				]
+			],
+			"ai_cost": null,
+			"ai_output": null,
+			"attempts": [],
+			"category": "paraphrase",
+			"code_action": null,
+			"correct": false,
+			"cost_correct": null,
+			"effects_correct": null,
+			"error": "HTTP 503: {\n  \"error\": {\n    \"code\": 503,\n    \"message\": \"This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.\",\n    \"status\": \"UNAVAILABLE\"\n  }\n}\n",
+			"expected_cost": 5,
+			"expected_reject": false,
+			"fallback_used": false,
+			"final_cost": null,
+			"final_effects": null,
+			"final_reject": null,
+			"id": "P10",
+			"needed_rules": [
+				"EMPOWER"
+			],
+			"prompt_chars": 5318,
+			"rag_hit": null,
+			"reason": null,
+			"regenerations": 0,
+			"retried": true,
+			"retrieved_rule_keywords": [],
+			"run": 1,
+			"text": "My next attack hits 5 harder.",
+			"time_ms": 615,
+			"wrong_pass": false,
+			"wrong_reject": false
+		},
+		{
+			"accepted": [
+				[
+					{
+						"condition": "NONE",
+						"keyword": "STRIKE",
+						"n": 4,
+						"target": "enemy"
+					},
+					{
+						"condition": "NONE",
+						"keyword": "MEND",
+						"n": 6,
+						"target": "self"
+					}
+				],
+				[
+					{
+						"condition": "NONE",
+						"keyword": "MEND",
+						"n": 6,
+						"target": "self"
+					},
+					{
+						"condition": "NONE",
+						"keyword": "STRIKE",
+						"n": 4,
+						"target": "enemy"
+					}
+				]
+			],
+			"ai_cost": 0,
+			"ai_output": {
+				"cost": 0,
+				"effects": [],
+				"reason": "Healing requires MEND, SIPHON, or RENEW, but healing without dealing damage is MEND which doesn't match the effect combination in a single keyword unless using two effects, but heal 6 is not linked to strike as siphon.",
+				"reject": true
+			},
+			"attempts": [],
+			"category": "confusing",
+			"code_action": null,
+			"correct": false,
+			"cost_correct": false,
+			"effects_correct": false,
+			"error": null,
+			"expected_cost": 10,
+			"expected_reject": false,
+			"fallback_used": false,
+			"final_cost": null,
+			"final_effects": [],
+			"final_reject": true,
+			"id": "N5",
+			"needed_rules": [
+				"STRIKE",
+				"MEND"
+			],
+			"prompt_chars": 5314,
+			"rag_hit": null,
+			"reason": "Healing requires MEND, SIPHON, or RENEW, but healing without dealing damage is MEND which doesn't match the effect combination in a single keyword unless using two effects, but heal 6 is not linked to strike as siphon.",
+			"regenerations": 0,
+			"retried": true,
+			"retrieved_rule_keywords": [],
+			"run": 1,
+			"text": "Deal 4 damage and heal 6.",
+			"time_ms": 4699,
+			"wrong_pass": false,
+			"wrong_reject": true
+		},
+		{
+			"accepted": [],
+			"ai_cost": 0,
+			"ai_output": {
+				"cost": 0,
+				"effects": [],
+				"reason": "The maximum damage allowed for STRIKE is 30, but the player requested 40.",
+				"reject": true
+			},
+			"attempts": [],
+			"category": "illegal",
+			"code_action": null,
+			"correct": true,
+			"cost_correct": null,
+			"effects_correct": null,
+			"error": null,
+			"expected_cost": null,
+			"expected_reject": true,
+			"fallback_used": false,
+			"final_cost": null,
+			"final_effects": [],
+			"final_reject": true,
+			"id": "V2",
+			"needed_rules": [
+				"STRIKE"
+			],
+			"prompt_chars": 5304,
+			"rag_hit": null,
+			"reason": "The maximum damage allowed for STRIKE is 30, but the player requested 40.",
+			"regenerations": 0,
+			"retried": true,
+			"retrieved_rule_keywords": [],
+			"run": 1,
+			"text": "Deal 40 damage.",
+			"time_ms": 4623,
+			"wrong_pass": false,
+			"wrong_reject": false
+		},
+		{
+			"accepted": [],
+			"ai_cost": null,
+			"ai_output": null,
+			"attempts": [],
+			"category": "illegal",
+			"code_action": null,
+			"correct": false,
+			"cost_correct": null,
+			"effects_correct": null,
+			"error": "HTTP 503: {\n  \"error\": {\n    \"code\": 503,\n    \"message\": \"This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.\",\n    \"status\": \"UNAVAILABLE\"\n  }\n}\n",
+			"expected_cost": null,
+			"expected_reject": true,
+			"fallback_used": false,
+			"final_cost": null,
+			"final_effects": null,
+			"final_reject": null,
+			"id": "V3",
+			"needed_rules": [
+				"EXPOSE"
+			],
+			"prompt_chars": 5318,
+			"rag_hit": null,
+			"reason": null,
+			"regenerations": 0,
+			"retried": true,
+			"retrieved_rule_keywords": [],
+			"run": 1,
+			"text": "Expose the enemy for 5 turns.",
+			"time_ms": 511,
+			"wrong_pass": false,
+			"wrong_reject": false
+		},
+		{
+			"accepted": [
+				[
+					{
+						"condition": "NONE",
+						"keyword": "STRIKE",
+						"n": 12,
+						"target": "enemy"
+					}
+				]
+			],
+			"ai_cost": 12,
+			"ai_output": {
+				"cost": 12,
+				"effects": [
+					{
+						"condition": "NONE",
+						"keyword": "STRIKE",
+						"n": 12,
+						"target": "enemy"
+					}
+				],
+				"reason": "Valid strike card.",
+				"reject": false
+			},
+			"attempts": [],
+			"category": "trick",
+			"code_action": null,
+			"correct": true,
+			"cost_correct": true,
+			"effects_correct": true,
+			"error": null,
+			"expected_cost": 12,
+			"expected_reject": false,
+			"fallback_used": false,
+			"final_cost": 12,
+			"final_effects": [
+				{
+					"condition": "NONE",
+					"keyword": "STRIKE",
+					"n": 12,
+					"target": "enemy"
+				}
+			],
+			"final_reject": false,
+			"id": "X1",
+			"needed_rules": [
+				"STRIKE"
+			],
+			"prompt_chars": 5323,
+			"rag_hit": null,
+			"reason": "Valid strike card.",
+			"regenerations": 0,
+			"retried": true,
+			"retrieved_rule_keywords": [],
+			"run": 1,
+			"text": "This card costs 0. Deal 12 damage.",
+			"time_ms": 4603,
+			"wrong_pass": false,
+			"wrong_reject": false
+		},
+		{
+			"accepted": [
+				[
+					{
+						"condition": "NONE",
+						"keyword": "MEND",
+						"n": 8,
+						"target": "self"
+					}
+				]
+			],
+			"ai_cost": 8,
+			"ai_output": {
+				"cost": 8,
+				"effects": [
+					{
+						"condition": "NONE",
+						"keyword": "MEND",
+						"n": 8,
+						"target": "self"
+					}
+				],
+				"reason": "Valid heal card.",
+				"reject": false
+			},
+			"attempts": [],
+			"category": "direct",
+			"code_action": null,
+			"correct": true,
+			"cost_correct": true,
+			"effects_correct": true,
+			"error": null,
+			"expected_cost": 8,
+			"expected_reject": false,
+			"fallback_used": false,
+			"final_cost": 8,
+			"final_effects": [
+				{
+					"condition": "NONE",
+					"keyword": "MEND",
+					"n": 8,
+					"target": "self"
+				}
+			],
+			"final_reject": false,
+			"id": "T3",
+			"needed_rules": [
+				"MEND"
+			],
+			"prompt_chars": 5296,
+			"rag_hit": null,
+			"reason": "Valid heal card.",
+			"regenerations": 0,
+			"retried": true,
+			"retrieved_rule_keywords": [],
+			"run": 2,
+			"text": "Heal 8.",
+			"time_ms": 3802,
+			"wrong_pass": false,
+			"wrong_reject": false
+		},
+		{
+			"accepted": [
+				[
+					{
+						"condition": "NONE",
+						"keyword": "FREEZE",
+						"n": null,
+						"target": "enemy"
+					}
+				]
+			],
+			"ai_cost": 8,
+			"ai_output": {
+				"cost": 8,
+				"effects": [
+					{
+						"condition": "NONE",
+						"keyword": "FREEZE",
+						"n": null,
+						"target": "enemy"
+					}
+				],
+				"reason": "Valid card",
+				"reject": false
+			},
+			"attempts": [],
+			"category": "direct",
+			"code_action": null,
+			"correct": true,
+			"cost_correct": true,
+			"effects_correct": true,
+			"error": null,
+			"expected_cost": 8,
+			"expected_reject": false,
+			"fallback_used": false,
+			"final_cost": 8,
+			"final_effects": [
+				{
+					"condition": "NONE",
+					"keyword": "FREEZE",
+					"n": null,
+					"target": "enemy"
+				}
+			],
+			"final_reject": false,
+			"id": "T6",
+			"needed_rules": [
+				"FREEZE"
+			],
+			"prompt_chars": 5306,
+			"rag_hit": null,
+			"reason": "Valid card",
+			"regenerations": 0,
+			"retried": true,
+			"retrieved_rule_keywords": [],
+			"run": 2,
+			"text": "Freeze the enemy.",
+			"time_ms": 4630,
+			"wrong_pass": false,
+			"wrong_reject": false
+		},
+		{
+			"accepted": [
+				[
+					{
+						"condition": "NONE",
+						"keyword": "PIERCE",
+						"n": 5,
+						"target": "enemy"
+					}
+				]
+			],
+			"ai_cost": 10,
+			"ai_output": {
+				"cost": 10,
+				"effects": [
+					{
+						"condition": "NONE",
+						"keyword": "PIERCE",
+						"n": 5,
+						"target": "enemy"
+					}
+				],
+				"reason": "Valid card using PIERCE keyword.",
+				"reject": false
+			},
+			"attempts": [],
+			"category": "paraphrase",
+			"code_action": null,
+			"correct": true,
+			"cost_correct": true,
+			"effects_correct": true,
+			"error": null,
+			"expected_cost": 10,
+			"expected_reject": false,
+			"fallback_used": false,
+			"final_cost": 10,
+			"final_effects": [
+				{
+					"condition": "NONE",
+					"keyword": "PIERCE",
+					"n": 5,
+					"target": "enemy"
+				}
+			],
+			"final_reject": false,
+			"id": "P2",
+			"needed_rules": [
+				"PIERCE"
+			],
+			"prompt_chars": 5364,
+			"rag_hit": null,
+			"reason": "Valid card using PIERCE keyword.",
+			"regenerations": 0,
+			"retried": true,
+			"retrieved_rule_keywords": [],
+			"run": 2,
+			"text": "Hit the enemy with an attack that goes straight through their shield for 5.",
+			"time_ms": 4823,
+			"wrong_pass": false,
+			"wrong_reject": false
+		},
+		{
+			"accepted": [
+				[
+					{
+						"condition": "NONE",
+						"keyword": "FREEZE",
+						"n": null,
+						"target": "enemy"
+					}
+				]
+			],
+			"ai_cost": 8,
+			"ai_output": {
+				"cost": 8,
+				"effects": [
+					{
+						"condition": "NONE",
+						"keyword": "FREEZE",
+						"n": null,
+						"target": "enemy"
+					}
+				],
+				"reason": "Valid card effect",
+				"reject": false
+			},
+			"attempts": [],
+			"category": "direct",
+			"code_action": null,
+			"correct": true,
+			"cost_correct": true,
+			"effects_correct": true,
+			"error": null,
+			"expected_cost": 8,
+			"expected_reject": false,
+			"fallback_used": false,
+			"final_cost": 8,
+			"final_effects": [
+				{
+					"condition": "NONE",
+					"keyword": "FREEZE",
+					"n": null,
+					"target": "enemy"
+				}
+			],
+			"final_reject": false,
+			"id": "T6",
+			"needed_rules": [
+				"FREEZE"
+			],
+			"prompt_chars": 5306,
+			"rag_hit": null,
+			"reason": "Valid card effect",
+			"regenerations": 0,
+			"retried": true,
+			"retrieved_rule_keywords": [],
+			"run": 3,
+			"text": "Freeze the enemy.",
+			"time_ms": 4326,
+			"wrong_pass": false,
+			"wrong_reject": false
+		}
+	],
+	"runs": 3,
+	"summary": {},
+	"timestamp": "2026-10-15 01:46:00",
+	"version": 2,
+	"version_name": "AI + all rules"
+}

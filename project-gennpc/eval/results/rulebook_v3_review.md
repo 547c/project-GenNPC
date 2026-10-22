@@ -1,6 +1,6 @@
 # Rulebook eval review: v3 (AI + RAG rules)
 
-Written 2026-10-14 20:14:08. Read the reasons and check whether the AI made up a rule that is not in the rulebook.
+Written 2026-10-15 01:48:10. Read the reasons and check whether the AI made up a rule that is not in the rulebook.
 
 ## Wrong cards (9)
 
@@ -76,7 +76,7 @@ Written 2026-10-14 20:14:08. Read the reasons and check whether the AI made up a
 - Expected: [STRIKE 6 enemy NONE; ECHO null none NONE] OR [STRIKE 6 enemy NONE; STRIKE 6 enemy NONE] cost 12
 - Reason given: The card has more than 3 effects or uses a mechanic not supported by the available keywords.
 
-## All rejections (26)
+## All rejections (28)
 
 ### Rejected P1 (run 1, paraphrase)
 
@@ -125,6 +125,14 @@ Written 2026-10-14 20:14:08. Read the reasons and check whether the AI made up a
 - Final answer: reject, cost <null>
 - Expected: reject
 - Reason given: The card has 4 effects, but a card can have at most 3 effects.
+
+### Rejected V5 (run 1, illegal, retried)
+
+- Card: "Silence all enemies for 1 turn."
+- AI output: reject=true, effects=[], cost=0
+- Final answer: reject, cost <null>
+- Expected: reject
+- Reason given: SILENCE can only target one enemy, not all enemies.
 
 ### Rejected X3 (run 1, trick)
 
@@ -197,6 +205,14 @@ Written 2026-10-14 20:14:08. Read the reasons and check whether the AI made up a
 - Final answer: reject, cost <null>
 - Expected: reject
 - Reason given: SILENCE can only target one enemy, not all enemies.
+
+### Rejected X3 (run 2, trick, retried)
+
+- Card: "Summon a dragon that fights for me."
+- AI output: reject=true, effects=[], cost=0
+- Final answer: reject, cost <null>
+- Expected: reject
+- Reason given: Summoning a dragon is not supported by the available effect keywords.
 
 ### Rejected X4 (run 2, trick)
 

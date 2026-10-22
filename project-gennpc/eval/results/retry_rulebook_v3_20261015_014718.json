@@ -1,0 +1,579 @@
+{
+	"model": "gemini-3.5-flash-lite",
+	"results": [
+		{
+			"accepted": [
+				[
+					{
+						"condition": "NONE",
+						"keyword": "GUARD",
+						"n": 10,
+						"target": "self"
+					}
+				]
+			],
+			"ai_cost": 10,
+			"ai_output": {
+				"cost": 10,
+				"effects": [
+					{
+						"condition": "NONE",
+						"keyword": "GUARD",
+						"n": 10,
+						"target": "self"
+					}
+				],
+				"reason": "Valid card description matching GUARD effect.",
+				"reject": false
+			},
+			"attempts": [],
+			"category": "direct",
+			"code_action": null,
+			"correct": true,
+			"cost_correct": true,
+			"effects_correct": true,
+			"error": null,
+			"expected_cost": 10,
+			"expected_reject": false,
+			"fallback_used": false,
+			"final_cost": 10,
+			"final_effects": [
+				{
+					"condition": "NONE",
+					"keyword": "GUARD",
+					"n": 10,
+					"target": "self"
+				}
+			],
+			"final_reject": false,
+			"id": "T2",
+			"needed_rules": [
+				"GUARD"
+			],
+			"prompt_chars": 2483,
+			"rag_hit": true,
+			"reason": "Valid card description matching GUARD effect.",
+			"regenerations": 0,
+			"retried": true,
+			"retrieved_rule_keywords": [
+				"GUARD",
+				"BULWARK",
+				"FORTIFY",
+				"PIERCE",
+				"FOCUS"
+			],
+			"run": 1,
+			"text": "Gain 10 shield.",
+			"time_ms": 4030,
+			"wrong_pass": false,
+			"wrong_reject": false
+		},
+		{
+			"accepted": [
+				[
+					{
+						"condition": "NONE",
+						"keyword": "CLEAVE",
+						"n": 8,
+						"target": "enemy"
+					}
+				]
+			],
+			"ai_cost": 16,
+			"ai_output": {
+				"cost": 16,
+				"effects": [
+					{
+						"condition": "NONE",
+						"keyword": "CLEAVE",
+						"n": 8,
+						"target": "enemy"
+					}
+				],
+				"reason": "Valid CLEAVE card.",
+				"reject": false
+			},
+			"attempts": [],
+			"category": "paraphrase",
+			"code_action": null,
+			"correct": true,
+			"cost_correct": true,
+			"effects_correct": true,
+			"error": null,
+			"expected_cost": 16,
+			"expected_reject": false,
+			"fallback_used": false,
+			"final_cost": 16,
+			"final_effects": [
+				{
+					"condition": "NONE",
+					"keyword": "CLEAVE",
+					"n": 8,
+					"target": "enemy"
+				}
+			],
+			"final_reject": false,
+			"id": "P4",
+			"needed_rules": [
+				"CLEAVE"
+			],
+			"prompt_chars": 2694,
+			"rag_hit": true,
+			"reason": "Valid CLEAVE card.",
+			"regenerations": 0,
+			"retried": true,
+			"retrieved_rule_keywords": [
+				"CLEAVE",
+				"SIPHON",
+				"RECKLESS",
+				"IGNITE",
+				"CHILL"
+			],
+			"run": 1,
+			"text": "Swing at one enemy for 8, and the blow also splashes onto the others.",
+			"time_ms": 4092,
+			"wrong_pass": false,
+			"wrong_reject": false
+		},
+		{
+			"accepted": [
+				[
+					{
+						"condition": "NONE",
+						"keyword": "EMPOWER",
+						"n": 5,
+						"target": "self"
+					}
+				]
+			],
+			"ai_cost": 5,
+			"ai_output": {
+				"cost": 5,
+				"effects": [
+					{
+						"condition": "NONE",
+						"keyword": "EMPOWER",
+						"n": 5,
+						"target": "self"
+					}
+				],
+				"reason": "",
+				"reject": false
+			},
+			"attempts": [],
+			"category": "paraphrase",
+			"code_action": null,
+			"correct": true,
+			"cost_correct": true,
+			"effects_correct": true,
+			"error": null,
+			"expected_cost": 5,
+			"expected_reject": false,
+			"fallback_used": false,
+			"final_cost": 5,
+			"final_effects": [
+				{
+					"condition": "NONE",
+					"keyword": "EMPOWER",
+					"n": 5,
+					"target": "self"
+				}
+			],
+			"final_reject": false,
+			"id": "P10",
+			"needed_rules": [
+				"EMPOWER"
+			],
+			"prompt_chars": 2501,
+			"rag_hit": true,
+			"reason": "",
+			"regenerations": 0,
+			"retried": true,
+			"retrieved_rule_keywords": [
+				"DODGE",
+				"EMPOWER",
+				"GUARD",
+				"THORNS",
+				"RENEW"
+			],
+			"run": 1,
+			"text": "My next attack hits 5 harder.",
+			"time_ms": 5251,
+			"wrong_pass": false,
+			"wrong_reject": false
+		},
+		{
+			"accepted": [
+				[
+					{
+						"condition": "NONE",
+						"keyword": "SCORCH",
+						"n": 6,
+						"target": "enemy"
+					}
+				],
+				[
+					{
+						"condition": "NONE",
+						"keyword": "STRIKE",
+						"n": 6,
+						"target": "enemy"
+					},
+					{
+						"condition": "IF_ENEMY_BURNING",
+						"keyword": "STRIKE",
+						"n": 6,
+						"target": "enemy"
+					}
+				]
+			],
+			"ai_cost": 9,
+			"ai_output": {
+				"cost": 9,
+				"effects": [
+					{
+						"condition": "NONE",
+						"keyword": "SCORCH",
+						"n": 6,
+						"target": "enemy"
+					}
+				],
+				"reason": "",
+				"reject": false
+			},
+			"attempts": [],
+			"category": "confusing",
+			"code_action": null,
+			"correct": true,
+			"cost_correct": true,
+			"effects_correct": true,
+			"error": null,
+			"expected_cost": 9,
+			"expected_reject": false,
+			"fallback_used": false,
+			"final_cost": 9,
+			"final_effects": [
+				{
+					"condition": "NONE",
+					"keyword": "SCORCH",
+					"n": 6,
+					"target": "enemy"
+				}
+			],
+			"final_reject": false,
+			"id": "N1",
+			"needed_rules": [
+				"SCORCH"
+			],
+			"prompt_chars": 2562,
+			"rag_hit": true,
+			"reason": "",
+			"regenerations": 0,
+			"retried": true,
+			"retrieved_rule_keywords": [
+				"SCORCH",
+				"CLEAVE",
+				"SIPHON",
+				"EXECUTE",
+				"STRIKE"
+			],
+			"run": 1,
+			"text": "Deal 6 damage, and 6 more if the enemy is burning.",
+			"time_ms": 4803,
+			"wrong_pass": false,
+			"wrong_reject": false
+		},
+		{
+			"accepted": [
+				[
+					{
+						"condition": "IF_ENEMY_CHILLED",
+						"keyword": "FREEZE",
+						"n": null,
+						"target": "enemy"
+					}
+				]
+			],
+			"ai_cost": 4,
+			"ai_output": {
+				"cost": 4,
+				"effects": [
+					{
+						"condition": "IF_ENEMY_CHILLED",
+						"keyword": "FREEZE",
+						"n": null,
+						"target": "enemy"
+					}
+				],
+				"reason": "Valid card using CHILL condition for FREEZE.",
+				"reject": false
+			},
+			"attempts": [],
+			"category": "condition",
+			"code_action": null,
+			"correct": true,
+			"cost_correct": true,
+			"effects_correct": true,
+			"error": null,
+			"expected_cost": 4,
+			"expected_reject": false,
+			"fallback_used": false,
+			"final_cost": 4,
+			"final_effects": [
+				{
+					"condition": "IF_ENEMY_CHILLED",
+					"keyword": "FREEZE",
+					"n": null,
+					"target": "enemy"
+				}
+			],
+			"final_reject": false,
+			"id": "D2",
+			"needed_rules": [
+				"FREEZE"
+			],
+			"prompt_chars": 2534,
+			"rag_hit": true,
+			"reason": "Valid card using CHILL condition for FREEZE.",
+			"regenerations": 0,
+			"retried": true,
+			"retrieved_rule_keywords": [
+				"EXECUTE",
+				"SCORCH",
+				"CHILL",
+				"FREEZE",
+				"STRIKE"
+			],
+			"run": 1,
+			"text": "If the enemy is chilled, freeze it.",
+			"time_ms": 2533,
+			"wrong_pass": false,
+			"wrong_reject": false
+		},
+		{
+			"accepted": [],
+			"ai_cost": 0,
+			"ai_output": {
+				"cost": 0,
+				"effects": [],
+				"reason": "SILENCE can only target one enemy, not all enemies.",
+				"reject": true
+			},
+			"attempts": [],
+			"category": "illegal",
+			"code_action": null,
+			"correct": true,
+			"cost_correct": null,
+			"effects_correct": null,
+			"error": null,
+			"expected_cost": null,
+			"expected_reject": true,
+			"fallback_used": false,
+			"final_cost": null,
+			"final_effects": [],
+			"final_reject": true,
+			"id": "V5",
+			"needed_rules": [
+				"SILENCE"
+			],
+			"prompt_chars": 2652,
+			"rag_hit": true,
+			"reason": "SILENCE can only target one enemy, not all enemies.",
+			"regenerations": 0,
+			"retried": true,
+			"retrieved_rule_keywords": [
+				"IGNITE",
+				"CHILL",
+				"WEAKEN",
+				"POISON",
+				"SILENCE"
+			],
+			"run": 1,
+			"text": "Silence all enemies for 1 turn.",
+			"time_ms": 4168,
+			"wrong_pass": false,
+			"wrong_reject": false
+		},
+		{
+			"accepted": [],
+			"ai_cost": 0,
+			"ai_output": {
+				"cost": 0,
+				"effects": [],
+				"reason": "Summoning a dragon is not supported by the available effect keywords.",
+				"reject": true
+			},
+			"attempts": [],
+			"category": "trick",
+			"code_action": null,
+			"correct": true,
+			"cost_correct": null,
+			"effects_correct": null,
+			"error": null,
+			"expected_cost": null,
+			"expected_reject": true,
+			"fallback_used": false,
+			"final_cost": null,
+			"final_effects": [],
+			"final_reject": true,
+			"id": "X3",
+			"needed_rules": [],
+			"prompt_chars": 2616,
+			"rag_hit": null,
+			"reason": "Summoning a dragon is not supported by the available effect keywords.",
+			"regenerations": 0,
+			"retried": true,
+			"retrieved_rule_keywords": [
+				"THORNS",
+				"IGNITE",
+				"CHILL",
+				"WEAKEN",
+				"EXPOSE"
+			],
+			"run": 2,
+			"text": "Summon a dragon that fights for me.",
+			"time_ms": 4347,
+			"wrong_pass": false,
+			"wrong_reject": false
+		},
+		{
+			"accepted": [
+				[
+					{
+						"condition": "NONE",
+						"keyword": "MEND",
+						"n": 8,
+						"target": "self"
+					}
+				]
+			],
+			"ai_cost": 8,
+			"ai_output": {
+				"cost": 8,
+				"effects": [
+					{
+						"condition": "NONE",
+						"keyword": "MEND",
+						"n": 8,
+						"target": "self"
+					}
+				],
+				"reason": "Valid heal card.",
+				"reject": false
+			},
+			"attempts": [],
+			"category": "direct",
+			"code_action": null,
+			"correct": true,
+			"cost_correct": true,
+			"effects_correct": true,
+			"error": null,
+			"expected_cost": 8,
+			"expected_reject": false,
+			"fallback_used": false,
+			"final_cost": 8,
+			"final_effects": [
+				{
+					"condition": "NONE",
+					"keyword": "MEND",
+					"n": 8,
+					"target": "self"
+				}
+			],
+			"final_reject": false,
+			"id": "T3",
+			"needed_rules": [
+				"MEND"
+			],
+			"prompt_chars": 2392,
+			"rag_hit": true,
+			"reason": "Valid heal card.",
+			"regenerations": 0,
+			"retried": true,
+			"retrieved_rule_keywords": [
+				"SIPHON",
+				"MEND",
+				"RENEW",
+				"FREEZE",
+				"STRIKE"
+			],
+			"run": 3,
+			"text": "Heal 8.",
+			"time_ms": 4368,
+			"wrong_pass": false,
+			"wrong_reject": false
+		},
+		{
+			"accepted": [
+				[
+					{
+						"condition": "NONE",
+						"keyword": "BULWARK",
+						"n": 6,
+						"target": "self"
+					}
+				]
+			],
+			"ai_cost": 12,
+			"ai_output": {
+				"cost": 12,
+				"effects": [
+					{
+						"condition": "NONE",
+						"keyword": "BULWARK",
+						"n": 6,
+						"target": "self"
+					}
+				],
+				"reason": "Valid card description mapping to BULWARK.",
+				"reject": false
+			},
+			"attempts": [],
+			"category": "paraphrase",
+			"code_action": null,
+			"correct": true,
+			"cost_correct": true,
+			"effects_correct": true,
+			"error": null,
+			"expected_cost": 12,
+			"expected_reject": false,
+			"fallback_used": false,
+			"final_cost": 12,
+			"final_effects": [
+				{
+					"condition": "NONE",
+					"keyword": "BULWARK",
+					"n": 6,
+					"target": "self"
+				}
+			],
+			"final_reject": false,
+			"id": "P6",
+			"needed_rules": [
+				"BULWARK"
+			],
+			"prompt_chars": 2499,
+			"rag_hit": true,
+			"reason": "Valid card description mapping to BULWARK.",
+			"regenerations": 0,
+			"retried": true,
+			"retrieved_rule_keywords": [
+				"BULWARK",
+				"STRIKE",
+				"PIERCE",
+				"CLEAVE",
+				"VOLLEY"
+			],
+			"run": 3,
+			"text": "Raise a barrier of 6 that never fades until it breaks.",
+			"time_ms": 4754,
+			"wrong_pass": false,
+			"wrong_reject": false
+		}
+	],
+	"runs": 3,
+	"summary": {},
+	"timestamp": "2026-10-15 01:47:18",
+	"version": 3,
+	"version_name": "AI + RAG rules"
+}

@@ -1,8 +1,8 @@
 # Rulebook eval review: v2 (AI + all rules)
 
-Written 2026-10-14 20:00:15. Read the reasons and check whether the AI made up a rule that is not in the rulebook.
+Written 2026-10-15 01:48:10. Read the reasons and check whether the AI made up a rule that is not in the rulebook.
 
-## Wrong cards (3)
+## Wrong cards (4)
 
 ### Wrong N1 (run 1, confusing)
 
@@ -11,6 +11,14 @@ Written 2026-10-14 20:00:15. Read the reasons and check whether the AI made up a
 - Final answer: [STRIKE 6 enemy NONE; SCORCH 6 enemy IF_ENEMY_BURNING], cost 14
 - Expected: [SCORCH 6 enemy NONE] OR [STRIKE 6 enemy NONE; STRIKE 6 enemy IF_ENEMY_BURNING] cost 9
 - Reason given: Valid card with two effects
+
+### Wrong N5 (run 1, confusing, retried)
+
+- Card: "Deal 4 damage and heal 6."
+- AI output: reject=true, effects=[], cost=0
+- Final answer: reject, cost <null>
+- Expected: [STRIKE 4 enemy NONE; MEND 6 self NONE] OR [MEND 6 self NONE; STRIKE 4 enemy NONE] cost 10
+- Reason given: Healing requires MEND, SIPHON, or RENEW, but healing without dealing damage is MEND which doesn't match the effect combination in a single keyword unless using two effects, but heal 6 is not linked to strike as siphon.
 
 ### Wrong N5 (run 2, confusing)
 
@@ -28,7 +36,15 @@ Written 2026-10-14 20:00:15. Read the reasons and check whether the AI made up a
 - Expected: [STRIKE 4 enemy NONE; MEND 6 self NONE] OR [MEND 6 self NONE; STRIKE 4 enemy NONE] cost 10
 - Reason given: Healing requires MEND, SIPHON, or RENEW, but heal 6 does not match their targets or costs properly as a standalone separate effect without damage tied to it like SIPHON.
 
-## All rejections (21)
+## All rejections (23)
+
+### Rejected N5 (run 1, confusing, retried)
+
+- Card: "Deal 4 damage and heal 6."
+- AI output: reject=true, effects=[], cost=0
+- Final answer: reject, cost <null>
+- Expected: [STRIKE 4 enemy NONE; MEND 6 self NONE] OR [MEND 6 self NONE; STRIKE 4 enemy NONE] cost 10
+- Reason given: Healing requires MEND, SIPHON, or RENEW, but healing without dealing damage is MEND which doesn't match the effect combination in a single keyword unless using two effects, but heal 6 is not linked to strike as siphon.
 
 ### Rejected V1 (run 1, illegal)
 
@@ -37,6 +53,14 @@ Written 2026-10-14 20:00:15. Read the reasons and check whether the AI made up a
 - Final answer: reject, cost <null>
 - Expected: reject
 - Reason given: FREEZE can only target one enemy, not all enemies.
+
+### Rejected V2 (run 1, illegal, retried)
+
+- Card: "Deal 40 damage."
+- AI output: reject=true, effects=[], cost=0
+- Final answer: reject, cost <null>
+- Expected: reject
+- Reason given: The maximum damage allowed for STRIKE is 30, but the player requested 40.
 
 ### Rejected V4 (run 1, illegal)
 

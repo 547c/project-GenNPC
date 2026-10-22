@@ -78,29 +78,49 @@
 					}
 				]
 			],
-			"ai_cost": null,
-			"ai_output": null,
+			"ai_cost": 10,
+			"ai_output": {
+				"cost": 10,
+				"effects": [
+					{
+						"condition": "NONE",
+						"keyword": "GUARD",
+						"n": 10,
+						"target": "self"
+					}
+				],
+				"reason": "Valid card description matching GUARD effect.",
+				"reject": false
+			},
 			"attempts": [],
 			"category": "direct",
 			"code_action": null,
-			"correct": false,
-			"cost_correct": null,
-			"effects_correct": null,
-			"error": "HTTP 503: {\n  \"error\": {\n    \"code\": 503,\n    \"message\": \"This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.\",\n    \"status\": \"UNAVAILABLE\"\n  }\n}\n",
+			"correct": true,
+			"cost_correct": true,
+			"effects_correct": true,
+			"error": null,
 			"expected_cost": 10,
 			"expected_reject": false,
 			"fallback_used": false,
-			"final_cost": null,
-			"final_effects": null,
-			"final_reject": null,
+			"final_cost": 10,
+			"final_effects": [
+				{
+					"condition": "NONE",
+					"keyword": "GUARD",
+					"n": 10,
+					"target": "self"
+				}
+			],
+			"final_reject": false,
 			"id": "T2",
 			"needed_rules": [
 				"GUARD"
 			],
 			"prompt_chars": 2483,
 			"rag_hit": true,
-			"reason": null,
+			"reason": "Valid card description matching GUARD effect.",
 			"regenerations": 0,
+			"retried": true,
 			"retrieved_rule_keywords": [
 				"GUARD",
 				"BULWARK",
@@ -110,9 +130,10 @@
 			],
 			"run": 1,
 			"text": "Gain 10 shield.",
-			"time_ms": 359,
+			"time_ms": 4030,
 			"wrong_pass": false,
-			"wrong_reject": false
+			"wrong_reject": false,
+			"original_error": "HTTP 503: {\n  \"error\": {\n    \"code\": 503,\n    \"message\": \"This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.\",\n    \"status\": \"UNAVAILABLE\"\n  }\n}\n"
 		},
 		{
 			"accepted": [
@@ -573,29 +594,49 @@
 					}
 				]
 			],
-			"ai_cost": null,
-			"ai_output": null,
+			"ai_cost": 16,
+			"ai_output": {
+				"cost": 16,
+				"effects": [
+					{
+						"condition": "NONE",
+						"keyword": "CLEAVE",
+						"n": 8,
+						"target": "enemy"
+					}
+				],
+				"reason": "Valid CLEAVE card.",
+				"reject": false
+			},
 			"attempts": [],
 			"category": "paraphrase",
 			"code_action": null,
-			"correct": false,
-			"cost_correct": null,
-			"effects_correct": null,
-			"error": "HTTP 503: {\n  \"error\": {\n    \"code\": 503,\n    \"message\": \"This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.\",\n    \"status\": \"UNAVAILABLE\"\n  }\n}\n",
+			"correct": true,
+			"cost_correct": true,
+			"effects_correct": true,
+			"error": null,
 			"expected_cost": 16,
 			"expected_reject": false,
 			"fallback_used": false,
-			"final_cost": null,
-			"final_effects": null,
-			"final_reject": null,
+			"final_cost": 16,
+			"final_effects": [
+				{
+					"condition": "NONE",
+					"keyword": "CLEAVE",
+					"n": 8,
+					"target": "enemy"
+				}
+			],
+			"final_reject": false,
 			"id": "P4",
 			"needed_rules": [
 				"CLEAVE"
 			],
 			"prompt_chars": 2694,
 			"rag_hit": true,
-			"reason": null,
+			"reason": "Valid CLEAVE card.",
 			"regenerations": 0,
+			"retried": true,
 			"retrieved_rule_keywords": [
 				"CLEAVE",
 				"SIPHON",
@@ -605,9 +646,10 @@
 			],
 			"run": 1,
 			"text": "Swing at one enemy for 8, and the blow also splashes onto the others.",
-			"time_ms": 552,
+			"time_ms": 4092,
 			"wrong_pass": false,
-			"wrong_reject": false
+			"wrong_reject": false,
+			"original_error": "HTTP 503: {\n  \"error\": {\n    \"code\": 503,\n    \"message\": \"This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.\",\n    \"status\": \"UNAVAILABLE\"\n  }\n}\n"
 		},
 		{
 			"accepted": [
@@ -950,29 +992,49 @@
 					}
 				]
 			],
-			"ai_cost": null,
-			"ai_output": null,
+			"ai_cost": 5,
+			"ai_output": {
+				"cost": 5,
+				"effects": [
+					{
+						"condition": "NONE",
+						"keyword": "EMPOWER",
+						"n": 5,
+						"target": "self"
+					}
+				],
+				"reason": "",
+				"reject": false
+			},
 			"attempts": [],
 			"category": "paraphrase",
 			"code_action": null,
-			"correct": false,
-			"cost_correct": null,
-			"effects_correct": null,
-			"error": "HTTP 500: {\n  \"error\": {\n    \"code\": 500,\n    \"message\": \"Internal error encountered.\",\n    \"status\": \"INTERNAL\"\n  }\n}\n",
+			"correct": true,
+			"cost_correct": true,
+			"effects_correct": true,
+			"error": null,
 			"expected_cost": 5,
 			"expected_reject": false,
 			"fallback_used": false,
-			"final_cost": null,
-			"final_effects": null,
-			"final_reject": null,
+			"final_cost": 5,
+			"final_effects": [
+				{
+					"condition": "NONE",
+					"keyword": "EMPOWER",
+					"n": 5,
+					"target": "self"
+				}
+			],
+			"final_reject": false,
 			"id": "P10",
 			"needed_rules": [
 				"EMPOWER"
 			],
 			"prompt_chars": 2501,
 			"rag_hit": true,
-			"reason": null,
+			"reason": "",
 			"regenerations": 0,
+			"retried": true,
 			"retrieved_rule_keywords": [
 				"DODGE",
 				"EMPOWER",
@@ -982,9 +1044,10 @@
 			],
 			"run": 1,
 			"text": "My next attack hits 5 harder.",
-			"time_ms": 172,
+			"time_ms": 5251,
 			"wrong_pass": false,
-			"wrong_reject": false
+			"wrong_reject": false,
+			"original_error": "HTTP 500: {\n  \"error\": {\n    \"code\": 500,\n    \"message\": \"Internal error encountered.\",\n    \"status\": \"INTERNAL\"\n  }\n}\n"
 		},
 		{
 			"accepted": [
@@ -1077,29 +1140,49 @@
 					}
 				]
 			],
-			"ai_cost": null,
-			"ai_output": null,
+			"ai_cost": 9,
+			"ai_output": {
+				"cost": 9,
+				"effects": [
+					{
+						"condition": "NONE",
+						"keyword": "SCORCH",
+						"n": 6,
+						"target": "enemy"
+					}
+				],
+				"reason": "",
+				"reject": false
+			},
 			"attempts": [],
 			"category": "confusing",
 			"code_action": null,
-			"correct": false,
-			"cost_correct": null,
-			"effects_correct": null,
-			"error": "HTTP 500: {\n  \"error\": {\n    \"code\": 500,\n    \"message\": \"Internal error encountered.\",\n    \"status\": \"INTERNAL\"\n  }\n}\n",
+			"correct": true,
+			"cost_correct": true,
+			"effects_correct": true,
+			"error": null,
 			"expected_cost": 9,
 			"expected_reject": false,
 			"fallback_used": false,
-			"final_cost": null,
-			"final_effects": null,
-			"final_reject": null,
+			"final_cost": 9,
+			"final_effects": [
+				{
+					"condition": "NONE",
+					"keyword": "SCORCH",
+					"n": 6,
+					"target": "enemy"
+				}
+			],
+			"final_reject": false,
 			"id": "N1",
 			"needed_rules": [
 				"SCORCH"
 			],
 			"prompt_chars": 2562,
 			"rag_hit": true,
-			"reason": null,
+			"reason": "",
 			"regenerations": 0,
+			"retried": true,
 			"retrieved_rule_keywords": [
 				"SCORCH",
 				"CLEAVE",
@@ -1109,9 +1192,10 @@
 			],
 			"run": 1,
 			"text": "Deal 6 damage, and 6 more if the enemy is burning.",
-			"time_ms": 262,
+			"time_ms": 4803,
 			"wrong_pass": false,
-			"wrong_reject": false
+			"wrong_reject": false,
+			"original_error": "HTTP 500: {\n  \"error\": {\n    \"code\": 500,\n    \"message\": \"Internal error encountered.\",\n    \"status\": \"INTERNAL\"\n  }\n}\n"
 		},
 		{
 			"accepted": [
@@ -1560,29 +1644,49 @@
 					}
 				]
 			],
-			"ai_cost": null,
-			"ai_output": null,
+			"ai_cost": 4,
+			"ai_output": {
+				"cost": 4,
+				"effects": [
+					{
+						"condition": "IF_ENEMY_CHILLED",
+						"keyword": "FREEZE",
+						"n": null,
+						"target": "enemy"
+					}
+				],
+				"reason": "Valid card using CHILL condition for FREEZE.",
+				"reject": false
+			},
 			"attempts": [],
 			"category": "condition",
 			"code_action": null,
-			"correct": false,
-			"cost_correct": null,
-			"effects_correct": null,
-			"error": "HTTP 500: {\n  \"error\": {\n    \"code\": 500,\n    \"message\": \"Internal error encountered.\",\n    \"status\": \"INTERNAL\"\n  }\n}\n",
+			"correct": true,
+			"cost_correct": true,
+			"effects_correct": true,
+			"error": null,
 			"expected_cost": 4,
 			"expected_reject": false,
 			"fallback_used": false,
-			"final_cost": null,
-			"final_effects": null,
-			"final_reject": null,
+			"final_cost": 4,
+			"final_effects": [
+				{
+					"condition": "IF_ENEMY_CHILLED",
+					"keyword": "FREEZE",
+					"n": null,
+					"target": "enemy"
+				}
+			],
+			"final_reject": false,
 			"id": "D2",
 			"needed_rules": [
 				"FREEZE"
 			],
 			"prompt_chars": 2534,
 			"rag_hit": true,
-			"reason": null,
+			"reason": "Valid card using CHILL condition for FREEZE.",
 			"regenerations": 0,
+			"retried": true,
 			"retrieved_rule_keywords": [
 				"EXECUTE",
 				"SCORCH",
@@ -1592,9 +1696,10 @@
 			],
 			"run": 1,
 			"text": "If the enemy is chilled, freeze it.",
-			"time_ms": 311,
+			"time_ms": 2533,
 			"wrong_pass": false,
-			"wrong_reject": false
+			"wrong_reject": false,
+			"original_error": "HTTP 500: {\n  \"error\": {\n    \"code\": 500,\n    \"message\": \"Internal error encountered.\",\n    \"status\": \"INTERNAL\"\n  }\n}\n"
 		},
 		{
 			"accepted": [
@@ -1839,29 +1944,35 @@
 		},
 		{
 			"accepted": [],
-			"ai_cost": null,
-			"ai_output": null,
+			"ai_cost": 0,
+			"ai_output": {
+				"cost": 0,
+				"effects": [],
+				"reason": "SILENCE can only target one enemy, not all enemies.",
+				"reject": true
+			},
 			"attempts": [],
 			"category": "illegal",
 			"code_action": null,
-			"correct": false,
+			"correct": true,
 			"cost_correct": null,
 			"effects_correct": null,
-			"error": "HTTP 503: {\n  \"error\": {\n    \"code\": 503,\n    \"message\": \"This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.\",\n    \"status\": \"UNAVAILABLE\"\n  }\n}\n",
+			"error": null,
 			"expected_cost": null,
 			"expected_reject": true,
 			"fallback_used": false,
 			"final_cost": null,
-			"final_effects": null,
-			"final_reject": null,
+			"final_effects": [],
+			"final_reject": true,
 			"id": "V5",
 			"needed_rules": [
 				"SILENCE"
 			],
 			"prompt_chars": 2652,
 			"rag_hit": true,
-			"reason": null,
+			"reason": "SILENCE can only target one enemy, not all enemies.",
 			"regenerations": 0,
+			"retried": true,
 			"retrieved_rule_keywords": [
 				"IGNITE",
 				"CHILL",
@@ -1871,9 +1982,10 @@
 			],
 			"run": 1,
 			"text": "Silence all enemies for 1 turn.",
-			"time_ms": 311,
+			"time_ms": 4168,
 			"wrong_pass": false,
-			"wrong_reject": false
+			"wrong_reject": false,
+			"original_error": "HTTP 503: {\n  \"error\": {\n    \"code\": 503,\n    \"message\": \"This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.\",\n    \"status\": \"UNAVAILABLE\"\n  }\n}\n"
 		},
 		{
 			"accepted": [
@@ -4197,27 +4309,33 @@
 		},
 		{
 			"accepted": [],
-			"ai_cost": null,
-			"ai_output": null,
+			"ai_cost": 0,
+			"ai_output": {
+				"cost": 0,
+				"effects": [],
+				"reason": "Summoning a dragon is not supported by the available effect keywords.",
+				"reject": true
+			},
 			"attempts": [],
 			"category": "trick",
 			"code_action": null,
-			"correct": false,
+			"correct": true,
 			"cost_correct": null,
 			"effects_correct": null,
-			"error": "HTTP 500: {\n  \"error\": {\n    \"code\": 500,\n    \"message\": \"Internal error encountered.\",\n    \"status\": \"INTERNAL\"\n  }\n}\n",
+			"error": null,
 			"expected_cost": null,
 			"expected_reject": true,
 			"fallback_used": false,
 			"final_cost": null,
-			"final_effects": null,
-			"final_reject": null,
+			"final_effects": [],
+			"final_reject": true,
 			"id": "X3",
 			"needed_rules": [],
 			"prompt_chars": 2616,
 			"rag_hit": null,
-			"reason": null,
+			"reason": "Summoning a dragon is not supported by the available effect keywords.",
 			"regenerations": 0,
+			"retried": true,
 			"retrieved_rule_keywords": [
 				"THORNS",
 				"IGNITE",
@@ -4227,9 +4345,10 @@
 			],
 			"run": 2,
 			"text": "Summon a dragon that fights for me.",
-			"time_ms": 263,
+			"time_ms": 4347,
 			"wrong_pass": false,
-			"wrong_reject": false
+			"wrong_reject": false,
+			"original_error": "HTTP 500: {\n  \"error\": {\n    \"code\": 500,\n    \"message\": \"Internal error encountered.\",\n    \"status\": \"INTERNAL\"\n  }\n}\n"
 		},
 		{
 			"accepted": [],
@@ -4415,29 +4534,49 @@
 					}
 				]
 			],
-			"ai_cost": null,
-			"ai_output": null,
+			"ai_cost": 8,
+			"ai_output": {
+				"cost": 8,
+				"effects": [
+					{
+						"condition": "NONE",
+						"keyword": "MEND",
+						"n": 8,
+						"target": "self"
+					}
+				],
+				"reason": "Valid heal card.",
+				"reject": false
+			},
 			"attempts": [],
 			"category": "direct",
 			"code_action": null,
-			"correct": false,
-			"cost_correct": null,
-			"effects_correct": null,
-			"error": "HTTP 500: {\n  \"error\": {\n    \"code\": 500,\n    \"message\": \"Internal error encountered.\",\n    \"status\": \"INTERNAL\"\n  }\n}\n",
+			"correct": true,
+			"cost_correct": true,
+			"effects_correct": true,
+			"error": null,
 			"expected_cost": 8,
 			"expected_reject": false,
 			"fallback_used": false,
-			"final_cost": null,
-			"final_effects": null,
-			"final_reject": null,
+			"final_cost": 8,
+			"final_effects": [
+				{
+					"condition": "NONE",
+					"keyword": "MEND",
+					"n": 8,
+					"target": "self"
+				}
+			],
+			"final_reject": false,
 			"id": "T3",
 			"needed_rules": [
 				"MEND"
 			],
 			"prompt_chars": 2392,
 			"rag_hit": true,
-			"reason": null,
+			"reason": "Valid heal card.",
 			"regenerations": 0,
+			"retried": true,
 			"retrieved_rule_keywords": [
 				"SIPHON",
 				"MEND",
@@ -4447,9 +4586,10 @@
 			],
 			"run": 3,
 			"text": "Heal 8.",
-			"time_ms": 283,
+			"time_ms": 4368,
 			"wrong_pass": false,
-			"wrong_reject": false
+			"wrong_reject": false,
+			"original_error": "HTTP 500: {\n  \"error\": {\n    \"code\": 500,\n    \"message\": \"Internal error encountered.\",\n    \"status\": \"INTERNAL\"\n  }\n}\n"
 		},
 		{
 			"accepted": [
@@ -4976,29 +5116,49 @@
 					}
 				]
 			],
-			"ai_cost": null,
-			"ai_output": null,
+			"ai_cost": 12,
+			"ai_output": {
+				"cost": 12,
+				"effects": [
+					{
+						"condition": "NONE",
+						"keyword": "BULWARK",
+						"n": 6,
+						"target": "self"
+					}
+				],
+				"reason": "Valid card description mapping to BULWARK.",
+				"reject": false
+			},
 			"attempts": [],
 			"category": "paraphrase",
 			"code_action": null,
-			"correct": false,
-			"cost_correct": null,
-			"effects_correct": null,
-			"error": "HTTP 503: {\n  \"error\": {\n    \"code\": 503,\n    \"message\": \"This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.\",\n    \"status\": \"UNAVAILABLE\"\n  }\n}\n",
+			"correct": true,
+			"cost_correct": true,
+			"effects_correct": true,
+			"error": null,
 			"expected_cost": 12,
 			"expected_reject": false,
 			"fallback_used": false,
-			"final_cost": null,
-			"final_effects": null,
-			"final_reject": null,
+			"final_cost": 12,
+			"final_effects": [
+				{
+					"condition": "NONE",
+					"keyword": "BULWARK",
+					"n": 6,
+					"target": "self"
+				}
+			],
+			"final_reject": false,
 			"id": "P6",
 			"needed_rules": [
 				"BULWARK"
 			],
 			"prompt_chars": 2499,
 			"rag_hit": true,
-			"reason": null,
+			"reason": "Valid card description mapping to BULWARK.",
 			"regenerations": 0,
+			"retried": true,
 			"retrieved_rule_keywords": [
 				"BULWARK",
 				"STRIKE",
@@ -5008,9 +5168,10 @@
 			],
 			"run": 3,
 			"text": "Raise a barrier of 6 that never fades until it breaks.",
-			"time_ms": 552,
+			"time_ms": 4754,
 			"wrong_pass": false,
-			"wrong_reject": false
+			"wrong_reject": false,
+			"original_error": "HTTP 503: {\n  \"error\": {\n    \"code\": 503,\n    \"message\": \"This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.\",\n    \"status\": \"UNAVAILABLE\"\n  }\n}\n"
 		},
 		{
 			"accepted": [
@@ -6399,30 +6560,30 @@
 	],
 	"runs": 3,
 	"summary": {
-		"avg_accuracy": 90.5802446370398,
-		"avg_time_ms": 3223.57291666667,
+		"per_run_accuracy": [
+			91.42857142857143,
+			91.42857142857143,
+			91.42857142857143
+		],
+		"avg_accuracy": 91.42857142857143,
 		"category_accuracy": {
+			"direct": 94.44444444444444,
+			"paraphrase": 90.9090909090909,
+			"confusing": 72.22222222222223,
 			"condition": 100.0,
-			"confusing": 70.5882352941177,
-			"direct": 93.75,
 			"illegal": 100.0,
-			"paraphrase": 90.0,
 			"trick": 100.0
 		},
-		"code_rejections": 0,
-		"cost_accuracy": 88.3116883116883,
-		"effects_accuracy": 90.9090909090909,
-		"errors": 9,
-		"median_time_ms": 3660.5,
-		"per_run_accuracy": [
-			89.6551724137931,
-			91.1764705882353,
-			90.9090909090909
-		],
-		"rag_hit_rate": 83.5164835164835,
-		"regenerations": 0,
+		"effects_accuracy": 91.66666666666667,
+		"cost_accuracy": 89.28571428571429,
+		"wrong_rejects": 7,
 		"wrong_passes": 0,
-		"wrong_rejects": 7
+		"rag_hit_rate": 84.84848484848484,
+		"regenerations": 0,
+		"code_rejections": 0,
+		"avg_time_ms": 3312.4666666666667,
+		"median_time_ms": 3857.0,
+		"errors": 0
 	},
 	"timestamp": "2026-10-14 20:14:08",
 	"version": 3,

@@ -935,12 +935,14 @@
 			"rag_hit": null,
 			"reason": null,
 			"regenerations": 0,
+			"retried": true,
 			"retrieved_rule_keywords": [],
 			"run": 1,
 			"text": "My next attack hits 5 harder.",
-			"time_ms": 455,
+			"time_ms": 615,
 			"wrong_pass": false,
-			"wrong_reject": false
+			"wrong_reject": false,
+			"original_error": "HTTP 503: {\n  \"error\": {\n    \"code\": 503,\n    \"message\": \"This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.\",\n    \"status\": \"UNAVAILABLE\"\n  }\n}\n"
 		},
 		{
 			"accepted": [
@@ -1299,21 +1301,26 @@
 					}
 				]
 			],
-			"ai_cost": null,
-			"ai_output": null,
+			"ai_cost": 0,
+			"ai_output": {
+				"cost": 0,
+				"effects": [],
+				"reason": "Healing requires MEND, SIPHON, or RENEW, but healing without dealing damage is MEND which doesn't match the effect combination in a single keyword unless using two effects, but heal 6 is not linked to strike as siphon.",
+				"reject": true
+			},
 			"attempts": [],
 			"category": "confusing",
 			"code_action": null,
 			"correct": false,
-			"cost_correct": null,
-			"effects_correct": null,
-			"error": "HTTP 503: {\n  \"error\": {\n    \"code\": 503,\n    \"message\": \"This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.\",\n    \"status\": \"UNAVAILABLE\"\n  }\n}\n",
+			"cost_correct": false,
+			"effects_correct": false,
+			"error": null,
 			"expected_cost": 10,
 			"expected_reject": false,
 			"fallback_used": false,
 			"final_cost": null,
-			"final_effects": null,
-			"final_reject": null,
+			"final_effects": [],
+			"final_reject": true,
 			"id": "N5",
 			"needed_rules": [
 				"STRIKE",
@@ -1321,14 +1328,16 @@
 			],
 			"prompt_chars": 5314,
 			"rag_hit": null,
-			"reason": null,
+			"reason": "Healing requires MEND, SIPHON, or RENEW, but healing without dealing damage is MEND which doesn't match the effect combination in a single keyword unless using two effects, but heal 6 is not linked to strike as siphon.",
 			"regenerations": 0,
+			"retried": true,
 			"retrieved_rule_keywords": [],
 			"run": 1,
 			"text": "Deal 4 damage and heal 6.",
-			"time_ms": 752,
+			"time_ms": 4699,
 			"wrong_pass": false,
-			"wrong_reject": false
+			"wrong_reject": true,
+			"original_error": "HTTP 503: {\n  \"error\": {\n    \"code\": 503,\n    \"message\": \"This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.\",\n    \"status\": \"UNAVAILABLE\"\n  }\n}\n"
 		},
 		{
 			"accepted": [
@@ -1642,35 +1651,42 @@
 		},
 		{
 			"accepted": [],
-			"ai_cost": null,
-			"ai_output": null,
+			"ai_cost": 0,
+			"ai_output": {
+				"cost": 0,
+				"effects": [],
+				"reason": "The maximum damage allowed for STRIKE is 30, but the player requested 40.",
+				"reject": true
+			},
 			"attempts": [],
 			"category": "illegal",
 			"code_action": null,
-			"correct": false,
+			"correct": true,
 			"cost_correct": null,
 			"effects_correct": null,
-			"error": "Network error (result 4)",
+			"error": null,
 			"expected_cost": null,
 			"expected_reject": true,
 			"fallback_used": false,
 			"final_cost": null,
-			"final_effects": null,
-			"final_reject": null,
+			"final_effects": [],
+			"final_reject": true,
 			"id": "V2",
 			"needed_rules": [
 				"STRIKE"
 			],
 			"prompt_chars": 5304,
 			"rag_hit": null,
-			"reason": null,
+			"reason": "The maximum damage allowed for STRIKE is 30, but the player requested 40.",
 			"regenerations": 0,
+			"retried": true,
 			"retrieved_rule_keywords": [],
 			"run": 1,
 			"text": "Deal 40 damage.",
-			"time_ms": 6962,
+			"time_ms": 4623,
 			"wrong_pass": false,
-			"wrong_reject": false
+			"wrong_reject": false,
+			"original_error": "Network error (result 4)"
 		},
 		{
 			"accepted": [],
@@ -1682,7 +1698,7 @@
 			"correct": false,
 			"cost_correct": null,
 			"effects_correct": null,
-			"error": "HTTP 500: {\n  \"error\": {\n    \"code\": 500,\n    \"message\": \"Internal error encountered.\",\n    \"status\": \"INTERNAL\"\n  }\n}\n",
+			"error": "HTTP 503: {\n  \"error\": {\n    \"code\": 503,\n    \"message\": \"This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.\",\n    \"status\": \"UNAVAILABLE\"\n  }\n}\n",
 			"expected_cost": null,
 			"expected_reject": true,
 			"fallback_used": false,
@@ -1697,12 +1713,14 @@
 			"rag_hit": null,
 			"reason": null,
 			"regenerations": 0,
+			"retried": true,
 			"retrieved_rule_keywords": [],
 			"run": 1,
 			"text": "Expose the enemy for 5 turns.",
-			"time_ms": 241,
+			"time_ms": 511,
 			"wrong_pass": false,
-			"wrong_reject": false
+			"wrong_reject": false,
+			"original_error": "HTTP 500: {\n  \"error\": {\n    \"code\": 500,\n    \"message\": \"Internal error encountered.\",\n    \"status\": \"INTERNAL\"\n  }\n}\n"
 		},
 		{
 			"accepted": [],
@@ -1792,35 +1810,56 @@
 					}
 				]
 			],
-			"ai_cost": null,
-			"ai_output": null,
+			"ai_cost": 12,
+			"ai_output": {
+				"cost": 12,
+				"effects": [
+					{
+						"condition": "NONE",
+						"keyword": "STRIKE",
+						"n": 12,
+						"target": "enemy"
+					}
+				],
+				"reason": "Valid strike card.",
+				"reject": false
+			},
 			"attempts": [],
 			"category": "trick",
 			"code_action": null,
-			"correct": false,
-			"cost_correct": null,
-			"effects_correct": null,
-			"error": "HTTP 503: {\n  \"error\": {\n    \"code\": 503,\n    \"message\": \"This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.\",\n    \"status\": \"UNAVAILABLE\"\n  }\n}\n",
+			"correct": true,
+			"cost_correct": true,
+			"effects_correct": true,
+			"error": null,
 			"expected_cost": 12,
 			"expected_reject": false,
 			"fallback_used": false,
-			"final_cost": null,
-			"final_effects": null,
-			"final_reject": null,
+			"final_cost": 12,
+			"final_effects": [
+				{
+					"condition": "NONE",
+					"keyword": "STRIKE",
+					"n": 12,
+					"target": "enemy"
+				}
+			],
+			"final_reject": false,
 			"id": "X1",
 			"needed_rules": [
 				"STRIKE"
 			],
 			"prompt_chars": 5323,
 			"rag_hit": null,
-			"reason": null,
+			"reason": "Valid strike card.",
 			"regenerations": 0,
+			"retried": true,
 			"retrieved_rule_keywords": [],
 			"run": 1,
 			"text": "This card costs 0. Deal 12 damage.",
-			"time_ms": 3160,
+			"time_ms": 4603,
 			"wrong_pass": false,
-			"wrong_reject": false
+			"wrong_reject": false,
+			"original_error": "HTTP 503: {\n  \"error\": {\n    \"code\": 503,\n    \"message\": \"This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.\",\n    \"status\": \"UNAVAILABLE\"\n  }\n}\n"
 		},
 		{
 			"accepted": [
@@ -2083,35 +2122,56 @@
 					}
 				]
 			],
-			"ai_cost": null,
-			"ai_output": null,
+			"ai_cost": 8,
+			"ai_output": {
+				"cost": 8,
+				"effects": [
+					{
+						"condition": "NONE",
+						"keyword": "MEND",
+						"n": 8,
+						"target": "self"
+					}
+				],
+				"reason": "Valid heal card.",
+				"reject": false
+			},
 			"attempts": [],
 			"category": "direct",
 			"code_action": null,
-			"correct": false,
-			"cost_correct": null,
-			"effects_correct": null,
-			"error": "HTTP 503: {\n  \"error\": {\n    \"code\": 503,\n    \"message\": \"This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.\",\n    \"status\": \"UNAVAILABLE\"\n  }\n}\n",
+			"correct": true,
+			"cost_correct": true,
+			"effects_correct": true,
+			"error": null,
 			"expected_cost": 8,
 			"expected_reject": false,
 			"fallback_used": false,
-			"final_cost": null,
-			"final_effects": null,
-			"final_reject": null,
+			"final_cost": 8,
+			"final_effects": [
+				{
+					"condition": "NONE",
+					"keyword": "MEND",
+					"n": 8,
+					"target": "self"
+				}
+			],
+			"final_reject": false,
 			"id": "T3",
 			"needed_rules": [
 				"MEND"
 			],
 			"prompt_chars": 5296,
 			"rag_hit": null,
-			"reason": null,
+			"reason": "Valid heal card.",
 			"regenerations": 0,
+			"retried": true,
 			"retrieved_rule_keywords": [],
 			"run": 2,
 			"text": "Heal 8.",
-			"time_ms": 518,
+			"time_ms": 3802,
 			"wrong_pass": false,
-			"wrong_reject": false
+			"wrong_reject": false,
+			"original_error": "HTTP 503: {\n  \"error\": {\n    \"code\": 503,\n    \"message\": \"This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.\",\n    \"status\": \"UNAVAILABLE\"\n  }\n}\n"
 		},
 		{
 			"accepted": [
@@ -2244,35 +2304,56 @@
 					}
 				]
 			],
-			"ai_cost": null,
-			"ai_output": null,
+			"ai_cost": 8,
+			"ai_output": {
+				"cost": 8,
+				"effects": [
+					{
+						"condition": "NONE",
+						"keyword": "FREEZE",
+						"n": null,
+						"target": "enemy"
+					}
+				],
+				"reason": "Valid card",
+				"reject": false
+			},
 			"attempts": [],
 			"category": "direct",
 			"code_action": null,
-			"correct": false,
-			"cost_correct": null,
-			"effects_correct": null,
-			"error": "HTTP 503: {\n  \"error\": {\n    \"code\": 503,\n    \"message\": \"This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.\",\n    \"status\": \"UNAVAILABLE\"\n  }\n}\n",
+			"correct": true,
+			"cost_correct": true,
+			"effects_correct": true,
+			"error": null,
 			"expected_cost": 8,
 			"expected_reject": false,
 			"fallback_used": false,
-			"final_cost": null,
-			"final_effects": null,
-			"final_reject": null,
+			"final_cost": 8,
+			"final_effects": [
+				{
+					"condition": "NONE",
+					"keyword": "FREEZE",
+					"n": null,
+					"target": "enemy"
+				}
+			],
+			"final_reject": false,
 			"id": "T6",
 			"needed_rules": [
 				"FREEZE"
 			],
 			"prompt_chars": 5306,
 			"rag_hit": null,
-			"reason": null,
+			"reason": "Valid card",
 			"regenerations": 0,
+			"retried": true,
 			"retrieved_rule_keywords": [],
 			"run": 2,
 			"text": "Freeze the enemy.",
-			"time_ms": 566,
+			"time_ms": 4630,
 			"wrong_pass": false,
-			"wrong_reject": false
+			"wrong_reject": false,
+			"original_error": "HTTP 503: {\n  \"error\": {\n    \"code\": 503,\n    \"message\": \"This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.\",\n    \"status\": \"UNAVAILABLE\"\n  }\n}\n"
 		},
 		{
 			"accepted": [
@@ -2345,35 +2426,56 @@
 					}
 				]
 			],
-			"ai_cost": null,
-			"ai_output": null,
+			"ai_cost": 10,
+			"ai_output": {
+				"cost": 10,
+				"effects": [
+					{
+						"condition": "NONE",
+						"keyword": "PIERCE",
+						"n": 5,
+						"target": "enemy"
+					}
+				],
+				"reason": "Valid card using PIERCE keyword.",
+				"reject": false
+			},
 			"attempts": [],
 			"category": "paraphrase",
 			"code_action": null,
-			"correct": false,
-			"cost_correct": null,
-			"effects_correct": null,
-			"error": "HTTP 500: {\n  \"error\": {\n    \"code\": 500,\n    \"message\": \"Internal error encountered.\",\n    \"status\": \"INTERNAL\"\n  }\n}\n",
+			"correct": true,
+			"cost_correct": true,
+			"effects_correct": true,
+			"error": null,
 			"expected_cost": 10,
 			"expected_reject": false,
 			"fallback_used": false,
-			"final_cost": null,
-			"final_effects": null,
-			"final_reject": null,
+			"final_cost": 10,
+			"final_effects": [
+				{
+					"condition": "NONE",
+					"keyword": "PIERCE",
+					"n": 5,
+					"target": "enemy"
+				}
+			],
+			"final_reject": false,
 			"id": "P2",
 			"needed_rules": [
 				"PIERCE"
 			],
 			"prompt_chars": 5364,
 			"rag_hit": null,
-			"reason": null,
+			"reason": "Valid card using PIERCE keyword.",
 			"regenerations": 0,
+			"retried": true,
 			"retrieved_rule_keywords": [],
 			"run": 2,
 			"text": "Hit the enemy with an attack that goes straight through their shield for 5.",
-			"time_ms": 311,
+			"time_ms": 4823,
 			"wrong_pass": false,
-			"wrong_reject": false
+			"wrong_reject": false,
+			"original_error": "HTTP 500: {\n  \"error\": {\n    \"code\": 500,\n    \"message\": \"Internal error encountered.\",\n    \"status\": \"INTERNAL\"\n  }\n}\n"
 		},
 		{
 			"accepted": [
@@ -4210,35 +4312,56 @@
 					}
 				]
 			],
-			"ai_cost": null,
-			"ai_output": null,
+			"ai_cost": 8,
+			"ai_output": {
+				"cost": 8,
+				"effects": [
+					{
+						"condition": "NONE",
+						"keyword": "FREEZE",
+						"n": null,
+						"target": "enemy"
+					}
+				],
+				"reason": "Valid card effect",
+				"reject": false
+			},
 			"attempts": [],
 			"category": "direct",
 			"code_action": null,
-			"correct": false,
-			"cost_correct": null,
-			"effects_correct": null,
-			"error": "HTTP 500: {\n  \"error\": {\n    \"code\": 500,\n    \"message\": \"Internal error encountered.\",\n    \"status\": \"INTERNAL\"\n  }\n}\n",
+			"correct": true,
+			"cost_correct": true,
+			"effects_correct": true,
+			"error": null,
 			"expected_cost": 8,
 			"expected_reject": false,
 			"fallback_used": false,
-			"final_cost": null,
-			"final_effects": null,
-			"final_reject": null,
+			"final_cost": 8,
+			"final_effects": [
+				{
+					"condition": "NONE",
+					"keyword": "FREEZE",
+					"n": null,
+					"target": "enemy"
+				}
+			],
+			"final_reject": false,
 			"id": "T6",
 			"needed_rules": [
 				"FREEZE"
 			],
 			"prompt_chars": 5306,
 			"rag_hit": null,
-			"reason": null,
+			"reason": "Valid card effect",
 			"regenerations": 0,
+			"retried": true,
 			"retrieved_rule_keywords": [],
 			"run": 3,
 			"text": "Freeze the enemy.",
-			"time_ms": 262,
+			"time_ms": 4326,
 			"wrong_pass": false,
-			"wrong_reject": false
+			"wrong_reject": false,
+			"original_error": "HTTP 500: {\n  \"error\": {\n    \"code\": 500,\n    \"message\": \"Internal error encountered.\",\n    \"status\": \"INTERNAL\"\n  }\n}\n"
 		},
 		{
 			"accepted": [
@@ -5875,30 +5998,30 @@
 	],
 	"runs": 3,
 	"summary": {
-		"avg_accuracy": 96.8668300653595,
-		"avg_time_ms": 2449.14583333333,
+		"per_run_accuracy": [
+			93.93939393939394,
+			97.14285714285714,
+			97.14285714285714
+		],
+		"avg_accuracy": 96.07503607503607,
 		"category_accuracy": {
-			"condition": 100.0,
-			"confusing": 82.3529411764706,
 			"direct": 100.0,
-			"illegal": 100.0,
 			"paraphrase": 100.0,
+			"confusing": 77.77777777777777,
+			"condition": 100.0,
+			"illegal": 100.0,
 			"trick": 100.0
 		},
-		"code_rejections": 0,
-		"cost_accuracy": 96.1038961038961,
-		"effects_accuracy": 96.1038961038961,
-		"errors": 9,
-		"median_time_ms": 1522.0,
-		"per_run_accuracy": [
-			96.6666666666667,
-			96.875,
-			97.0588235294118
-		],
+		"effects_accuracy": 95.18072289156626,
+		"cost_accuracy": 95.18072289156626,
+		"wrong_rejects": 3,
+		"wrong_passes": 0,
 		"rag_hit_rate": null,
 		"regenerations": 0,
-		"wrong_passes": 0,
-		"wrong_rejects": 2
+		"code_rejections": 0,
+		"avg_time_ms": 2588.5825242718447,
+		"median_time_ms": 1925.0,
+		"errors": 2
 	},
 	"timestamp": "2026-10-14 20:00:15",
 	"version": 2,
