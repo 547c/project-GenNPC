@@ -14,15 +14,15 @@ const RAG_RULE_COUNT := 5
 const EMBED_MODEL := "gemini-embedding-001"
 const EMBED_URL := "https://generativelanguage.googleapis.com/v1beta/models/" + EMBED_MODEL + ":batchEmbedContents"
 const EMBED_PATH := "res://eval/embeddings_rulebook_v1.json"
-const RAG_VERSIONS := [3, 4, 6, 7]
-const EMBEDDING_VERSIONS := [6, 7]
+const RAG_VERSIONS := [3, 4, 6, 7, 8]
+const EMBEDDING_VERSIONS := [6, 7, 8]
 const CODE_CHECK_VERSIONS := [4, 5, 7]
 
 const TARGETS := ["self", "enemy", "all_enemies", "none"]
 const CONDITIONS := ["NONE", "IF_ENEMY_BURNING", "IF_ENEMY_CHILLED", "IF_MY_HP_BELOW_HALF", "IF_ENEMY_HP_BELOW_HALF", "IF_FIRST_CARD"]
 const CATEGORIES := ["direct", "paraphrase", "confusing", "condition", "illegal", "trick"]
 const STOPWORDS := ["a", "an", "the", "was", "were", "is", "are", "did", "do", "does", "you", "i", "it", "at", "in", "on", "of", "to", "that", "who", "what", "me", "my", "your", "around", "just", "tell", "enemy", "enemies", "n", "turn", "turns", "cost", "target"]
-const VERSION_NAMES := {1: "AI only", 2: "AI + all rules", 3: "AI + RAG rules", 4: "AI + RAG rules + code check", 5: "AI + all rules + code check", 6: "AI + embedding RAG rules", 7: "AI + embedding RAG rules + code check"}
+const VERSION_NAMES := {1: "AI only", 2: "AI + all rules", 3: "AI + RAG rules", 4: "AI + RAG rules + code check", 5: "AI + all rules + code check", 6: "AI + embedding RAG rules", 7: "AI + embedding RAG rules + code check", 8: "AI + embedding RAG rules (split pieces)"}
 const TABLE_COLUMNS := ["Version", "Runs", "Accuracy per run (%)", "Avg accuracy (%)", "Direct (%)", "Paraphrase (%)", "Confusing (%)", "Condition (%)", "Illegal (%)", "Trick (%)", "Effects accuracy (%)", "Cost accuracy (%)", "Wrongly rejected", "Wrongly passed", "RAG hit rate (%)", "Regenerations", "Code rejections", "Avg time/card (ms)", "Median time/card (ms)", "Errors"]
 
 var api_key := ""
@@ -60,8 +60,9 @@ func _main() -> int:
 	var dryrun: bool = args["dryrun"]
 	var only_ids: Array = args["cards"]
 	var fetch: bool = args["fetch_embeddings"]
-	if not fetch and (version < 1 or version > 7 or runs < 1):
-		print("Usage: -- --version=1..7 [--runs=R] [--cards=T1,P1] [--dryrun] | --fetch-embeddings")
+	var fetch_pieces: bool = args["fetch_pieces"]
+	if not fetch and not fetch_pieces and (version < 1 or version > 8 or runs < 1):
+		print("Usage: -- --version=1..8 [--runs=R] [--cards=T1,P1] [--dryrun] | --fetch-embeddings | --fetch-piece-embeddings")
 		return 1
 
 	_load_api_key()
@@ -77,7 +78,11 @@ func _main() -> int:
 
 	if fetch:
 		return await _fetch_embeddings()
+	if fetch_pieces:
+		return await _fetch_piece_embeddings()
 	if EMBEDDING_VERSIONS.has(version) and not _load_embeddings():
+		return 1
+	if version == 8 and not _check_pieces():
 		return 1
 
 	var cards: Array = []
@@ -141,10 +146,12 @@ func _main() -> int:
 
 
 func _parse_args() -> Dictionary:
-	var out := {"version": 0, "runs": 3, "cards": [], "dryrun": false, "pairs": [], "fetch_embeddings": false}
+	var out := {"version": 0, "runs": 3, "cards": [], "dryrun": false, "pairs": [], "fetch_embeddings": false, "fetch_pieces": false}
 	for arg in OS.get_cmdline_user_args():
 		if arg == "--fetch-embeddings":
 			out["fetch_embeddings"] = true
+		elif arg == "--fetch-piece-embeddings":
+			out["fetch_pieces"] = true
 		elif arg.begins_with("--version="):
 			out["version"] = int(arg.substr("--version=".length()))
 		elif arg.begins_with("--runs="):
@@ -599,7 +606,10 @@ func _load_embeddings() -> bool:
 
 
 func _rank_by_embedding(card_id: String) -> Array:
-	var q := _normalized(embeddings["cards"][card_id])
+	return _rank_vector(_normalized(embeddings["cards"][card_id]))
+
+
+func _rank_vector(q: PackedFloat32Array) -> Array:
 	var scored: Array = []
 	var rules: Array = data["rules"]
 	for i in rules.size():
@@ -616,6 +626,143 @@ func _retrieve_rules_by_embedding(card_id: String) -> Array:
 	var top: Array = []
 	for s in _rank_by_embedding(card_id).slice(0, RAG_RULE_COUNT):
 		top.append(data["rules"][s["index"]])
+	return top
+
+
+func _split_card(text: String) -> Array:
+	var paren := RegEx.new()
+	paren.compile("\\([^)]*\\)")
+	var delim := RegEx.new()
+	delim.compile("(?i)\\s*[.,]\\s*|\\s+(?:and|then)\\s+")
+	var work := text
+	var saved: Array = []
+	var found := paren.search_all(work)
+	for i in range(found.size() - 1, -1, -1):
+		var m: RegExMatch = found[i]
+		work = work.substr(0, m.get_start()) + "@@P%d@@" % i + work.substr(m.get_end())
+	for m in found:
+		saved.append(m.get_string())
+
+	var parts: Array = []
+	var last := 0
+	for m in delim.search_all(work):
+		parts.append(work.substr(last, m.get_start() - last))
+		last = m.get_end()
+	parts.append(work.substr(last))
+
+	var out: Array = []
+	for part in parts:
+		var p: String = part.strip_edges()
+		var changed := true
+		while changed:
+			changed = false
+			for lead in ["and ", "then "]:
+				if p.to_lower().begins_with(lead):
+					p = p.substr(lead.length()).strip_edges()
+					changed = true
+		for i in saved.size():
+			p = p.replace("@@P%d@@" % i, saved[i])
+		if p != "":
+			out.append(p)
+	return out
+
+
+func _fetch_piece_embeddings() -> int:
+	var file := FileAccess.open(EMBED_PATH, FileAccess.READ)
+	if file == null:
+		print("%s not found. Run --fetch-embeddings first." % EMBED_PATH)
+		return 1
+	var cache = JSON.parse_string(file.get_as_text())
+	file.close()
+	if typeof(cache) != TYPE_DICTIONARY:
+		print("Invalid JSON in " + EMBED_PATH)
+		return 1
+
+	var cached_pieces: Dictionary = cache.get("pieces", {})
+	var new_pieces := {}
+	var to_embed: Array = []
+	for card in data["tests"]:
+		var texts := _split_card(card["text"])
+		new_pieces[card["id"]] = {"texts": texts, "vectors": []}
+		if texts.size() == 1:
+			continue
+		var cached = cached_pieces.get(card["id"])
+		if cached != null and cached["texts"] == texts and cached["vectors"].size() == texts.size():
+			new_pieces[card["id"]]["vectors"] = cached["vectors"]
+		else:
+			for t in texts:
+				if not to_embed.has(t):
+					to_embed.append(t)
+
+	var vector_by_text := {}
+	if to_embed.is_empty():
+		print("All piece embeddings are already cached. Not calling the embedding API.")
+		if cache.has("pieces"):
+			return 0
+	else:
+		var task: String = cache["task_types"]["cards"]
+		if task == "none":
+			task = ""
+		var res: Dictionary = await _embed_batch(to_embed, task)
+		if not res["ok"]:
+			print("Embedding request failed: %s" % res["error"])
+			return 2
+		for i in to_embed.size():
+			if res["vectors"][i].size() != int(cache["dimensions"]):
+				print("Embedding size differs from the cache: %d" % res["vectors"][i].size())
+				return 2
+			vector_by_text[to_embed[i]] = res["vectors"][i]
+		print("Embedded %d pieces in one call." % to_embed.size())
+
+	for card_id in new_pieces:
+		var entry: Dictionary = new_pieces[card_id]
+		if entry["texts"].size() > 1 and entry["vectors"].is_empty():
+			for t in entry["texts"]:
+				entry["vectors"].append(vector_by_text[t])
+	cache["pieces"] = new_pieces
+	if not to_embed.is_empty():
+		cache["pieces_fetched_at"] = _timestamp(false)
+	var out_file := FileAccess.open(EMBED_PATH, FileAccess.WRITE)
+	if out_file == null:
+		push_error("Cannot write " + EMBED_PATH)
+		return 1
+	out_file.store_string(JSON.stringify(cache, "", false, true))
+	out_file.close()
+	print("Saved pieces to " + EMBED_PATH)
+	return 0
+
+
+func _check_pieces() -> bool:
+	if not embeddings.has("pieces"):
+		push_error("No piece embeddings in %s. Run --fetch-piece-embeddings first." % EMBED_PATH)
+		return false
+	for card in data["tests"]:
+		var entry = embeddings["pieces"].get(card["id"])
+		var texts := _split_card(card["text"])
+		if entry == null or entry["texts"] != texts or (texts.size() > 1 and entry["vectors"].size() != texts.size()):
+			push_error("Piece embeddings do not match card %s. Run --fetch-piece-embeddings." % card["id"])
+			return false
+	return true
+
+
+func _retrieve_rules_by_pieces(card_id: String) -> Array:
+	var entry: Dictionary = embeddings["pieces"][card_id]
+	if entry["texts"].size() == 1:
+		return _retrieve_rules_by_embedding(card_id)
+	var rankings: Array = []
+	for vec in entry["vectors"]:
+		rankings.append(_rank_vector(_normalized(vec)))
+	var chosen: Array = []
+	var depth := 0
+	while chosen.size() < RAG_RULE_COUNT and depth < data["rules"].size():
+		for ranking in rankings:
+			var idx: int = ranking[depth]["index"]
+			if chosen.size() < RAG_RULE_COUNT and not chosen.has(idx):
+				chosen.append(idx)
+		depth += 1
+	var top: Array = []
+	for idx in chosen:
+		top.append(data["rules"][idx])
 	return top
 
 
@@ -650,7 +797,9 @@ func _ask(version: int, card: Dictionary) -> Dictionary:
 	var picked_keywords: Array = []
 	var rag_hit = null
 	if RAG_VERSIONS.has(version):
-		if EMBEDDING_VERSIONS.has(version):
+		if version == 8:
+			picked = _retrieve_rules_by_pieces(card["id"])
+		elif EMBEDDING_VERSIONS.has(version):
 			picked = _retrieve_rules_by_embedding(card["id"])
 		else:
 			picked = _retrieve_rules(card["text"])
