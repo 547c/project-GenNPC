@@ -1,0 +1,255 @@
+{
+	"model": "qwen3.5:9b",
+	"provider": "ollama",
+	"results": [
+		{
+			"accepted": [
+				[
+					{
+						"condition": "NONE",
+						"keyword": "STRIKE",
+						"n": 7,
+						"target": "enemy"
+					}
+				]
+			],
+			"ai_cost": 7,
+			"ai_output": {
+				"cost": 7,
+				"effects": [
+					{
+						"condition": "NONE",
+						"keyword": "STRIKE",
+						"n": 7,
+						"target": "enemy"
+					}
+				],
+				"reason": "The text 'Deal 7 damage' maps to the STRIKE effect with n=7. The cost is calculated as n (7). No other effects are requested.",
+				"reject": false
+			},
+			"attempts": [],
+			"category": "direct",
+			"code_action": null,
+			"correct": true,
+			"cost_correct": true,
+			"effects_correct": true,
+			"error": null,
+			"expected_cost": 7,
+			"expected_reject": false,
+			"fallback_used": false,
+			"final_cost": 7,
+			"final_effects": [
+				{
+					"condition": "NONE",
+					"keyword": "STRIKE",
+					"n": 7,
+					"target": "enemy"
+				}
+			],
+			"final_reject": false,
+			"id": "T1",
+			"json_broken": false,
+			"llm_meta": {
+				"done_reason": "stop",
+				"output_tokens": 108,
+				"prompt_tokens": 1728,
+				"truncated": false
+			},
+			"needed_rules": [
+				"STRIKE"
+			],
+			"prompt_chars": 5303,
+			"rag_hit": null,
+			"reason": "The text 'Deal 7 damage' maps to the STRIKE effect with n=7. The cost is calculated as n (7). No other effects are requested.",
+			"regenerations": 0,
+			"retrieved_rule_keywords": [],
+			"run": 1,
+			"text": "Deal 7 damage.",
+			"time_ms": 34011,
+			"wrong_pass": false,
+			"wrong_reject": false
+		},
+		{
+			"accepted": [
+				[
+					{
+						"condition": "NONE",
+						"keyword": "STRIKE",
+						"n": 6,
+						"target": "enemy"
+					},
+					{
+						"condition": "NONE",
+						"keyword": "ECHO",
+						"n": null,
+						"target": "none"
+					}
+				],
+				[
+					{
+						"condition": "NONE",
+						"keyword": "STRIKE",
+						"n": 6,
+						"target": "enemy"
+					},
+					{
+						"condition": "NONE",
+						"keyword": "STRIKE",
+						"n": 6,
+						"target": "enemy"
+					}
+				]
+			],
+			"ai_cost": 12,
+			"ai_output": {
+				"cost": 12,
+				"effects": [
+					{
+						"condition": "NONE",
+						"keyword": "STRIKE",
+						"n": 6,
+						"target": "enemy"
+					},
+					{
+						"condition": "NONE",
+						"keyword": "ECHO",
+						"n": null,
+						"target": "none"
+					}
+				],
+				"reason": "The card requests to deal 6 damage (STRIKE n=6) and repeat it (ECHO). STRIKE allows n up to 30. ECHO is valid as the second effect. Cost calculation: STRIKE cost = n = 6. ECHO cost = same as previous = 6. Total = 12.",
+				"reject": false
+			},
+			"attempts": [],
+			"category": "confusing",
+			"code_action": null,
+			"correct": true,
+			"cost_correct": true,
+			"effects_correct": true,
+			"error": null,
+			"expected_cost": 12,
+			"expected_reject": false,
+			"fallback_used": false,
+			"final_cost": 12,
+			"final_effects": [
+				{
+					"condition": "NONE",
+					"keyword": "STRIKE",
+					"n": 6,
+					"target": "enemy"
+				},
+				{
+					"condition": "NONE",
+					"keyword": "ECHO",
+					"n": null,
+					"target": "none"
+				}
+			],
+			"final_reject": false,
+			"id": "N6",
+			"json_broken": false,
+			"llm_meta": {
+				"done_reason": "stop",
+				"output_tokens": 184,
+				"prompt_tokens": 1731,
+				"truncated": false
+			},
+			"needed_rules": [
+				"STRIKE",
+				"ECHO"
+			],
+			"prompt_chars": 5314,
+			"rag_hit": null,
+			"reason": "The card requests to deal 6 damage (STRIKE n=6) and repeat it (ECHO). STRIKE allows n up to 30. ECHO is valid as the second effect. Cost calculation: STRIKE cost = n = 6. ECHO cost = same as previous = 6. Total = 12.",
+			"regenerations": 0,
+			"retrieved_rule_keywords": [],
+			"run": 1,
+			"text": "Deal 6 damage. Repeat it.",
+			"time_ms": 35806,
+			"wrong_pass": false,
+			"wrong_reject": false
+		},
+		{
+			"accepted": [],
+			"ai_cost": 24,
+			"ai_output": {
+				"cost": 24,
+				"effects": [
+					{
+						"condition": "NONE",
+						"keyword": "FREEZE",
+						"n": null,
+						"target": "all_enemies"
+					}
+				],
+				"reason": "The card text 'Freeze all enemies' is valid. The FREEZE effect targets one enemy by default, but the rules allow targeting 'all_enemies'. Since it targets all_enemies, the cost is doubled (8 * 2 = 16). However, the rulebook states FREEZE has a fixed cost of 8 regardless of n (since n is null). Wait, re-reading the cost calculation rules: 'If an effect targets all_enemies, the cost of that effect is doubled.' So base cost 8 -> doubled to 16. But wait, looking at the provided effect rules again: 'FREEZE: ... Cost: 8.' There is no n for FREEZE. The doubling rule applies. So cost is 16. Let me re-evaluate the rejection criteria. Is there any reason to reject? No. The text implies freezing all enemies. The keyword allows targeting all_enemies. The cost calculation: Base 8, target all_enemies -> 16. Wait, I might have misread the 'all_enemies' allowance for FREEZE in the prompt's effect rules list. Let's check the list provided in the prompt: '- FREEZE: The enemy skips its next turn. Target: one enemy. No n. Cost: 8.' It explicitly says 'Target: one enemy'. The general rule says 'Targets are ",
+				"reject": true
+			},
+			"attempts": [],
+			"category": "illegal",
+			"code_action": null,
+			"correct": true,
+			"cost_correct": null,
+			"effects_correct": null,
+			"error": null,
+			"expected_cost": null,
+			"expected_reject": true,
+			"fallback_used": false,
+			"final_cost": null,
+			"final_effects": [],
+			"final_reject": true,
+			"id": "V1",
+			"json_broken": false,
+			"llm_meta": {
+				"done_reason": "stop",
+				"output_tokens": 357,
+				"prompt_tokens": 1728,
+				"truncated": false
+			},
+			"needed_rules": [
+				"FREEZE"
+			],
+			"prompt_chars": 5308,
+			"rag_hit": null,
+			"reason": "The card text 'Freeze all enemies' is valid. The FREEZE effect targets one enemy by default, but the rules allow targeting 'all_enemies'. Since it targets all_enemies, the cost is doubled (8 * 2 = 16). However, the rulebook states FREEZE has a fixed cost of 8 regardless of n (since n is null). Wait, re-reading the cost calculation rules: 'If an effect targets all_enemies, the cost of that effect is doubled.' So base cost 8 -> doubled to 16. But wait, looking at the provided effect rules again: 'FREEZE: ... Cost: 8.' There is no n for FREEZE. The doubling rule applies. So cost is 16. Let me re-evaluate the rejection criteria. Is there any reason to reject? No. The text implies freezing all enemies. The keyword allows targeting all_enemies. The cost calculation: Base 8, target all_enemies -> 16. Wait, I might have misread the 'all_enemies' allowance for FREEZE in the prompt's effect rules list. Let's check the list provided in the prompt: '- FREEZE: The enemy skips its next turn. Target: one enemy. No n. Cost: 8.' It explicitly says 'Target: one enemy'. The general rule says 'Targets are ",
+			"regenerations": 0,
+			"retrieved_rule_keywords": [],
+			"run": 1,
+			"text": "Freeze all enemies.",
+			"time_ms": 40832,
+			"wrong_pass": false,
+			"wrong_reject": false
+		}
+	],
+	"runs": 1,
+	"summary": {
+		"avg_accuracy": 100.0,
+		"avg_time_ms": 36883.0,
+		"category_accuracy": {
+			"condition": null,
+			"confusing": 100.0,
+			"direct": 100.0,
+			"illegal": 100.0,
+			"paraphrase": null,
+			"trick": null
+		},
+		"code_rejections": 0,
+		"context_truncated": 0,
+		"cost_accuracy": 100.0,
+		"effects_accuracy": 100.0,
+		"errors": 0,
+		"json_broken": 0,
+		"max_prompt_tokens": 1731,
+		"median_time_ms": 35806.0,
+		"per_run_accuracy": [
+			100.0
+		],
+		"rag_hit_rate": null,
+		"regenerations": 0,
+		"wrong_passes": 0,
+		"wrong_rejects": 0
+	},
+	"timestamp": "2026-10-28 20:03:09",
+	"version": 2,
+	"version_name": "AI + all rules"
+}
