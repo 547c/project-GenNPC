@@ -27,15 +27,15 @@ const OLLAMA_MODEL := "qwen3.5:9b"
 const OLLAMA_SEED := 42
 const OLLAMA_NUM_CTX := 8192
 const OLLAMA_TIMEOUT_SEC := 600.0
-const RAG_VERSIONS := [3, 4, 6, 7, 8, 9]
-const EMBEDDING_VERSIONS := [6, 7, 8, 9]
-const CODE_CHECK_VERSIONS := [4, 5, 7]
+const RAG_VERSIONS := [3, 4, 6, 7, 8, 9, 10]
+const EMBEDDING_VERSIONS := [6, 7, 8, 9, 10]
+const CODE_CHECK_VERSIONS := [4, 5, 7, 10]
 
 const TARGETS := ["self", "enemy", "all_enemies", "none"]
 const CONDITIONS := ["NONE", "IF_ENEMY_BURNING", "IF_ENEMY_CHILLED", "IF_MY_HP_BELOW_HALF", "IF_ENEMY_HP_BELOW_HALF", "IF_FIRST_CARD"]
 const CATEGORIES := ["direct", "paraphrase", "confusing", "condition", "illegal", "trick"]
 const STOPWORDS := ["a", "an", "the", "was", "were", "is", "are", "did", "do", "does", "you", "i", "it", "at", "in", "on", "of", "to", "that", "who", "what", "me", "my", "your", "around", "just", "tell", "enemy", "enemies", "n", "turn", "turns", "cost", "target"]
-const VERSION_NAMES := {1: "AI only", 2: "AI + all rules", 3: "AI + RAG rules", 4: "AI + RAG rules + code check", 5: "AI + all rules + code check", 6: "AI + embedding RAG rules", 7: "AI + embedding RAG rules + code check", 8: "AI + embedding RAG rules (split pieces)", 9: "AI + embedding RAG rules (split pieces, condition pieces dropped)"}
+const VERSION_NAMES := {1: "AI only", 2: "AI + all rules", 3: "AI + RAG rules", 4: "AI + RAG rules + code check", 5: "AI + all rules + code check", 6: "AI + embedding RAG rules", 7: "AI + embedding RAG rules + code check", 8: "AI + embedding RAG rules (split pieces)", 9: "AI + embedding RAG rules (split pieces, condition pieces dropped)", 10: "AI + embedding RAG rules (split pieces, condition pieces dropped) + code check"}
 const TABLE_COLUMNS := ["Version", "Runs", "Accuracy per run (%)", "Avg accuracy (%)", "Direct (%)", "Paraphrase (%)", "Confusing (%)", "Condition (%)", "Illegal (%)", "Trick (%)", "Effects accuracy (%)", "Cost accuracy (%)", "Wrongly rejected", "Wrongly passed", "RAG hit rate (%)", "Regenerations", "Code rejections", "Avg time/card (ms)", "Median time/card (ms)", "Errors"]
 
 var api_key := ""
@@ -82,8 +82,8 @@ func _main() -> int:
 		print("Unknown provider: %s (use gemini or ollama)" % provider)
 		return 1
 	var any_fetch := fetch or fetch_pieces or fetch_conditions
-	if not any_fetch and (version < 1 or version > 9 or runs < 1):
-		print("Usage: -- --version=1..9 [--runs=R] [--cards=T1,P1] [--dryrun] [--provider gemini|ollama] | --fetch-embeddings | --fetch-piece-embeddings | --fetch-condition-embeddings")
+	if not any_fetch and (version < 1 or version > 10 or runs < 1):
+		print("Usage: -- --version=1..10[--runs=R] [--cards=T1,P1] [--dryrun] [--provider gemini|ollama] | --fetch-embeddings | --fetch-piece-embeddings | --fetch-condition-embeddings")
 		return 1
 	if any_fetch and provider != "gemini":
 		print("Embedding fetches use the Gemini API. Run them without --provider.")
@@ -113,9 +113,9 @@ func _main() -> int:
 		return await _fetch_condition_embeddings()
 	if EMBEDDING_VERSIONS.has(version) and not _load_embeddings():
 		return 1
-	if (version == 8 or version == 9) and not _check_pieces():
+	if (version == 8 or version == 9 or version == 10) and not _check_pieces():
 		return 1
-	if version == 9 and not _check_conditions():
+	if (version == 9 or version == 10) and not _check_conditions():
 		return 1
 
 	var cards: Array = []
@@ -1029,8 +1029,8 @@ func _ask(version: int, card: Dictionary) -> Dictionary:
 	var picked_keywords: Array = []
 	var rag_hit = null
 	if RAG_VERSIONS.has(version):
-		if version == 8 or version == 9:
-			picked = _retrieve_rules_by_pieces(card["id"], version == 9)
+		if version == 8 or version == 9 or version == 10:
+			picked = _retrieve_rules_by_pieces(card["id"], version != 8)
 		elif EMBEDDING_VERSIONS.has(version):
 			picked = _retrieve_rules_by_embedding(card["id"])
 		else:
