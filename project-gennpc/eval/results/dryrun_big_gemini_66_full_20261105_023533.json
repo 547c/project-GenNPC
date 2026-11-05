@@ -1,0 +1,463 @@
+{
+	"abort_message": "",
+	"card_count": 3,
+	"complete": true,
+	"gemini_calls": 3,
+	"mode": "full",
+	"model": "gemini-3.5-flash-lite",
+	"provider": "gemini",
+	"results": [
+		{
+			"accepted": [
+				[
+					{
+						"condition": "NONE",
+						"keyword": "STRIKE",
+						"n": 4,
+						"target": "all_enemies"
+					}
+				]
+			],
+			"category": "all_enemies",
+			"check": {
+				"action": "ok",
+				"ai_cost": 8,
+				"attempts": [
+					{
+						"attempt": 0,
+						"llm_meta": null,
+						"output": {
+							"cost": 8,
+							"effects": [
+								{
+									"condition": "NONE",
+									"keyword": "STRIKE",
+									"n": 4,
+									"target": "all_enemies"
+								}
+							],
+							"reason": "Valid card",
+							"reject": false
+						},
+						"parse_ok": true,
+						"prompt_chars": 11172,
+						"time_ms": 946,
+						"violations": []
+					}
+				],
+				"correct": true,
+				"cost": 8,
+				"cost_correct": true,
+				"effects": [
+					{
+						"condition": "NONE",
+						"keyword": "STRIKE",
+						"n": 4,
+						"target": "all_enemies"
+					}
+				],
+				"effects_correct": true,
+				"error": null,
+				"json_broken_attempts": 0,
+				"reason": "Valid card",
+				"reject": false,
+				"retries": 0,
+				"time_ms": 946,
+				"wrong_pass": false,
+				"wrong_reject": false
+			},
+			"expected_cost": 8,
+			"expected_reject": false,
+			"first": {
+				"error": null,
+				"json_broken": false,
+				"llm_meta": null,
+				"output": {
+					"cost": 8,
+					"effects": [
+						{
+							"condition": "NONE",
+							"keyword": "STRIKE",
+							"n": 4,
+							"target": "all_enemies"
+						}
+					],
+					"reason": "Valid card",
+					"reject": false
+				},
+				"time_ms": 946,
+				"violations": []
+			},
+			"id": "A13",
+			"needed_rules": [
+				"STRIKE"
+			],
+			"nocheck": {
+				"ai_cost": 8,
+				"correct": true,
+				"cost": 8,
+				"cost_correct": true,
+				"effects": [
+					{
+						"condition": "NONE",
+						"keyword": "STRIKE",
+						"n": 4,
+						"target": "all_enemies"
+					}
+				],
+				"effects_correct": true,
+				"error": null,
+				"reason": "Valid card",
+				"reject": false,
+				"time_ms": 946,
+				"wrong_pass": false,
+				"wrong_reject": false
+			},
+			"prompt_chars": 11172,
+			"rag_hit": null,
+			"rules_given": "all",
+			"rules_given_count": 66,
+			"run": 1,
+			"text": "Deal 4 damage to every enemy.",
+			"tier": 1
+		},
+		{
+			"accepted": [
+				[
+					{
+						"condition": "NONE",
+						"keyword": "STRIKE",
+						"n": 6,
+						"target": "enemy"
+					},
+					{
+						"condition": "NONE",
+						"keyword": "STRIKE",
+						"n": 6,
+						"target": "enemy"
+					},
+					{
+						"condition": "NONE",
+						"keyword": "STRIKE",
+						"n": 6,
+						"target": "enemy"
+					}
+				],
+				[
+					{
+						"condition": "NONE",
+						"keyword": "STRIKE",
+						"n": 6,
+						"target": "enemy"
+					},
+					{
+						"condition": "NONE",
+						"keyword": "ECHO",
+						"n": null,
+						"target": "none"
+					},
+					{
+						"condition": "NONE",
+						"keyword": "STRIKE",
+						"n": 6,
+						"target": "enemy"
+					}
+				],
+				[
+					{
+						"condition": "NONE",
+						"keyword": "STRIKE",
+						"n": 6,
+						"target": "enemy"
+					},
+					{
+						"condition": "NONE",
+						"keyword": "STRIKE",
+						"n": 6,
+						"target": "enemy"
+					},
+					{
+						"condition": "NONE",
+						"keyword": "ECHO",
+						"n": null,
+						"target": "none"
+					}
+				]
+			],
+			"category": "special",
+			"check": {
+				"action": null,
+				"ai_cost": null,
+				"attempts": [],
+				"correct": false,
+				"cost": null,
+				"cost_correct": null,
+				"effects": null,
+				"effects_correct": null,
+				"error": "HTTP 503: {\n  \"error\": {\n    \"code\": 503,\n    \"message\": \"This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.\",\n    \"status\": \"UNAVAILABLE\"\n  }\n}\n",
+				"json_broken_attempts": 0,
+				"reason": null,
+				"reject": null,
+				"retries": 0,
+				"time_ms": 0,
+				"wrong_pass": false,
+				"wrong_reject": false
+			},
+			"expected_cost": 18,
+			"expected_reject": false,
+			"first": {
+				"error": "HTTP 503: {\n  \"error\": {\n    \"code\": 503,\n    \"message\": \"This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.\",\n    \"status\": \"UNAVAILABLE\"\n  }\n}\n",
+				"json_broken": false,
+				"llm_meta": null,
+				"output": null,
+				"time_ms": 897,
+				"violations": []
+			},
+			"id": "C02",
+			"needed_rules": [
+				"STRIKE",
+				"ECHO"
+			],
+			"nocheck": {
+				"ai_cost": null,
+				"correct": false,
+				"cost": null,
+				"cost_correct": null,
+				"effects": null,
+				"effects_correct": null,
+				"error": "HTTP 503: {\n  \"error\": {\n    \"code\": 503,\n    \"message\": \"This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.\",\n    \"status\": \"UNAVAILABLE\"\n  }\n}\n",
+				"reason": null,
+				"reject": null,
+				"time_ms": 0,
+				"wrong_pass": false,
+				"wrong_reject": false
+			},
+			"prompt_chars": 11184,
+			"rag_hit": null,
+			"rules_given": "all",
+			"rules_given_count": 66,
+			"run": 1,
+			"text": "Deal 6 damage, then do it two more times.",
+			"tier": 3
+		},
+		{
+			"accepted": [],
+			"category": "position_illegal",
+			"check": {
+				"action": "ok",
+				"ai_cost": 7,
+				"attempts": [
+					{
+						"attempt": 0,
+						"llm_meta": null,
+						"output": {
+							"cost": 7,
+							"effects": [
+								{
+									"condition": "NONE",
+									"keyword": "CATALYST",
+									"n": null,
+									"target": "none"
+								},
+								{
+									"condition": "NONE",
+									"keyword": "IGNITE",
+									"n": 2,
+									"target": "enemy"
+								}
+							],
+							"reason": "Valid card with catalyst and ignite",
+							"reject": false
+						},
+						"parse_ok": true,
+						"prompt_chars": 11212,
+						"time_ms": 1070,
+						"violations": []
+					}
+				],
+				"correct": false,
+				"cost": 7,
+				"cost_correct": null,
+				"effects": [
+					{
+						"condition": "NONE",
+						"keyword": "CATALYST",
+						"n": null,
+						"target": "none"
+					},
+					{
+						"condition": "NONE",
+						"keyword": "IGNITE",
+						"n": 2,
+						"target": "enemy"
+					}
+				],
+				"effects_correct": null,
+				"error": null,
+				"json_broken_attempts": 0,
+				"reason": "Valid card with catalyst and ignite",
+				"reject": false,
+				"retries": 0,
+				"time_ms": 1070,
+				"wrong_pass": true,
+				"wrong_reject": false
+			},
+			"expected_cost": null,
+			"expected_reject": true,
+			"first": {
+				"error": null,
+				"json_broken": false,
+				"llm_meta": null,
+				"output": {
+					"cost": 7,
+					"effects": [
+						{
+							"condition": "NONE",
+							"keyword": "CATALYST",
+							"n": null,
+							"target": "none"
+						},
+						{
+							"condition": "NONE",
+							"keyword": "IGNITE",
+							"n": 2,
+							"target": "enemy"
+						}
+					],
+					"reason": "Valid card with catalyst and ignite",
+					"reject": false
+				},
+				"time_ms": 1070,
+				"violations": []
+			},
+			"id": "C21",
+			"needed_rules": [
+				"CATALYST",
+				"IGNITE"
+			],
+			"nocheck": {
+				"ai_cost": 7,
+				"correct": false,
+				"cost": 7,
+				"cost_correct": null,
+				"effects": [
+					{
+						"condition": "NONE",
+						"keyword": "CATALYST",
+						"n": null,
+						"target": "none"
+					},
+					{
+						"condition": "NONE",
+						"keyword": "IGNITE",
+						"n": 2,
+						"target": "enemy"
+					}
+				],
+				"effects_correct": null,
+				"error": null,
+				"reason": "Valid card with catalyst and ignite",
+				"reject": false,
+				"time_ms": 1070,
+				"wrong_pass": true,
+				"wrong_reject": false
+			},
+			"prompt_chars": 11212,
+			"rag_hit": null,
+			"rules_given": "all",
+			"rules_given_count": 66,
+			"run": 1,
+			"text": "Burn the enemy for 2 turns, then make that status last 1 turn longer.",
+			"tier": 3
+		}
+	],
+	"rule_count": 66,
+	"runs": 1,
+	"size": 66,
+	"started": "2026-11-05 02:35:20",
+	"summary": {
+		"check": {
+			"avg_accuracy": 50.0,
+			"avg_time_ms": 1008.0,
+			"category_accuracy": {
+				"all_enemies": 100.0,
+				"combo": null,
+				"combo_illegal": null,
+				"condition": null,
+				"condition_illegal": null,
+				"confusing": null,
+				"cost_exception": null,
+				"direct": null,
+				"illegal": null,
+				"multi": null,
+				"paraphrase": null,
+				"position": null,
+				"position_illegal": 0.0,
+				"special": null,
+				"special_illegal": null,
+				"trick": null
+			},
+			"cost_accuracy": 100.0,
+			"effects_accuracy": 100.0,
+			"errors": 1,
+			"median_time_ms": 1008.0,
+			"per_run_accuracy": [
+				50.0
+			],
+			"tier_accuracy": {
+				"1": 100.0,
+				"2": null,
+				"3": 0.0
+			},
+			"wrong_passes": 1,
+			"wrong_rejects": 0
+		},
+		"code_rejections": 0,
+		"context_truncated": 0,
+		"first_answers_breaking_rules": 0,
+		"fixed_by_retry": 0,
+		"gemini_calls": 3,
+		"json_broken": 0,
+		"max_prompt_tokens": 0,
+		"nocheck": {
+			"avg_accuracy": 50.0,
+			"avg_time_ms": 1008.0,
+			"category_accuracy": {
+				"all_enemies": 100.0,
+				"combo": null,
+				"combo_illegal": null,
+				"condition": null,
+				"condition_illegal": null,
+				"confusing": null,
+				"cost_exception": null,
+				"direct": null,
+				"illegal": null,
+				"multi": null,
+				"paraphrase": null,
+				"position": null,
+				"position_illegal": 0.0,
+				"special": null,
+				"special_illegal": null,
+				"trick": null
+			},
+			"cost_accuracy": 100.0,
+			"effects_accuracy": 100.0,
+			"errors": 1,
+			"median_time_ms": 1008.0,
+			"per_run_accuracy": [
+				50.0
+			],
+			"tier_accuracy": {
+				"1": 100.0,
+				"2": null,
+				"3": 0.0
+			},
+			"wrong_passes": 1,
+			"wrong_rejects": 0
+		},
+		"rag_hit_rate": null,
+		"retried_cards": 0,
+		"retries": 0
+	},
+	"timestamp": "2026-11-05 02:35:33"
+}

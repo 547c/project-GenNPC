@@ -1,0 +1,461 @@
+{
+	"abort_message": "",
+	"card_count": 3,
+	"complete": true,
+	"gemini_calls": 0,
+	"mode": "full",
+	"model": "qwen3.5:9b",
+	"provider": "ollama",
+	"results": [
+		{
+			"accepted": [
+				[
+					{
+						"condition": "NONE",
+						"keyword": "STRIKE",
+						"n": 4,
+						"target": "all_enemies"
+					}
+				]
+			],
+			"category": "all_enemies",
+			"check": {
+				"action": "ok",
+				"ai_cost": 3,
+				"attempts": [
+					{
+						"attempt": 0,
+						"llm_meta": {
+							"done_reason": "stop",
+							"output_tokens": 147,
+							"prompt_tokens": 3667,
+							"truncated": false
+						},
+						"output": {
+							"cost": 3,
+							"effects": [
+								{
+									"condition": "NONE",
+									"keyword": "LEECH",
+									"n": 4,
+									"target": "all_enemies"
+								}
+							],
+							"reason": "The text 'Deal 4 damage to every enemy' matches the LEECH effect (which deals n damage to all enemies and heals the user). Since it targets all_enemies, the base cost of 3 x n is applied without doubling. Cost = 3 * 4 = 12? Wait, let me re-read the rules carefully.",
+							"reject": false
+						},
+						"parse_ok": true,
+						"prompt_chars": 11172,
+						"time_ms": 57819,
+						"violations": []
+					}
+				],
+				"correct": false,
+				"cost": 12,
+				"cost_correct": false,
+				"effects": [
+					{
+						"condition": "NONE",
+						"keyword": "LEECH",
+						"n": 4,
+						"target": "all_enemies"
+					}
+				],
+				"effects_correct": false,
+				"error": null,
+				"json_broken_attempts": 0,
+				"reason": "The text 'Deal 4 damage to every enemy' matches the LEECH effect (which deals n damage to all enemies and heals the user). Since it targets all_enemies, the base cost of 3 x n is applied without doubling. Cost = 3 * 4 = 12? Wait, let me re-read the rules carefully.",
+				"reject": false,
+				"retries": 0,
+				"time_ms": 57819,
+				"wrong_pass": false,
+				"wrong_reject": false
+			},
+			"expected_cost": 8,
+			"expected_reject": false,
+			"first": {
+				"error": null,
+				"json_broken": false,
+				"llm_meta": {
+					"done_reason": "stop",
+					"output_tokens": 147,
+					"prompt_tokens": 3667,
+					"truncated": false
+				},
+				"output": {
+					"cost": 3,
+					"effects": [
+						{
+							"condition": "NONE",
+							"keyword": "LEECH",
+							"n": 4,
+							"target": "all_enemies"
+						}
+					],
+					"reason": "The text 'Deal 4 damage to every enemy' matches the LEECH effect (which deals n damage to all enemies and heals the user). Since it targets all_enemies, the base cost of 3 x n is applied without doubling. Cost = 3 * 4 = 12? Wait, let me re-read the rules carefully.",
+					"reject": false
+				},
+				"time_ms": 57819,
+				"violations": []
+			},
+			"id": "A13",
+			"needed_rules": [
+				"STRIKE"
+			],
+			"nocheck": {
+				"ai_cost": 3,
+				"correct": false,
+				"cost": 3,
+				"cost_correct": false,
+				"effects": [
+					{
+						"condition": "NONE",
+						"keyword": "LEECH",
+						"n": 4,
+						"target": "all_enemies"
+					}
+				],
+				"effects_correct": false,
+				"error": null,
+				"reason": "The text 'Deal 4 damage to every enemy' matches the LEECH effect (which deals n damage to all enemies and heals the user). Since it targets all_enemies, the base cost of 3 x n is applied without doubling. Cost = 3 * 4 = 12? Wait, let me re-read the rules carefully.",
+				"reject": false,
+				"time_ms": 57819,
+				"wrong_pass": false,
+				"wrong_reject": false
+			},
+			"prompt_chars": 11172,
+			"rag_hit": null,
+			"rules_given": "all",
+			"rules_given_count": 66,
+			"run": 1,
+			"text": "Deal 4 damage to every enemy.",
+			"tier": 1
+		},
+		{
+			"accepted": [
+				[
+					{
+						"condition": "NONE",
+						"keyword": "STRIKE",
+						"n": 6,
+						"target": "enemy"
+					},
+					{
+						"condition": "NONE",
+						"keyword": "STRIKE",
+						"n": 6,
+						"target": "enemy"
+					},
+					{
+						"condition": "NONE",
+						"keyword": "STRIKE",
+						"n": 6,
+						"target": "enemy"
+					}
+				],
+				[
+					{
+						"condition": "NONE",
+						"keyword": "STRIKE",
+						"n": 6,
+						"target": "enemy"
+					},
+					{
+						"condition": "NONE",
+						"keyword": "ECHO",
+						"n": null,
+						"target": "none"
+					},
+					{
+						"condition": "NONE",
+						"keyword": "STRIKE",
+						"n": 6,
+						"target": "enemy"
+					}
+				],
+				[
+					{
+						"condition": "NONE",
+						"keyword": "STRIKE",
+						"n": 6,
+						"target": "enemy"
+					},
+					{
+						"condition": "NONE",
+						"keyword": "STRIKE",
+						"n": 6,
+						"target": "enemy"
+					},
+					{
+						"condition": "NONE",
+						"keyword": "ECHO",
+						"n": null,
+						"target": "none"
+					}
+				]
+			],
+			"category": "special",
+			"check": {
+				"action": "ai_reject",
+				"ai_cost": 0,
+				"attempts": [
+					{
+						"attempt": 0,
+						"llm_meta": {
+							"done_reason": "stop",
+							"output_tokens": 32,
+							"prompt_tokens": 3671,
+							"truncated": false
+						},
+						"output": {
+							"cost": 0,
+							"effects": [],
+							"reason": "rejected",
+							"reject": true
+						},
+						"parse_ok": true,
+						"prompt_chars": 11184,
+						"time_ms": 32934,
+						"violations": []
+					}
+				],
+				"correct": false,
+				"cost": null,
+				"cost_correct": false,
+				"effects": [],
+				"effects_correct": false,
+				"error": null,
+				"json_broken_attempts": 0,
+				"reason": "rejected",
+				"reject": true,
+				"retries": 0,
+				"time_ms": 32934,
+				"wrong_pass": false,
+				"wrong_reject": true
+			},
+			"expected_cost": 18,
+			"expected_reject": false,
+			"first": {
+				"error": null,
+				"json_broken": false,
+				"llm_meta": {
+					"done_reason": "stop",
+					"output_tokens": 32,
+					"prompt_tokens": 3671,
+					"truncated": false
+				},
+				"output": {
+					"cost": 0,
+					"effects": [],
+					"reason": "rejected",
+					"reject": true
+				},
+				"time_ms": 32934,
+				"violations": []
+			},
+			"id": "C02",
+			"needed_rules": [
+				"STRIKE",
+				"ECHO"
+			],
+			"nocheck": {
+				"ai_cost": 0,
+				"correct": false,
+				"cost": null,
+				"cost_correct": false,
+				"effects": [],
+				"effects_correct": false,
+				"error": null,
+				"reason": "rejected",
+				"reject": true,
+				"time_ms": 32934,
+				"wrong_pass": false,
+				"wrong_reject": true
+			},
+			"prompt_chars": 11184,
+			"rag_hit": null,
+			"rules_given": "all",
+			"rules_given_count": 66,
+			"run": 1,
+			"text": "Deal 6 damage, then do it two more times.",
+			"tier": 3
+		},
+		{
+			"accepted": [],
+			"category": "position_illegal",
+			"check": {
+				"action": "ai_reject",
+				"ai_cost": 0,
+				"attempts": [
+					{
+						"attempt": 0,
+						"llm_meta": {
+							"done_reason": "stop",
+							"output_tokens": 166,
+							"prompt_tokens": 3677,
+							"truncated": false
+						},
+						"output": {
+							"cost": 0,
+							"effects": [],
+							"reason": "The card text describes a single effect (IGNITE) with a duration of 2 turns and a CATALYST modifier to extend it by 1 turn. However, the rules state that CATALYST must be the first effect on the card. Since IGNITE is the only damage/status effect requested, placing CATALYST first would mean the card has no other status effects (IGNITE) after it, violating the rule 'the card must also have at least one status effect'. Alternatively, if IGNITE is placed first, CATALYST cannot be used because it must be first. Therefore, this combination of effects on a single card is impossible under the game rules.",
+							"reject": true
+						},
+						"parse_ok": true,
+						"prompt_chars": 11212,
+						"time_ms": 41726,
+						"violations": []
+					}
+				],
+				"correct": true,
+				"cost": null,
+				"cost_correct": null,
+				"effects": [],
+				"effects_correct": null,
+				"error": null,
+				"json_broken_attempts": 0,
+				"reason": "The card text describes a single effect (IGNITE) with a duration of 2 turns and a CATALYST modifier to extend it by 1 turn. However, the rules state that CATALYST must be the first effect on the card. Since IGNITE is the only damage/status effect requested, placing CATALYST first would mean the card has no other status effects (IGNITE) after it, violating the rule 'the card must also have at least one status effect'. Alternatively, if IGNITE is placed first, CATALYST cannot be used because it must be first. Therefore, this combination of effects on a single card is impossible under the game rules.",
+				"reject": true,
+				"retries": 0,
+				"time_ms": 41726,
+				"wrong_pass": false,
+				"wrong_reject": false
+			},
+			"expected_cost": null,
+			"expected_reject": true,
+			"first": {
+				"error": null,
+				"json_broken": false,
+				"llm_meta": {
+					"done_reason": "stop",
+					"output_tokens": 166,
+					"prompt_tokens": 3677,
+					"truncated": false
+				},
+				"output": {
+					"cost": 0,
+					"effects": [],
+					"reason": "The card text describes a single effect (IGNITE) with a duration of 2 turns and a CATALYST modifier to extend it by 1 turn. However, the rules state that CATALYST must be the first effect on the card. Since IGNITE is the only damage/status effect requested, placing CATALYST first would mean the card has no other status effects (IGNITE) after it, violating the rule 'the card must also have at least one status effect'. Alternatively, if IGNITE is placed first, CATALYST cannot be used because it must be first. Therefore, this combination of effects on a single card is impossible under the game rules.",
+					"reject": true
+				},
+				"time_ms": 41726,
+				"violations": []
+			},
+			"id": "C21",
+			"needed_rules": [
+				"CATALYST",
+				"IGNITE"
+			],
+			"nocheck": {
+				"ai_cost": 0,
+				"correct": true,
+				"cost": null,
+				"cost_correct": null,
+				"effects": [],
+				"effects_correct": null,
+				"error": null,
+				"reason": "The card text describes a single effect (IGNITE) with a duration of 2 turns and a CATALYST modifier to extend it by 1 turn. However, the rules state that CATALYST must be the first effect on the card. Since IGNITE is the only damage/status effect requested, placing CATALYST first would mean the card has no other status effects (IGNITE) after it, violating the rule 'the card must also have at least one status effect'. Alternatively, if IGNITE is placed first, CATALYST cannot be used because it must be first. Therefore, this combination of effects on a single card is impossible under the game rules.",
+				"reject": true,
+				"time_ms": 41726,
+				"wrong_pass": false,
+				"wrong_reject": false
+			},
+			"prompt_chars": 11212,
+			"rag_hit": null,
+			"rules_given": "all",
+			"rules_given_count": 66,
+			"run": 1,
+			"text": "Burn the enemy for 2 turns, then make that status last 1 turn longer.",
+			"tier": 3
+		}
+	],
+	"rule_count": 66,
+	"runs": 1,
+	"size": 66,
+	"started": "2026-11-05 02:38:45",
+	"summary": {
+		"check": {
+			"avg_accuracy": 33.3333333333333,
+			"avg_time_ms": 44159.6666666667,
+			"category_accuracy": {
+				"all_enemies": 0.0,
+				"combo": null,
+				"combo_illegal": null,
+				"condition": null,
+				"condition_illegal": null,
+				"confusing": null,
+				"cost_exception": null,
+				"direct": null,
+				"illegal": null,
+				"multi": null,
+				"paraphrase": null,
+				"position": null,
+				"position_illegal": 100.0,
+				"special": 0.0,
+				"special_illegal": null,
+				"trick": null
+			},
+			"cost_accuracy": 0.0,
+			"effects_accuracy": 0.0,
+			"errors": 0,
+			"median_time_ms": 41726.0,
+			"per_run_accuracy": [
+				33.3333333333333
+			],
+			"tier_accuracy": {
+				"1": 0.0,
+				"2": null,
+				"3": 50.0
+			},
+			"wrong_passes": 0,
+			"wrong_rejects": 1
+		},
+		"code_rejections": 0,
+		"context_truncated": 0,
+		"first_answers_breaking_rules": 0,
+		"fixed_by_retry": 0,
+		"gemini_calls": 0,
+		"json_broken": 0,
+		"max_prompt_tokens": 3677,
+		"nocheck": {
+			"avg_accuracy": 33.3333333333333,
+			"avg_time_ms": 44159.6666666667,
+			"category_accuracy": {
+				"all_enemies": 0.0,
+				"combo": null,
+				"combo_illegal": null,
+				"condition": null,
+				"condition_illegal": null,
+				"confusing": null,
+				"cost_exception": null,
+				"direct": null,
+				"illegal": null,
+				"multi": null,
+				"paraphrase": null,
+				"position": null,
+				"position_illegal": 100.0,
+				"special": 0.0,
+				"special_illegal": null,
+				"trick": null
+			},
+			"cost_accuracy": 0.0,
+			"effects_accuracy": 0.0,
+			"errors": 0,
+			"median_time_ms": 41726.0,
+			"per_run_accuracy": [
+				33.3333333333333
+			],
+			"tier_accuracy": {
+				"1": 0.0,
+				"2": null,
+				"3": 50.0
+			},
+			"wrong_passes": 0,
+			"wrong_rejects": 1
+		},
+		"rag_hit_rate": null,
+		"retried_cards": 0,
+		"retries": 0
+	},
+	"timestamp": "2026-11-05 02:40:58"
+}

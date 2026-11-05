@@ -1,0 +1,576 @@
+{
+	"abort_message": "",
+	"card_count": 3,
+	"complete": true,
+	"gemini_calls": 4,
+	"mode": "emb9",
+	"model": "gemini-3.5-flash-lite",
+	"provider": "gemini",
+	"results": [
+		{
+			"accepted": [
+				[
+					{
+						"condition": "NONE",
+						"keyword": "STRIKE",
+						"n": 4,
+						"target": "all_enemies"
+					}
+				]
+			],
+			"category": "all_enemies",
+			"check": {
+				"action": "ok",
+				"ai_cost": 8,
+				"attempts": [
+					{
+						"attempt": 0,
+						"llm_meta": null,
+						"output": {
+							"cost": 8,
+							"effects": [
+								{
+									"condition": "NONE",
+									"keyword": "STRIKE",
+									"n": 4,
+									"target": "all_enemies"
+								}
+							],
+							"reason": "Valid card description mapping to STRIKE targeting all enemies.",
+							"reject": false
+						},
+						"parse_ok": true,
+						"prompt_chars": 3597,
+						"time_ms": 1699,
+						"violations": []
+					}
+				],
+				"correct": true,
+				"cost": 8,
+				"cost_correct": true,
+				"effects": [
+					{
+						"condition": "NONE",
+						"keyword": "STRIKE",
+						"n": 4,
+						"target": "all_enemies"
+					}
+				],
+				"effects_correct": true,
+				"error": null,
+				"json_broken_attempts": 0,
+				"reason": "Valid card description mapping to STRIKE targeting all enemies.",
+				"reject": false,
+				"retries": 0,
+				"time_ms": 1699,
+				"wrong_pass": false,
+				"wrong_reject": false
+			},
+			"expected_cost": 8,
+			"expected_reject": false,
+			"first": {
+				"error": null,
+				"json_broken": false,
+				"llm_meta": null,
+				"output": {
+					"cost": 8,
+					"effects": [
+						{
+							"condition": "NONE",
+							"keyword": "STRIKE",
+							"n": 4,
+							"target": "all_enemies"
+						}
+					],
+					"reason": "Valid card description mapping to STRIKE targeting all enemies.",
+					"reject": false
+				},
+				"time_ms": 1699,
+				"violations": []
+			},
+			"id": "A13",
+			"needed_rules": [
+				"STRIKE"
+			],
+			"nocheck": {
+				"ai_cost": 8,
+				"correct": true,
+				"cost": 8,
+				"cost_correct": true,
+				"effects": [
+					{
+						"condition": "NONE",
+						"keyword": "STRIKE",
+						"n": 4,
+						"target": "all_enemies"
+					}
+				],
+				"effects_correct": true,
+				"error": null,
+				"reason": "Valid card description mapping to STRIKE targeting all enemies.",
+				"reject": false,
+				"time_ms": 1699,
+				"wrong_pass": false,
+				"wrong_reject": false
+			},
+			"prompt_chars": 3597,
+			"rag_hit": true,
+			"rules_given": [
+				"DETONATE",
+				"LEECH",
+				"FLARE",
+				"BARRAGE",
+				"STRIKE"
+			],
+			"rules_given_count": 5,
+			"run": 1,
+			"text": "Deal 4 damage to every enemy.",
+			"tier": 1
+		},
+		{
+			"accepted": [
+				[
+					{
+						"condition": "NONE",
+						"keyword": "STRIKE",
+						"n": 6,
+						"target": "enemy"
+					},
+					{
+						"condition": "NONE",
+						"keyword": "STRIKE",
+						"n": 6,
+						"target": "enemy"
+					},
+					{
+						"condition": "NONE",
+						"keyword": "STRIKE",
+						"n": 6,
+						"target": "enemy"
+					}
+				],
+				[
+					{
+						"condition": "NONE",
+						"keyword": "STRIKE",
+						"n": 6,
+						"target": "enemy"
+					},
+					{
+						"condition": "NONE",
+						"keyword": "ECHO",
+						"n": null,
+						"target": "none"
+					},
+					{
+						"condition": "NONE",
+						"keyword": "STRIKE",
+						"n": 6,
+						"target": "enemy"
+					}
+				],
+				[
+					{
+						"condition": "NONE",
+						"keyword": "STRIKE",
+						"n": 6,
+						"target": "enemy"
+					},
+					{
+						"condition": "NONE",
+						"keyword": "STRIKE",
+						"n": 6,
+						"target": "enemy"
+					},
+					{
+						"condition": "NONE",
+						"keyword": "ECHO",
+						"n": null,
+						"target": "none"
+					}
+				]
+			],
+			"category": "special",
+			"check": {
+				"action": "ai_reject",
+				"ai_cost": 0,
+				"attempts": [
+					{
+						"attempt": 0,
+						"llm_meta": null,
+						"output": {
+							"cost": 12,
+							"effects": [
+								{
+									"condition": "NONE",
+									"keyword": "STRIKE",
+									"n": 6,
+									"target": "enemy"
+								},
+								{
+									"condition": "NONE",
+									"keyword": "ECHO",
+									"n": null,
+									"target": "none"
+								},
+								{
+									"condition": "NONE",
+									"keyword": "ECHO",
+									"n": null,
+									"target": "none"
+								}
+							],
+							"reason": "Valid card using STRIKE and ECHO",
+							"reject": false
+						},
+						"parse_ok": true,
+						"prompt_chars": 3670,
+						"time_ms": 1077,
+						"violations": [
+							"A card can have only 1 ECHO."
+						]
+					},
+					{
+						"attempt": 1,
+						"llm_meta": null,
+						"output": {
+							"cost": 0,
+							"effects": [],
+							"reason": "The card requests repeating an action two more times using ECHO, but a card can only have one ECHO effect, which is not enough to repeat the action twice.",
+							"reject": true
+						},
+						"parse_ok": true,
+						"prompt_chars": 4101,
+						"time_ms": 821,
+						"violations": []
+					}
+				],
+				"correct": false,
+				"cost": null,
+				"cost_correct": false,
+				"effects": [],
+				"effects_correct": false,
+				"error": null,
+				"json_broken_attempts": 0,
+				"reason": "The card requests repeating an action two more times using ECHO, but a card can only have one ECHO effect, which is not enough to repeat the action twice.",
+				"reject": true,
+				"retries": 1,
+				"time_ms": 1898,
+				"wrong_pass": false,
+				"wrong_reject": true
+			},
+			"expected_cost": 18,
+			"expected_reject": false,
+			"first": {
+				"error": null,
+				"json_broken": false,
+				"llm_meta": null,
+				"output": {
+					"cost": 12,
+					"effects": [
+						{
+							"condition": "NONE",
+							"keyword": "STRIKE",
+							"n": 6,
+							"target": "enemy"
+						},
+						{
+							"condition": "NONE",
+							"keyword": "ECHO",
+							"n": null,
+							"target": "none"
+						},
+						{
+							"condition": "NONE",
+							"keyword": "ECHO",
+							"n": null,
+							"target": "none"
+						}
+					],
+					"reason": "Valid card using STRIKE and ECHO",
+					"reject": false
+				},
+				"time_ms": 1077,
+				"violations": [
+					"ECHO max per card"
+				]
+			},
+			"id": "C02",
+			"needed_rules": [
+				"STRIKE",
+				"ECHO"
+			],
+			"nocheck": {
+				"ai_cost": 12,
+				"correct": false,
+				"cost": 12,
+				"cost_correct": false,
+				"effects": [
+					{
+						"condition": "NONE",
+						"keyword": "STRIKE",
+						"n": 6,
+						"target": "enemy"
+					},
+					{
+						"condition": "NONE",
+						"keyword": "ECHO",
+						"n": null,
+						"target": "none"
+					},
+					{
+						"condition": "NONE",
+						"keyword": "ECHO",
+						"n": null,
+						"target": "none"
+					}
+				],
+				"effects_correct": false,
+				"error": null,
+				"reason": "Valid card using STRIKE and ECHO",
+				"reject": false,
+				"time_ms": 1077,
+				"wrong_pass": false,
+				"wrong_reject": false
+			},
+			"prompt_chars": 3670,
+			"rag_hit": false,
+			"rules_given": [
+				"DETONATE",
+				"ECHO",
+				"BLOODPACT",
+				"RENEW",
+				"EXECUTE"
+			],
+			"rules_given_count": 5,
+			"run": 1,
+			"text": "Deal 6 damage, then do it two more times.",
+			"tier": 3
+		},
+		{
+			"accepted": [],
+			"category": "position_illegal",
+			"check": {
+				"action": "ok",
+				"ai_cost": 7,
+				"attempts": [
+					{
+						"attempt": 0,
+						"llm_meta": null,
+						"output": {
+							"cost": 7,
+							"effects": [
+								{
+									"condition": "NONE",
+									"keyword": "CATALYST",
+									"n": null,
+									"target": "none"
+								},
+								{
+									"condition": "NONE",
+									"keyword": "IGNITE",
+									"n": 2,
+									"target": "enemy"
+								}
+							],
+							"reason": "Valid card with Catalyst and Ignite.",
+							"reject": false
+						},
+						"parse_ok": true,
+						"prompt_chars": 3822,
+						"time_ms": 1835,
+						"violations": []
+					}
+				],
+				"correct": false,
+				"cost": 7,
+				"cost_correct": null,
+				"effects": [
+					{
+						"condition": "NONE",
+						"keyword": "CATALYST",
+						"n": null,
+						"target": "none"
+					},
+					{
+						"condition": "NONE",
+						"keyword": "IGNITE",
+						"n": 2,
+						"target": "enemy"
+					}
+				],
+				"effects_correct": null,
+				"error": null,
+				"json_broken_attempts": 0,
+				"reason": "Valid card with Catalyst and Ignite.",
+				"reject": false,
+				"retries": 0,
+				"time_ms": 1835,
+				"wrong_pass": true,
+				"wrong_reject": false
+			},
+			"expected_cost": null,
+			"expected_reject": true,
+			"first": {
+				"error": null,
+				"json_broken": false,
+				"llm_meta": null,
+				"output": {
+					"cost": 7,
+					"effects": [
+						{
+							"condition": "NONE",
+							"keyword": "CATALYST",
+							"n": null,
+							"target": "none"
+						},
+						{
+							"condition": "NONE",
+							"keyword": "IGNITE",
+							"n": 2,
+							"target": "enemy"
+						}
+					],
+					"reason": "Valid card with Catalyst and Ignite.",
+					"reject": false
+				},
+				"time_ms": 1835,
+				"violations": []
+			},
+			"id": "C21",
+			"needed_rules": [
+				"CATALYST",
+				"IGNITE"
+			],
+			"nocheck": {
+				"ai_cost": 7,
+				"correct": false,
+				"cost": 7,
+				"cost_correct": null,
+				"effects": [
+					{
+						"condition": "NONE",
+						"keyword": "CATALYST",
+						"n": null,
+						"target": "none"
+					},
+					{
+						"condition": "NONE",
+						"keyword": "IGNITE",
+						"n": 2,
+						"target": "enemy"
+					}
+				],
+				"effects_correct": null,
+				"error": null,
+				"reason": "Valid card with Catalyst and Ignite.",
+				"reject": false,
+				"time_ms": 1835,
+				"wrong_pass": true,
+				"wrong_reject": false
+			},
+			"prompt_chars": 3822,
+			"rag_hit": true,
+			"rules_given": [
+				"IGNITE",
+				"CATALYST",
+				"INFERNO",
+				"ANCHOR",
+				"EMBER"
+			],
+			"rules_given_count": 5,
+			"run": 1,
+			"text": "Burn the enemy for 2 turns, then make that status last 1 turn longer.",
+			"tier": 3
+		}
+	],
+	"rule_count": 66,
+	"runs": 1,
+	"size": 66,
+	"started": "2026-11-05 02:35:35",
+	"summary": {
+		"check": {
+			"avg_accuracy": 33.3333333333333,
+			"avg_time_ms": 1810.66666666667,
+			"category_accuracy": {
+				"all_enemies": 100.0,
+				"combo": null,
+				"combo_illegal": null,
+				"condition": null,
+				"condition_illegal": null,
+				"confusing": null,
+				"cost_exception": null,
+				"direct": null,
+				"illegal": null,
+				"multi": null,
+				"paraphrase": null,
+				"position": null,
+				"position_illegal": 0.0,
+				"special": 0.0,
+				"special_illegal": null,
+				"trick": null
+			},
+			"cost_accuracy": 50.0,
+			"effects_accuracy": 50.0,
+			"errors": 0,
+			"median_time_ms": 1835.0,
+			"per_run_accuracy": [
+				33.3333333333333
+			],
+			"tier_accuracy": {
+				"1": 100.0,
+				"2": null,
+				"3": 0.0
+			},
+			"wrong_passes": 1,
+			"wrong_rejects": 1
+		},
+		"code_rejections": 0,
+		"context_truncated": 0,
+		"first_answers_breaking_rules": 1,
+		"fixed_by_retry": 0,
+		"gemini_calls": 4,
+		"json_broken": 0,
+		"max_prompt_tokens": 0,
+		"nocheck": {
+			"avg_accuracy": 33.3333333333333,
+			"avg_time_ms": 1537.0,
+			"category_accuracy": {
+				"all_enemies": 100.0,
+				"combo": null,
+				"combo_illegal": null,
+				"condition": null,
+				"condition_illegal": null,
+				"confusing": null,
+				"cost_exception": null,
+				"direct": null,
+				"illegal": null,
+				"multi": null,
+				"paraphrase": null,
+				"position": null,
+				"position_illegal": 0.0,
+				"special": 0.0,
+				"special_illegal": null,
+				"trick": null
+			},
+			"cost_accuracy": 50.0,
+			"effects_accuracy": 50.0,
+			"errors": 0,
+			"median_time_ms": 1699.0,
+			"per_run_accuracy": [
+				33.3333333333333
+			],
+			"tier_accuracy": {
+				"1": 100.0,
+				"2": null,
+				"3": 0.0
+			},
+			"wrong_passes": 1,
+			"wrong_rejects": 0
+		},
+		"rag_hit_rate": 66.6666666666667,
+		"retried_cards": 1,
+		"retries": 1
+	},
+	"timestamp": "2026-11-05 02:35:56"
+}

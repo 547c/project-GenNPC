@@ -1,0 +1,12 @@
+﻿[2026-11-05 03:02:38] ===== Night run start (runs=3, daily Gemini limit=490) =====
+[2026-11-05 03:02:38] START gemini size 66 full
+[2026-11-05 04:24:23]   Gemini budget: used since the last reset 11, planned 198 + retry allowance 80, limit 490
+[2026-11-05 04:24:23] DONE gemini size 66 full (exit 0, 81.8 min, Gemini calls 302) -> big_gemini_66_full_20261105_042423.json
+[2026-11-05 04:24:23] START gemini size 66 emb9
+[2026-11-05 04:24:24]   Gemini budget: used since the last reset 313, planned 198 + retry allowance 125, limit 490
+[2026-11-05 04:24:24] SKIP gemini size 66 emb9 (it could go over the daily Gemini limit of 490; exit 4, 0.0 min, Gemini calls 0)
+[2026-11-05 04:24:26] START ollama size 66 full
+[2026-11-05 06:44:27] DONE ollama size 66 full (exit 0, 140.0 min, Gemini calls 0) -> big_ollama_66_full_20261105_064427.json
+[2026-11-05 06:44:29] START ollama size 66 emb9
+[2026-11-05 09:17:51] DONE ollama size 66 emb9 (exit 0, 153.4 min, Gemini calls 0) -> big_ollama_66_emb9_20261105_091751.json
+[2026-11-05 09:17:51] ===== Night run end (375.2 min, Gemini calls 302) =====
