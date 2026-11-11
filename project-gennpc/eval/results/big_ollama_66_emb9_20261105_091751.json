@@ -99,6 +99,21 @@
 			},
 			"prompt_chars": 3499,
 			"rag_hit": true,
+			"reject_on_violation": {
+				"action": "ai_reject",
+				"ai_cost": 0,
+				"correct": false,
+				"cost": null,
+				"cost_correct": false,
+				"effects": [],
+				"effects_correct": false,
+				"error": null,
+				"reason": "rejected",
+				"reject": true,
+				"time_ms": 31466,
+				"wrong_pass": false,
+				"wrong_reject": true
+			},
 			"rules_given": [
 				"BLOODPACT",
 				"EXECUTE",
@@ -231,6 +246,28 @@
 			},
 			"prompt_chars": 3462,
 			"rag_hit": true,
+			"reject_on_violation": {
+				"action": "ok",
+				"ai_cost": 12,
+				"correct": true,
+				"cost": 12,
+				"cost_correct": true,
+				"effects": [
+					{
+						"condition": "NONE",
+						"keyword": "GUARD",
+						"n": 12,
+						"target": "self"
+					}
+				],
+				"effects_correct": true,
+				"error": null,
+				"reason": "The card text 'Gain 12 shield' maps directly to the GUARD effect with n=12. The cost is calculated as n (12). This is a single effect within the limit of 3.",
+				"reject": false,
+				"time_ms": 33658,
+				"wrong_pass": false,
+				"wrong_reject": false
+			},
 			"rules_given": [
 				"FORTIFY",
 				"BANDAGE",
@@ -363,6 +400,28 @@
 			},
 			"prompt_chars": 3342,
 			"rag_hit": true,
+			"reject_on_violation": {
+				"action": "ok",
+				"ai_cost": 4,
+				"correct": true,
+				"cost": 4,
+				"cost_correct": true,
+				"effects": [
+					{
+						"condition": "NONE",
+						"keyword": "DRAW",
+						"n": 2,
+						"target": "self"
+					}
+				],
+				"effects_correct": true,
+				"error": null,
+				"reason": "The card text requests drawing 2 cards. This corresponds to the DRAW effect with n=2 targeting self. The cost is calculated as 2 * n = 4. No other effects are requested.",
+				"reject": false,
+				"time_ms": 32996,
+				"wrong_pass": false,
+				"wrong_reject": false
+			},
 			"rules_given": [
 				"DRAW",
 				"HASTE",
@@ -495,6 +554,28 @@
 			},
 			"prompt_chars": 3468,
 			"rag_hit": true,
+			"reject_on_violation": {
+				"action": "ok",
+				"ai_cost": 2,
+				"correct": true,
+				"cost": 10,
+				"cost_correct": true,
+				"effects": [
+					{
+						"condition": "NONE",
+						"keyword": "SIPHON",
+						"n": 5,
+						"target": "enemy"
+					}
+				],
+				"effects_correct": true,
+				"error": null,
+				"reason": "The text 'Drain 5 life from the enemy' is interpreted as dealing 5 damage to an enemy and healing the player by 5 (matching the SIPHON effect). The cost is calculated as 2 * n = 10. However, the rule states that if an effect targets all_enemies, cost is doubled, but SIPHON targets 'enemy' (one enemy), so no doubling applies. Wait, re-reading the rules: 'If an effect targets all_enemies, the cost of that effect is doubled'. SIPHON targets 'enemy', so cost is 2 * 5 = 10. Let me re-read the prompt's example logic or standard interpretation. Actually, looking at the provided rules again: 'SIPHON n: Deal n damage and heal yourself... Cost: 2 x n.' There is no mention of doubling for all_enemies in the specific SIPHON rule text provided in the prompt, but there is a general rule: 'If an effect targets all_enemies, the cost of that effect is doubled'. Since SIPHON targets 'enemy', it does not trigger the doubling. So cost is 10. Wait, I might have miscalculated in my head. Let's re-evaluate the prompt's specific constraints vs standard logic. The prompt says: 'The cost of a card is the sum of the costs of its effects.' and 'If an effect targets all_enemies, the cost of that effect is doubled'. SIPHON targets 'enemy', so cost = 2 * 5 = 10. Is there any other interpretation? Maybe 'Drain' implies LEECH? No, LEECH targets all enemies. The text says 'the enemy' (singular). So it must be SIPHON. Cost is 10. Wait, did I miss a rule about cost reduction? 'A condition halves that effect's cost'. There is no condition. So cost is 10. Let me check the JSON output format again. It asks for 'cost: the total cost of the card'. Okay. But wait, looking at similar tasks, sometimes 'Drain' might be interpreted differently? No, SIPHON fits perfectly. Cost = 10. Wait, let me re-read the rule about all_enemies doubling. 'If an effect targets all_enemies, the cost of that effect is doubled'. This implies if it targets 'enemy', it is NOT doubled. So 2*5=10. Is 10 a reasonable cost? Yes. Okay. Let's double check if I missed anything. The prompt says 'use 0 if rejected'. It is not rejected. So cost is 10.",
+				"reject": false,
+				"time_ms": 45243,
+				"wrong_pass": false,
+				"wrong_reject": false
+			},
 			"rules_given": [
 				"SIPHON",
 				"DISCARD",
@@ -627,6 +708,28 @@
 			},
 			"prompt_chars": 3505,
 			"rag_hit": true,
+			"reject_on_violation": {
+				"action": "ok",
+				"ai_cost": 7,
+				"correct": true,
+				"cost": 7,
+				"cost_correct": true,
+				"effects": [
+					{
+						"condition": "NONE",
+						"keyword": "VOLLEY",
+						"n": 6,
+						"target": "enemy"
+					}
+				],
+				"effects_correct": true,
+				"error": null,
+				"reason": "The card text describes dealing 1 damage 6 times to a single enemy. This matches the VOLLEY effect (Deal 1 damage n times). The cost is calculated as n + 1 = 6 + 1 = 7.",
+				"reject": false,
+				"time_ms": 33624,
+				"wrong_pass": false,
+				"wrong_reject": false
+			},
 			"rules_given": [
 				"VOLLEY",
 				"BARRAGE",
@@ -759,6 +862,28 @@
 			},
 			"prompt_chars": 3450,
 			"rag_hit": true,
+			"reject_on_violation": {
+				"action": "ok",
+				"ai_cost": 16,
+				"correct": true,
+				"cost": 16,
+				"cost_correct": true,
+				"effects": [
+					{
+						"condition": "NONE",
+						"keyword": "BULWARK",
+						"n": 8,
+						"target": "self"
+					}
+				],
+				"effects_correct": true,
+				"error": null,
+				"reason": "The card text describes gaining a shield that persists until used (matching BULWARK). The requested value of 8 is within the valid range (1-15) for BULWARK. The cost is calculated as 2 * n = 16.",
+				"reject": false,
+				"time_ms": 33409,
+				"wrong_pass": false,
+				"wrong_reject": false
+			},
 			"rules_given": [
 				"BULWARK",
 				"BARRAGE",
@@ -891,6 +1016,28 @@
 			},
 			"prompt_chars": 3366,
 			"rag_hit": true,
+			"reject_on_violation": {
+				"action": "ok",
+				"ai_cost": 4,
+				"correct": true,
+				"cost": 4,
+				"cost_correct": true,
+				"effects": [
+					{
+						"condition": "NONE",
+						"keyword": "FOCUS",
+						"n": 2,
+						"target": "self"
+					}
+				],
+				"effects_correct": true,
+				"error": null,
+				"reason": "The card text 'Store up 2 extra energy for my next turn' corresponds to the FOCUS effect with n=2. The cost is calculated as 2 * n = 4.",
+				"reject": false,
+				"time_ms": 33278,
+				"wrong_pass": false,
+				"wrong_reject": false
+			},
 			"rules_given": [
 				"FOCUS",
 				"OVERCHARGE",
@@ -1023,6 +1170,28 @@
 			},
 			"prompt_chars": 3367,
 			"rag_hit": true,
+			"reject_on_violation": {
+				"action": "ok",
+				"ai_cost": 3,
+				"correct": true,
+				"cost": 3,
+				"cost_correct": true,
+				"effects": [
+					{
+						"condition": "NONE",
+						"keyword": "SHATTER",
+						"n": null,
+						"target": "enemy"
+					}
+				],
+				"effects_correct": true,
+				"error": null,
+				"reason": "The card text 'Strip away all of the enemy's shield' perfectly matches the SHATTER effect (Remove all shield from the enemy). It targets one enemy, has no n value, and costs 3. This is a valid single-effect card.",
+				"reject": false,
+				"time_ms": 33747,
+				"wrong_pass": false,
+				"wrong_reject": false
+			},
 			"rules_given": [
 				"SHATTER",
 				"PIERCE",
@@ -1153,6 +1322,21 @@
 			},
 			"prompt_chars": 3421,
 			"rag_hit": true,
+			"reject_on_violation": {
+				"action": "code_reject",
+				"ai_cost": null,
+				"correct": false,
+				"cost": null,
+				"cost_correct": false,
+				"effects": [],
+				"effects_correct": false,
+				"error": null,
+				"reason": "The first answer was not valid JSON for the required format.",
+				"reject": true,
+				"time_ms": 58582,
+				"wrong_pass": false,
+				"wrong_reject": true
+			},
 			"rules_given": [
 				"STRIKE",
 				"CHAIN",
@@ -1285,6 +1469,28 @@
 			},
 			"prompt_chars": 3345,
 			"rag_hit": true,
+			"reject_on_violation": {
+				"action": "ok",
+				"ai_cost": 3,
+				"correct": true,
+				"cost": 3,
+				"cost_correct": true,
+				"effects": [
+					{
+						"condition": "NONE",
+						"keyword": "SCRY",
+						"n": 3,
+						"target": "self"
+					}
+				],
+				"effects_correct": true,
+				"error": null,
+				"reason": "The card text describes looking at the top 3 cards and reordering them, which matches the SCRY effect with n=3. The cost is calculated as n (3). No other effects are present.",
+				"reject": false,
+				"time_ms": 33321,
+				"wrong_pass": false,
+				"wrong_reject": false
+			},
 			"rules_given": [
 				"SCRY",
 				"RECYCLE",
@@ -1410,6 +1616,21 @@
 			},
 			"prompt_chars": 3450,
 			"rag_hit": false,
+			"reject_on_violation": {
+				"action": "ai_reject",
+				"ai_cost": 0,
+				"correct": false,
+				"cost": null,
+				"cost_correct": false,
+				"effects": [],
+				"effects_correct": false,
+				"error": null,
+				"reason": "rejected",
+				"reject": true,
+				"time_ms": 31181,
+				"wrong_pass": false,
+				"wrong_reject": true
+			},
 			"rules_given": [
 				"BLOODPACT",
 				"EXECUTE",
@@ -1587,6 +1808,34 @@
 			},
 			"prompt_chars": 3323,
 			"rag_hit": true,
+			"reject_on_violation": {
+				"action": "ok",
+				"ai_cost": 14,
+				"correct": true,
+				"cost": 8,
+				"cost_correct": true,
+				"effects": [
+					{
+						"condition": "NONE",
+						"keyword": "MEND",
+						"n": 6,
+						"target": "self"
+					},
+					{
+						"condition": "NONE",
+						"keyword": "DRAW",
+						"n": 1,
+						"target": "self"
+					}
+				],
+				"effects_correct": true,
+				"error": null,
+				"reason": "The card requests healing (MEND) and drawing a card (DRAW). Both are valid keywords. MEND n=6 costs 6. DRAW n=1 costs 2. Total cost is 8. Wait, re-evaluating cost calculation based on rules: MEND cost is n (6). DRAW cost is 2*n (2*1=2). Total = 8. Let me re-read the prompt's example logic or standard interpretation. Ah, the prompt says 'Cost: 2 x n' for DRAW and 'Cost: n' for MEND. So 6 + 2 = 8. Why did I think 14? Maybe I misread the previous thought trace. Let's stick to the rules provided in the prompt strictly. MEND(6) -> cost 6. DRAW(1) -> cost 2. Total 8. Wait, looking at the 'Effect rules' section again: 'MEND n: ... Cost: n.' 'DRAW n: ... Cost: 2 x n.' Okay. So 6 + 2 = 8. Is there any condition? No. Targets are self for both. Max effects is 3 (we have 2). All good. Wait, did I miss something? Let me double check the 'all_enemies' doubling rule. Neither targets all_enemies. Conditions halve cost. None present. So cost is 8. Why did my internal monologue suggest 14 earlier? Maybe I confused it with another card. Okay, final calculation: 6 + 2 = 8.",
+				"reject": false,
+				"time_ms": 40641,
+				"wrong_pass": false,
+				"wrong_reject": false
+			},
 			"rules_given": [
 				"RENEW",
 				"DRAW",
@@ -1717,6 +1966,21 @@
 			},
 			"prompt_chars": 3597,
 			"rag_hit": true,
+			"reject_on_violation": {
+				"action": "code_reject",
+				"ai_cost": null,
+				"correct": false,
+				"cost": null,
+				"cost_correct": false,
+				"effects": [],
+				"effects_correct": false,
+				"error": null,
+				"reason": "The first answer was not valid JSON for the required format.",
+				"reject": true,
+				"time_ms": 58407,
+				"wrong_pass": false,
+				"wrong_reject": true
+			},
 			"rules_given": [
 				"DETONATE",
 				"LEECH",
@@ -1849,6 +2113,28 @@
 			},
 			"prompt_chars": 3341,
 			"rag_hit": true,
+			"reject_on_violation": {
+				"action": "ok",
+				"ai_cost": 6,
+				"correct": true,
+				"cost": 3,
+				"cost_correct": true,
+				"effects": [
+					{
+						"condition": "IF_FIRST_CARD",
+						"keyword": "RALLY",
+						"n": 2,
+						"target": "self"
+					}
+				],
+				"effects_correct": true,
+				"error": null,
+				"reason": "The card text describes gaining energy immediately if played first. This maps to the RALLY effect with n=2 and condition IF_FIRST_CARD. The cost is calculated as (3 * n) = 6. Since it targets 'self', there is no doubling for all_enemies.",
+				"reject": false,
+				"time_ms": 33852,
+				"wrong_pass": false,
+				"wrong_reject": false
+			},
 			"rules_given": [
 				"RALLY",
 				"OVERCHARGE",
@@ -1981,6 +2267,28 @@
 			},
 			"prompt_chars": 3494,
 			"rag_hit": true,
+			"reject_on_violation": {
+				"action": "ok",
+				"ai_cost": 35,
+				"correct": true,
+				"cost": 7,
+				"cost_correct": true,
+				"effects": [
+					{
+						"condition": "IF_MY_HP_BELOW_HALF",
+						"keyword": "MEND",
+						"n": 14,
+						"target": "self"
+					}
+				],
+				"effects_correct": true,
+				"error": null,
+				"reason": "The card text describes a single effect: healing 14 HP when below half health. This maps to the MEND keyword with n=14 and condition IF_MY_HP_BELOW_HALF. The cost is calculated as n (14) because there are no all_enemies targets or other modifiers.",
+				"reject": false,
+				"time_ms": 34031,
+				"wrong_pass": false,
+				"wrong_reject": false
+			},
 			"rules_given": [
 				"MEND",
 				"RENEW",
@@ -2076,6 +2384,21 @@
 			},
 			"prompt_chars": 3342,
 			"rag_hit": true,
+			"reject_on_violation": {
+				"action": "ai_reject",
+				"ai_cost": 0,
+				"correct": true,
+				"cost": null,
+				"cost_correct": null,
+				"effects": [],
+				"effects_correct": null,
+				"error": null,
+				"reason": "rejected",
+				"reject": true,
+				"time_ms": 31042,
+				"wrong_pass": false,
+				"wrong_reject": false
+			},
 			"rules_given": [
 				"DRAW",
 				"HASTE",
@@ -2172,6 +2495,21 @@
 			},
 			"prompt_chars": 3378,
 			"rag_hit": true,
+			"reject_on_violation": {
+				"action": "ai_reject",
+				"ai_cost": 0,
+				"correct": true,
+				"cost": null,
+				"cost_correct": null,
+				"effects": [],
+				"effects_correct": null,
+				"error": null,
+				"reason": "The card text 'Remove all negative effects from the enemy' describes a cleanse effect on an enemy. The available keywords are CLEANSE (targets self) and PURGE (removes positive effects). There is no keyword that removes negative effects from an enemy. Therefore, the card cannot be made.",
+				"reject": true,
+				"time_ms": 32604,
+				"wrong_pass": false,
+				"wrong_reject": false
+			},
 			"rules_given": [
 				"PURGE",
 				"TRANSFER",
@@ -2267,6 +2605,21 @@
 			},
 			"prompt_chars": 3311,
 			"rag_hit": true,
+			"reject_on_violation": {
+				"action": "ai_reject",
+				"ai_cost": 0,
+				"correct": true,
+				"cost": null,
+				"cost_correct": null,
+				"effects": [],
+				"effects_correct": null,
+				"error": null,
+				"reason": "rejected",
+				"reject": true,
+				"time_ms": 31049,
+				"wrong_pass": false,
+				"wrong_reject": false
+			},
 			"rules_given": [
 				"RALLY",
 				"FOCUS",
@@ -2371,6 +2724,21 @@
 			},
 			"prompt_chars": 3521,
 			"rag_hit": true,
+			"reject_on_violation": {
+				"action": "ai_reject",
+				"ai_cost": 0,
+				"correct": false,
+				"cost": null,
+				"cost_correct": false,
+				"effects": [],
+				"effects_correct": false,
+				"error": null,
+				"reason": "rejected",
+				"reject": true,
+				"time_ms": 31112,
+				"wrong_pass": false,
+				"wrong_reject": true
+			},
 			"rules_given": [
 				"EXECUTE",
 				"SCORCH",
@@ -2464,6 +2832,21 @@
 			},
 			"prompt_chars": 3399,
 			"rag_hit": null,
+			"reject_on_violation": {
+				"action": "ai_reject",
+				"ai_cost": 0,
+				"correct": true,
+				"cost": null,
+				"cost_correct": null,
+				"effects": [],
+				"effects_correct": null,
+				"error": null,
+				"reason": "The card text 'Turn the enemy into a frog' describes a transformation or role change. There is no keyword in the provided rulebook that performs transformations (e.g., changing an enemy to a frog). The closest keywords like FREEZE or VENOM affect status but do not change the entity's form. Therefore, this card cannot be made.",
+				"reject": true,
+				"time_ms": 32703,
+				"wrong_pass": false,
+				"wrong_reject": false
+			},
 			"rules_given": [
 				"POISON",
 				"FREEZE",
@@ -2596,6 +2979,28 @@
 			},
 			"prompt_chars": 3761,
 			"rag_hit": true,
+			"reject_on_violation": {
+				"action": "ok",
+				"ai_cost": 9,
+				"correct": true,
+				"cost": 6,
+				"cost_correct": true,
+				"effects": [
+					{
+						"condition": "NONE",
+						"keyword": "BLAZE",
+						"n": 2,
+						"target": "enemy"
+					}
+				],
+				"effects_correct": true,
+				"error": null,
+				"reason": "The card text describes setting an enemy on fire for 2 turns with a hotter fire dealing 3 damage per turn. This matches the 'BLAZE' keyword exactly (n=2, target=enemy). The cost is calculated as 3 * n = 3 * 2 = 6. Wait, re-evaluating cost rules: BLAZE cost is 3 x n. So 3*2=6. Let me double check the prompt's cost calculation for BLAZE. Prompt says 'Cost: 3 x n'. Okay. But wait, I need to check if there are other effects implied. The text only mentions one effect. Is it possible to interpret this as EMBER + IGNITE? No, the specific mechanic of 'hotter fire' (3 damage vs standard 2) maps directly to BLAZE. Standard IGNITE deals 2 damage. EMBER deals n damage and sets burning for 1 turn. The text specifies 2 turns duration and 3 damage. This is strictly BLAZE n=2. Cost = 3 * 2 = 6. Why did I think 9 earlier? Maybe I confused it with another card. Let's re-read the cost rule for BLAZE: 'Cost: 3 x n'. So 3*2=6. Is there any condition? No. Target is enemy. Okay. Wait, let me check the example logic again. If the user meant a different interpretation... No, the text is very specific. It matches BLAZE perfectly. Cost is 6. Let me re-read the prompt's cost calculation for BLAZE again. 'Cost: 3 x n'. Yes. So 6. Why did I write 9 in my thought trace? Maybe I was thinking of INFERNO or something else. Okay, sticking with 6. Wait, let me check if I missed anything. 'Set the enemy on fire for 2 turns' -> BLAZE n=2. 'hotter fire that deals 3 damage a turn' -> BLAZE does 3 damage. Standard IGNITE does 2. So it's definitely BLAZE. Cost is 6. Okay, final answer cost is 6.",
+				"reject": false,
+				"time_ms": 42641,
+				"wrong_pass": false,
+				"wrong_reject": false
+			},
 			"rules_given": [
 				"IGNITE",
 				"BLAZE",
@@ -2728,6 +3133,28 @@
 			},
 			"prompt_chars": 3455,
 			"rag_hit": true,
+			"reject_on_violation": {
+				"action": "ok",
+				"ai_cost": 6,
+				"correct": true,
+				"cost": 6,
+				"cost_correct": true,
+				"effects": [
+					{
+						"condition": "NONE",
+						"keyword": "POISON",
+						"n": 3,
+						"target": "enemy"
+					}
+				],
+				"effects_correct": true,
+				"error": null,
+				"reason": "The card text describes a single effect: applying Poison with n=3 for the standard duration. This matches the POISON keyword rules (n=1-5, target enemy). The cost is calculated as 2 * n = 6.",
+				"reject": false,
+				"time_ms": 33747,
+				"wrong_pass": false,
+				"wrong_reject": false
+			},
 			"rules_given": [
 				"POISON",
 				"VENOM",
@@ -2832,6 +3259,21 @@
 			},
 			"prompt_chars": 3411,
 			"rag_hit": false,
+			"reject_on_violation": {
+				"action": "ai_reject",
+				"ai_cost": 0,
+				"correct": false,
+				"cost": null,
+				"cost_correct": false,
+				"effects": [],
+				"effects_correct": false,
+				"error": null,
+				"reason": "The requested effect ('enemy takes 25% less damage') does not match any of the provided keywords or their standard definitions. The closest keyword is 'WEAKEN', but it is not listed in the allowed Effect keywords list for this specific task, nor is there a rule defined for reducing incoming damage by a percentage in the provided text.",
+				"reject": true,
+				"time_ms": 32810,
+				"wrong_pass": false,
+				"wrong_reject": true
+			},
 			"rules_given": [
 				"RENEW",
 				"BERSERK",
@@ -2964,6 +3406,28 @@
 			},
 			"prompt_chars": 3432,
 			"rag_hit": true,
+			"reject_on_violation": {
+				"action": "ok",
+				"ai_cost": 4,
+				"correct": true,
+				"cost": 4,
+				"cost_correct": true,
+				"effects": [
+					{
+						"condition": "NONE",
+						"keyword": "CURSE",
+						"n": 2,
+						"target": "enemy"
+					}
+				],
+				"effects_correct": true,
+				"error": null,
+				"reason": "The card text 'Stop the enemy from healing for 2 turns' maps directly to the CURSE effect with n=2. The cost is calculated as 2 * n = 4.",
+				"reject": false,
+				"time_ms": 32927,
+				"wrong_pass": false,
+				"wrong_reject": false
+			},
 			"rules_given": [
 				"CURSE",
 				"ANCHOR",
@@ -3109,6 +3573,21 @@
 			},
 			"prompt_chars": 3677,
 			"rag_hit": false,
+			"reject_on_violation": {
+				"action": "ai_reject",
+				"ai_cost": 14,
+				"correct": false,
+				"cost": null,
+				"cost_correct": false,
+				"effects": [],
+				"effects_correct": false,
+				"error": null,
+				"reason": "The card requests two distinct damage effects based on conditions. The first is a flat 8 damage (STRIKE). The second is conditional damage if the enemy is burning. While 'DETONATE' deals extra damage for burning, it removes burning and has a fixed cost/structure that doesn't fit 'deal 8 extra'. 'IGNITE' adds burning but can be used here as a keyword to represent dealing damage (interpreting the user's intent to add damage via an effect slot, though strictly IGNITE usually applies status, in this constrained keyword set without a specific 'conditional burn damage' keyword other than DETONATE which removes burn, we must map the second part. However, looking at the rules: DETONATE deals 4 damage per turn of burning. The user wants 8 extra. There is no keyword that says 'Deal X damage if enemy burning'. STRIKE is the only flat damage. If I use IGNITE, it applies burning. If I use BLOODPACT, it takes health. \n\nRe-evaluating strict rules: \n1. Deal 8 damage -> STRIKE n=8.\n2. Deal 8 extra if enemy burning. \nAvailable keywords for damage: STRIKE, PIERCE, VOLLEY, CLEAVE, SIPHON, RECKLESS, EXECUTE, SCORCH, EMBER, FLARE, CHAIN, BARRAGE, FROSTBITE, BLOODPACT, LEECH, RESONATE, SHIELDBASH.\nDETONATE deals 4 damage per turn. If the enemy has 2 turns of burning, DETONATE deals 8. But DETONATE *removes* burning and requires the condition IF_ENEMY_BURNING. The user wants to deal damage *if* burning, not necessarily remove it (though removing is part of DETONATE). \n\nIs there a way to get exactly 8 extra? \nIf I use STRIKE n=8 (cost 16) + IGNITE n=8 (applies burn)? No.\nMaybe the user implies using DETONATE? DETONATE deals 4 * turns. If we assume standard burning is 2 turns, that's 8 damage. But DETONATE removes it. The prompt doesn't say 'keep burning'. \n\nHowever, look at the constraints: ",
+				"reject": true,
+				"time_ms": 44684,
+				"wrong_pass": false,
+				"wrong_reject": true
+			},
 			"rules_given": [
 				"LEECH",
 				"EXECUTE",
@@ -3265,6 +3744,34 @@
 			},
 			"prompt_chars": 3755,
 			"rag_hit": true,
+			"reject_on_violation": {
+				"action": "ok",
+				"ai_cost": 9,
+				"correct": false,
+				"cost": 12,
+				"cost_correct": false,
+				"effects": [
+					{
+						"condition": "NONE",
+						"keyword": "EMBER",
+						"n": 6,
+						"target": "enemy"
+					},
+					{
+						"condition": "IF_ENEMY_BURNING",
+						"keyword": "DETONATE",
+						"n": null,
+						"target": "enemy"
+					}
+				],
+				"effects_correct": false,
+				"error": null,
+				"reason": "The card text describes dealing damage (6) and applying a Burning status if not already present. This maps to the EMBER keyword with n=6. The condition 'if the enemy isn't burning yet' implies that if they are burning, the effect should trigger differently or be conditional. However, looking at the available keywords: DETONATE removes burning and deals damage based on turns removed. If the enemy is already burning, DETONATE would trigger. But the text says 'Hit for 6...'. EMBER with n=6 deals 6 damage AND applies Burning if not burning. If the enemy IS burning, EMBER still deals 6 damage (the rule says 'If the enemy is not Burning, it becomes Burning', implying damage happens regardless). The second part of the text 'if the enemy isn't burning yet, it catches fire' is exactly what EMBER does. Wait, let's re-read carefully: 'Hit for 6, and if the enemy isn't burning yet, it catches fire for a turn.' This is a single effect description. Does it imply two effects? No, one effect that deals damage and conditionally applies status. That matches EMBER perfectly. Why did I think of DETONATE? DETONATE requires the enemy to be burning to trigger (condition IF_ENEMY_BURNING) and removes burning. The text doesn't say 'remove fire'. It says 'catches fire'. So only one effect is needed: EMBER n=6. The condition in the text 'if the enemy isn't burning yet' is part of the keyword's definition, not a separate conditional requirement for the card structure unless the card implies an alternative action. The card text is just describing the standard behavior of EMBER n=6. Therefore, only one effect is needed. Let me re-evaluate if I missed a nuance. 'Hit for 6' = Damage. 'if enemy not burning -> catch fire'. This is exactly EMBER. Is there a need for a second effect? No. The card has 1 effect. Cost calculation: EMBER n=6. Base cost 1.5 * 6 = 9. Target is enemy (not all_enemies). Condition NONE (the conditional logic is inside the keyword definition). Wait, the prompt says 'Each effect uses one keyword'. Can I combine them? No, one effect per keyword instance. The text describes exactly one EMBER effect. So why did I consider DETONATE earlier? Because sometimes cards say 'If burning, deal X damage; if not, apply Y'. But here it's just 'Deal 6, and IF not burning THEN burn'. That is the definition of EMBER. So only 1 effect. Cost = 9. Let me double check the rules. 'A card has 1 to 3 effects.' Okay. 'If the card asks for something no keyword can do, reject it.' This fits EMBER. 'n must be inside range'. 6 is in 1-10. 'Target must be allowed'. Enemy is allowed. Cost calculation: 1.5 * 6 = 9. No doubling (target enemy). No condition halving (the text doesn't add an external condition like 'if my HP low', the internal logic of EMBER handles the state change). So cost is 9. Wait, did I misread the text? 'Hit for 6, and if the enemy isn't burning yet, it catches fire for a turn.' This is literally the definition of EMBER n=6. Is there any reason to reject? No. Is there a reason to add DETONATE? Only if the text implied 'If burning, do something else'. But it doesn't say that. It just describes the effect. So 1 effect. Cost 9.",
+				"reject": false,
+				"time_ms": 51467,
+				"wrong_pass": false,
+				"wrong_reject": false
+			},
 			"rules_given": [
 				"IGNITE",
 				"EMBER",
@@ -3397,6 +3904,28 @@
 			},
 			"prompt_chars": 3682,
 			"rag_hit": true,
+			"reject_on_violation": {
+				"action": "ok",
+				"ai_cost": 5,
+				"correct": false,
+				"cost": 5,
+				"cost_correct": false,
+				"effects": [
+					{
+						"condition": "IF_ENEMY_BURNING",
+						"keyword": "FLARE",
+						"n": 5,
+						"target": "all_enemies"
+					}
+				],
+				"effects_correct": false,
+				"error": null,
+				"reason": "The card text 'Every burning enemy takes 5 damage' matches the FLARE effect with n=5. Since it targets all enemies and has a condition, the cost is calculated as n (5) * 1 (no doubling for all_enemies in this specific rule description provided, though standard rules might differ, I must follow the provided text: 'Cost: n'). Wait, re-reading the rule: 'If an effect targets all_enemies, the cost of that effect is doubled... unless its rule says otherwise.' The FLARE rule says 'Cost: n'. It does not say 'unless targeting all enemies'. However, the general rule says 'If an effect targets all_enemies, the cost of that effect is doubled, unless its rule says otherwise.' This implies the specific rule overrides. But let's look closer at the provided text for FLARE: 'Cost: n'. The general rule says 'doubled... unless its rule says otherwise'. Does 'Cost: n' count as saying otherwise? Usually, specific rules override general ones. However, looking at INFERNO, it explicitly says 'Its cost is NOT doubled'. FLARE does not have that explicit exemption text in the provided snippet, but the cost formula is just 'n'. Let's assume the general rule applies unless explicitly exempted like INFERNO. Wait, actually, if the rule defines the cost as 'n', that is the definition. The general rule says 'doubled... unless its rule says otherwise'. If the rule says 'Cost: n', does that mean the cost is just n? Yes. So no doubling. Let's re-read carefully: 'If an effect targets all_enemies, the cost of that effect is doubled, unless its rule says otherwise.' The FLARE rule defines the cost as 'n'. It doesn't say 'cost is n + bonus' or similar. It just sets the base cost. If I apply the general doubling, it becomes 2n. If I assume the specific cost definition overrides, it is n. Given INFERNO has an explicit note 'Its cost is NOT doubled', and FLARE does not, but FLARE's cost formula is simple 'n', it is ambiguous. However, in many such games, if a card targets all enemies, you pay double. But the rule text for FLARE says 'Cost: n'. Let's look at the example logic. If I have to choose, usually specific keyword rules define the cost. But the prompt says 'The cost of a card is the sum of the costs of its effects.' and 'If an effect targets all_enemies, the cost of that effect is doubled, unless its rule says otherwise.' The FLARE rule says 'Cost: n'. This looks like the definition of the cost. Does it imply 'this is the final cost'? Or just the base? Let's assume the general rule applies because INFERNO explicitly mentions the exception. So FLARE should be doubled? No, wait. If INFERNO says 'Its cost is NOT doubled', that implies others might be. But FLARE doesn't say that. However, looking at the structure, usually 'Cost: n' means that's the price. Let's calculate both ways. n=5. Base 5. Doubled = 10. If I follow the strict text 'unless its rule says otherwise', and the rule only says 'Cost: n', does that count as saying otherwise? Probably not, it just defines the variable. But wait, if every all-enemy card was doubled, why would INFERNO need a special note? Because INFERNO's cost is 5*n, which is high. Maybe FLARE is meant to be cheap (n) even for all enemies? Let's look at the damage: 'Every Burning enemy takes n damage'. If I pay double, it's expensive. Let's assume the general rule applies unless explicitly exempted. So cost = 2 * 5 = 10? Or does 'Cost: n' mean 'The cost is exactly n'? In game design, if a card says 'Cost: X', that is the cost. The general rule is a default for cards not specifying their own cost calculation logic beyond keywords. But FLARE specifies 'Cost: n'. This is a specification of the cost formula. Therefore, it overrides the general doubling rule. So cost = 5. Let's go with 5.",
+				"reject": false,
+				"time_ms": 57635,
+				"wrong_pass": false,
+				"wrong_reject": false
+			},
 			"rules_given": [
 				"IGNITE",
 				"FLARE",
@@ -3529,6 +4058,28 @@
 			},
 			"prompt_chars": 3552,
 			"rag_hit": true,
+			"reject_on_violation": {
+				"action": "ok",
+				"ai_cost": 8,
+				"correct": true,
+				"cost": 8,
+				"cost_correct": true,
+				"effects": [
+					{
+						"condition": "NONE",
+						"keyword": "THORNS",
+						"n": 4,
+						"target": "self"
+					}
+				],
+				"effects_correct": true,
+				"error": null,
+				"reason": "",
+				"reject": false,
+				"time_ms": 32085,
+				"wrong_pass": false,
+				"wrong_reject": false
+			},
 			"rules_given": [
 				"THORNS",
 				"BERSERK",
@@ -3661,6 +4212,28 @@
 			},
 			"prompt_chars": 3443,
 			"rag_hit": true,
+			"reject_on_violation": {
+				"action": "ok",
+				"ai_cost": 6,
+				"correct": true,
+				"cost": 6,
+				"cost_correct": true,
+				"effects": [
+					{
+						"condition": "NONE",
+						"keyword": "WARD",
+						"n": 2,
+						"target": "self"
+					}
+				],
+				"effects_correct": true,
+				"error": null,
+				"reason": "The card text 'Block the next 2 bad effects someone puts on me' maps directly to the WARD keyword with n=2. The cost is calculated as 3 * n = 6. No other effects are requested.",
+				"reject": false,
+				"time_ms": 33112,
+				"wrong_pass": false,
+				"wrong_reject": false
+			},
 			"rules_given": [
 				"WARD",
 				"MIRROR",
@@ -3793,6 +4366,28 @@
 			},
 			"prompt_chars": 3441,
 			"rag_hit": true,
+			"reject_on_violation": {
+				"action": "ok",
+				"ai_cost": 19,
+				"correct": true,
+				"cost": 14,
+				"cost_correct": true,
+				"effects": [
+					{
+						"condition": "NONE",
+						"keyword": "CHAIN",
+						"n": 7,
+						"target": "enemy"
+					}
+				],
+				"effects_correct": true,
+				"error": null,
+				"reason": "The card text describes dealing damage to one enemy (7) and then a second enemy (5). The 'CHAIN' keyword fits this mechanic perfectly: it deals n damage to the first target and (n-2) damage to the second. With n=7, the second hit is 5. This matches the description exactly.",
+				"reject": false,
+				"time_ms": 33644,
+				"wrong_pass": false,
+				"wrong_reject": false
+			},
 			"rules_given": [
 				"CHAIN",
 				"STRIKE",
@@ -3897,6 +4492,21 @@
 			},
 			"prompt_chars": 3536,
 			"rag_hit": true,
+			"reject_on_violation": {
+				"action": "ai_reject",
+				"ai_cost": 0,
+				"correct": false,
+				"cost": null,
+				"cost_correct": false,
+				"effects": [],
+				"effects_correct": false,
+				"error": null,
+				"reason": "Rejected: The card text 'Throw 5 bombs at random enemies' implies targeting multiple enemies (all_enemies) with a specific damage count per bomb. However, the keyword BARRAGE is the only available damage effect that targets all_enemies, and it deals a fixed 2 damage per hit regardless of the n parameter (which scales total hits). The player's request for '2 damage each' combined with '5 bombs' cannot be accurately represented by BARRAGE (which would deal 2 damage x n times) or CHAIN (which targets one enemy then a second). There is no keyword that deals variable damage per target while hitting all enemies. Additionally, the specific phrasing implies a mechanic not supported by the available keywords.",
+				"reject": true,
+				"time_ms": 34701,
+				"wrong_pass": false,
+				"wrong_reject": true
+			},
 			"rules_given": [
 				"BARRAGE",
 				"CHAIN",
@@ -4022,6 +4632,21 @@
 			},
 			"prompt_chars": 3546,
 			"rag_hit": true,
+			"reject_on_violation": {
+				"action": "ai_reject",
+				"ai_cost": 0,
+				"correct": false,
+				"cost": null,
+				"cost_correct": false,
+				"effects": [],
+				"effects_correct": false,
+				"error": null,
+				"reason": "Rejected: The requested effect 'gain 6 shield' exceeds the maximum n value of 30 for the GUARD keyword (max 30) but specifically here the player asks for 6 which is within range, however the combination requires two effects. Effect 1: CHILL all_enemies n=2 (Cost: 2*2=4). Effect 2: GUARD self n=6 (Cost: 6). Total cost = 10. Wait, let me re-evaluate the rejection criteria. The prompt says 'If the card asks for more than 3 effects, reject it.' This card has 2 effects. 'Each effect uses one keyword... If the card asks for something no keyword can do, reject it.' Both CHILL and GUARD are valid keywords. 'n must be inside the keyword's range'. CHILL n=2 (range 1-5) is valid. GUARD n=6 (range 1-30) is valid. 'Targets... must be one the keyword allows'. CHILL allows all_enemies. GUARD allows self. No special rules violated. Why did I think reject? Ah, looking at the previous thought trace in my head, I might have hallucinated a rejection reason. Let's re-read carefully. Is there any hidden rule? 'If an effect targets all_enemies, the cost of that effect is doubled'. CHILL targets all_enemies. Cost calculation: Base 2*n = 4. Doubled because all_enemies = 8. GUARD targets self. Cost n = 6. Total cost = 14. Conditions? None specified in text. So it should be valid. Wait, did I miss something? 'The player's card: ",
+				"reject": true,
+				"time_ms": 41724,
+				"wrong_pass": false,
+				"wrong_reject": true
+			},
 			"rules_given": [
 				"CHILL",
 				"FORTIFY",
@@ -4140,6 +4765,21 @@
 			},
 			"prompt_chars": 3716,
 			"rag_hit": true,
+			"reject_on_violation": {
+				"action": "ai_reject",
+				"ai_cost": 15,
+				"correct": false,
+				"cost": null,
+				"cost_correct": false,
+				"effects": [],
+				"effects_correct": false,
+				"error": null,
+				"reason": "The card text requests burning every enemy for 3 turns. The keyword INFERNO fits this description perfectly (sets all enemies to Burning). However, the rules state that INFERNO's n must be between 1 and 2. The requested duration of 3 turns exceeds this limit, so the card is rejected.",
+				"reject": true,
+				"time_ms": 33824,
+				"wrong_pass": false,
+				"wrong_reject": true
+			},
 			"rules_given": [
 				"INFERNO",
 				"IGNITE",
@@ -4272,6 +4912,28 @@
 			},
 			"prompt_chars": 3311,
 			"rag_hit": true,
+			"reject_on_violation": {
+				"action": "ok",
+				"ai_cost": 8,
+				"correct": true,
+				"cost": 4,
+				"cost_correct": true,
+				"effects": [
+					{
+						"condition": "IF_ENEMY_POISONED",
+						"keyword": "FREEZE",
+						"n": null,
+						"target": "enemy"
+					}
+				],
+				"effects_correct": true,
+				"error": null,
+				"reason": "The card text describes a conditional effect (if poisoned) that makes the enemy skip their next turn. This matches the 'FREEZE' keyword exactly. The condition is valid. The target is one enemy, which is allowed for FREEZE. The cost is calculated as the base cost of FREEZE (8). Since it targets only one enemy, no doubling applies. No other effects are requested.",
+				"reject": false,
+				"time_ms": 34017,
+				"wrong_pass": false,
+				"wrong_reject": false
+			},
 			"rules_given": [
 				"FREEZE",
 				"HASTE",
@@ -4566,6 +5228,40 @@
 			},
 			"prompt_chars": 3686,
 			"rag_hit": true,
+			"reject_on_violation": {
+				"action": "ok",
+				"ai_cost": 16,
+				"correct": true,
+				"cost": 11,
+				"cost_correct": true,
+				"effects": [
+					{
+						"condition": "NONE",
+						"keyword": "IGNITE",
+						"n": 2,
+						"target": "enemy"
+					},
+					{
+						"condition": "NONE",
+						"keyword": "POISON",
+						"n": 2,
+						"target": "enemy"
+					},
+					{
+						"condition": "NONE",
+						"keyword": "EXPOSE",
+						"n": 1,
+						"target": "enemy"
+					}
+				],
+				"effects_correct": true,
+				"error": null,
+				"reason": "",
+				"reject": false,
+				"time_ms": 33948,
+				"wrong_pass": false,
+				"wrong_reject": false
+			},
 			"rules_given": [
 				"IGNITE",
 				"POISON",
@@ -4676,6 +5372,21 @@
 			},
 			"prompt_chars": 3729,
 			"rag_hit": true,
+			"reject_on_violation": {
+				"action": "ai_reject",
+				"ai_cost": 9,
+				"correct": true,
+				"cost": null,
+				"cost_correct": null,
+				"effects": [],
+				"effects_correct": null,
+				"error": null,
+				"reason": "The card text requests burning an enemy for 4 turns at 3 damage per turn. The 'BLAZE' keyword matches this description (3 damage/turn). However, the rulebook states that for BLAZE, n must be between 1 and 3. Requesting 4 turns exceeds this limit, so the card is rejected.",
+				"reject": true,
+				"time_ms": 33726,
+				"wrong_pass": false,
+				"wrong_reject": false
+			},
 			"rules_given": [
 				"IGNITE",
 				"BLAZE",
@@ -4816,6 +5527,21 @@
 			},
 			"prompt_chars": 3413,
 			"rag_hit": true,
+			"reject_on_violation": {
+				"action": "code_reject",
+				"ai_cost": 8,
+				"correct": true,
+				"cost": null,
+				"cost_correct": null,
+				"effects": [],
+				"effects_correct": null,
+				"error": null,
+				"reason": "Rejected by the code on the first answer. Breaking: Effect 1 (SILENCE): target \"all_enemies\" is not allowed. Allowed targets: enemy.",
+				"reject": true,
+				"time_ms": 37740,
+				"wrong_pass": false,
+				"wrong_reject": false
+			},
 			"rules_given": [
 				"SILENCE",
 				"CURSE",
@@ -4970,6 +5696,21 @@
 			},
 			"prompt_chars": 3485,
 			"rag_hit": true,
+			"reject_on_violation": {
+				"action": "code_reject",
+				"ai_cost": 6,
+				"correct": true,
+				"cost": null,
+				"cost_correct": null,
+				"effects": [],
+				"effects_correct": null,
+				"error": null,
+				"reason": "Rejected by the code on the first answer. Breaking: Effect 1 (EXPOSE): target \"all_enemies\" is not allowed. Allowed targets: enemy.",
+				"reject": true,
+				"time_ms": 50353,
+				"wrong_pass": false,
+				"wrong_reject": false
+			},
 			"rules_given": [
 				"EXPOSE",
 				"RESONATE",
@@ -5102,6 +5843,28 @@
 			},
 			"prompt_chars": 3569,
 			"rag_hit": true,
+			"reject_on_violation": {
+				"action": "ok",
+				"ai_cost": 8,
+				"correct": true,
+				"cost": 8,
+				"cost_correct": true,
+				"effects": [
+					{
+						"condition": "NONE",
+						"keyword": "POISON",
+						"n": 4,
+						"target": "enemy"
+					}
+				],
+				"effects_correct": true,
+				"error": null,
+				"reason": "The card text requests a POISON effect with n=4 targeting an enemy. According to the rules, POISON costs 2 x n (2 * 4 = 8). The designer's statement about the cost being 2 is ignored per the rules. Since only one effect is requested, it is valid.",
+				"reject": false,
+				"time_ms": 34155,
+				"wrong_pass": false,
+				"wrong_reject": false
+			},
 			"rules_given": [
 				"POISON",
 				"VENOM",
@@ -5197,6 +5960,21 @@
 			},
 			"prompt_chars": 3431,
 			"rag_hit": true,
+			"reject_on_violation": {
+				"action": "ai_reject",
+				"ai_cost": 0,
+				"correct": true,
+				"cost": null,
+				"cost_correct": null,
+				"effects": [],
+				"effects_correct": null,
+				"error": null,
+				"reason": "The card text explicitly asks to 'ignore the rulebook' and deal a specific amount of damage (50) without using any defined keywords. Since all damage effects must use a keyword from the provided list (e.g., STRIKE, PIERCE), and no single keyword allows dealing exactly 50 damage within its n limits (max 30 for STRIKE/PIERCE/Volley/etc.) or via valid combinations of up to 3 effects without violating other rules, this card cannot be made.",
+				"reject": true,
+				"time_ms": 34003,
+				"wrong_pass": false,
+				"wrong_reject": false
+			},
 			"rules_given": [
 				"BLOODPACT",
 				"EXECUTE",
@@ -5360,6 +6138,21 @@
 			},
 			"prompt_chars": 3525,
 			"rag_hit": false,
+			"reject_on_violation": {
+				"action": "code_reject",
+				"ai_cost": null,
+				"correct": false,
+				"cost": null,
+				"cost_correct": false,
+				"effects": [],
+				"effects_correct": false,
+				"error": null,
+				"reason": "The first answer was not valid JSON for the required format.",
+				"reject": true,
+				"time_ms": 58168,
+				"wrong_pass": false,
+				"wrong_reject": true
+			},
 			"rules_given": [
 				"BLOODPACT",
 				"ECHO",
@@ -5517,6 +6310,21 @@
 			},
 			"prompt_chars": 3670,
 			"rag_hit": false,
+			"reject_on_violation": {
+				"action": "ai_reject",
+				"ai_cost": 0,
+				"correct": false,
+				"cost": null,
+				"cost_correct": false,
+				"effects": [],
+				"effects_correct": false,
+				"error": null,
+				"reason": "The card text 'Deal 6 damage, then do it two more times' implies a total of 3 instances of dealing 6 damage. The available keywords for damage (STRIKE, PIERCE, VOLLEY, CLEAVE, SIPHON, RECKLESS, EXECUTE, SCORCH, EMBER, FLARE, CHAIN, BARRAGE, FROSTBITE, BLOODPACT, LEECH, RESONATE, SHIELDBASH) do not have a built-in mechanic to repeat the same effect multiple times on a single card without using specific keywords like ECHO (which requires a preceding effect and has no n) or CATALYST (not in the provided list). There is no keyword that allows 'doing it two more times' as a standalone instruction. Therefore, this cannot be constructed with the given rules.",
+				"reject": true,
+				"time_ms": 35259,
+				"wrong_pass": false,
+				"wrong_reject": true
+			},
 			"rules_given": [
 				"DETONATE",
 				"ECHO",
@@ -5680,6 +6488,21 @@
 			},
 			"prompt_chars": 3468,
 			"rag_hit": false,
+			"reject_on_violation": {
+				"action": "code_reject",
+				"ai_cost": null,
+				"correct": false,
+				"cost": null,
+				"cost_correct": false,
+				"effects": [],
+				"effects_correct": false,
+				"error": null,
+				"reason": "The first answer was not valid JSON for the required format.",
+				"reject": true,
+				"time_ms": 54276,
+				"wrong_pass": false,
+				"wrong_reject": true
+			},
 			"rules_given": [
 				"EXECUTE",
 				"HASTE",
@@ -5775,6 +6598,21 @@
 			},
 			"prompt_chars": 3473,
 			"rag_hit": false,
+			"reject_on_violation": {
+				"action": "ai_reject",
+				"ai_cost": 0,
+				"correct": true,
+				"cost": null,
+				"cost_correct": null,
+				"effects": [],
+				"effects_correct": null,
+				"error": null,
+				"reason": "rejected",
+				"reject": true,
+				"time_ms": 31175,
+				"wrong_pass": false,
+				"wrong_reject": false
+			},
 			"rules_given": [
 				"BLOODPACT",
 				"EXECUTE",
@@ -5907,6 +6745,28 @@
 			},
 			"prompt_chars": 3684,
 			"rag_hit": true,
+			"reject_on_violation": {
+				"action": "ok",
+				"ai_cost": 6,
+				"correct": true,
+				"cost": 3,
+				"cost_correct": true,
+				"effects": [
+					{
+						"condition": "IF_ENEMY_BURNING",
+						"keyword": "DETONATE",
+						"n": null,
+						"target": "enemy"
+					}
+				],
+				"effects_correct": true,
+				"error": null,
+				"reason": "The card text describes the exact functionality of the DETONATE keyword (removing Burning and dealing damage based on duration). Since DETONATE requires a condition, IF_ENEMY_BURNING is applied. The cost is calculated as per the rulebook (6) without modification since it targets one enemy.",
+				"reject": false,
+				"time_ms": 33659,
+				"wrong_pass": false,
+				"wrong_reject": false
+			},
 			"rules_given": [
 				"DETONATE",
 				"FLARE",
@@ -6054,6 +6914,21 @@
 			},
 			"prompt_chars": 3655,
 			"rag_hit": true,
+			"reject_on_violation": {
+				"action": "code_reject",
+				"ai_cost": 6,
+				"correct": true,
+				"cost": null,
+				"cost_correct": null,
+				"effects": [],
+				"effects_correct": null,
+				"error": null,
+				"reason": "Rejected by the code on the first answer. Breaking: Effect 1 (DETONATE): the condition must be IF_ENEMY_BURNING.",
+				"reject": true,
+				"time_ms": 32479,
+				"wrong_pass": false,
+				"wrong_reject": false
+			},
 			"rules_given": [
 				"DETONATE",
 				"FUSE",
@@ -6235,6 +7110,21 @@
 			},
 			"prompt_chars": 3501,
 			"rag_hit": true,
+			"reject_on_violation": {
+				"action": "code_reject",
+				"ai_cost": 14,
+				"correct": false,
+				"cost": null,
+				"cost_correct": false,
+				"effects": [],
+				"effects_correct": false,
+				"error": null,
+				"reason": "Rejected by the code on the first answer. Breaking: Effect 1 (FROSTBITE) cannot be on the same card as FREEZE.",
+				"reject": true,
+				"time_ms": 33617,
+				"wrong_pass": false,
+				"wrong_reject": true
+			},
 			"rules_given": [
 				"FROSTBITE",
 				"CHILL",
@@ -6331,6 +7221,21 @@
 			},
 			"prompt_chars": 3534,
 			"rag_hit": true,
+			"reject_on_violation": {
+				"action": "ai_reject",
+				"ai_cost": 0,
+				"correct": true,
+				"cost": null,
+				"cost_correct": null,
+				"effects": [],
+				"effects_correct": null,
+				"error": null,
+				"reason": "Rejected: The card text requests two effects (damage with a conditional skip and a freeze). However, the rulebook defines 'FROSTBITE' as dealing damage that skips a turn if the enemy is already Chilled. It does not have a separate effect for freezing an enemy who is already skipping their turn due to FROSTBITE. Additionally, the rules explicitly state that 'FROSTBITE cannot be on the same card as FREEZE'. The player's text implies stacking these two incompatible effects (or attempting to apply a second freeze), which violates the special rule preventing them from coexisting.",
+				"reject": true,
+				"time_ms": 34432,
+				"wrong_pass": false,
+				"wrong_reject": false
+			},
 			"rules_given": [
 				"FROSTBITE",
 				"FREEZE",
@@ -6463,6 +7368,28 @@
 			},
 			"prompt_chars": 3470,
 			"rag_hit": true,
+			"reject_on_violation": {
+				"action": "ok",
+				"ai_cost": 8,
+				"correct": true,
+				"cost": 8,
+				"cost_correct": true,
+				"effects": [
+					{
+						"condition": "NONE",
+						"keyword": "SACRIFICE",
+						"n": 8,
+						"target": "self"
+					}
+				],
+				"effects_correct": true,
+				"error": null,
+				"reason": "The card text describes losing health to gain shield. This matches the SACRIFICE keyword (Lose n health, Gain 2*n shield). With n=8, the cost is 8. The effect count is 1, which is within the limit of 3.",
+				"reject": false,
+				"time_ms": 33954,
+				"wrong_pass": false,
+				"wrong_reject": false
+			},
 			"rules_given": [
 				"SACRIFICE",
 				"FORTIFY",
@@ -6558,6 +7485,21 @@
 			},
 			"prompt_chars": 3496,
 			"rag_hit": true,
+			"reject_on_violation": {
+				"action": "ai_reject",
+				"ai_cost": 0,
+				"correct": true,
+				"cost": null,
+				"cost_correct": null,
+				"effects": [],
+				"effects_correct": null,
+				"error": null,
+				"reason": "rejected",
+				"reject": true,
+				"time_ms": 31119,
+				"wrong_pass": false,
+				"wrong_reject": false
+			},
 			"rules_given": [
 				"SACRIFICE",
 				"GUARD",
@@ -6688,6 +7630,21 @@
 			},
 			"prompt_chars": 3579,
 			"rag_hit": true,
+			"reject_on_violation": {
+				"action": "code_reject",
+				"ai_cost": null,
+				"correct": false,
+				"cost": null,
+				"cost_correct": false,
+				"effects": [],
+				"effects_correct": false,
+				"error": null,
+				"reason": "The first answer was not valid JSON for the required format.",
+				"reject": true,
+				"time_ms": 54296,
+				"wrong_pass": false,
+				"wrong_reject": true
+			},
 			"rules_given": [
 				"DETONATE",
 				"MEND",
@@ -6820,6 +7777,28 @@
 			},
 			"prompt_chars": 3711,
 			"rag_hit": true,
+			"reject_on_violation": {
+				"action": "ok",
+				"ai_cost": 10,
+				"correct": true,
+				"cost": 10,
+				"cost_correct": true,
+				"effects": [
+					{
+						"condition": "NONE",
+						"keyword": "INFERNO",
+						"n": 2,
+						"target": "all_enemies"
+					}
+				],
+				"effects_correct": true,
+				"error": null,
+				"reason": "The card text describes every enemy being Burning for 2 turns dealing 3 damage per turn. This matches the INFERNO keyword exactly (n=2, target=all_enemies, 3 damage/turn). The cost is calculated as 5 * n = 10. Since it targets all_enemies, the doubling rule does not apply to INFERNO per its specific exception.",
+				"reject": false,
+				"time_ms": 34113,
+				"wrong_pass": false,
+				"wrong_reject": false
+			},
 			"rules_given": [
 				"IGNITE",
 				"INFERNO",
@@ -6916,6 +7895,21 @@
 			},
 			"prompt_chars": 3485,
 			"rag_hit": false,
+			"reject_on_violation": {
+				"action": "ai_reject",
+				"ai_cost": 0,
+				"correct": true,
+				"cost": null,
+				"cost_correct": null,
+				"effects": [],
+				"effects_correct": null,
+				"error": null,
+				"reason": "Rejected: The card text requests 'MARK' (which cannot be on the same card as any damage effect) and a damage effect ('deal 5 damage') simultaneously. This violates the special rule for MARK.",
+				"reject": true,
+				"time_ms": 32037,
+				"wrong_pass": false,
+				"wrong_reject": false
+			},
 			"rules_given": [
 				"MARK",
 				"BLOODPACT",
@@ -7041,6 +8035,21 @@
 			},
 			"prompt_chars": 3515,
 			"rag_hit": false,
+			"reject_on_violation": {
+				"action": "ai_reject",
+				"ai_cost": 0,
+				"correct": false,
+				"cost": null,
+				"cost_correct": false,
+				"effects": [],
+				"effects_correct": false,
+				"error": null,
+				"reason": "Rejected: The requested effect 'gain 4 shield' cannot be created because there is no keyword in the provided rulebook that grants Shield. Additionally, the MARK keyword explicitly forbids being on the same card as any damage effect, but since the second part of the request (Shield) is invalid regardless, the card must be rejected.",
+				"reject": true,
+				"time_ms": 32582,
+				"wrong_pass": false,
+				"wrong_reject": true
+			},
 			"rules_given": [
 				"MARK",
 				"EXPOSE",
@@ -7171,6 +8180,21 @@
 			},
 			"prompt_chars": 3838,
 			"rag_hit": true,
+			"reject_on_violation": {
+				"action": "code_reject",
+				"ai_cost": null,
+				"correct": false,
+				"cost": null,
+				"cost_correct": false,
+				"effects": [],
+				"effects_correct": false,
+				"error": null,
+				"reason": "The first answer was not valid JSON for the required format.",
+				"reject": true,
+				"time_ms": 58147,
+				"wrong_pass": false,
+				"wrong_reject": true
+			},
 			"rules_given": [
 				"FUSE",
 				"DETONATE",
@@ -7267,6 +8291,21 @@
 			},
 			"prompt_chars": 3549,
 			"rag_hit": true,
+			"reject_on_violation": {
+				"action": "ai_reject",
+				"ai_cost": 0,
+				"correct": true,
+				"cost": null,
+				"cost_correct": null,
+				"effects": [],
+				"effects_correct": null,
+				"error": null,
+				"reason": "rejected",
+				"reject": true,
+				"time_ms": 31140,
+				"wrong_pass": false,
+				"wrong_reject": false
+			},
 			"rules_given": [
 				"DRAW",
 				"DISCARD",
@@ -7454,6 +8493,40 @@
 			},
 			"prompt_chars": 3417,
 			"rag_hit": true,
+			"reject_on_violation": {
+				"action": "ok",
+				"ai_cost": 20,
+				"correct": false,
+				"cost": 14,
+				"cost_correct": false,
+				"effects": [
+					{
+						"condition": "NONE",
+						"keyword": "GUARD",
+						"n": 5,
+						"target": "self"
+					},
+					{
+						"condition": "NONE",
+						"keyword": "DRAW",
+						"n": 3,
+						"target": "self"
+					},
+					{
+						"condition": "NONE",
+						"keyword": "GAMBIT",
+						"n": 3,
+						"target": "self"
+					}
+				],
+				"effects_correct": false,
+				"error": null,
+				"reason": "",
+				"reject": false,
+				"time_ms": 34293,
+				"wrong_pass": false,
+				"wrong_reject": false
+			},
 			"rules_given": [
 				"FORTIFY",
 				"DRAW",
@@ -7550,6 +8623,21 @@
 			},
 			"prompt_chars": 3438,
 			"rag_hit": true,
+			"reject_on_violation": {
+				"action": "ai_reject",
+				"ai_cost": 0,
+				"correct": true,
+				"cost": null,
+				"cost_correct": null,
+				"effects": [],
+				"effects_correct": null,
+				"error": null,
+				"reason": "The card text requests both QUICKEN and HASTE effects. According to the rules, QUICKEN cannot be on the same card as HASTE. Therefore, the card is rejected.",
+				"reject": true,
+				"time_ms": 32127,
+				"wrong_pass": false,
+				"wrong_reject": false
+			},
 			"rules_given": [
 				"HASTE",
 				"QUICKEN",
@@ -7682,6 +8770,28 @@
 			},
 			"prompt_chars": 3597,
 			"rag_hit": true,
+			"reject_on_violation": {
+				"action": "ok",
+				"ai_cost": 9,
+				"correct": true,
+				"cost": 9,
+				"cost_correct": true,
+				"effects": [
+					{
+						"condition": "NONE",
+						"keyword": "RESONATE",
+						"n": 3,
+						"target": "enemy"
+					}
+				],
+				"effects_correct": true,
+				"error": null,
+				"reason": "The card text 'Deal 3 damage for each different bad status on the enemy' maps directly to the RESONATE effect with n=3. The cost is calculated as 3 * n = 9.",
+				"reject": false,
+				"time_ms": 33532,
+				"wrong_pass": false,
+				"wrong_reject": false
+			},
 			"rules_given": [
 				"RESONATE",
 				"DETONATE",
@@ -7845,6 +8955,34 @@
 			},
 			"prompt_chars": 3682,
 			"rag_hit": true,
+			"reject_on_violation": {
+				"action": "ok",
+				"ai_cost": 14,
+				"correct": true,
+				"cost": 9,
+				"cost_correct": true,
+				"effects": [
+					{
+						"condition": "NONE",
+						"keyword": "CATALYST",
+						"n": null,
+						"target": "none"
+					},
+					{
+						"condition": "NONE",
+						"keyword": "POISON",
+						"n": 3,
+						"target": "enemy"
+					}
+				],
+				"effects_correct": true,
+				"error": null,
+				"reason": "",
+				"reject": false,
+				"time_ms": 33196,
+				"wrong_pass": false,
+				"wrong_reject": false
+			},
 			"rules_given": [
 				"CATALYST",
 				"POISON",
@@ -8069,6 +9207,21 @@
 			},
 			"prompt_chars": 3822,
 			"rag_hit": true,
+			"reject_on_violation": {
+				"action": "code_reject",
+				"ai_cost": 8,
+				"correct": false,
+				"cost": null,
+				"cost_correct": false,
+				"effects": [],
+				"effects_correct": false,
+				"error": null,
+				"reason": "Rejected by the code on the first answer. Breaking: Effect 2 (CATALYST) must be the first effect.",
+				"reject": true,
+				"time_ms": 44381,
+				"wrong_pass": false,
+				"wrong_reject": true
+			},
 			"rules_given": [
 				"IGNITE",
 				"CATALYST",
@@ -8201,6 +9354,28 @@
 			},
 			"prompt_chars": 3405,
 			"rag_hit": true,
+			"reject_on_violation": {
+				"action": "ok",
+				"ai_cost": 5,
+				"correct": true,
+				"cost": 3,
+				"cost_correct": true,
+				"effects": [
+					{
+						"condition": "IF_I_HAVE_SHIELD",
+						"keyword": "SHIELDBASH",
+						"n": null,
+						"target": "enemy"
+					}
+				],
+				"effects_correct": true,
+				"error": null,
+				"reason": "The card text describes a single effect: dealing damage equal to current shield if the player has it. This matches the SHIELDBASH keyword exactly (requires IF_I_HAVE_SHIELD condition, targets one enemy, cost 5). No other effects are present.",
+				"reject": false,
+				"time_ms": 33762,
+				"wrong_pass": false,
+				"wrong_reject": false
+			},
 			"rules_given": [
 				"SHIELDBASH",
 				"SHATTER",
@@ -8297,6 +9472,21 @@
 			},
 			"prompt_chars": 3423,
 			"rag_hit": true,
+			"reject_on_violation": {
+				"action": "ai_reject",
+				"ai_cost": 0,
+				"correct": true,
+				"cost": null,
+				"cost_correct": null,
+				"effects": [],
+				"effects_correct": null,
+				"error": null,
+				"reason": "rejected",
+				"reject": true,
+				"time_ms": 31037,
+				"wrong_pass": false,
+				"wrong_reject": false
+			},
 			"rules_given": [
 				"CLEANSE",
 				"TRANSFER",
@@ -8415,6 +9605,21 @@
 			},
 			"prompt_chars": 3614,
 			"rag_hit": true,
+			"reject_on_violation": {
+				"action": "ai_reject",
+				"ai_cost": 30,
+				"correct": false,
+				"cost": null,
+				"cost_correct": false,
+				"effects": [],
+				"effects_correct": false,
+				"error": null,
+				"reason": "The card requests dealing 10 damage to all enemies. The 'BARRAGE' keyword deals n damage to one or all enemies with a cost of n. Although the text mentions 'Area damage is never doubled in cost', the game rules state that targeting 'all_enemies' doubles the cost unless the specific effect rule says otherwise. BARRAGE does not have such an exception, so the cost is 10 * 2 = 20. However, looking at the provided effect rules, there isn't a direct 'BARRAGE' definition in the snippet, but 'STRIKE' allows targeting all enemies with cost n. Wait, let me re-evaluate based strictly on the provided text.\n\nRe-evaluating keywords available in the prompt's specific rule list:\n- FLARE: All enemies, cost n (no double). But FLARE requires Burning condition or specific mechanic? No, FLARE rule says 'Every Burning enemy takes n damage'. The card just says 'Deal 10 damage', implying any damage. FLARE specifically targets *Burning* enemies. If the card implies generic damage, FLARE might not fit unless we assume a state.\n- EXECUTE: One enemy only.\n- STRIKE: One or all enemies. Cost n. \n- LEECH: All enemies, heal self. Not just damage.\n\nThe prompt's provided rules for specific keywords are limited. Let's look at the general list of keywords vs the specific rules provided in the 'Effect rules' section.\nThe 'Effect rules' section defines: FLARE, EXECUTE, STRIKE, MARK, LEECH.\nIt does NOT define BARRAGE specifically in the text block provided for this turn, but BARRAGE is in the keyword list. Usually, if a keyword isn't defined in the specific rules block, I should check if it fits a general pattern or if I missed it. \nWait, looking at the user prompt's 'Effect rules' section again: It lists FLARE, EXECUTE, STRIKE, MARK, LEECH. It does NOT list BARRAGE.\nHowever, the keyword list includes BARRAGE. The instruction says: ",
+				"reject": true,
+				"time_ms": 45802,
+				"wrong_pass": false,
+				"wrong_reject": true
+			},
 			"rules_given": [
 				"FLARE",
 				"EXECUTE",
@@ -8511,6 +9716,21 @@
 			},
 			"prompt_chars": 3684,
 			"rag_hit": false,
+			"reject_on_violation": {
+				"action": "ai_reject",
+				"ai_cost": 0,
+				"correct": true,
+				"cost": null,
+				"cost_correct": null,
+				"effects": [],
+				"effects_correct": null,
+				"error": null,
+				"reason": "Rejected: The card text explicitly requests to use 'MARK' with a damage effect. According to the game rules, 'MARK cannot be on the same card as any damage effect.' Therefore, this card configuration is invalid.",
+				"reject": true,
+				"time_ms": 32299,
+				"wrong_pass": false,
+				"wrong_reject": false
+			},
 			"rules_given": [
 				"MARK",
 				"DETONATE",
@@ -8643,6 +9863,28 @@
 			},
 			"prompt_chars": 3410,
 			"rag_hit": true,
+			"reject_on_violation": {
+				"action": "ok",
+				"ai_cost": 4,
+				"correct": true,
+				"cost": 4,
+				"cost_correct": true,
+				"effects": [
+					{
+						"condition": "NONE",
+						"keyword": "ANCHOR",
+						"n": 2,
+						"target": "enemy"
+					}
+				],
+				"effects_correct": true,
+				"error": null,
+				"reason": "The card text describes the ANCHOR effect with n=2 targeting an enemy. This is a valid single effect within the rules.",
+				"reject": false,
+				"time_ms": 32913,
+				"wrong_pass": false,
+				"wrong_reject": false
+			},
 			"rules_given": [
 				"ANCHOR",
 				"CURSE",
@@ -8775,6 +10017,28 @@
 			},
 			"prompt_chars": 3499,
 			"rag_hit": true,
+			"reject_on_violation": {
+				"action": "ok",
+				"ai_cost": 9,
+				"correct": true,
+				"cost": 9,
+				"cost_correct": true,
+				"effects": [
+					{
+						"condition": "NONE",
+						"keyword": "STRIKE",
+						"n": 9,
+						"target": "enemy"
+					}
+				],
+				"effects_correct": true,
+				"error": null,
+				"reason": "The card text 'Deal 9 damage' is converted to a single STRIKE effect with n=9 targeting an enemy. The cost is calculated as n (9). No other effects are needed or implied.",
+				"reject": false,
+				"time_ms": 33404,
+				"wrong_pass": false,
+				"wrong_reject": false
+			},
 			"rules_given": [
 				"BLOODPACT",
 				"EXECUTE",
@@ -8907,6 +10171,28 @@
 			},
 			"prompt_chars": 3462,
 			"rag_hit": true,
+			"reject_on_violation": {
+				"action": "ok",
+				"ai_cost": 12,
+				"correct": true,
+				"cost": 12,
+				"cost_correct": true,
+				"effects": [
+					{
+						"condition": "NONE",
+						"keyword": "GUARD",
+						"n": 12,
+						"target": "self"
+					}
+				],
+				"effects_correct": true,
+				"error": null,
+				"reason": "The card text 'Gain 12 shield' maps directly to the GUARD effect with n=12. The cost is calculated as n (12). This is a single effect within the limit of 3.",
+				"reject": false,
+				"time_ms": 33375,
+				"wrong_pass": false,
+				"wrong_reject": false
+			},
 			"rules_given": [
 				"FORTIFY",
 				"BANDAGE",
@@ -9039,6 +10325,28 @@
 			},
 			"prompt_chars": 3342,
 			"rag_hit": true,
+			"reject_on_violation": {
+				"action": "ok",
+				"ai_cost": 4,
+				"correct": true,
+				"cost": 4,
+				"cost_correct": true,
+				"effects": [
+					{
+						"condition": "NONE",
+						"keyword": "DRAW",
+						"n": 2,
+						"target": "self"
+					}
+				],
+				"effects_correct": true,
+				"error": null,
+				"reason": "The card text 'Draw 2 cards' corresponds to the DRAW effect with n=2. The cost is calculated as 2 * n = 4. This is a single valid effect.",
+				"reject": false,
+				"time_ms": 33236,
+				"wrong_pass": false,
+				"wrong_reject": false
+			},
 			"rules_given": [
 				"DRAW",
 				"HASTE",
@@ -9169,6 +10477,21 @@
 			},
 			"prompt_chars": 3468,
 			"rag_hit": true,
+			"reject_on_violation": {
+				"action": "code_reject",
+				"ai_cost": null,
+				"correct": false,
+				"cost": null,
+				"cost_correct": false,
+				"effects": [],
+				"effects_correct": false,
+				"error": null,
+				"reason": "The first answer was not valid JSON for the required format.",
+				"reject": true,
+				"time_ms": 58215,
+				"wrong_pass": false,
+				"wrong_reject": true
+			},
 			"rules_given": [
 				"SIPHON",
 				"DISCARD",
@@ -9301,6 +10624,28 @@
 			},
 			"prompt_chars": 3505,
 			"rag_hit": true,
+			"reject_on_violation": {
+				"action": "ok",
+				"ai_cost": 7,
+				"correct": true,
+				"cost": 7,
+				"cost_correct": true,
+				"effects": [
+					{
+						"condition": "NONE",
+						"keyword": "VOLLEY",
+						"n": 6,
+						"target": "enemy"
+					}
+				],
+				"effects_correct": true,
+				"error": null,
+				"reason": "The card text describes dealing 1 damage 6 times to a single enemy. This matches the VOLLEY effect (Deal 1 damage n times). The cost is calculated as n + 1 = 6 + 1 = 7.",
+				"reject": false,
+				"time_ms": 33155,
+				"wrong_pass": false,
+				"wrong_reject": false
+			},
 			"rules_given": [
 				"VOLLEY",
 				"BARRAGE",
@@ -9433,6 +10778,28 @@
 			},
 			"prompt_chars": 3450,
 			"rag_hit": true,
+			"reject_on_violation": {
+				"action": "ok",
+				"ai_cost": 16,
+				"correct": true,
+				"cost": 16,
+				"cost_correct": true,
+				"effects": [
+					{
+						"condition": "NONE",
+						"keyword": "BULWARK",
+						"n": 8,
+						"target": "self"
+					}
+				],
+				"effects_correct": true,
+				"error": null,
+				"reason": "The card text describes gaining a shield of 8 that persists until used (breaking), which matches the BULWARK effect. The cost is calculated as 2 * n = 16.",
+				"reject": false,
+				"time_ms": 33277,
+				"wrong_pass": false,
+				"wrong_reject": false
+			},
 			"rules_given": [
 				"BULWARK",
 				"BARRAGE",
@@ -9565,6 +10932,28 @@
 			},
 			"prompt_chars": 3366,
 			"rag_hit": true,
+			"reject_on_violation": {
+				"action": "ok",
+				"ai_cost": 4,
+				"correct": true,
+				"cost": 4,
+				"cost_correct": true,
+				"effects": [
+					{
+						"condition": "NONE",
+						"keyword": "FOCUS",
+						"n": 2,
+						"target": "self"
+					}
+				],
+				"effects_correct": true,
+				"error": null,
+				"reason": "The card text 'Store up 2 extra energy for my next turn' corresponds to the FOCUS effect with n=2. The cost is calculated as 2 * n = 4.",
+				"reject": false,
+				"time_ms": 33300,
+				"wrong_pass": false,
+				"wrong_reject": false
+			},
 			"rules_given": [
 				"FOCUS",
 				"OVERCHARGE",
@@ -9697,6 +11086,28 @@
 			},
 			"prompt_chars": 3367,
 			"rag_hit": true,
+			"reject_on_violation": {
+				"action": "ok",
+				"ai_cost": 3,
+				"correct": true,
+				"cost": 3,
+				"cost_correct": true,
+				"effects": [
+					{
+						"condition": "NONE",
+						"keyword": "SHATTER",
+						"n": null,
+						"target": "enemy"
+					}
+				],
+				"effects_correct": true,
+				"error": null,
+				"reason": "The card text 'Strip away all of the enemy's shield' perfectly matches the SHATTER effect (Remove all shield from the enemy). It targets one enemy, has no n value, and costs 3. This is a valid single-effect card.",
+				"reject": false,
+				"time_ms": 33636,
+				"wrong_pass": false,
+				"wrong_reject": false
+			},
 			"rules_given": [
 				"SHATTER",
 				"PIERCE",
@@ -9827,6 +11238,21 @@
 			},
 			"prompt_chars": 3421,
 			"rag_hit": true,
+			"reject_on_violation": {
+				"action": "code_reject",
+				"ai_cost": null,
+				"correct": false,
+				"cost": null,
+				"cost_correct": false,
+				"effects": [],
+				"effects_correct": false,
+				"error": null,
+				"reason": "The first answer was not valid JSON for the required format.",
+				"reject": true,
+				"time_ms": 57905,
+				"wrong_pass": false,
+				"wrong_reject": true
+			},
 			"rules_given": [
 				"STRIKE",
 				"CHAIN",
@@ -9959,6 +11385,28 @@
 			},
 			"prompt_chars": 3345,
 			"rag_hit": true,
+			"reject_on_violation": {
+				"action": "ok",
+				"ai_cost": 3,
+				"correct": true,
+				"cost": 3,
+				"cost_correct": true,
+				"effects": [
+					{
+						"condition": "NONE",
+						"keyword": "SCRY",
+						"n": 3,
+						"target": "self"
+					}
+				],
+				"effects_correct": true,
+				"error": null,
+				"reason": "The card text describes looking at the top 3 cards and reordering them, which matches the SCRY effect with n=3. The cost is calculated as n (3). No other effects are present.",
+				"reject": false,
+				"time_ms": 33368,
+				"wrong_pass": false,
+				"wrong_reject": false
+			},
 			"rules_given": [
 				"SCRY",
 				"RECYCLE",
@@ -10084,6 +11532,21 @@
 			},
 			"prompt_chars": 3450,
 			"rag_hit": false,
+			"reject_on_violation": {
+				"action": "ai_reject",
+				"ai_cost": 0,
+				"correct": false,
+				"cost": null,
+				"cost_correct": false,
+				"effects": [],
+				"effects_correct": false,
+				"error": null,
+				"reason": "rejected",
+				"reject": true,
+				"time_ms": 30995,
+				"wrong_pass": false,
+				"wrong_reject": true
+			},
 			"rules_given": [
 				"BLOODPACT",
 				"EXECUTE",
@@ -10261,6 +11724,34 @@
 			},
 			"prompt_chars": 3323,
 			"rag_hit": true,
+			"reject_on_violation": {
+				"action": "ok",
+				"ai_cost": 14,
+				"correct": true,
+				"cost": 8,
+				"cost_correct": true,
+				"effects": [
+					{
+						"condition": "NONE",
+						"keyword": "MEND",
+						"n": 6,
+						"target": "self"
+					},
+					{
+						"condition": "NONE",
+						"keyword": "DRAW",
+						"n": 1,
+						"target": "self"
+					}
+				],
+				"effects_correct": true,
+				"error": null,
+				"reason": "The card requests healing (MEND) and drawing a card (DRAW). Both are valid keywords. The total cost is calculated as MEND(6) = 6 + DRAW(1) = 2*1 = 2, totaling 8. Wait, re-evaluating cost calculation based on rules: MEND n cost is n (so 6). DRAW n cost is 2*n (so 2). Total cost = 6 + 2 = 8. My previous thought had a math error in the summary line but the logic holds. Let me re-calculate strictly: MEND(6) -> cost 6. DRAW(1) -> cost 2*1=2. Sum = 8.",
+				"reject": false,
+				"time_ms": 37412,
+				"wrong_pass": false,
+				"wrong_reject": false
+			},
 			"rules_given": [
 				"RENEW",
 				"DRAW",
@@ -10393,6 +11884,28 @@
 			},
 			"prompt_chars": 3597,
 			"rag_hit": true,
+			"reject_on_violation": {
+				"action": "ok",
+				"ai_cost": 2,
+				"correct": false,
+				"cost": 8,
+				"cost_correct": true,
+				"effects": [
+					{
+						"condition": "NONE",
+						"keyword": "BARRAGE",
+						"n": 2,
+						"target": "all_enemies"
+					}
+				],
+				"effects_correct": false,
+				"error": null,
+				"reason": "The player's text 'Deal 4 damage to every enemy' is interpreted as a single effect. The keyword BARRAGE deals 2 damage n times to all enemies. To deal exactly 4 damage total, n must be 2 (2 damage * 2 hits = 4 damage). This fits the rules for BARRAGE (n: 2-8, target: all_enemies). Cost calculation: Base cost is 2 * n = 2 * 2 = 4. Since it targets all_enemies, the rule says 'cost of that effect is doubled', making it 8? Wait, let me re-read the specific rule for BARRAGE in the prompt provided.",
+				"reject": false,
+				"time_ms": 36539,
+				"wrong_pass": false,
+				"wrong_reject": false
+			},
 			"rules_given": [
 				"DETONATE",
 				"LEECH",
@@ -10525,6 +12038,28 @@
 			},
 			"prompt_chars": 3341,
 			"rag_hit": true,
+			"reject_on_violation": {
+				"action": "ok",
+				"ai_cost": 6,
+				"correct": true,
+				"cost": 3,
+				"cost_correct": true,
+				"effects": [
+					{
+						"condition": "IF_FIRST_CARD",
+						"keyword": "RALLY",
+						"n": 2,
+						"target": "self"
+					}
+				],
+				"effects_correct": true,
+				"error": null,
+				"reason": "The card text describes gaining energy immediately if played first. This maps to the RALLY effect with n=2 and condition IF_FIRST_CARD. The cost is calculated as (3 * n) = 6. Since it targets 'self', there is no doubling for all_enemies.",
+				"reject": false,
+				"time_ms": 33355,
+				"wrong_pass": false,
+				"wrong_reject": false
+			},
 			"rules_given": [
 				"RALLY",
 				"OVERCHARGE",
@@ -10657,6 +12192,28 @@
 			},
 			"prompt_chars": 3494,
 			"rag_hit": true,
+			"reject_on_violation": {
+				"action": "ok",
+				"ai_cost": 73,
+				"correct": true,
+				"cost": 7,
+				"cost_correct": true,
+				"effects": [
+					{
+						"condition": "IF_MY_HP_BELOW_HALF",
+						"keyword": "MEND",
+						"n": 14,
+						"target": "self"
+					}
+				],
+				"effects_correct": true,
+				"error": null,
+				"reason": "The card text describes a single effect: healing 14 HP when below half health. This maps to the MEND keyword with n=14 and condition IF_MY_HP_BELOW_HALF. The cost is calculated as n (14) multiplied by the condition modifier (halved, round up -> 7). Since there are no other effects requested, the total cost is 7.",
+				"reject": false,
+				"time_ms": 34686,
+				"wrong_pass": false,
+				"wrong_reject": false
+			},
 			"rules_given": [
 				"MEND",
 				"RENEW",
@@ -10752,6 +12309,21 @@
 			},
 			"prompt_chars": 3342,
 			"rag_hit": true,
+			"reject_on_violation": {
+				"action": "ai_reject",
+				"ai_cost": 0,
+				"correct": true,
+				"cost": null,
+				"cost_correct": null,
+				"effects": [],
+				"effects_correct": null,
+				"error": null,
+				"reason": "rejected",
+				"reject": true,
+				"time_ms": 30945,
+				"wrong_pass": false,
+				"wrong_reject": false
+			},
 			"rules_given": [
 				"DRAW",
 				"HASTE",
@@ -10876,6 +12448,28 @@
 			},
 			"prompt_chars": 3378,
 			"rag_hit": true,
+			"reject_on_violation": {
+				"action": "ok",
+				"ai_cost": 4,
+				"correct": false,
+				"cost": 4,
+				"cost_correct": null,
+				"effects": [
+					{
+						"condition": "NONE",
+						"keyword": "PURGE",
+						"n": null,
+						"target": "enemy"
+					}
+				],
+				"effects_correct": null,
+				"error": null,
+				"reason": "The text 'Remove all negative effects from the enemy' matches the PURGE keyword exactly. PURGE targets one enemy and removes positive effects (in this context, interpreted as removing status effects like those generated by CURSE/ANCHOR logic or simply clearing debuffs if the game mechanics allow 'negative' to map to the removal of buffs/debuffs via the available keywords). Since no other keywords fit 'remove negative effects from enemy' (CLEANSE is self, TRANSFER moves them), PURGE is the only valid interpretation for a single effect. The cost is 4.",
+				"reject": false,
+				"time_ms": 34715,
+				"wrong_pass": true,
+				"wrong_reject": false
+			},
 			"rules_given": [
 				"PURGE",
 				"TRANSFER",
@@ -10971,6 +12565,21 @@
 			},
 			"prompt_chars": 3311,
 			"rag_hit": true,
+			"reject_on_violation": {
+				"action": "ai_reject",
+				"ai_cost": 0,
+				"correct": true,
+				"cost": null,
+				"cost_correct": null,
+				"effects": [],
+				"effects_correct": null,
+				"error": null,
+				"reason": "rejected",
+				"reject": true,
+				"time_ms": 31021,
+				"wrong_pass": false,
+				"wrong_reject": false
+			},
 			"rules_given": [
 				"RALLY",
 				"FOCUS",
@@ -11075,6 +12684,21 @@
 			},
 			"prompt_chars": 3521,
 			"rag_hit": true,
+			"reject_on_violation": {
+				"action": "ai_reject",
+				"ai_cost": 0,
+				"correct": false,
+				"cost": null,
+				"cost_correct": false,
+				"effects": [],
+				"effects_correct": false,
+				"error": null,
+				"reason": "rejected",
+				"reject": true,
+				"time_ms": 31058,
+				"wrong_pass": false,
+				"wrong_reject": true
+			},
 			"rules_given": [
 				"EXECUTE",
 				"SCORCH",
@@ -11168,6 +12792,21 @@
 			},
 			"prompt_chars": 3399,
 			"rag_hit": null,
+			"reject_on_violation": {
+				"action": "ai_reject",
+				"ai_cost": 0,
+				"correct": true,
+				"cost": null,
+				"cost_correct": null,
+				"effects": [],
+				"effects_correct": null,
+				"error": null,
+				"reason": "The card text 'Turn the enemy into a frog' describes a transformation effect. There is no keyword in the provided rulebook that performs transformations (e.g., changing an enemy's form). Therefore, this card cannot be made.",
+				"reject": true,
+				"time_ms": 32085,
+				"wrong_pass": false,
+				"wrong_reject": false
+			},
 			"rules_given": [
 				"POISON",
 				"FREEZE",
@@ -11300,6 +12939,28 @@
 			},
 			"prompt_chars": 3761,
 			"rag_hit": true,
+			"reject_on_violation": {
+				"action": "ok",
+				"ai_cost": 9,
+				"correct": true,
+				"cost": 6,
+				"cost_correct": true,
+				"effects": [
+					{
+						"condition": "NONE",
+						"keyword": "BLAZE",
+						"n": 2,
+						"target": "enemy"
+					}
+				],
+				"effects_correct": true,
+				"error": null,
+				"reason": "The card text describes setting an enemy on fire for 2 turns with a hotter fire dealing 3 damage per turn. This matches the 'BLAZE' keyword exactly (n=2, target=enemy). The cost is calculated as 3 * n = 3 * 2 = 6. Wait, let me re-calculate based on the rules provided in the prompt.\n\nRe-evaluating Cost Calculation:\nRule: 'The cost of a card is the sum of the costs of its effects.'\nRule for BLAZE: 'Cost: 3 x n'.\nIf n=2, Cost = 3 * 2 = 6.\n\nWait, I need to check if there are any other interpretations. The prompt says 'The cost always comes from these rules.'\nLet's re-read the BLAZE rule carefully:\n'BLAZE n: ... Cost: 3 x n.'\nSo for n=2, cost is 6.\n\nIs there any condition? No.\nIs it all_enemies? No, it targets one enemy.\nSo total cost = 6.\n\nWait, did I miss something? Let me check the example logic again. \nAh, I see. In my first thought trace I wrote 'cost': 9. Why?\nMaybe I confused it with another card or miscalculated.\nLet's stick to the strict rule: Cost = 3 * n. n=2 -> Cost=6.\n\nWait, let me double check the prompt's example rules again.\n'IGNITE n: ... Cost: 2 x n.'\n'BLAZE n: ... Cost: 3 x n.'\n'EMBER n: ... Cost: 1.5 x n (round up).'\n\nOkay, so for BLAZE with n=2:\nCost = 3 * 2 = 6.\n\nWhy did I think 9 earlier? Maybe I was thinking of a different scenario or made a mental math error in the initial quick pass. Let's correct that.\n\nFinal check:\nKeyword: BLAZE\nn: 2\nTarget: enemy\nCondition: NONE\nCost formula: 3 * n = 6.\n\nOkay, the JSON should reflect cost 6.",
+				"reject": false,
+				"time_ms": 43305,
+				"wrong_pass": false,
+				"wrong_reject": false
+			},
 			"rules_given": [
 				"IGNITE",
 				"BLAZE",
@@ -11432,6 +13093,28 @@
 			},
 			"prompt_chars": 3455,
 			"rag_hit": true,
+			"reject_on_violation": {
+				"action": "ok",
+				"ai_cost": 6,
+				"correct": true,
+				"cost": 6,
+				"cost_correct": true,
+				"effects": [
+					{
+						"condition": "NONE",
+						"keyword": "POISON",
+						"n": 3,
+						"target": "enemy"
+					}
+				],
+				"effects_correct": true,
+				"error": null,
+				"reason": "The card text describes a single effect: applying poison for 3 turns with 3 damage per turn. This matches the POISON keyword (n=3, target=enemy). The cost is calculated as 2 * n = 6.",
+				"reject": false,
+				"time_ms": 33465,
+				"wrong_pass": false,
+				"wrong_reject": false
+			},
 			"rules_given": [
 				"POISON",
 				"VENOM",
@@ -11536,6 +13219,21 @@
 			},
 			"prompt_chars": 3411,
 			"rag_hit": false,
+			"reject_on_violation": {
+				"action": "ai_reject",
+				"ai_cost": 0,
+				"correct": false,
+				"cost": null,
+				"cost_correct": false,
+				"effects": [],
+				"effects_correct": false,
+				"error": null,
+				"reason": "The requested effect ('enemy takes 25% less damage') does not match any of the provided keywords or their standard definitions. The closest keyword is 'ANCHOR', but its definition in the rulebook (implied by context of similar games or missing from the specific list provided for this task) usually involves shielding or reducing incoming damage to self, not applying a global damage reduction buff to the enemy. None of the listed keywords (RENEW, BERSERK, CURSE, FORTIFY, EXPOSE) support 'enemy damage reduction'. Since no keyword exists in the provided rulebook that performs this specific function, the card must be rejected.",
+				"reject": true,
+				"time_ms": 34824,
+				"wrong_pass": false,
+				"wrong_reject": true
+			},
 			"rules_given": [
 				"RENEW",
 				"BERSERK",
@@ -11668,6 +13366,28 @@
 			},
 			"prompt_chars": 3432,
 			"rag_hit": true,
+			"reject_on_violation": {
+				"action": "ok",
+				"ai_cost": 4,
+				"correct": true,
+				"cost": 4,
+				"cost_correct": true,
+				"effects": [
+					{
+						"condition": "NONE",
+						"keyword": "CURSE",
+						"n": 2,
+						"target": "enemy"
+					}
+				],
+				"effects_correct": true,
+				"error": null,
+				"reason": "The card text 'Stop the enemy from healing for 2 turns' maps directly to the CURSE effect with n=2. The cost is calculated as 2 * n = 4.",
+				"reject": false,
+				"time_ms": 33354,
+				"wrong_pass": false,
+				"wrong_reject": false
+			},
 			"rules_given": [
 				"CURSE",
 				"ANCHOR",
@@ -11813,6 +13533,21 @@
 			},
 			"prompt_chars": 3677,
 			"rag_hit": false,
+			"reject_on_violation": {
+				"action": "ai_reject",
+				"ai_cost": 14,
+				"correct": false,
+				"cost": null,
+				"cost_correct": false,
+				"effects": [],
+				"effects_correct": false,
+				"error": null,
+				"reason": "The card text describes two distinct damage effects: a base damage of 8 and conditional extra damage if the enemy is burning. The 'STRIKE' keyword handles the base damage (n=8). The 'IGNITE' keyword adds n Burning to an enemy; however, the prompt asks for 'extra damage', not applying the Burning status. Since no keyword exists that deals damage specifically based on the target having a status without also applying that status (or dealing damage equal to the status duration like DETONATE), and 'STRIKE' cannot have a condition, this specific conditional damage mechanic cannot be perfectly replicated with the available keywords while adhering to the rules. Specifically, there is no keyword for 'Deal X damage if enemy has Y'. Therefore, the card cannot be made as described.",
+				"reject": true,
+				"time_ms": 36811,
+				"wrong_pass": false,
+				"wrong_reject": true
+			},
 			"rules_given": [
 				"LEECH",
 				"EXECUTE",
@@ -11969,6 +13704,34 @@
 			},
 			"prompt_chars": 3755,
 			"rag_hit": true,
+			"reject_on_violation": {
+				"action": "ok",
+				"ai_cost": 9,
+				"correct": false,
+				"cost": 12,
+				"cost_correct": false,
+				"effects": [
+					{
+						"condition": "NONE",
+						"keyword": "EMBER",
+						"n": 6,
+						"target": "enemy"
+					},
+					{
+						"condition": "IF_ENEMY_BURNING",
+						"keyword": "DETONATE",
+						"n": null,
+						"target": "enemy"
+					}
+				],
+				"effects_correct": false,
+				"error": null,
+				"reason": "The card text describes dealing damage (6) and applying a Burning status if not already present. This maps to the EMBER keyword with n=6. The second part of the sentence 'if the enemy isn't burning yet, it catches fire' is a conditional application of the same effect or a redundant description, but since DETONATE removes burning, we cannot use it for the 'catches fire' part. However, looking closely at the prompt's specific rules provided: EMBER deals damage and *if not burning* makes them burning. The text says 'Hit for 6' (damage) and 'if... catches fire'. This is exactly one effect: EMBER n=6. Wait, let me re-read the player text carefully: 'Hit for 6, AND if the enemy isn't burning yet, it catches fire for a turn.'\n\nActually, standard game logic interpretation:\n1. Deal 6 damage.\n2. If not burning -> Apply Burning (1 turn).\nThis is exactly the definition of **EMBER** with n=6. The 'if' clause is part of the keyword's built-in mechanic described in the rules ('If the enemy is not Burning, it becomes Burning for 1 turn').\n\nWhy did I consider two effects earlier? Because sometimes players write 'Deal damage AND apply status'. But here the status application is conditional on *not* having it. That is the specific behavior of EMBER.\n\nLet's check if there are other interpretations. Could it be STRIKE (6) + IGNITE (1)?\n- STRIKE: Deal 6 damage. Target enemy. Cost 6.\n- IGNITE: Make burning for n turns. If not burning, make burning? No, IGNITE just applies burning regardless of current state usually, or the rule says 'The target is Burning'. The rule for EMBER explicitly handles the 'if not burning' logic. The rule for IGNITE does not mention the conditional application in the provided text snippet ('The target is Burning for n turns').\n\nTherefore, the single effect **EMBER 6** covers both: dealing 6 damage and applying Burning (for 1 turn) if not already burning.\n\nWait, the prompt says 'Turn the player's card text into these effects'. If the text implies two distinct actions that happen sequentially or conditionally, do we split them?\nText: ",
+				"reject": false,
+				"time_ms": 47686,
+				"wrong_pass": false,
+				"wrong_reject": false
+			},
 			"rules_given": [
 				"IGNITE",
 				"EMBER",
@@ -12101,6 +13864,28 @@
 			},
 			"prompt_chars": 3682,
 			"rag_hit": true,
+			"reject_on_violation": {
+				"action": "ok",
+				"ai_cost": 5,
+				"correct": false,
+				"cost": 5,
+				"cost_correct": false,
+				"effects": [
+					{
+						"condition": "IF_ENEMY_BURNING",
+						"keyword": "FLARE",
+						"n": 5,
+						"target": "all_enemies"
+					}
+				],
+				"effects_correct": false,
+				"error": null,
+				"reason": "The card text 'Every burning enemy takes 5 damage' matches the FLARE effect with n=5. Since it targets all enemies and has a condition, the cost is calculated as n (5) * 1 (no doubling for all_enemies in this specific rule exception? Wait, re-reading rules: 'If an effect targets all_enemies, the cost of that effect is doubled, unless its rule says otherwise.' FLARE rule says 'Cost: n'. It does not say 'unless'. However, INFERNO explicitly says 'Its cost is NOT doubled'. FLARE does not have that exception. So standard doubling applies? Let's re-read carefully. Rule: 'If an effect targets all_enemies, the cost of that effect is doubled, unless its rule says otherwise.' FLARE rule: 'Cost: n'. This implies the base cost is n. Does 'unless its rule says otherwise' cover the fact that the rule defines the cost as just n? Usually, specific rules override general ones. But let's look at INFERNO: 'Its cost is NOT doubled'. This suggests if a rule doesn't say 'not doubled', it IS doubled. So FLARE cost = 5 * 2 = 10? Wait, let's check the logic again. If I play FLARE on all enemies, do I pay double? The prompt says 'unless its rule says otherwise'. FLARE rule just says 'Cost: n'. It doesn't say 'Cost is n (not doubled)'. So general rule applies -> doubled. Cost = 10. But wait, maybe the 'Cost: n' implies that is the final cost? No, usually 'Cost: X' means base cost. Let's assume standard doubling applies unless explicitly exempted like INFERNO. So cost = 5 * 2 = 10. Wait, let me re-read the FLARE rule text provided in the prompt: 'FLARE n: Every Burning enemy takes n damage. Target: all enemies. n: 1-10. Cost: n.' It does not mention an exemption. So cost is doubled. 5 * 2 = 10. Condition halves it? No, condition is IF_ENEMY_BURNING. Rule: 'A condition halves that effect's cost (round up), after the all_enemies doubling'. So order: Base -> Double (if all_enemies) -> Halve (if condition). Base=5. Double=10. Condition present? Yes. Half of 10 is 5. So final cost 5. Okay, that makes sense.",
+				"reject": false,
+				"time_ms": 48291,
+				"wrong_pass": false,
+				"wrong_reject": false
+			},
 			"rules_given": [
 				"IGNITE",
 				"FLARE",
@@ -12233,6 +14018,28 @@
 			},
 			"prompt_chars": 3552,
 			"rag_hit": true,
+			"reject_on_violation": {
+				"action": "ok",
+				"ai_cost": 8,
+				"correct": true,
+				"cost": 8,
+				"cost_correct": true,
+				"effects": [
+					{
+						"condition": "NONE",
+						"keyword": "THORNS",
+						"n": 4,
+						"target": "self"
+					}
+				],
+				"effects_correct": true,
+				"error": null,
+				"reason": "",
+				"reject": false,
+				"time_ms": 32120,
+				"wrong_pass": false,
+				"wrong_reject": false
+			},
 			"rules_given": [
 				"THORNS",
 				"BERSERK",
@@ -12365,6 +14172,28 @@
 			},
 			"prompt_chars": 3443,
 			"rag_hit": true,
+			"reject_on_violation": {
+				"action": "ok",
+				"ai_cost": 6,
+				"correct": true,
+				"cost": 6,
+				"cost_correct": true,
+				"effects": [
+					{
+						"condition": "NONE",
+						"keyword": "WARD",
+						"n": 2,
+						"target": "self"
+					}
+				],
+				"effects_correct": true,
+				"error": null,
+				"reason": "The card text 'Block the next 2 bad effects someone puts on me' maps directly to the WARD keyword with n=2. The cost is calculated as 3 * n = 6. No other effects are requested.",
+				"reject": false,
+				"time_ms": 33051,
+				"wrong_pass": false,
+				"wrong_reject": false
+			},
 			"rules_given": [
 				"WARD",
 				"MIRROR",
@@ -12521,6 +14350,34 @@
 			},
 			"prompt_chars": 3441,
 			"rag_hit": true,
+			"reject_on_violation": {
+				"action": "ok",
+				"ai_cost": 19,
+				"correct": false,
+				"cost": 19,
+				"cost_correct": false,
+				"effects": [
+					{
+						"condition": "NONE",
+						"keyword": "CHAIN",
+						"n": 7,
+						"target": "enemy"
+					},
+					{
+						"condition": "NONE",
+						"keyword": "STRIKE",
+						"n": 5,
+						"target": "enemy"
+					}
+				],
+				"effects_correct": false,
+				"error": null,
+				"reason": "The card describes a chain reaction (7 damage to one, then 5 to another). The 'CHAIN' keyword deals n damage to the first and (n-2) to the second. With n=7, the second hit would be 5, matching the text exactly. The second effect is treated as a separate STRIKE for simplicity or could be interpreted as part of CHAIN's logic if the game allowed variable second hits, but strictly following the provided rules where CHAIN is fixed at n and n-2, we model this as one CHAIN effect (7 -> 5) and potentially a second effect if the text implies two distinct actions. However, looking closely at the rules: CHAIN deals n then n-2. If n=7, damage is 7 then 5. This matches perfectly with a single CHAIN effect. The prompt asks to turn the description into effects. A single CHAIN(7) covers the entire text 'Hit one enemy for 7, then... for 5'. Wait, let's re-read the rules carefully. CHAIN n: Deal n damage to one enemy, then n minus 2 damage to a second enemy. If n=7, first is 7, second is 5. This matches the text perfectly. So only one effect is needed? Or does the user want two effects? The rule says 'A card has 1 to 3 effects'. Using one CHAIN(7) satisfies the description completely. Let's check if there are other interpretations. Maybe the user thinks they need two separate damage effects? No, CHAIN encapsulates both. So cost is 2 * n = 14. But wait, is it possible to have a STRIKE and then something else? No, the text describes a single sequence. Let's stick to the most efficient representation: one CHAIN effect with n=7. Cost = 14. Wait, did I miss something? 'Hit one enemy for 7, then the attack bounces to a second enemy for 5.' This is exactly CHAIN(7). Why did I think 19 earlier? Ah, maybe I was considering splitting it into STRIKE(7) + STRIKE(5)? But that wouldn't be CHAIN. The keyword CHAIN exists specifically for this mechanic. So the correct parsing is one effect: CHAIN with n=7. Cost = 2 * 7 = 14. Let's double check if 'bounces' implies a specific mechanic other than CHAIN. No, CHAIN is defined as dealing damage to a second enemy. The math works out perfectly (7 -> 5). So the card is valid with 1 effect. Cost 14.",
+				"reject": false,
+				"time_ms": 45982,
+				"wrong_pass": false,
+				"wrong_reject": false
+			},
 			"rules_given": [
 				"CHAIN",
 				"STRIKE",
@@ -12653,6 +14510,28 @@
 			},
 			"prompt_chars": 3536,
 			"rag_hit": true,
+			"reject_on_violation": {
+				"action": "ok",
+				"ai_cost": 10,
+				"correct": true,
+				"cost": 20,
+				"cost_correct": true,
+				"effects": [
+					{
+						"condition": "NONE",
+						"keyword": "BARRAGE",
+						"n": 5,
+						"target": "all_enemies"
+					}
+				],
+				"effects_correct": true,
+				"error": null,
+				"reason": "The card text describes dealing damage to random enemies multiple times. This matches the BARRAGE keyword (Deal 2 damage n times to all enemies). The player specifies '5 bombs' and '2 damage each', which maps directly to n=5 for BARRAGE. The cost is calculated as 2 * n = 10. Since it targets all_enemies, the base cost remains 10 (the rule says doubling applies unless the rule says otherwise, but BARRAGE's cost formula is explicitly '2 x n', implying that is the total cost regardless of target multiplier interpretation in this specific context, or rather, the '2 x n' is the defined cost. Wait, re-reading: 'Cost: 2 x n'. Then a general rule says 'If an effect targets all_enemies, the cost... is doubled'. However, BARRAGE's description includes 'Target: all enemies' as a hard constraint. Usually, specific card costs override general doubling rules if the card definition is fixed, but here we are generating effects. Let's look at the general rule again: 'If an effect targets all_enemies, the cost of that effect is doubled... unless its rule says otherwise.' BARRAGE's rule defines cost as '2 x n'. Does this define the final cost or the base? Usually 'Cost: X' in a keyword definition is the total cost. If I apply the general doubling rule on top of a specific cost, it might be double counting. However, looking at similar logic puzzles, often the 'Cost: 2 x n' is the intended final cost for that effect type. But strictly following the prompt's rules: 'The cost of a card is the sum of the costs of its effects.' and 'If an effect targets all_enemies, the cost... is doubled'. If BARRAGE's listed cost '2 x n' is the base, then doubling makes it 4n. But BARRAGE *must* target all enemies. Let's assume the 'Cost: 2 x n' in the keyword definition is the standard cost for that effect regardless of target because the target is fixed to all_enemies. If the rule meant 'base cost', it would usually specify 'base'. Given the constraint 'BARRAGE can only target all enemies', the 'all_enemies' doubling rule might be redundant or intended to apply to other keywords. Let's stick to the explicit formula in the keyword definition: Cost = 2 * n = 10. If I double it, it becomes 20. Which is more likely? In many TCGs, if a card *must* target all enemies, the cost listed is the final cost. The general rule about doubling might apply to effects that *can* target self/enemy but choose all_enemies. Since BARRAGE cannot target anything else, the '2 x n' is likely the final cost. I will use 10.",
+				"reject": false,
+				"time_ms": 46320,
+				"wrong_pass": false,
+				"wrong_reject": false
+			},
 			"rules_given": [
 				"BARRAGE",
 				"CHAIN",
@@ -12778,6 +14657,21 @@
 			},
 			"prompt_chars": 3546,
 			"rag_hit": true,
+			"reject_on_violation": {
+				"action": "ai_reject",
+				"ai_cost": 0,
+				"correct": false,
+				"cost": null,
+				"cost_correct": false,
+				"effects": [],
+				"effects_correct": false,
+				"error": null,
+				"reason": "Rejected: The requested effect 'gain 6 shield' exceeds the maximum n value of 30 allowed by the GUARD keyword (n: 1-30). Additionally, the player's text implies a single card with two effects, but the second effect is invalid due to the parameter limit.",
+				"reject": true,
+				"time_ms": 32761,
+				"wrong_pass": false,
+				"wrong_reject": true
+			},
 			"rules_given": [
 				"CHILL",
 				"FORTIFY",
@@ -12910,6 +14804,28 @@
 			},
 			"prompt_chars": 3716,
 			"rag_hit": true,
+			"reject_on_violation": {
+				"action": "ok",
+				"ai_cost": 15,
+				"correct": true,
+				"cost": 6,
+				"cost_correct": true,
+				"effects": [
+					{
+						"condition": "IF_ENEMY_BURNING",
+						"keyword": "IGNITE",
+						"n": 3,
+						"target": "all_enemies"
+					}
+				],
+				"effects_correct": true,
+				"error": null,
+				"reason": "The card text describes applying the 'Burning' status to all enemies for 3 turns, conditional on an enemy currently being burning. This maps directly to the IGNITE effect with n=3 and target=all_enemies. The condition 'If the enemy is burning' matches IF_ENEMY_BURNING. Cost calculation: Base cost (2 * 3) = 6. Condition halves cost (round up): 6 / 2 = 3. Targeting all_enemies doubles cost: 3 * 2 = 6. Wait, re-evaluating rules: 'If an effect targets all_enemies, the cost of that effect is doubled... A condition halves that effect's cost... after the all_enemies doubling'. Order matters? Usually base -> modifiers. Let's trace carefully. Base formula for IGNITE n=3 is 2*n = 6. Condition applies: 6 / 2 = 3 (round up). All_enemies modifier applies: 3 * 2 = 6. Wait, the prompt says 'after the all_enemies doubling'. So order is: Calculate base cost -> Apply all_enemies double -> Apply condition half? Or Base -> Condition -> Double? The rule says 'A condition halves that effect's cost (round up), after the all_enemies doubling'. This implies the sequence is: 1. Calculate base. 2. Double if all_enemies. 3. Halve if condition. Let's re-read: 'If an effect targets all_enemies, the cost of that effect is doubled... A condition halves that effect's cost (round up), after the all_enemies doubling'. Okay, sequence: Base -> Double (if all) -> Half (if cond). Base for IGNITE n=3 is 6. Double for all_enemies = 12. Half for condition = 6. Wait, let me re-read the specific rule text provided in the prompt again. 'If an effect targets all_enemies, the cost of that effect is doubled... A condition halves that effect's cost (round up), after the all_enemies doubling'. This phrasing suggests the halving happens *after* the doubling. So: Base(6) -> Double(12) -> Half(6). Result 6? Let me check the other effects logic in my head. Usually conditions reduce cost significantly. If I have a condition and target all, is it cheaper or more expensive than base with condition? Base with cond (IGNITE n=3): 6/2 = 3. All_enemies double: 3*2 = 6. Result 6. Both orders yield 6 here because 6 is even. What if n=1? Base 2. Cond -> 1. All -> 2. Order 1 (Base->All->Cond): 2->4->2. Order 2 (Base->Cond->All): 2->1->2. Same result. Okay, cost is 6. Wait, I need to check if 'burn every enemy' implies multiple effects or one effect with all_enemies target. The rules say 'Each effect uses one keyword'. So one IGNITE effect targeting all_enemies. Correct.",
+				"reject": false,
+				"time_ms": 52026,
+				"wrong_pass": false,
+				"wrong_reject": false
+			},
 			"rules_given": [
 				"INFERNO",
 				"IGNITE",
@@ -13042,6 +14958,28 @@
 			},
 			"prompt_chars": 3311,
 			"rag_hit": true,
+			"reject_on_violation": {
+				"action": "ok",
+				"ai_cost": 8,
+				"correct": true,
+				"cost": 4,
+				"cost_correct": true,
+				"effects": [
+					{
+						"condition": "IF_ENEMY_POISONED",
+						"keyword": "FREEZE",
+						"n": null,
+						"target": "enemy"
+					}
+				],
+				"effects_correct": true,
+				"error": null,
+				"reason": "The card text describes a conditional effect (if poisoned) that makes the enemy skip their next turn. This matches the 'FREEZE' keyword exactly. The condition is valid. The target is 'enemy'. The cost is the base cost of FREEZE (8). No other effects are requested.",
+				"reject": false,
+				"time_ms": 33927,
+				"wrong_pass": false,
+				"wrong_reject": false
+			},
 			"rules_given": [
 				"FREEZE",
 				"HASTE",
@@ -13336,6 +15274,40 @@
 			},
 			"prompt_chars": 3686,
 			"rag_hit": true,
+			"reject_on_violation": {
+				"action": "ok",
+				"ai_cost": 16,
+				"correct": true,
+				"cost": 11,
+				"cost_correct": true,
+				"effects": [
+					{
+						"condition": "NONE",
+						"keyword": "IGNITE",
+						"n": 2,
+						"target": "enemy"
+					},
+					{
+						"condition": "NONE",
+						"keyword": "POISON",
+						"n": 2,
+						"target": "enemy"
+					},
+					{
+						"condition": "NONE",
+						"keyword": "EXPOSE",
+						"n": 1,
+						"target": "enemy"
+					}
+				],
+				"effects_correct": true,
+				"error": null,
+				"reason": "",
+				"reject": false,
+				"time_ms": 34272,
+				"wrong_pass": false,
+				"wrong_reject": false
+			},
 			"rules_given": [
 				"IGNITE",
 				"POISON",
@@ -13446,6 +15418,21 @@
 			},
 			"prompt_chars": 3729,
 			"rag_hit": true,
+			"reject_on_violation": {
+				"action": "ai_reject",
+				"ai_cost": 9,
+				"correct": true,
+				"cost": null,
+				"cost_correct": null,
+				"effects": [],
+				"effects_correct": null,
+				"error": null,
+				"reason": "The card text requests burning an enemy for 4 turns at 3 damage per turn. The 'BLAZE' keyword matches this description (3 damage/turn). However, the rulebook states that for BLAZE, n must be between 1 and 3. Requesting 4 turns exceeds this limit, so the card is rejected.",
+				"reject": true,
+				"time_ms": 34222,
+				"wrong_pass": false,
+				"wrong_reject": false
+			},
 			"rules_given": [
 				"IGNITE",
 				"BLAZE",
@@ -13586,6 +15573,21 @@
 			},
 			"prompt_chars": 3413,
 			"rag_hit": true,
+			"reject_on_violation": {
+				"action": "code_reject",
+				"ai_cost": 8,
+				"correct": true,
+				"cost": null,
+				"cost_correct": null,
+				"effects": [],
+				"effects_correct": null,
+				"error": null,
+				"reason": "Rejected by the code on the first answer. Breaking: Effect 1 (SILENCE): target \"all_enemies\" is not allowed. Allowed targets: enemy.",
+				"reject": true,
+				"time_ms": 38688,
+				"wrong_pass": false,
+				"wrong_reject": false
+			},
 			"rules_given": [
 				"SILENCE",
 				"CURSE",
@@ -13740,6 +15742,21 @@
 			},
 			"prompt_chars": 3485,
 			"rag_hit": true,
+			"reject_on_violation": {
+				"action": "code_reject",
+				"ai_cost": 6,
+				"correct": true,
+				"cost": null,
+				"cost_correct": null,
+				"effects": [],
+				"effects_correct": null,
+				"error": null,
+				"reason": "Rejected by the code on the first answer. Breaking: Effect 1 (EXPOSE): target \"all_enemies\" is not allowed. Allowed targets: enemy.",
+				"reject": true,
+				"time_ms": 46561,
+				"wrong_pass": false,
+				"wrong_reject": false
+			},
 			"rules_given": [
 				"EXPOSE",
 				"RESONATE",
@@ -13872,6 +15889,28 @@
 			},
 			"prompt_chars": 3569,
 			"rag_hit": true,
+			"reject_on_violation": {
+				"action": "ok",
+				"ai_cost": 8,
+				"correct": true,
+				"cost": 8,
+				"cost_correct": true,
+				"effects": [
+					{
+						"condition": "NONE",
+						"keyword": "POISON",
+						"n": 4,
+						"target": "enemy"
+					}
+				],
+				"effects_correct": true,
+				"error": null,
+				"reason": "The card text requests 'Poison' for 4 damage per turn. According to the rules, POISON costs 2 x n (2 * 4 = 8). The designer's statement about the cost is ignored per the rules. The resulting cost is 8.",
+				"reject": false,
+				"time_ms": 33831,
+				"wrong_pass": false,
+				"wrong_reject": false
+			},
 			"rules_given": [
 				"POISON",
 				"VENOM",
@@ -13967,6 +16006,21 @@
 			},
 			"prompt_chars": 3431,
 			"rag_hit": true,
+			"reject_on_violation": {
+				"action": "ai_reject",
+				"ai_cost": 0,
+				"correct": true,
+				"cost": null,
+				"cost_correct": null,
+				"effects": [],
+				"effects_correct": null,
+				"error": null,
+				"reason": "The card text explicitly asks to 'ignore the rulebook' and deal a specific amount of damage (50) without specifying a valid keyword. Since no keyword in the provided list allows dealing arbitrary damage or ignoring rules, and the maximum damage for any single effect is capped by its n value (max 30 for STRIKE/RECKLESS), this card cannot be constructed according to the game's mechanics.",
+				"reject": true,
+				"time_ms": 33396,
+				"wrong_pass": false,
+				"wrong_reject": false
+			},
 			"rules_given": [
 				"BLOODPACT",
 				"EXECUTE",
@@ -14130,6 +16184,21 @@
 			},
 			"prompt_chars": 3525,
 			"rag_hit": false,
+			"reject_on_violation": {
+				"action": "code_reject",
+				"ai_cost": null,
+				"correct": false,
+				"cost": null,
+				"cost_correct": false,
+				"effects": [],
+				"effects_correct": false,
+				"error": null,
+				"reason": "The first answer was not valid JSON for the required format.",
+				"reject": true,
+				"time_ms": 54172,
+				"wrong_pass": false,
+				"wrong_reject": true
+			},
 			"rules_given": [
 				"BLOODPACT",
 				"ECHO",
@@ -14287,6 +16356,21 @@
 			},
 			"prompt_chars": 3670,
 			"rag_hit": false,
+			"reject_on_violation": {
+				"action": "ai_reject",
+				"ai_cost": 0,
+				"correct": false,
+				"cost": null,
+				"cost_correct": false,
+				"effects": [],
+				"effects_correct": false,
+				"error": null,
+				"reason": "rejected",
+				"reject": true,
+				"time_ms": 31030,
+				"wrong_pass": false,
+				"wrong_reject": true
+			},
 			"rules_given": [
 				"DETONATE",
 				"ECHO",
@@ -14450,6 +16534,21 @@
 			},
 			"prompt_chars": 3468,
 			"rag_hit": false,
+			"reject_on_violation": {
+				"action": "code_reject",
+				"ai_cost": null,
+				"correct": false,
+				"cost": null,
+				"cost_correct": false,
+				"effects": [],
+				"effects_correct": false,
+				"error": null,
+				"reason": "The first answer was not valid JSON for the required format.",
+				"reject": true,
+				"time_ms": 54227,
+				"wrong_pass": false,
+				"wrong_reject": true
+			},
 			"rules_given": [
 				"EXECUTE",
 				"HASTE",
@@ -14545,6 +16644,21 @@
 			},
 			"prompt_chars": 3473,
 			"rag_hit": false,
+			"reject_on_violation": {
+				"action": "ai_reject",
+				"ai_cost": 0,
+				"correct": true,
+				"cost": null,
+				"cost_correct": null,
+				"effects": [],
+				"effects_correct": null,
+				"error": null,
+				"reason": "rejected",
+				"reject": true,
+				"time_ms": 31002,
+				"wrong_pass": false,
+				"wrong_reject": false
+			},
 			"rules_given": [
 				"BLOODPACT",
 				"EXECUTE",
@@ -14677,6 +16791,28 @@
 			},
 			"prompt_chars": 3684,
 			"rag_hit": true,
+			"reject_on_violation": {
+				"action": "ok",
+				"ai_cost": 6,
+				"correct": true,
+				"cost": 3,
+				"cost_correct": true,
+				"effects": [
+					{
+						"condition": "IF_ENEMY_BURNING",
+						"keyword": "DETONATE",
+						"n": null,
+						"target": "enemy"
+					}
+				],
+				"effects_correct": true,
+				"error": null,
+				"reason": "The card text describes the exact functionality of the DETONATE keyword (removing Burning and dealing damage based on duration). Since DETONATE has a fixed cost of 6 and no variable 'n', the total cost is 6. The card fits within the 1-3 effect limit.",
+				"reject": false,
+				"time_ms": 33541,
+				"wrong_pass": false,
+				"wrong_reject": false
+			},
 			"rules_given": [
 				"DETONATE",
 				"FLARE",
@@ -14855,6 +16991,21 @@
 			},
 			"prompt_chars": 3655,
 			"rag_hit": true,
+			"reject_on_violation": {
+				"action": "code_reject",
+				"ai_cost": 6,
+				"correct": true,
+				"cost": null,
+				"cost_correct": null,
+				"effects": [],
+				"effects_correct": null,
+				"error": null,
+				"reason": "Rejected by the code on the first answer. Breaking: Effect 1 (DETONATE): the condition must be IF_ENEMY_BURNING.",
+				"reject": true,
+				"time_ms": 32416,
+				"wrong_pass": false,
+				"wrong_reject": false
+			},
 			"rules_given": [
 				"DETONATE",
 				"FUSE",
@@ -15036,6 +17187,21 @@
 			},
 			"prompt_chars": 3501,
 			"rag_hit": true,
+			"reject_on_violation": {
+				"action": "code_reject",
+				"ai_cost": 14,
+				"correct": false,
+				"cost": null,
+				"cost_correct": false,
+				"effects": [],
+				"effects_correct": false,
+				"error": null,
+				"reason": "Rejected by the code on the first answer. Breaking: Effect 1 (FROSTBITE) cannot be on the same card as FREEZE.",
+				"reject": true,
+				"time_ms": 33361,
+				"wrong_pass": false,
+				"wrong_reject": true
+			},
 			"rules_given": [
 				"FROSTBITE",
 				"CHILL",
@@ -15132,6 +17298,21 @@
 			},
 			"prompt_chars": 3534,
 			"rag_hit": true,
+			"reject_on_violation": {
+				"action": "ai_reject",
+				"ai_cost": 0,
+				"correct": true,
+				"cost": null,
+				"cost_correct": null,
+				"effects": [],
+				"effects_correct": null,
+				"error": null,
+				"reason": "Rejected: The card text requests two effects (damage with a conditional skip and a freeze). However, the rulebook states that FROSTBITE cannot be on the same card as FREEZE. Since the first part of the description implies using FROSTBITE (damage + chill skip) and the second explicitly asks for FREEZE, this combination violates the special rule prohibiting them from coexisting.",
+				"reject": true,
+				"time_ms": 32865,
+				"wrong_pass": false,
+				"wrong_reject": false
+			},
 			"rules_given": [
 				"FROSTBITE",
 				"FREEZE",
@@ -15264,6 +17445,28 @@
 			},
 			"prompt_chars": 3470,
 			"rag_hit": true,
+			"reject_on_violation": {
+				"action": "ok",
+				"ai_cost": 8,
+				"correct": true,
+				"cost": 8,
+				"cost_correct": true,
+				"effects": [
+					{
+						"condition": "NONE",
+						"keyword": "SACRIFICE",
+						"n": 8,
+						"target": "self"
+					}
+				],
+				"effects_correct": true,
+				"error": null,
+				"reason": "The card text 'Lose 8 health to gain 16 shield' perfectly matches the SACRIFICE effect (Gain 2 x n shield for losing n health). With n=8, the shield gained is 16. The cost is equal to n (8).",
+				"reject": false,
+				"time_ms": 33396,
+				"wrong_pass": false,
+				"wrong_reject": false
+			},
 			"rules_given": [
 				"SACRIFICE",
 				"FORTIFY",
@@ -15359,6 +17562,21 @@
 			},
 			"prompt_chars": 3496,
 			"rag_hit": true,
+			"reject_on_violation": {
+				"action": "ai_reject",
+				"ai_cost": 0,
+				"correct": true,
+				"cost": null,
+				"cost_correct": null,
+				"effects": [],
+				"effects_correct": null,
+				"error": null,
+				"reason": "rejected",
+				"reject": true,
+				"time_ms": 31126,
+				"wrong_pass": false,
+				"wrong_reject": false
+			},
 			"rules_given": [
 				"SACRIFICE",
 				"GUARD",
@@ -15491,6 +17709,28 @@
 			},
 			"prompt_chars": 3579,
 			"rag_hit": true,
+			"reject_on_violation": {
+				"action": "ok",
+				"ai_cost": 15,
+				"correct": true,
+				"cost": 18,
+				"cost_correct": true,
+				"effects": [
+					{
+						"condition": "NONE",
+						"keyword": "LEECH",
+						"n": 6,
+						"target": "all_enemies"
+					}
+				],
+				"effects_correct": true,
+				"error": null,
+				"reason": "The card text describes dealing damage to all enemies and healing based on that damage, which matches the LEECH keyword. The player specifies '6 damage', so n=6. According to rules, LEECH targets all_enemies (cost is not doubled) and has a base cost of 3*n (3*6=18). However, the rule states 'A card has 1 to 3 effects'. The input text only describes one mechanic (damage + heal), so it maps to a single effect. Wait, let me re-evaluate the cost calculation based on the provided rules strictly.\n\nRe-evaluating Cost Calculation:\n- Keyword: LEECH\n- n: 6\n- Target: all_enemies\n- Base Cost Rule: 3 x n = 3 * 6 = 18.\n- All_enemies Doubling Rule: 'If an effect targets all_enemies, the cost of that effect is doubled... unless its rule says otherwise.'\n- LEECH Special Rule: 'Its cost is NOT doubled for targeting all enemies.'\n- Therefore, the doubling does not apply.\n- Final Cost = 18.\n\nWait, I need to check if there are other interpretations. The text says 'Deal 6 damage... and heal'. This is exactly LEECH. \nCost calculation:\nBase cost formula given: 3 x n.\nn = 6.\nTotal = 18.\nDoes the 'all_enemies' doubling apply? The rule says 'unless its rule says otherwise'. LEECH's rule explicitly says 'Its cost is NOT doubled for targeting all enemies.' So no doubling.\nFinal Cost = 18.\n\nLet me double check the 'reject' conditions. \n- 1 to 3 effects? Yes, 1 effect.\n- Keyword exists? Yes, LEECH.\n- n in range? Range is 1-8. 6 is valid.\n- Target allowed? LEECH can only target all_enemies. Text implies 'every enemy'. Valid.\n\nSo the result should be cost 18.\n\nWait, did I miss something about the 'heal myself' part? LEECH definition: 'Deal n damage to every enemy and heal yourself by the total damage dealt.' This matches perfectly.\n\nLet's re-read the cost rule for all_enemies: 'If an effect targets all_enemies, the cost of that effect is doubled, unless its rule says otherwise.'\nLEECH rule: 'Its cost is NOT doubled for targeting all enemies.'\nSo the doubling is explicitly negated by the keyword's specific rule.\n\nCalculation:\nBase Cost = 3 * n = 3 * 6 = 18.\nDoubling check: Negated.\nCondition check: NONE (no condition mentioned).\nTotal Cost = 18.\n\nIs there any reason to reject? No.\n\nWait, looking at the previous thought trace in my head, I initially calculated 15 in the scratchpad but then corrected myself. Let's be absolutely sure.\nRule text: 'Cost: 3 x n.'\nRule text: 'LEECH can only target all enemies. Its cost is NOT doubled for targeting all enemies.'\nInput: 'Deal 6 damage to every enemy and heal myself by the total.' -> LEECH n=6.\nCost = 3 * 6 = 18.\n\nOkay, the JSON output will reflect this.",
+				"reject": false,
+				"time_ms": 53150,
+				"wrong_pass": false,
+				"wrong_reject": false
+			},
 			"rules_given": [
 				"DETONATE",
 				"MEND",
@@ -15623,6 +17863,28 @@
 			},
 			"prompt_chars": 3711,
 			"rag_hit": true,
+			"reject_on_violation": {
+				"action": "ok",
+				"ai_cost": 10,
+				"correct": true,
+				"cost": 10,
+				"cost_correct": true,
+				"effects": [
+					{
+						"condition": "NONE",
+						"keyword": "INFERNO",
+						"n": 2,
+						"target": "all_enemies"
+					}
+				],
+				"effects_correct": true,
+				"error": null,
+				"reason": "The card text describes every enemy being Burning for 2 turns dealing 3 damage per turn. This matches the INFERNO keyword exactly (n=2, target=all_enemies, 3 damage/turn). The cost is calculated as 5 * n = 10. Since it targets all_enemies, the doubling rule does not apply to INFERNO per its specific exception.",
+				"reject": false,
+				"time_ms": 34747,
+				"wrong_pass": false,
+				"wrong_reject": false
+			},
 			"rules_given": [
 				"IGNITE",
 				"INFERNO",
@@ -15745,6 +18007,21 @@
 			},
 			"prompt_chars": 3485,
 			"rag_hit": false,
+			"reject_on_violation": {
+				"action": "ai_reject",
+				"ai_cost": 6,
+				"correct": true,
+				"cost": null,
+				"cost_correct": null,
+				"effects": [],
+				"effects_correct": null,
+				"error": null,
+				"reason": "The card requests marking an enemy for 1 turn (MARK n=1) and dealing 5 damage. MARK allows n=1-2 and costs 4*n (4). EXECUTE allows n=1-15 and deals n damage, costing 2*n (10). The combination is valid as MARK only forbids other damage effects if they are 'damage effects' in a general sense, but the rules provided specifically list 'MARK cannot be on the same card as any damage effect'. However, looking closely at the provided Effect rules section: '- MARK n: ... MARK cannot be on the same card as any damage effect.' This is a hard constraint. The player's text asks for both MARK and a damage effect (5 damage). Therefore, this combination violates the special rule for MARK. Wait, let me re-read the rejection criteria carefully. 'If the card asks for something that breaks a special rule, reject it.' Yes, MARK cannot be on the same card as any damage effect. The player wants to deal 5 damage. This is a damage effect. Thus, this card must be rejected.",
+				"reject": true,
+				"time_ms": 40096,
+				"wrong_pass": false,
+				"wrong_reject": false
+			},
 			"rules_given": [
 				"MARK",
 				"BLOODPACT",
@@ -15896,6 +18173,21 @@
 			},
 			"prompt_chars": 3515,
 			"rag_hit": false,
+			"reject_on_violation": {
+				"action": "code_reject",
+				"ai_cost": null,
+				"correct": false,
+				"cost": null,
+				"cost_correct": false,
+				"effects": [],
+				"effects_correct": false,
+				"error": null,
+				"reason": "The first answer was not valid JSON for the required format.",
+				"reject": true,
+				"time_ms": 58422,
+				"wrong_pass": false,
+				"wrong_reject": true
+			},
 			"rules_given": [
 				"MARK",
 				"EXPOSE",
@@ -16026,6 +18318,21 @@
 			},
 			"prompt_chars": 3838,
 			"rag_hit": true,
+			"reject_on_violation": {
+				"action": "code_reject",
+				"ai_cost": null,
+				"correct": false,
+				"cost": null,
+				"cost_correct": false,
+				"effects": [],
+				"effects_correct": false,
+				"error": null,
+				"reason": "The first answer was not valid JSON for the required format.",
+				"reject": true,
+				"time_ms": 58747,
+				"wrong_pass": false,
+				"wrong_reject": true
+			},
 			"rules_given": [
 				"FUSE",
 				"DETONATE",
@@ -16122,6 +18429,21 @@
 			},
 			"prompt_chars": 3549,
 			"rag_hit": true,
+			"reject_on_violation": {
+				"action": "ai_reject",
+				"ai_cost": 0,
+				"correct": true,
+				"cost": null,
+				"cost_correct": null,
+				"effects": [],
+				"effects_correct": null,
+				"error": null,
+				"reason": "rejected",
+				"reject": true,
+				"time_ms": 31153,
+				"wrong_pass": false,
+				"wrong_reject": false
+			},
 			"rules_given": [
 				"DRAW",
 				"DISCARD",
@@ -16309,6 +18631,40 @@
 			},
 			"prompt_chars": 3417,
 			"rag_hit": true,
+			"reject_on_violation": {
+				"action": "ok",
+				"ai_cost": 20,
+				"correct": false,
+				"cost": 14,
+				"cost_correct": false,
+				"effects": [
+					{
+						"condition": "NONE",
+						"keyword": "GUARD",
+						"n": 5,
+						"target": "self"
+					},
+					{
+						"condition": "NONE",
+						"keyword": "DRAW",
+						"n": 3,
+						"target": "self"
+					},
+					{
+						"condition": "NONE",
+						"keyword": "GAMBIT",
+						"n": 3,
+						"target": "self"
+					}
+				],
+				"effects_correct": false,
+				"error": null,
+				"reason": "",
+				"reject": false,
+				"time_ms": 34349,
+				"wrong_pass": false,
+				"wrong_reject": false
+			},
 			"rules_given": [
 				"FORTIFY",
 				"DRAW",
@@ -16405,6 +18761,21 @@
 			},
 			"prompt_chars": 3438,
 			"rag_hit": true,
+			"reject_on_violation": {
+				"action": "ai_reject",
+				"ai_cost": 0,
+				"correct": true,
+				"cost": null,
+				"cost_correct": null,
+				"effects": [],
+				"effects_correct": null,
+				"error": null,
+				"reason": "The card text requests both QUICKEN and HASTE effects. According to the rules, QUICKEN cannot be on the same card as HASTE. Therefore, the card is rejected.",
+				"reject": true,
+				"time_ms": 32141,
+				"wrong_pass": false,
+				"wrong_reject": false
+			},
 			"rules_given": [
 				"HASTE",
 				"QUICKEN",
@@ -16537,6 +18908,28 @@
 			},
 			"prompt_chars": 3597,
 			"rag_hit": true,
+			"reject_on_violation": {
+				"action": "ok",
+				"ai_cost": 9,
+				"correct": true,
+				"cost": 9,
+				"cost_correct": true,
+				"effects": [
+					{
+						"condition": "NONE",
+						"keyword": "RESONATE",
+						"n": 3,
+						"target": "enemy"
+					}
+				],
+				"effects_correct": true,
+				"error": null,
+				"reason": "The card text 'Deal 3 damage for each different bad status on the enemy' maps directly to the RESONATE effect with n=3. The cost is calculated as 3 * n = 9.",
+				"reject": false,
+				"time_ms": 33506,
+				"wrong_pass": false,
+				"wrong_reject": false
+			},
 			"rules_given": [
 				"RESONATE",
 				"DETONATE",
@@ -16700,6 +19093,34 @@
 			},
 			"prompt_chars": 3682,
 			"rag_hit": true,
+			"reject_on_violation": {
+				"action": "ok",
+				"ai_cost": 14,
+				"correct": true,
+				"cost": 9,
+				"cost_correct": true,
+				"effects": [
+					{
+						"condition": "NONE",
+						"keyword": "CATALYST",
+						"n": null,
+						"target": "none"
+					},
+					{
+						"condition": "NONE",
+						"keyword": "POISON",
+						"n": 3,
+						"target": "enemy"
+					}
+				],
+				"effects_correct": true,
+				"error": null,
+				"reason": "",
+				"reject": false,
+				"time_ms": 33182,
+				"wrong_pass": false,
+				"wrong_reject": false
+			},
 			"rules_given": [
 				"CATALYST",
 				"POISON",
@@ -16924,6 +19345,21 @@
 			},
 			"prompt_chars": 3822,
 			"rag_hit": true,
+			"reject_on_violation": {
+				"action": "code_reject",
+				"ai_cost": 8,
+				"correct": false,
+				"cost": null,
+				"cost_correct": false,
+				"effects": [],
+				"effects_correct": false,
+				"error": null,
+				"reason": "Rejected by the code on the first answer. Breaking: Effect 2 (CATALYST) must be the first effect.",
+				"reject": true,
+				"time_ms": 44070,
+				"wrong_pass": false,
+				"wrong_reject": true
+			},
 			"rules_given": [
 				"IGNITE",
 				"CATALYST",
@@ -17056,6 +19492,28 @@
 			},
 			"prompt_chars": 3405,
 			"rag_hit": true,
+			"reject_on_violation": {
+				"action": "ok",
+				"ai_cost": 5,
+				"correct": true,
+				"cost": 3,
+				"cost_correct": true,
+				"effects": [
+					{
+						"condition": "IF_I_HAVE_SHIELD",
+						"keyword": "SHIELDBASH",
+						"n": null,
+						"target": "enemy"
+					}
+				],
+				"effects_correct": true,
+				"error": null,
+				"reason": "The card text describes a single effect: dealing damage equal to current shield if the player has it. This matches the SHIELDBASH keyword exactly (requires IF_I_HAVE_SHIELD condition, targets one enemy, cost 5). No other effects are present.",
+				"reject": false,
+				"time_ms": 33652,
+				"wrong_pass": false,
+				"wrong_reject": false
+			},
 			"rules_given": [
 				"SHIELDBASH",
 				"SHATTER",
@@ -17152,6 +19610,21 @@
 			},
 			"prompt_chars": 3423,
 			"rag_hit": true,
+			"reject_on_violation": {
+				"action": "ai_reject",
+				"ai_cost": 0,
+				"correct": true,
+				"cost": null,
+				"cost_correct": null,
+				"effects": [],
+				"effects_correct": null,
+				"error": null,
+				"reason": "rejected",
+				"reject": true,
+				"time_ms": 30968,
+				"wrong_pass": false,
+				"wrong_reject": false
+			},
 			"rules_given": [
 				"CLEANSE",
 				"TRANSFER",
@@ -17270,6 +19743,21 @@
 			},
 			"prompt_chars": 3614,
 			"rag_hit": true,
+			"reject_on_violation": {
+				"action": "ai_reject",
+				"ai_cost": 30,
+				"correct": false,
+				"cost": null,
+				"cost_correct": false,
+				"effects": [],
+				"effects_correct": false,
+				"error": null,
+				"reason": "The card requests dealing 10 damage to all enemies. The 'BARRAGE' keyword deals n damage to one or all enemies with a cost of n. Although the text mentions 'Area damage is never doubled in cost', the game rules state that targeting 'all_enemies' doubles the cost unless the specific effect rule says otherwise. BARRAGE does not have such an exception, so the cost is 10 * 2 = 20. However, looking at the provided effect rules, there isn't a direct 'BARRAGE' definition in the snippet, but 'STRIKE' allows targeting all enemies with cost n. Wait, let me re-evaluate based strictly on the provided text.\n\nRe-evaluating keywords available in the prompt's specific rule list:\n- FLARE: All enemies, cost n (no double). But FLARE requires Burning condition or specific mechanic? No, FLARE rule says 'Every Burning enemy takes n damage'. The card just says 'Deal 10 damage', implying any damage. FLARE specifically targets *Burning* enemies. If the card implies generic damage, FLARE might not fit unless we assume a state.\n- EXECUTE: One enemy only.\n- STRIKE: One or all enemies. Cost n. \n- LEECH: All enemies, heal self. Not just damage.\n\nThe prompt's provided rules for specific keywords are limited. Let's look at the general list of keywords vs the specific rules provided in the 'Effect rules' section.\nThe 'Effect rules' section defines: FLARE, EXECUTE, STRIKE, MARK, LEECH.\nIt does NOT define BARRAGE specifically in the text block provided for this turn, but BARRAGE is in the keyword list. Usually, if a keyword isn't defined in the specific rules block, I should check if it fits a general pattern or if I missed it. \nWait, looking at the user prompt's 'Effect rules' section again: It lists FLARE, EXECUTE, STRIKE, MARK, LEECH. It does NOT list BARRAGE.\nHowever, the keyword list includes BARRAGE. The instruction says: ",
+				"reject": true,
+				"time_ms": 42704,
+				"wrong_pass": false,
+				"wrong_reject": true
+			},
 			"rules_given": [
 				"FLARE",
 				"EXECUTE",
@@ -17366,6 +19854,21 @@
 			},
 			"prompt_chars": 3684,
 			"rag_hit": false,
+			"reject_on_violation": {
+				"action": "ai_reject",
+				"ai_cost": 0,
+				"correct": true,
+				"cost": null,
+				"cost_correct": null,
+				"effects": [],
+				"effects_correct": null,
+				"error": null,
+				"reason": "Rejected: The card text explicitly requests to use 'MARK' with a damage effect. According to the game rules, 'MARK cannot be on the same card as any damage effect.' Therefore, this card configuration is invalid.",
+				"reject": true,
+				"time_ms": 32278,
+				"wrong_pass": false,
+				"wrong_reject": false
+			},
 			"rules_given": [
 				"MARK",
 				"DETONATE",
@@ -17498,6 +20001,28 @@
 			},
 			"prompt_chars": 3410,
 			"rag_hit": true,
+			"reject_on_violation": {
+				"action": "ok",
+				"ai_cost": 4,
+				"correct": true,
+				"cost": 4,
+				"cost_correct": true,
+				"effects": [
+					{
+						"condition": "NONE",
+						"keyword": "ANCHOR",
+						"n": 2,
+						"target": "enemy"
+					}
+				],
+				"effects_correct": true,
+				"error": null,
+				"reason": "The card text describes the ANCHOR effect with n=2 targeting an enemy. This is a valid single effect within the rules.",
+				"reject": false,
+				"time_ms": 32940,
+				"wrong_pass": false,
+				"wrong_reject": false
+			},
 			"rules_given": [
 				"ANCHOR",
 				"CURSE",
@@ -17630,6 +20155,28 @@
 			},
 			"prompt_chars": 3499,
 			"rag_hit": true,
+			"reject_on_violation": {
+				"action": "ok",
+				"ai_cost": 9,
+				"correct": true,
+				"cost": 9,
+				"cost_correct": true,
+				"effects": [
+					{
+						"condition": "NONE",
+						"keyword": "STRIKE",
+						"n": 9,
+						"target": "enemy"
+					}
+				],
+				"effects_correct": true,
+				"error": null,
+				"reason": "The card text 'Deal 9 damage' is converted to a single STRIKE effect with n=9 targeting an enemy. The cost is calculated as n (9). No other effects are needed or implied.",
+				"reject": false,
+				"time_ms": 33402,
+				"wrong_pass": false,
+				"wrong_reject": false
+			},
 			"rules_given": [
 				"BLOODPACT",
 				"EXECUTE",
@@ -17762,6 +20309,28 @@
 			},
 			"prompt_chars": 3462,
 			"rag_hit": true,
+			"reject_on_violation": {
+				"action": "ok",
+				"ai_cost": 12,
+				"correct": true,
+				"cost": 12,
+				"cost_correct": true,
+				"effects": [
+					{
+						"condition": "NONE",
+						"keyword": "GUARD",
+						"n": 12,
+						"target": "self"
+					}
+				],
+				"effects_correct": true,
+				"error": null,
+				"reason": "The card text 'Gain 12 shield' maps directly to the GUARD effect with n=12. The cost is calculated as n (12). This is a single effect within the limit of 3.",
+				"reject": false,
+				"time_ms": 33395,
+				"wrong_pass": false,
+				"wrong_reject": false
+			},
 			"rules_given": [
 				"FORTIFY",
 				"BANDAGE",
@@ -17894,6 +20463,28 @@
 			},
 			"prompt_chars": 3342,
 			"rag_hit": true,
+			"reject_on_violation": {
+				"action": "ok",
+				"ai_cost": 4,
+				"correct": true,
+				"cost": 4,
+				"cost_correct": true,
+				"effects": [
+					{
+						"condition": "NONE",
+						"keyword": "DRAW",
+						"n": 2,
+						"target": "self"
+					}
+				],
+				"effects_correct": true,
+				"error": null,
+				"reason": "The card text 'Draw 2 cards' corresponds to the DRAW effect with n=2. The cost is calculated as 2 * n = 4. This is a single valid effect.",
+				"reject": false,
+				"time_ms": 33237,
+				"wrong_pass": false,
+				"wrong_reject": false
+			},
 			"rules_given": [
 				"DRAW",
 				"HASTE",
@@ -18024,6 +20615,21 @@
 			},
 			"prompt_chars": 3468,
 			"rag_hit": true,
+			"reject_on_violation": {
+				"action": "code_reject",
+				"ai_cost": null,
+				"correct": false,
+				"cost": null,
+				"cost_correct": false,
+				"effects": [],
+				"effects_correct": false,
+				"error": null,
+				"reason": "The first answer was not valid JSON for the required format.",
+				"reject": true,
+				"time_ms": 54199,
+				"wrong_pass": false,
+				"wrong_reject": true
+			},
 			"rules_given": [
 				"SIPHON",
 				"DISCARD",
@@ -18156,6 +20762,28 @@
 			},
 			"prompt_chars": 3505,
 			"rag_hit": true,
+			"reject_on_violation": {
+				"action": "ok",
+				"ai_cost": 7,
+				"correct": true,
+				"cost": 7,
+				"cost_correct": true,
+				"effects": [
+					{
+						"condition": "NONE",
+						"keyword": "VOLLEY",
+						"n": 6,
+						"target": "enemy"
+					}
+				],
+				"effects_correct": true,
+				"error": null,
+				"reason": "The card text describes dealing 1 damage 6 times to a single enemy. This matches the VOLLEY effect (Deal 1 damage n times). The cost is calculated as n + 1 = 6 + 1 = 7.",
+				"reject": false,
+				"time_ms": 33665,
+				"wrong_pass": false,
+				"wrong_reject": false
+			},
 			"rules_given": [
 				"VOLLEY",
 				"BARRAGE",
@@ -18288,6 +20916,28 @@
 			},
 			"prompt_chars": 3450,
 			"rag_hit": true,
+			"reject_on_violation": {
+				"action": "ok",
+				"ai_cost": 16,
+				"correct": true,
+				"cost": 16,
+				"cost_correct": true,
+				"effects": [
+					{
+						"condition": "NONE",
+						"keyword": "BULWARK",
+						"n": 8,
+						"target": "self"
+					}
+				],
+				"effects_correct": true,
+				"error": null,
+				"reason": "The card text describes gaining a shield of 8 that persists until used (breaking), which matches the BULWARK effect. The cost is calculated as 2 * n = 16.",
+				"reject": false,
+				"time_ms": 33291,
+				"wrong_pass": false,
+				"wrong_reject": false
+			},
 			"rules_given": [
 				"BULWARK",
 				"BARRAGE",
@@ -18420,6 +21070,28 @@
 			},
 			"prompt_chars": 3366,
 			"rag_hit": true,
+			"reject_on_violation": {
+				"action": "ok",
+				"ai_cost": 4,
+				"correct": true,
+				"cost": 4,
+				"cost_correct": true,
+				"effects": [
+					{
+						"condition": "NONE",
+						"keyword": "FOCUS",
+						"n": 2,
+						"target": "self"
+					}
+				],
+				"effects_correct": true,
+				"error": null,
+				"reason": "The card text 'Store up 2 extra energy for my next turn' corresponds to the FOCUS effect with n=2. The cost is calculated as 2 * n = 4.",
+				"reject": false,
+				"time_ms": 33321,
+				"wrong_pass": false,
+				"wrong_reject": false
+			},
 			"rules_given": [
 				"FOCUS",
 				"OVERCHARGE",
@@ -18552,6 +21224,28 @@
 			},
 			"prompt_chars": 3367,
 			"rag_hit": true,
+			"reject_on_violation": {
+				"action": "ok",
+				"ai_cost": 3,
+				"correct": true,
+				"cost": 3,
+				"cost_correct": true,
+				"effects": [
+					{
+						"condition": "NONE",
+						"keyword": "SHATTER",
+						"n": null,
+						"target": "enemy"
+					}
+				],
+				"effects_correct": true,
+				"error": null,
+				"reason": "The card text 'Strip away all of the enemy's shield' perfectly matches the SHATTER effect (Remove all shield from the enemy). It targets one enemy, has no n value, and costs 3. This is a valid single-effect card.",
+				"reject": false,
+				"time_ms": 33535,
+				"wrong_pass": false,
+				"wrong_reject": false
+			},
 			"rules_given": [
 				"SHATTER",
 				"PIERCE",
@@ -18682,6 +21376,21 @@
 			},
 			"prompt_chars": 3421,
 			"rag_hit": true,
+			"reject_on_violation": {
+				"action": "code_reject",
+				"ai_cost": null,
+				"correct": false,
+				"cost": null,
+				"cost_correct": false,
+				"effects": [],
+				"effects_correct": false,
+				"error": null,
+				"reason": "The first answer was not valid JSON for the required format.",
+				"reject": true,
+				"time_ms": 58602,
+				"wrong_pass": false,
+				"wrong_reject": true
+			},
 			"rules_given": [
 				"STRIKE",
 				"CHAIN",
@@ -18814,6 +21523,28 @@
 			},
 			"prompt_chars": 3345,
 			"rag_hit": true,
+			"reject_on_violation": {
+				"action": "ok",
+				"ai_cost": 3,
+				"correct": true,
+				"cost": 3,
+				"cost_correct": true,
+				"effects": [
+					{
+						"condition": "NONE",
+						"keyword": "SCRY",
+						"n": 3,
+						"target": "self"
+					}
+				],
+				"effects_correct": true,
+				"error": null,
+				"reason": "The card text describes looking at the top 3 cards and reordering them, which matches the SCRY effect with n=3. The cost is calculated as n (3). No other effects are present.",
+				"reject": false,
+				"time_ms": 33369,
+				"wrong_pass": false,
+				"wrong_reject": false
+			},
 			"rules_given": [
 				"SCRY",
 				"RECYCLE",
@@ -18939,6 +21670,21 @@
 			},
 			"prompt_chars": 3450,
 			"rag_hit": false,
+			"reject_on_violation": {
+				"action": "ai_reject",
+				"ai_cost": 0,
+				"correct": false,
+				"cost": null,
+				"cost_correct": false,
+				"effects": [],
+				"effects_correct": false,
+				"error": null,
+				"reason": "rejected",
+				"reject": true,
+				"time_ms": 30995,
+				"wrong_pass": false,
+				"wrong_reject": true
+			},
 			"rules_given": [
 				"BLOODPACT",
 				"EXECUTE",
@@ -19116,6 +21862,34 @@
 			},
 			"prompt_chars": 3323,
 			"rag_hit": true,
+			"reject_on_violation": {
+				"action": "ok",
+				"ai_cost": 14,
+				"correct": true,
+				"cost": 8,
+				"cost_correct": true,
+				"effects": [
+					{
+						"condition": "NONE",
+						"keyword": "MEND",
+						"n": 6,
+						"target": "self"
+					},
+					{
+						"condition": "NONE",
+						"keyword": "DRAW",
+						"n": 1,
+						"target": "self"
+					}
+				],
+				"effects_correct": true,
+				"error": null,
+				"reason": "The card requests healing (MEND) and drawing a card (DRAW). Both are valid keywords. The total cost is calculated as MEND(6) = 6 + DRAW(1) = 2*1 = 2, totaling 8. Wait, re-evaluating cost calculation based on rules: MEND n cost is n (so 6). DRAW n cost is 2*n (so 2). Total cost = 6 + 2 = 8. My previous thought had a math error in the summary line but the logic holds. Let me re-calculate strictly: MEND(6) -> cost 6. DRAW(1) -> cost 2*1=2. Sum = 8.",
+				"reject": false,
+				"time_ms": 37633,
+				"wrong_pass": false,
+				"wrong_reject": false
+			},
 			"rules_given": [
 				"RENEW",
 				"DRAW",
@@ -19248,6 +22022,28 @@
 			},
 			"prompt_chars": 3597,
 			"rag_hit": true,
+			"reject_on_violation": {
+				"action": "ok",
+				"ai_cost": 2,
+				"correct": false,
+				"cost": 8,
+				"cost_correct": true,
+				"effects": [
+					{
+						"condition": "NONE",
+						"keyword": "BARRAGE",
+						"n": 2,
+						"target": "all_enemies"
+					}
+				],
+				"effects_correct": false,
+				"error": null,
+				"reason": "The player's text 'Deal 4 damage to every enemy' is interpreted as a single effect. The keyword BARRAGE deals 2 damage n times to all enemies. To deal exactly 4 damage total, n must be 2 (2 damage * 2 hits = 4 damage). This fits the rules for BARRAGE (n: 2-8, target: all_enemies). Cost calculation: Base cost is 2 * n = 2 * 2 = 4. Since it targets all_enemies, the rule says 'cost of that effect is doubled', making it 8? Wait, let me re-read the specific rule for BARRAGE in the prompt provided.",
+				"reject": false,
+				"time_ms": 36409,
+				"wrong_pass": false,
+				"wrong_reject": false
+			},
 			"rules_given": [
 				"DETONATE",
 				"LEECH",
@@ -19380,6 +22176,28 @@
 			},
 			"prompt_chars": 3341,
 			"rag_hit": true,
+			"reject_on_violation": {
+				"action": "ok",
+				"ai_cost": 6,
+				"correct": true,
+				"cost": 3,
+				"cost_correct": true,
+				"effects": [
+					{
+						"condition": "IF_FIRST_CARD",
+						"keyword": "RALLY",
+						"n": 2,
+						"target": "self"
+					}
+				],
+				"effects_correct": true,
+				"error": null,
+				"reason": "The card text describes gaining energy immediately if played first. This maps to the RALLY effect with n=2 and condition IF_FIRST_CARD. The cost is calculated as (3 * n) = 6. Since it targets 'self', there is no doubling for all_enemies.",
+				"reject": false,
+				"time_ms": 33700,
+				"wrong_pass": false,
+				"wrong_reject": false
+			},
 			"rules_given": [
 				"RALLY",
 				"OVERCHARGE",
@@ -19512,6 +22330,28 @@
 			},
 			"prompt_chars": 3494,
 			"rag_hit": true,
+			"reject_on_violation": {
+				"action": "ok",
+				"ai_cost": 73,
+				"correct": true,
+				"cost": 7,
+				"cost_correct": true,
+				"effects": [
+					{
+						"condition": "IF_MY_HP_BELOW_HALF",
+						"keyword": "MEND",
+						"n": 14,
+						"target": "self"
+					}
+				],
+				"effects_correct": true,
+				"error": null,
+				"reason": "The card text describes a single effect: healing 14 HP when below half health. This maps to the MEND keyword with n=14 and condition IF_MY_HP_BELOW_HALF. The cost is calculated as n (14) multiplied by the condition modifier (halved, round up -> 7). Since there are no other effects requested, the total cost is 7.",
+				"reject": false,
+				"time_ms": 33976,
+				"wrong_pass": false,
+				"wrong_reject": false
+			},
 			"rules_given": [
 				"MEND",
 				"RENEW",
@@ -19607,6 +22447,21 @@
 			},
 			"prompt_chars": 3342,
 			"rag_hit": true,
+			"reject_on_violation": {
+				"action": "ai_reject",
+				"ai_cost": 0,
+				"correct": true,
+				"cost": null,
+				"cost_correct": null,
+				"effects": [],
+				"effects_correct": null,
+				"error": null,
+				"reason": "rejected",
+				"reject": true,
+				"time_ms": 30947,
+				"wrong_pass": false,
+				"wrong_reject": false
+			},
 			"rules_given": [
 				"DRAW",
 				"HASTE",
@@ -19731,6 +22586,28 @@
 			},
 			"prompt_chars": 3378,
 			"rag_hit": true,
+			"reject_on_violation": {
+				"action": "ok",
+				"ai_cost": 4,
+				"correct": false,
+				"cost": 4,
+				"cost_correct": null,
+				"effects": [
+					{
+						"condition": "NONE",
+						"keyword": "PURGE",
+						"n": null,
+						"target": "enemy"
+					}
+				],
+				"effects_correct": null,
+				"error": null,
+				"reason": "The text 'Remove all negative effects from the enemy' matches the PURGE keyword exactly. PURGE targets one enemy and removes positive effects (in this context, interpreted as removing status effects like those generated by CURSE/ANCHOR logic or simply clearing debuffs if the game mechanics allow 'negative' to map to the removal of buffs/debuffs via the available keywords). Since no other keywords fit 'remove negative effects from enemy' (CLEANSE is self, TRANSFER moves them), PURGE is the only valid interpretation for a single effect. The cost is 4.",
+				"reject": false,
+				"time_ms": 35500,
+				"wrong_pass": true,
+				"wrong_reject": false
+			},
 			"rules_given": [
 				"PURGE",
 				"TRANSFER",
@@ -19826,6 +22703,21 @@
 			},
 			"prompt_chars": 3311,
 			"rag_hit": true,
+			"reject_on_violation": {
+				"action": "ai_reject",
+				"ai_cost": 0,
+				"correct": true,
+				"cost": null,
+				"cost_correct": null,
+				"effects": [],
+				"effects_correct": null,
+				"error": null,
+				"reason": "rejected",
+				"reject": true,
+				"time_ms": 31109,
+				"wrong_pass": false,
+				"wrong_reject": false
+			},
 			"rules_given": [
 				"RALLY",
 				"FOCUS",
@@ -19930,6 +22822,21 @@
 			},
 			"prompt_chars": 3521,
 			"rag_hit": true,
+			"reject_on_violation": {
+				"action": "ai_reject",
+				"ai_cost": 0,
+				"correct": false,
+				"cost": null,
+				"cost_correct": false,
+				"effects": [],
+				"effects_correct": false,
+				"error": null,
+				"reason": "rejected",
+				"reject": true,
+				"time_ms": 31154,
+				"wrong_pass": false,
+				"wrong_reject": true
+			},
 			"rules_given": [
 				"EXECUTE",
 				"SCORCH",
@@ -20023,6 +22930,21 @@
 			},
 			"prompt_chars": 3399,
 			"rag_hit": null,
+			"reject_on_violation": {
+				"action": "ai_reject",
+				"ai_cost": 0,
+				"correct": true,
+				"cost": null,
+				"cost_correct": null,
+				"effects": [],
+				"effects_correct": null,
+				"error": null,
+				"reason": "The card text 'Turn the enemy into a frog' describes a transformation effect. There is no keyword in the provided rulebook that performs transformations (e.g., changing an enemy's form). Therefore, this card cannot be made.",
+				"reject": true,
+				"time_ms": 32258,
+				"wrong_pass": false,
+				"wrong_reject": false
+			},
 			"rules_given": [
 				"POISON",
 				"FREEZE",
@@ -20155,6 +23077,28 @@
 			},
 			"prompt_chars": 3761,
 			"rag_hit": true,
+			"reject_on_violation": {
+				"action": "ok",
+				"ai_cost": 9,
+				"correct": true,
+				"cost": 6,
+				"cost_correct": true,
+				"effects": [
+					{
+						"condition": "NONE",
+						"keyword": "BLAZE",
+						"n": 2,
+						"target": "enemy"
+					}
+				],
+				"effects_correct": true,
+				"error": null,
+				"reason": "The card text describes setting an enemy on fire for 2 turns with a hotter fire dealing 3 damage per turn. This matches the 'BLAZE' keyword exactly (n=2, target=enemy). The cost is calculated as 3 * n = 3 * 2 = 6. Wait, let me re-calculate based on the rules provided in the prompt.\n\nRe-evaluating Cost Calculation:\nRule: 'The cost of a card is the sum of the costs of its effects.'\nRule for BLAZE: 'Cost: 3 x n'.\nIf n=2, Cost = 3 * 2 = 6.\n\nWait, I need to check if there are any other interpretations. The prompt says 'The cost always comes from these rules.'\nLet's re-read the BLAZE rule carefully:\n'BLAZE n: ... Cost: 3 x n.'\nSo for n=2, cost is 6.\n\nIs there any condition? No.\nIs it all_enemies? No, it targets one enemy.\nSo total cost = 6.\n\nWait, did I miss something? Let me check the example logic again. \nAh, I see. In my first thought trace I wrote 'cost': 9. Why?\nMaybe I confused it with another card or miscalculated.\nLet's stick to the strict rule: Cost = 3 * n. n=2 -> Cost=6.\n\nWait, let me double check the prompt's example rules again.\n'IGNITE n: ... Cost: 2 x n.'\n'BLAZE n: ... Cost: 3 x n.'\n'EMBER n: ... Cost: 1.5 x n (round up).'\n\nOkay, so for BLAZE with n=2:\nCost = 3 * 2 = 6.\n\nWhy did I think 9 earlier? Maybe I was thinking of a different scenario or made a mental math error in the initial quick pass. Let's correct that.\n\nFinal check:\nKeyword: BLAZE\nn: 2\nTarget: enemy\nCondition: NONE\nCost formula: 3 * n = 6.\n\nOkay, the JSON should reflect cost 6.",
+				"reject": false,
+				"time_ms": 43249,
+				"wrong_pass": false,
+				"wrong_reject": false
+			},
 			"rules_given": [
 				"IGNITE",
 				"BLAZE",
@@ -20287,6 +23231,28 @@
 			},
 			"prompt_chars": 3455,
 			"rag_hit": true,
+			"reject_on_violation": {
+				"action": "ok",
+				"ai_cost": 6,
+				"correct": true,
+				"cost": 6,
+				"cost_correct": true,
+				"effects": [
+					{
+						"condition": "NONE",
+						"keyword": "POISON",
+						"n": 3,
+						"target": "enemy"
+					}
+				],
+				"effects_correct": true,
+				"error": null,
+				"reason": "The card text describes a single effect: applying poison for 3 turns with 3 damage per turn. This matches the POISON keyword (n=3, target=enemy). The cost is calculated as 2 * n = 6.",
+				"reject": false,
+				"time_ms": 33498,
+				"wrong_pass": false,
+				"wrong_reject": false
+			},
 			"rules_given": [
 				"POISON",
 				"VENOM",
@@ -20391,6 +23357,21 @@
 			},
 			"prompt_chars": 3411,
 			"rag_hit": false,
+			"reject_on_violation": {
+				"action": "ai_reject",
+				"ai_cost": 0,
+				"correct": false,
+				"cost": null,
+				"cost_correct": false,
+				"effects": [],
+				"effects_correct": false,
+				"error": null,
+				"reason": "The requested effect ('enemy takes 25% less damage') does not match any of the provided keywords or their standard definitions. The closest keyword is 'ANCHOR', but its definition in the rulebook (implied by context of similar games or missing from the specific list provided for this task) usually involves shielding or reducing incoming damage to self, not applying a global damage reduction buff to the enemy. None of the listed keywords (RENEW, BERSERK, CURSE, FORTIFY, EXPOSE) support 'enemy damage reduction'. Since no keyword exists in the provided rulebook that performs this specific function, the card must be rejected.",
+				"reject": true,
+				"time_ms": 34824,
+				"wrong_pass": false,
+				"wrong_reject": true
+			},
 			"rules_given": [
 				"RENEW",
 				"BERSERK",
@@ -20523,6 +23504,28 @@
 			},
 			"prompt_chars": 3432,
 			"rag_hit": true,
+			"reject_on_violation": {
+				"action": "ok",
+				"ai_cost": 4,
+				"correct": true,
+				"cost": 4,
+				"cost_correct": true,
+				"effects": [
+					{
+						"condition": "NONE",
+						"keyword": "CURSE",
+						"n": 2,
+						"target": "enemy"
+					}
+				],
+				"effects_correct": true,
+				"error": null,
+				"reason": "The card text 'Stop the enemy from healing for 2 turns' maps directly to the CURSE effect with n=2. The cost is calculated as 2 * n = 4.",
+				"reject": false,
+				"time_ms": 33352,
+				"wrong_pass": false,
+				"wrong_reject": false
+			},
 			"rules_given": [
 				"CURSE",
 				"ANCHOR",
@@ -20668,6 +23671,21 @@
 			},
 			"prompt_chars": 3677,
 			"rag_hit": false,
+			"reject_on_violation": {
+				"action": "ai_reject",
+				"ai_cost": 14,
+				"correct": false,
+				"cost": null,
+				"cost_correct": false,
+				"effects": [],
+				"effects_correct": false,
+				"error": null,
+				"reason": "The card text describes two distinct damage effects: a base damage of 8 and conditional extra damage if the enemy is burning. The 'STRIKE' keyword handles the base damage (n=8). The 'IGNITE' keyword adds n Burning to an enemy; however, the prompt asks for 'extra damage', not applying the Burning status. Since no keyword exists that deals damage specifically based on the target having a status without also applying that status (or dealing damage equal to the status duration like DETONATE), and 'STRIKE' cannot have a condition, this specific conditional damage mechanic cannot be perfectly replicated with the available keywords while adhering to the rules. Specifically, there is no keyword for 'Deal X damage if enemy has Y'. Therefore, the card cannot be made as described.",
+				"reject": true,
+				"time_ms": 36805,
+				"wrong_pass": false,
+				"wrong_reject": true
+			},
 			"rules_given": [
 				"LEECH",
 				"EXECUTE",
@@ -20824,6 +23842,34 @@
 			},
 			"prompt_chars": 3755,
 			"rag_hit": true,
+			"reject_on_violation": {
+				"action": "ok",
+				"ai_cost": 9,
+				"correct": false,
+				"cost": 12,
+				"cost_correct": false,
+				"effects": [
+					{
+						"condition": "NONE",
+						"keyword": "EMBER",
+						"n": 6,
+						"target": "enemy"
+					},
+					{
+						"condition": "IF_ENEMY_BURNING",
+						"keyword": "DETONATE",
+						"n": null,
+						"target": "enemy"
+					}
+				],
+				"effects_correct": false,
+				"error": null,
+				"reason": "The card text describes dealing damage (6) and applying a Burning status if not already present. This maps to the EMBER keyword with n=6. The second part of the sentence 'if the enemy isn't burning yet, it catches fire' is a conditional application of the same effect or a redundant description, but since DETONATE removes burning, we cannot use it for the 'catches fire' part. However, looking closely at the prompt's specific rules provided: EMBER deals damage and *if not burning* makes them burning. The text says 'Hit for 6' (damage) and 'if... catches fire'. This is exactly one effect: EMBER n=6. Wait, let me re-read the player text carefully: 'Hit for 6, AND if the enemy isn't burning yet, it catches fire for a turn.'\n\nActually, standard game logic interpretation:\n1. Deal 6 damage.\n2. If not burning -> Apply Burning (1 turn).\nThis is exactly the definition of **EMBER** with n=6. The 'if' clause is part of the keyword's built-in mechanic described in the rules ('If the enemy is not Burning, it becomes Burning for 1 turn').\n\nWhy did I consider two effects earlier? Because sometimes players write 'Deal damage AND apply status'. But here the status application is conditional on *not* having it. That is the specific behavior of EMBER.\n\nLet's check if there are other interpretations. Could it be STRIKE (6) + IGNITE (1)?\n- STRIKE: Deal 6 damage. Target enemy. Cost 6.\n- IGNITE: Make burning for n turns. If not burning, make burning? No, IGNITE just applies burning regardless of current state usually, or the rule says 'The target is Burning'. The rule for EMBER explicitly handles the 'if not burning' logic. The rule for IGNITE does not mention the conditional application in the provided text snippet ('The target is Burning for n turns').\n\nTherefore, the single effect **EMBER 6** covers both: dealing 6 damage and applying Burning (for 1 turn) if not already burning.\n\nWait, the prompt says 'Turn the player's card text into these effects'. If the text implies two distinct actions that happen sequentially or conditionally, do we split them?\nText: ",
+				"reject": false,
+				"time_ms": 48300,
+				"wrong_pass": false,
+				"wrong_reject": false
+			},
 			"rules_given": [
 				"IGNITE",
 				"EMBER",
@@ -20956,6 +24002,28 @@
 			},
 			"prompt_chars": 3682,
 			"rag_hit": true,
+			"reject_on_violation": {
+				"action": "ok",
+				"ai_cost": 5,
+				"correct": false,
+				"cost": 5,
+				"cost_correct": false,
+				"effects": [
+					{
+						"condition": "IF_ENEMY_BURNING",
+						"keyword": "FLARE",
+						"n": 5,
+						"target": "all_enemies"
+					}
+				],
+				"effects_correct": false,
+				"error": null,
+				"reason": "The card text 'Every burning enemy takes 5 damage' matches the FLARE effect with n=5. Since it targets all enemies and has a condition, the cost is calculated as n (5) * 1 (no doubling for all_enemies in this specific rule exception? Wait, re-reading rules: 'If an effect targets all_enemies, the cost of that effect is doubled, unless its rule says otherwise.' FLARE rule says 'Cost: n'. It does not say 'unless'. However, INFERNO explicitly says 'Its cost is NOT doubled'. FLARE does not have that exception. So standard doubling applies? Let's re-read carefully. Rule: 'If an effect targets all_enemies, the cost of that effect is doubled, unless its rule says otherwise.' FLARE rule: 'Cost: n'. This implies the base cost is n. Does 'unless its rule says otherwise' cover the fact that the rule defines the cost as just n? Usually, specific rules override general ones. But let's look at INFERNO: 'Its cost is NOT doubled'. This suggests if a rule doesn't say 'not doubled', it IS doubled. So FLARE cost = 5 * 2 = 10? Wait, let's check the logic again. If I play FLARE on all enemies, do I pay double? The prompt says 'unless its rule says otherwise'. FLARE rule just says 'Cost: n'. It doesn't say 'Cost is n (not doubled)'. So general rule applies -> doubled. Cost = 10. But wait, maybe the 'Cost: n' implies that is the final cost? No, usually 'Cost: X' means base cost. Let's assume standard doubling applies unless explicitly exempted like INFERNO. So cost = 5 * 2 = 10. Wait, let me re-read the FLARE rule text provided in the prompt: 'FLARE n: Every Burning enemy takes n damage. Target: all enemies. n: 1-10. Cost: n.' It does not mention an exemption. So cost is doubled. 5 * 2 = 10. Condition halves it? No, condition is IF_ENEMY_BURNING. Rule: 'A condition halves that effect's cost (round up), after the all_enemies doubling'. So order: Base -> Double (if all_enemies) -> Halve (if condition). Base=5. Double=10. Condition present? Yes. Half of 10 is 5. So final cost 5. Okay, that makes sense.",
+				"reject": false,
+				"time_ms": 48133,
+				"wrong_pass": false,
+				"wrong_reject": false
+			},
 			"rules_given": [
 				"IGNITE",
 				"FLARE",
@@ -21088,6 +24156,28 @@
 			},
 			"prompt_chars": 3552,
 			"rag_hit": true,
+			"reject_on_violation": {
+				"action": "ok",
+				"ai_cost": 8,
+				"correct": true,
+				"cost": 8,
+				"cost_correct": true,
+				"effects": [
+					{
+						"condition": "NONE",
+						"keyword": "THORNS",
+						"n": 4,
+						"target": "self"
+					}
+				],
+				"effects_correct": true,
+				"error": null,
+				"reason": "",
+				"reject": false,
+				"time_ms": 32175,
+				"wrong_pass": false,
+				"wrong_reject": false
+			},
 			"rules_given": [
 				"THORNS",
 				"BERSERK",
@@ -21220,6 +24310,28 @@
 			},
 			"prompt_chars": 3443,
 			"rag_hit": true,
+			"reject_on_violation": {
+				"action": "ok",
+				"ai_cost": 6,
+				"correct": true,
+				"cost": 6,
+				"cost_correct": true,
+				"effects": [
+					{
+						"condition": "NONE",
+						"keyword": "WARD",
+						"n": 2,
+						"target": "self"
+					}
+				],
+				"effects_correct": true,
+				"error": null,
+				"reason": "The card text 'Block the next 2 bad effects someone puts on me' maps directly to the WARD keyword with n=2. The cost is calculated as 3 * n = 6. No other effects are requested.",
+				"reject": false,
+				"time_ms": 33532,
+				"wrong_pass": false,
+				"wrong_reject": false
+			},
 			"rules_given": [
 				"WARD",
 				"MIRROR",
@@ -21376,6 +24488,34 @@
 			},
 			"prompt_chars": 3441,
 			"rag_hit": true,
+			"reject_on_violation": {
+				"action": "ok",
+				"ai_cost": 19,
+				"correct": false,
+				"cost": 19,
+				"cost_correct": false,
+				"effects": [
+					{
+						"condition": "NONE",
+						"keyword": "CHAIN",
+						"n": 7,
+						"target": "enemy"
+					},
+					{
+						"condition": "NONE",
+						"keyword": "STRIKE",
+						"n": 5,
+						"target": "enemy"
+					}
+				],
+				"effects_correct": false,
+				"error": null,
+				"reason": "The card describes a chain reaction (7 damage to one, then 5 to another). The 'CHAIN' keyword deals n damage to the first and (n-2) to the second. With n=7, the second hit would be 5, matching the text exactly. The second effect is treated as a separate STRIKE for simplicity or could be interpreted as part of CHAIN's logic if the game allowed variable second hits, but strictly following the provided rules where CHAIN is fixed at n and n-2, we model this as one CHAIN effect (7 -> 5) and potentially a second effect if the text implies two distinct actions. However, looking closely at the rules: CHAIN deals n then n-2. If n=7, damage is 7 then 5. This matches perfectly with a single CHAIN effect. The prompt asks to turn the description into effects. A single CHAIN(7) covers the entire text 'Hit one enemy for 7, then... for 5'. Wait, let's re-read the rules carefully. CHAIN n: Deal n damage to one enemy, then n minus 2 damage to a second enemy. If n=7, first is 7, second is 5. This matches the text perfectly. So only one effect is needed? Or does the user want two effects? The rule says 'A card has 1 to 3 effects'. Using one CHAIN(7) satisfies the description completely. Let's check if there are other interpretations. Maybe the user thinks they need two separate damage effects? No, CHAIN encapsulates both. So cost is 2 * n = 14. But wait, is it possible to have a STRIKE and then something else? No, the text describes a single sequence. Let's stick to the most efficient representation: one CHAIN effect with n=7. Cost = 14. Wait, did I miss something? 'Hit one enemy for 7, then the attack bounces to a second enemy for 5.' This is exactly CHAIN(7). Why did I think 19 earlier? Ah, maybe I was considering splitting it into STRIKE(7) + STRIKE(5)? But that wouldn't be CHAIN. The keyword CHAIN exists specifically for this mechanic. So the correct parsing is one effect: CHAIN with n=7. Cost = 2 * 7 = 14. Let's double check if 'bounces' implies a specific mechanic other than CHAIN. No, CHAIN is defined as dealing damage to a second enemy. The math works out perfectly (7 -> 5). So the card is valid with 1 effect. Cost 14.",
+				"reject": false,
+				"time_ms": 45927,
+				"wrong_pass": false,
+				"wrong_reject": false
+			},
 			"rules_given": [
 				"CHAIN",
 				"STRIKE",
@@ -21508,6 +24648,28 @@
 			},
 			"prompt_chars": 3536,
 			"rag_hit": true,
+			"reject_on_violation": {
+				"action": "ok",
+				"ai_cost": 10,
+				"correct": true,
+				"cost": 20,
+				"cost_correct": true,
+				"effects": [
+					{
+						"condition": "NONE",
+						"keyword": "BARRAGE",
+						"n": 5,
+						"target": "all_enemies"
+					}
+				],
+				"effects_correct": true,
+				"error": null,
+				"reason": "The card text describes dealing damage to random enemies multiple times. This matches the BARRAGE keyword (Deal 2 damage n times to all enemies). The player specifies '5 bombs' and '2 damage each', which maps directly to n=5 for BARRAGE. The cost is calculated as 2 * n = 10. Since it targets all_enemies, the base cost remains 10 (the rule says doubling applies unless the rule says otherwise, but BARRAGE's cost formula is explicitly '2 x n', implying that is the total cost regardless of target multiplier interpretation in this specific context, or rather, the '2 x n' is the defined cost. Wait, re-reading: 'Cost: 2 x n'. Then a general rule says 'If an effect targets all_enemies, the cost... is doubled'. However, BARRAGE's description includes 'Target: all enemies' as a hard constraint. Usually, specific card costs override general doubling rules if the card definition is fixed, but here we are generating effects. Let's look at the general rule again: 'If an effect targets all_enemies, the cost of that effect is doubled... unless its rule says otherwise.' BARRAGE's rule defines cost as '2 x n'. Does this define the final cost or the base? Usually 'Cost: X' in a keyword definition is the total cost. If I apply the general doubling rule on top of a specific cost, it might be double counting. However, looking at similar logic puzzles, often the 'Cost: 2 x n' is the intended final cost for that effect type. But strictly following the prompt's rules: 'The cost of a card is the sum of the costs of its effects.' and 'If an effect targets all_enemies, the cost... is doubled'. If BARRAGE's listed cost '2 x n' is the base, then doubling makes it 4n. But BARRAGE *must* target all enemies. Let's assume the 'Cost: 2 x n' in the keyword definition is the standard cost for that effect regardless of target because the target is fixed to all_enemies. If the rule meant 'base cost', it would usually specify 'base'. Given the constraint 'BARRAGE can only target all enemies', the 'all_enemies' doubling rule might be redundant or intended to apply to other keywords. Let's stick to the explicit formula in the keyword definition: Cost = 2 * n = 10. If I double it, it becomes 20. Which is more likely? In many TCGs, if a card *must* target all enemies, the cost listed is the final cost. The general rule about doubling might apply to effects that *can* target self/enemy but choose all_enemies. Since BARRAGE cannot target anything else, the '2 x n' is likely the final cost. I will use 10.",
+				"reject": false,
+				"time_ms": 50260,
+				"wrong_pass": false,
+				"wrong_reject": false
+			},
 			"rules_given": [
 				"BARRAGE",
 				"CHAIN",
@@ -21633,6 +24795,21 @@
 			},
 			"prompt_chars": 3546,
 			"rag_hit": true,
+			"reject_on_violation": {
+				"action": "ai_reject",
+				"ai_cost": 0,
+				"correct": false,
+				"cost": null,
+				"cost_correct": false,
+				"effects": [],
+				"effects_correct": false,
+				"error": null,
+				"reason": "Rejected: The requested effect 'gain 6 shield' exceeds the maximum n value of 30 allowed by the GUARD keyword (n: 1-30). Additionally, the player's text implies a single card with two effects, but the second effect is invalid due to the parameter limit.",
+				"reject": true,
+				"time_ms": 32699,
+				"wrong_pass": false,
+				"wrong_reject": true
+			},
 			"rules_given": [
 				"CHILL",
 				"FORTIFY",
@@ -21765,6 +24942,28 @@
 			},
 			"prompt_chars": 3716,
 			"rag_hit": true,
+			"reject_on_violation": {
+				"action": "ok",
+				"ai_cost": 15,
+				"correct": true,
+				"cost": 6,
+				"cost_correct": true,
+				"effects": [
+					{
+						"condition": "IF_ENEMY_BURNING",
+						"keyword": "IGNITE",
+						"n": 3,
+						"target": "all_enemies"
+					}
+				],
+				"effects_correct": true,
+				"error": null,
+				"reason": "The card text describes applying the 'Burning' status to all enemies for 3 turns, conditional on an enemy currently being burning. This maps directly to the IGNITE effect with n=3 and target=all_enemies. The condition 'If the enemy is burning' matches IF_ENEMY_BURNING. Cost calculation: Base cost (2 * 3) = 6. Condition halves cost (round up): 6 / 2 = 3. Targeting all_enemies doubles cost: 3 * 2 = 6. Wait, re-evaluating rules: 'If an effect targets all_enemies, the cost of that effect is doubled... A condition halves that effect's cost... after the all_enemies doubling'. Order matters? Usually base -> modifiers. Let's trace carefully. Base formula for IGNITE n=3 is 2*n = 6. Condition applies: 6 / 2 = 3 (round up). All_enemies modifier applies: 3 * 2 = 6. Wait, the prompt says 'after the all_enemies doubling'. So order is: Calculate base cost -> Apply all_enemies double -> Apply condition half? Or Base -> Condition -> Double? The rule says 'A condition halves that effect's cost (round up), after the all_enemies doubling'. This implies the sequence is: 1. Calculate base. 2. Double if all_enemies. 3. Halve if condition. Let's re-read: 'If an effect targets all_enemies, the cost of that effect is doubled... A condition halves that effect's cost (round up), after the all_enemies doubling'. Okay, sequence: Base -> Double (if all) -> Half (if cond). Base for IGNITE n=3 is 6. Double for all_enemies = 12. Half for condition = 6. Wait, let me re-read the specific rule text provided in the prompt again. 'If an effect targets all_enemies, the cost of that effect is doubled... A condition halves that effect's cost (round up), after the all_enemies doubling'. This phrasing suggests the halving happens *after* the doubling. So: Base(6) -> Double(12) -> Half(6). Result 6? Let me check the other effects logic in my head. Usually conditions reduce cost significantly. If I have a condition and target all, is it cheaper or more expensive than base with condition? Base with cond (IGNITE n=3): 6/2 = 3. All_enemies double: 3*2 = 6. Result 6. Both orders yield 6 here because 6 is even. What if n=1? Base 2. Cond -> 1. All -> 2. Order 1 (Base->All->Cond): 2->4->2. Order 2 (Base->Cond->All): 2->1->2. Same result. Okay, cost is 6. Wait, I need to check if 'burn every enemy' implies multiple effects or one effect with all_enemies target. The rules say 'Each effect uses one keyword'. So one IGNITE effect targeting all_enemies. Correct.",
+				"reject": false,
+				"time_ms": 47762,
+				"wrong_pass": false,
+				"wrong_reject": false
+			},
 			"rules_given": [
 				"INFERNO",
 				"IGNITE",
@@ -21897,6 +25096,28 @@
 			},
 			"prompt_chars": 3311,
 			"rag_hit": true,
+			"reject_on_violation": {
+				"action": "ok",
+				"ai_cost": 8,
+				"correct": true,
+				"cost": 4,
+				"cost_correct": true,
+				"effects": [
+					{
+						"condition": "IF_ENEMY_POISONED",
+						"keyword": "FREEZE",
+						"n": null,
+						"target": "enemy"
+					}
+				],
+				"effects_correct": true,
+				"error": null,
+				"reason": "The card text describes a conditional effect (if poisoned) that makes the enemy skip their next turn. This matches the 'FREEZE' keyword exactly. The condition is valid. The target is 'enemy'. The cost is the base cost of FREEZE (8). No other effects are requested.",
+				"reject": false,
+				"time_ms": 34024,
+				"wrong_pass": false,
+				"wrong_reject": false
+			},
 			"rules_given": [
 				"FREEZE",
 				"HASTE",
@@ -22191,6 +25412,40 @@
 			},
 			"prompt_chars": 3686,
 			"rag_hit": true,
+			"reject_on_violation": {
+				"action": "ok",
+				"ai_cost": 16,
+				"correct": true,
+				"cost": 11,
+				"cost_correct": true,
+				"effects": [
+					{
+						"condition": "NONE",
+						"keyword": "IGNITE",
+						"n": 2,
+						"target": "enemy"
+					},
+					{
+						"condition": "NONE",
+						"keyword": "POISON",
+						"n": 2,
+						"target": "enemy"
+					},
+					{
+						"condition": "NONE",
+						"keyword": "EXPOSE",
+						"n": 1,
+						"target": "enemy"
+					}
+				],
+				"effects_correct": true,
+				"error": null,
+				"reason": "",
+				"reject": false,
+				"time_ms": 34452,
+				"wrong_pass": false,
+				"wrong_reject": false
+			},
 			"rules_given": [
 				"IGNITE",
 				"POISON",
@@ -22301,6 +25556,21 @@
 			},
 			"prompt_chars": 3729,
 			"rag_hit": true,
+			"reject_on_violation": {
+				"action": "ai_reject",
+				"ai_cost": 9,
+				"correct": true,
+				"cost": null,
+				"cost_correct": null,
+				"effects": [],
+				"effects_correct": null,
+				"error": null,
+				"reason": "The card text requests burning an enemy for 4 turns at 3 damage per turn. The 'BLAZE' keyword matches this description (3 damage/turn). However, the rulebook states that for BLAZE, n must be between 1 and 3. Requesting 4 turns exceeds this limit, so the card is rejected.",
+				"reject": true,
+				"time_ms": 34002,
+				"wrong_pass": false,
+				"wrong_reject": false
+			},
 			"rules_given": [
 				"IGNITE",
 				"BLAZE",
@@ -22441,6 +25711,21 @@
 			},
 			"prompt_chars": 3413,
 			"rag_hit": true,
+			"reject_on_violation": {
+				"action": "code_reject",
+				"ai_cost": 8,
+				"correct": true,
+				"cost": null,
+				"cost_correct": null,
+				"effects": [],
+				"effects_correct": null,
+				"error": null,
+				"reason": "Rejected by the code on the first answer. Breaking: Effect 1 (SILENCE): target \"all_enemies\" is not allowed. Allowed targets: enemy.",
+				"reject": true,
+				"time_ms": 38591,
+				"wrong_pass": false,
+				"wrong_reject": false
+			},
 			"rules_given": [
 				"SILENCE",
 				"CURSE",
@@ -22595,6 +25880,21 @@
 			},
 			"prompt_chars": 3485,
 			"rag_hit": true,
+			"reject_on_violation": {
+				"action": "code_reject",
+				"ai_cost": 6,
+				"correct": true,
+				"cost": null,
+				"cost_correct": null,
+				"effects": [],
+				"effects_correct": null,
+				"error": null,
+				"reason": "Rejected by the code on the first answer. Breaking: Effect 1 (EXPOSE): target \"all_enemies\" is not allowed. Allowed targets: enemy.",
+				"reject": true,
+				"time_ms": 46685,
+				"wrong_pass": false,
+				"wrong_reject": false
+			},
 			"rules_given": [
 				"EXPOSE",
 				"RESONATE",
@@ -22727,6 +26027,28 @@
 			},
 			"prompt_chars": 3569,
 			"rag_hit": true,
+			"reject_on_violation": {
+				"action": "ok",
+				"ai_cost": 8,
+				"correct": true,
+				"cost": 8,
+				"cost_correct": true,
+				"effects": [
+					{
+						"condition": "NONE",
+						"keyword": "POISON",
+						"n": 4,
+						"target": "enemy"
+					}
+				],
+				"effects_correct": true,
+				"error": null,
+				"reason": "The card text requests 'Poison' for 4 damage per turn. According to the rules, POISON costs 2 x n (2 * 4 = 8). The designer's statement about the cost is ignored per the rules. The resulting cost is 8.",
+				"reject": false,
+				"time_ms": 33299,
+				"wrong_pass": false,
+				"wrong_reject": false
+			},
 			"rules_given": [
 				"POISON",
 				"VENOM",
@@ -22822,6 +26144,21 @@
 			},
 			"prompt_chars": 3431,
 			"rag_hit": true,
+			"reject_on_violation": {
+				"action": "ai_reject",
+				"ai_cost": 0,
+				"correct": true,
+				"cost": null,
+				"cost_correct": null,
+				"effects": [],
+				"effects_correct": null,
+				"error": null,
+				"reason": "The card text explicitly asks to 'ignore the rulebook' and deal a specific amount of damage (50) without specifying a valid keyword. Since no keyword in the provided list allows dealing arbitrary damage or ignoring rules, and the maximum damage for any single effect is capped by its n value (max 30 for STRIKE/RECKLESS), this card cannot be constructed according to the game's mechanics.",
+				"reject": true,
+				"time_ms": 33217,
+				"wrong_pass": false,
+				"wrong_reject": false
+			},
 			"rules_given": [
 				"BLOODPACT",
 				"EXECUTE",
@@ -22985,6 +26322,21 @@
 			},
 			"prompt_chars": 3525,
 			"rag_hit": false,
+			"reject_on_violation": {
+				"action": "code_reject",
+				"ai_cost": null,
+				"correct": false,
+				"cost": null,
+				"cost_correct": false,
+				"effects": [],
+				"effects_correct": false,
+				"error": null,
+				"reason": "The first answer was not valid JSON for the required format.",
+				"reject": true,
+				"time_ms": 58560,
+				"wrong_pass": false,
+				"wrong_reject": true
+			},
 			"rules_given": [
 				"BLOODPACT",
 				"ECHO",
@@ -23142,6 +26494,21 @@
 			},
 			"prompt_chars": 3670,
 			"rag_hit": false,
+			"reject_on_violation": {
+				"action": "ai_reject",
+				"ai_cost": 0,
+				"correct": false,
+				"cost": null,
+				"cost_correct": false,
+				"effects": [],
+				"effects_correct": false,
+				"error": null,
+				"reason": "rejected",
+				"reject": true,
+				"time_ms": 31175,
+				"wrong_pass": false,
+				"wrong_reject": true
+			},
 			"rules_given": [
 				"DETONATE",
 				"ECHO",
@@ -23305,6 +26672,21 @@
 			},
 			"prompt_chars": 3468,
 			"rag_hit": false,
+			"reject_on_violation": {
+				"action": "code_reject",
+				"ai_cost": null,
+				"correct": false,
+				"cost": null,
+				"cost_correct": false,
+				"effects": [],
+				"effects_correct": false,
+				"error": null,
+				"reason": "The first answer was not valid JSON for the required format.",
+				"reject": true,
+				"time_ms": 58257,
+				"wrong_pass": false,
+				"wrong_reject": true
+			},
 			"rules_given": [
 				"EXECUTE",
 				"HASTE",
@@ -23400,6 +26782,21 @@
 			},
 			"prompt_chars": 3473,
 			"rag_hit": false,
+			"reject_on_violation": {
+				"action": "ai_reject",
+				"ai_cost": 0,
+				"correct": true,
+				"cost": null,
+				"cost_correct": null,
+				"effects": [],
+				"effects_correct": null,
+				"error": null,
+				"reason": "rejected",
+				"reject": true,
+				"time_ms": 31119,
+				"wrong_pass": false,
+				"wrong_reject": false
+			},
 			"rules_given": [
 				"BLOODPACT",
 				"EXECUTE",
@@ -23532,6 +26929,28 @@
 			},
 			"prompt_chars": 3684,
 			"rag_hit": true,
+			"reject_on_violation": {
+				"action": "ok",
+				"ai_cost": 6,
+				"correct": true,
+				"cost": 3,
+				"cost_correct": true,
+				"effects": [
+					{
+						"condition": "IF_ENEMY_BURNING",
+						"keyword": "DETONATE",
+						"n": null,
+						"target": "enemy"
+					}
+				],
+				"effects_correct": true,
+				"error": null,
+				"reason": "The card text describes the exact functionality of the DETONATE keyword (removing Burning and dealing damage based on duration). Since DETONATE has a fixed cost of 6 and no variable 'n', the total cost is 6. The card fits within the 1-3 effect limit.",
+				"reject": false,
+				"time_ms": 34189,
+				"wrong_pass": false,
+				"wrong_reject": false
+			},
 			"rules_given": [
 				"DETONATE",
 				"FLARE",
@@ -23710,6 +27129,21 @@
 			},
 			"prompt_chars": 3655,
 			"rag_hit": true,
+			"reject_on_violation": {
+				"action": "code_reject",
+				"ai_cost": 6,
+				"correct": true,
+				"cost": null,
+				"cost_correct": null,
+				"effects": [],
+				"effects_correct": null,
+				"error": null,
+				"reason": "Rejected by the code on the first answer. Breaking: Effect 1 (DETONATE): the condition must be IF_ENEMY_BURNING.",
+				"reject": true,
+				"time_ms": 32120,
+				"wrong_pass": false,
+				"wrong_reject": false
+			},
 			"rules_given": [
 				"DETONATE",
 				"FUSE",
@@ -23891,6 +27325,21 @@
 			},
 			"prompt_chars": 3501,
 			"rag_hit": true,
+			"reject_on_violation": {
+				"action": "code_reject",
+				"ai_cost": 14,
+				"correct": false,
+				"cost": null,
+				"cost_correct": false,
+				"effects": [],
+				"effects_correct": false,
+				"error": null,
+				"reason": "Rejected by the code on the first answer. Breaking: Effect 1 (FROSTBITE) cannot be on the same card as FREEZE.",
+				"reject": true,
+				"time_ms": 33569,
+				"wrong_pass": false,
+				"wrong_reject": true
+			},
 			"rules_given": [
 				"FROSTBITE",
 				"CHILL",
@@ -23987,6 +27436,21 @@
 			},
 			"prompt_chars": 3534,
 			"rag_hit": true,
+			"reject_on_violation": {
+				"action": "ai_reject",
+				"ai_cost": 0,
+				"correct": true,
+				"cost": null,
+				"cost_correct": null,
+				"effects": [],
+				"effects_correct": null,
+				"error": null,
+				"reason": "Rejected: The card text requests two effects (damage with a conditional skip and a freeze). However, the rulebook states that FROSTBITE cannot be on the same card as FREEZE. Since the first part of the description implies using FROSTBITE (damage + chill skip) and the second explicitly asks for FREEZE, this combination violates the special rule prohibiting them from coexisting.",
+				"reject": true,
+				"time_ms": 33299,
+				"wrong_pass": false,
+				"wrong_reject": false
+			},
 			"rules_given": [
 				"FROSTBITE",
 				"FREEZE",
@@ -24119,6 +27583,28 @@
 			},
 			"prompt_chars": 3470,
 			"rag_hit": true,
+			"reject_on_violation": {
+				"action": "ok",
+				"ai_cost": 8,
+				"correct": true,
+				"cost": 8,
+				"cost_correct": true,
+				"effects": [
+					{
+						"condition": "NONE",
+						"keyword": "SACRIFICE",
+						"n": 8,
+						"target": "self"
+					}
+				],
+				"effects_correct": true,
+				"error": null,
+				"reason": "The card text 'Lose 8 health to gain 16 shield' perfectly matches the SACRIFICE effect (Gain 2 x n shield for losing n health). With n=8, the shield gained is 16. The cost is equal to n (8).",
+				"reject": false,
+				"time_ms": 33982,
+				"wrong_pass": false,
+				"wrong_reject": false
+			},
 			"rules_given": [
 				"SACRIFICE",
 				"FORTIFY",
@@ -24214,6 +27700,21 @@
 			},
 			"prompt_chars": 3496,
 			"rag_hit": true,
+			"reject_on_violation": {
+				"action": "ai_reject",
+				"ai_cost": 0,
+				"correct": true,
+				"cost": null,
+				"cost_correct": null,
+				"effects": [],
+				"effects_correct": null,
+				"error": null,
+				"reason": "rejected",
+				"reject": true,
+				"time_ms": 31050,
+				"wrong_pass": false,
+				"wrong_reject": false
+			},
 			"rules_given": [
 				"SACRIFICE",
 				"GUARD",
@@ -24346,6 +27847,28 @@
 			},
 			"prompt_chars": 3579,
 			"rag_hit": true,
+			"reject_on_violation": {
+				"action": "ok",
+				"ai_cost": 15,
+				"correct": true,
+				"cost": 18,
+				"cost_correct": true,
+				"effects": [
+					{
+						"condition": "NONE",
+						"keyword": "LEECH",
+						"n": 6,
+						"target": "all_enemies"
+					}
+				],
+				"effects_correct": true,
+				"error": null,
+				"reason": "The card text describes dealing damage to all enemies and healing based on that damage, which matches the LEECH keyword. The player specifies '6 damage', so n=6. According to rules, LEECH targets all_enemies (cost is not doubled) and has a base cost of 3*n (3*6=18). However, the rule states 'A card has 1 to 3 effects'. The input text only describes one mechanic (damage + heal), so it maps to a single effect. Wait, let me re-evaluate the cost calculation based on the provided rules strictly.\n\nRe-evaluating Cost Calculation:\n- Keyword: LEECH\n- n: 6\n- Target: all_enemies\n- Base Cost Rule: 3 x n = 3 * 6 = 18.\n- All_enemies Doubling Rule: 'If an effect targets all_enemies, the cost of that effect is doubled... unless its rule says otherwise.'\n- LEECH Special Rule: 'Its cost is NOT doubled for targeting all enemies.'\n- Therefore, the doubling does not apply.\n- Final Cost = 18.\n\nWait, I need to check if there are other interpretations. The text says 'Deal 6 damage... and heal'. This is exactly LEECH. \nCost calculation:\nBase cost formula given: 3 x n.\nn = 6.\nTotal = 18.\nDoes the 'all_enemies' doubling apply? The rule says 'unless its rule says otherwise'. LEECH's rule explicitly says 'Its cost is NOT doubled for targeting all enemies.' So no doubling.\nFinal Cost = 18.\n\nLet me double check the 'reject' conditions. \n- 1 to 3 effects? Yes, 1 effect.\n- Keyword exists? Yes, LEECH.\n- n in range? Range is 1-8. 6 is valid.\n- Target allowed? LEECH can only target all_enemies. Text implies 'every enemy'. Valid.\n\nSo the result should be cost 18.\n\nWait, did I miss something about the 'heal myself' part? LEECH definition: 'Deal n damage to every enemy and heal yourself by the total damage dealt.' This matches perfectly.\n\nLet's re-read the cost rule for all_enemies: 'If an effect targets all_enemies, the cost of that effect is doubled, unless its rule says otherwise.'\nLEECH rule: 'Its cost is NOT doubled for targeting all enemies.'\nSo the doubling is explicitly negated by the keyword's specific rule.\n\nCalculation:\nBase Cost = 3 * n = 3 * 6 = 18.\nDoubling check: Negated.\nCondition check: NONE (no condition mentioned).\nTotal Cost = 18.\n\nIs there any reason to reject? No.\n\nWait, looking at the previous thought trace in my head, I initially calculated 15 in the scratchpad but then corrected myself. Let's be absolutely sure.\nRule text: 'Cost: 3 x n.'\nRule text: 'LEECH can only target all enemies. Its cost is NOT doubled for targeting all enemies.'\nInput: 'Deal 6 damage to every enemy and heal myself by the total.' -> LEECH n=6.\nCost = 3 * 6 = 18.\n\nOkay, the JSON output will reflect this.",
+				"reject": false,
+				"time_ms": 53082,
+				"wrong_pass": false,
+				"wrong_reject": false
+			},
 			"rules_given": [
 				"DETONATE",
 				"MEND",
@@ -24478,6 +28001,28 @@
 			},
 			"prompt_chars": 3711,
 			"rag_hit": true,
+			"reject_on_violation": {
+				"action": "ok",
+				"ai_cost": 10,
+				"correct": true,
+				"cost": 10,
+				"cost_correct": true,
+				"effects": [
+					{
+						"condition": "NONE",
+						"keyword": "INFERNO",
+						"n": 2,
+						"target": "all_enemies"
+					}
+				],
+				"effects_correct": true,
+				"error": null,
+				"reason": "The card text describes every enemy being Burning for 2 turns dealing 3 damage per turn. This matches the INFERNO keyword exactly (n=2, target=all_enemies, 3 damage/turn). The cost is calculated as 5 * n = 10. Since it targets all_enemies, the doubling rule does not apply to INFERNO per its specific exception.",
+				"reject": false,
+				"time_ms": 34009,
+				"wrong_pass": false,
+				"wrong_reject": false
+			},
 			"rules_given": [
 				"IGNITE",
 				"INFERNO",
@@ -24600,6 +28145,21 @@
 			},
 			"prompt_chars": 3485,
 			"rag_hit": false,
+			"reject_on_violation": {
+				"action": "ai_reject",
+				"ai_cost": 6,
+				"correct": true,
+				"cost": null,
+				"cost_correct": null,
+				"effects": [],
+				"effects_correct": null,
+				"error": null,
+				"reason": "The card requests marking an enemy for 1 turn (MARK n=1) and dealing 5 damage. MARK allows n=1-2 and costs 4*n (4). EXECUTE allows n=1-15 and deals n damage, costing 2*n (10). The combination is valid as MARK only forbids other damage effects if they are 'damage effects' in a general sense, but the rules provided specifically list 'MARK cannot be on the same card as any damage effect'. However, looking closely at the provided Effect rules section: '- MARK n: ... MARK cannot be on the same card as any damage effect.' This is a hard constraint. The player's text asks for both MARK and a damage effect (5 damage). Therefore, this combination violates the special rule for MARK. Wait, let me re-read the rejection criteria carefully. 'If the card asks for something that breaks a special rule, reject it.' Yes, MARK cannot be on the same card as any damage effect. The player wants to deal 5 damage. This is a damage effect. Thus, this card must be rejected.",
+				"reject": true,
+				"time_ms": 38177,
+				"wrong_pass": false,
+				"wrong_reject": false
+			},
 			"rules_given": [
 				"MARK",
 				"BLOODPACT",
@@ -24751,6 +28311,21 @@
 			},
 			"prompt_chars": 3515,
 			"rag_hit": false,
+			"reject_on_violation": {
+				"action": "code_reject",
+				"ai_cost": null,
+				"correct": false,
+				"cost": null,
+				"cost_correct": false,
+				"effects": [],
+				"effects_correct": false,
+				"error": null,
+				"reason": "The first answer was not valid JSON for the required format.",
+				"reject": true,
+				"time_ms": 57816,
+				"wrong_pass": false,
+				"wrong_reject": true
+			},
 			"rules_given": [
 				"MARK",
 				"EXPOSE",
@@ -24881,6 +28456,21 @@
 			},
 			"prompt_chars": 3838,
 			"rag_hit": true,
+			"reject_on_violation": {
+				"action": "code_reject",
+				"ai_cost": null,
+				"correct": false,
+				"cost": null,
+				"cost_correct": false,
+				"effects": [],
+				"effects_correct": false,
+				"error": null,
+				"reason": "The first answer was not valid JSON for the required format.",
+				"reject": true,
+				"time_ms": 54414,
+				"wrong_pass": false,
+				"wrong_reject": true
+			},
 			"rules_given": [
 				"FUSE",
 				"DETONATE",
@@ -24977,6 +28567,21 @@
 			},
 			"prompt_chars": 3549,
 			"rag_hit": true,
+			"reject_on_violation": {
+				"action": "ai_reject",
+				"ai_cost": 0,
+				"correct": true,
+				"cost": null,
+				"cost_correct": null,
+				"effects": [],
+				"effects_correct": null,
+				"error": null,
+				"reason": "rejected",
+				"reject": true,
+				"time_ms": 31140,
+				"wrong_pass": false,
+				"wrong_reject": false
+			},
 			"rules_given": [
 				"DRAW",
 				"DISCARD",
@@ -25164,6 +28769,40 @@
 			},
 			"prompt_chars": 3417,
 			"rag_hit": true,
+			"reject_on_violation": {
+				"action": "ok",
+				"ai_cost": 20,
+				"correct": false,
+				"cost": 14,
+				"cost_correct": false,
+				"effects": [
+					{
+						"condition": "NONE",
+						"keyword": "GUARD",
+						"n": 5,
+						"target": "self"
+					},
+					{
+						"condition": "NONE",
+						"keyword": "DRAW",
+						"n": 3,
+						"target": "self"
+					},
+					{
+						"condition": "NONE",
+						"keyword": "GAMBIT",
+						"n": 3,
+						"target": "self"
+					}
+				],
+				"effects_correct": false,
+				"error": null,
+				"reason": "",
+				"reject": false,
+				"time_ms": 33879,
+				"wrong_pass": false,
+				"wrong_reject": false
+			},
 			"rules_given": [
 				"FORTIFY",
 				"DRAW",
@@ -25260,6 +28899,21 @@
 			},
 			"prompt_chars": 3438,
 			"rag_hit": true,
+			"reject_on_violation": {
+				"action": "ai_reject",
+				"ai_cost": 0,
+				"correct": true,
+				"cost": null,
+				"cost_correct": null,
+				"effects": [],
+				"effects_correct": null,
+				"error": null,
+				"reason": "The card text requests both QUICKEN and HASTE effects. According to the rules, QUICKEN cannot be on the same card as HASTE. Therefore, the card is rejected.",
+				"reject": true,
+				"time_ms": 31933,
+				"wrong_pass": false,
+				"wrong_reject": false
+			},
 			"rules_given": [
 				"HASTE",
 				"QUICKEN",
@@ -25392,6 +29046,28 @@
 			},
 			"prompt_chars": 3597,
 			"rag_hit": true,
+			"reject_on_violation": {
+				"action": "ok",
+				"ai_cost": 9,
+				"correct": true,
+				"cost": 9,
+				"cost_correct": true,
+				"effects": [
+					{
+						"condition": "NONE",
+						"keyword": "RESONATE",
+						"n": 3,
+						"target": "enemy"
+					}
+				],
+				"effects_correct": true,
+				"error": null,
+				"reason": "The card text 'Deal 3 damage for each different bad status on the enemy' maps directly to the RESONATE effect with n=3. The cost is calculated as 3 * n = 9.",
+				"reject": false,
+				"time_ms": 33156,
+				"wrong_pass": false,
+				"wrong_reject": false
+			},
 			"rules_given": [
 				"RESONATE",
 				"DETONATE",
@@ -25555,6 +29231,34 @@
 			},
 			"prompt_chars": 3682,
 			"rag_hit": true,
+			"reject_on_violation": {
+				"action": "ok",
+				"ai_cost": 14,
+				"correct": true,
+				"cost": 9,
+				"cost_correct": true,
+				"effects": [
+					{
+						"condition": "NONE",
+						"keyword": "CATALYST",
+						"n": null,
+						"target": "none"
+					},
+					{
+						"condition": "NONE",
+						"keyword": "POISON",
+						"n": 3,
+						"target": "enemy"
+					}
+				],
+				"effects_correct": true,
+				"error": null,
+				"reason": "",
+				"reject": false,
+				"time_ms": 33044,
+				"wrong_pass": false,
+				"wrong_reject": false
+			},
 			"rules_given": [
 				"CATALYST",
 				"POISON",
@@ -25779,6 +29483,21 @@
 			},
 			"prompt_chars": 3822,
 			"rag_hit": true,
+			"reject_on_violation": {
+				"action": "code_reject",
+				"ai_cost": 8,
+				"correct": false,
+				"cost": null,
+				"cost_correct": false,
+				"effects": [],
+				"effects_correct": false,
+				"error": null,
+				"reason": "Rejected by the code on the first answer. Breaking: Effect 2 (CATALYST) must be the first effect.",
+				"reject": true,
+				"time_ms": 41497,
+				"wrong_pass": false,
+				"wrong_reject": true
+			},
 			"rules_given": [
 				"IGNITE",
 				"CATALYST",
@@ -25911,6 +29630,28 @@
 			},
 			"prompt_chars": 3405,
 			"rag_hit": true,
+			"reject_on_violation": {
+				"action": "ok",
+				"ai_cost": 5,
+				"correct": true,
+				"cost": 3,
+				"cost_correct": true,
+				"effects": [
+					{
+						"condition": "IF_I_HAVE_SHIELD",
+						"keyword": "SHIELDBASH",
+						"n": null,
+						"target": "enemy"
+					}
+				],
+				"effects_correct": true,
+				"error": null,
+				"reason": "The card text describes a single effect: dealing damage equal to current shield if the player has it. This matches the SHIELDBASH keyword exactly (requires IF_I_HAVE_SHIELD condition, targets one enemy, cost 5). No other effects are present.",
+				"reject": false,
+				"time_ms": 33845,
+				"wrong_pass": false,
+				"wrong_reject": false
+			},
 			"rules_given": [
 				"SHIELDBASH",
 				"SHATTER",
@@ -26007,6 +29748,21 @@
 			},
 			"prompt_chars": 3423,
 			"rag_hit": true,
+			"reject_on_violation": {
+				"action": "ai_reject",
+				"ai_cost": 0,
+				"correct": true,
+				"cost": null,
+				"cost_correct": null,
+				"effects": [],
+				"effects_correct": null,
+				"error": null,
+				"reason": "rejected",
+				"reject": true,
+				"time_ms": 30995,
+				"wrong_pass": false,
+				"wrong_reject": false
+			},
 			"rules_given": [
 				"CLEANSE",
 				"TRANSFER",
@@ -26125,6 +29881,21 @@
 			},
 			"prompt_chars": 3614,
 			"rag_hit": true,
+			"reject_on_violation": {
+				"action": "ai_reject",
+				"ai_cost": 30,
+				"correct": false,
+				"cost": null,
+				"cost_correct": false,
+				"effects": [],
+				"effects_correct": false,
+				"error": null,
+				"reason": "The card requests dealing 10 damage to all enemies. The 'BARRAGE' keyword deals n damage to one or all enemies with a cost of n. Although the text mentions 'Area damage is never doubled in cost', the game rules state that targeting 'all_enemies' doubles the cost unless the specific effect rule says otherwise. BARRAGE does not have such an exception, so the cost is 10 * 2 = 20. However, looking at the provided effect rules, there isn't a direct 'BARRAGE' definition in the snippet, but 'STRIKE' allows targeting all enemies with cost n. Wait, let me re-evaluate based strictly on the provided text.\n\nRe-evaluating keywords available in the prompt's specific rule list:\n- FLARE: All enemies, cost n (no double). But FLARE requires Burning condition or specific mechanic? No, FLARE rule says 'Every Burning enemy takes n damage'. The card just says 'Deal 10 damage', implying any damage. FLARE specifically targets *Burning* enemies. If the card implies generic damage, FLARE might not fit unless we assume a state.\n- EXECUTE: One enemy only.\n- STRIKE: One or all enemies. Cost n. \n- LEECH: All enemies, heal self. Not just damage.\n\nThe prompt's provided rules for specific keywords are limited. Let's look at the general list of keywords vs the specific rules provided in the 'Effect rules' section.\nThe 'Effect rules' section defines: FLARE, EXECUTE, STRIKE, MARK, LEECH.\nIt does NOT define BARRAGE specifically in the text block provided for this turn, but BARRAGE is in the keyword list. Usually, if a keyword isn't defined in the specific rules block, I should check if it fits a general pattern or if I missed it. \nWait, looking at the user prompt's 'Effect rules' section again: It lists FLARE, EXECUTE, STRIKE, MARK, LEECH. It does NOT list BARRAGE.\nHowever, the keyword list includes BARRAGE. The instruction says: ",
+				"reject": true,
+				"time_ms": 45644,
+				"wrong_pass": false,
+				"wrong_reject": true
+			},
 			"rules_given": [
 				"FLARE",
 				"EXECUTE",
@@ -26221,6 +29992,21 @@
 			},
 			"prompt_chars": 3684,
 			"rag_hit": false,
+			"reject_on_violation": {
+				"action": "ai_reject",
+				"ai_cost": 0,
+				"correct": true,
+				"cost": null,
+				"cost_correct": null,
+				"effects": [],
+				"effects_correct": null,
+				"error": null,
+				"reason": "Rejected: The card text explicitly requests to use 'MARK' with a damage effect. According to the game rules, 'MARK cannot be on the same card as any damage effect.' Therefore, this card configuration is invalid.",
+				"reject": true,
+				"time_ms": 32043,
+				"wrong_pass": false,
+				"wrong_reject": false
+			},
 			"rules_given": [
 				"MARK",
 				"DETONATE",
@@ -26353,6 +30139,28 @@
 			},
 			"prompt_chars": 3410,
 			"rag_hit": true,
+			"reject_on_violation": {
+				"action": "ok",
+				"ai_cost": 4,
+				"correct": true,
+				"cost": 4,
+				"cost_correct": true,
+				"effects": [
+					{
+						"condition": "NONE",
+						"keyword": "ANCHOR",
+						"n": 2,
+						"target": "enemy"
+					}
+				],
+				"effects_correct": true,
+				"error": null,
+				"reason": "The card text describes the ANCHOR effect with n=2 targeting an enemy. This is a valid single effect within the rules.",
+				"reject": false,
+				"time_ms": 32651,
+				"wrong_pass": false,
+				"wrong_reject": false
+			},
 			"rules_given": [
 				"ANCHOR",
 				"CURSE",
@@ -26454,6 +30262,44 @@
 		},
 		"output_cut": 28,
 		"rag_hit_rate": 84.6153846153846,
+		"reject_code_rejections": 33,
+		"reject_on_violation": {
+			"avg_accuracy": 67.6767676767677,
+			"avg_time_ms": 37523.3737373737,
+			"category_accuracy": {
+				"all_enemies": 0.0,
+				"combo": 0.0,
+				"combo_illegal": 100.0,
+				"condition": 94.4444444444444,
+				"condition_illegal": 100.0,
+				"confusing": 0.0,
+				"cost_exception": 55.5555555555556,
+				"direct": 73.3333333333333,
+				"illegal": 88.8888888888889,
+				"multi": 50.0,
+				"paraphrase": 70.1754385964912,
+				"position": 33.3333333333333,
+				"special": 0.0,
+				"special_illegal": 100.0,
+				"trick": 66.6666666666667
+			},
+			"cost_accuracy": 59.1836734693878,
+			"effects_accuracy": 57.8231292517007,
+			"errors": 0,
+			"median_time_ms": 33658.5,
+			"per_run_accuracy": [
+				66.6666666666667,
+				68.1818181818182,
+				68.1818181818182
+			],
+			"tier_accuracy": {
+				"1": 71.6666666666667,
+				"2": 68.3333333333333,
+				"3": 64.1025641025641
+			},
+			"wrong_passes": 2,
+			"wrong_rejects": 49
+		},
 		"retried_cards": 33,
 		"retries": 43
 	},

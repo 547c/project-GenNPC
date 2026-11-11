@@ -1,0 +1,2597 @@
+{
+ "version": "xl_additions_v1",
+ "created": "2026-11-11",
+ "note": "132 more look-alike rules for size 264 (XL). Each GRIM rule = a real rule plus a drawback; each LONE rule = a real rule plus a restriction. No test card mentions these drawbacks or restrictions, so none of them is a correct answer.",
+ "distractors_xl": [
+  {
+   "id": "X001",
+   "keyword": "GRIMSTRIKE",
+   "tier": 1,
+   "school": "attack",
+   "text": "GRIMSTRIKE n: Deal n damage. You lose 2 health. Target: one enemy or all enemies. n: 1-30. Cost: n.",
+   "has_n": true,
+   "targets": [
+    "enemy",
+    "all_enemies"
+   ],
+   "cost_per_n": 1,
+   "cost_flat": 0,
+   "distractor": true,
+   "xl": true,
+   "variant_of": "STRIKE",
+   "n_min": 1,
+   "n_max": 30
+  },
+  {
+   "id": "X002",
+   "keyword": "LONESTRIKE",
+   "tier": 1,
+   "school": "attack",
+   "text": "LONESTRIKE n: Deal n damage. It only works if the enemy has full health. Target: one enemy or all enemies. n: 1-30. Cost: n.",
+   "has_n": true,
+   "targets": [
+    "enemy",
+    "all_enemies"
+   ],
+   "cost_per_n": 1,
+   "cost_flat": 0,
+   "distractor": true,
+   "xl": true,
+   "variant_of": "STRIKE",
+   "n_min": 1,
+   "n_max": 30
+  },
+  {
+   "id": "X003",
+   "keyword": "GRIMPIERCE",
+   "tier": 1,
+   "school": "attack",
+   "text": "GRIMPIERCE n: Deal n damage that ignores the target's shield. You discard 1 random card. Target: one enemy. n: 1-20. Cost: 2 x n.",
+   "has_n": true,
+   "targets": [
+    "enemy"
+   ],
+   "cost_per_n": 2,
+   "cost_flat": 0,
+   "distractor": true,
+   "xl": true,
+   "variant_of": "PIERCE",
+   "n_min": 1,
+   "n_max": 20
+  },
+  {
+   "id": "X004",
+   "keyword": "LONEPIERCE",
+   "tier": 1,
+   "school": "attack",
+   "text": "LONEPIERCE n: Deal n damage that ignores the target's shield. It only works if this is the last card you play this turn. Target: one enemy. n: 1-20. Cost: 2 x n.",
+   "has_n": true,
+   "targets": [
+    "enemy"
+   ],
+   "cost_per_n": 2,
+   "cost_flat": 0,
+   "distractor": true,
+   "xl": true,
+   "variant_of": "PIERCE",
+   "n_min": 1,
+   "n_max": 20
+  },
+  {
+   "id": "X005",
+   "keyword": "GRIMVOLLEY",
+   "tier": 1,
+   "school": "attack",
+   "text": "GRIMVOLLEY n: Deal 1 damage n times. Your next card this turn costs 1 more energy. Target: one enemy. n: 2-10. Cost: n + 1.",
+   "has_n": true,
+   "targets": [
+    "enemy"
+   ],
+   "cost_per_n": 1,
+   "cost_flat": 1,
+   "distractor": true,
+   "xl": true,
+   "variant_of": "VOLLEY",
+   "n_min": 2,
+   "n_max": 10
+  },
+  {
+   "id": "X006",
+   "keyword": "LONEVOLLEY",
+   "tier": 1,
+   "school": "attack",
+   "text": "LONEVOLLEY n: Deal 1 damage n times. It only works if you have 3 or fewer cards in your hand. Target: one enemy. n: 2-10. Cost: n + 1.",
+   "has_n": true,
+   "targets": [
+    "enemy"
+   ],
+   "cost_per_n": 1,
+   "cost_flat": 1,
+   "distractor": true,
+   "xl": true,
+   "variant_of": "VOLLEY",
+   "n_min": 2,
+   "n_max": 10
+  },
+  {
+   "id": "X007",
+   "keyword": "GRIMCLEAVE",
+   "tier": 1,
+   "school": "attack",
+   "text": "GRIMCLEAVE n: Deal n damage to one enemy, and half of n (round down) to every other enemy. The enemy gains 3 shield. Target: one enemy. n: 2-20. Cost: 2 x n.",
+   "has_n": true,
+   "targets": [
+    "enemy"
+   ],
+   "cost_per_n": 2,
+   "cost_flat": 0,
+   "distractor": true,
+   "xl": true,
+   "variant_of": "CLEAVE",
+   "n_min": 2,
+   "n_max": 20
+  },
+  {
+   "id": "X008",
+   "keyword": "LONECLEAVE",
+   "tier": 1,
+   "school": "attack",
+   "text": "LONECLEAVE n: Deal n damage to one enemy, and half of n (round down) to every other enemy. It only works if the enemy has no shield. Target: one enemy. n: 2-20. Cost: 2 x n.",
+   "has_n": true,
+   "targets": [
+    "enemy"
+   ],
+   "cost_per_n": 2,
+   "cost_flat": 0,
+   "distractor": true,
+   "xl": true,
+   "variant_of": "CLEAVE",
+   "n_min": 2,
+   "n_max": 20
+  },
+  {
+   "id": "X009",
+   "keyword": "GRIMSIPHON",
+   "tier": 1,
+   "school": "attack",
+   "text": "GRIMSIPHON n: Deal n damage and heal yourself by the same amount. You cannot play another card this turn. Target: one enemy. n: 1-15. Cost: 2 x n.",
+   "has_n": true,
+   "targets": [
+    "enemy"
+   ],
+   "cost_per_n": 2,
+   "cost_flat": 0,
+   "distractor": true,
+   "xl": true,
+   "variant_of": "SIPHON",
+   "n_min": 1,
+   "n_max": 15
+  },
+  {
+   "id": "X010",
+   "keyword": "LONESIPHON",
+   "tier": 1,
+   "school": "attack",
+   "text": "LONESIPHON n: Deal n damage and heal yourself by the same amount. It only works if you played another card before it this turn. Target: one enemy. n: 1-15. Cost: 2 x n.",
+   "has_n": true,
+   "targets": [
+    "enemy"
+   ],
+   "cost_per_n": 2,
+   "cost_flat": 0,
+   "distractor": true,
+   "xl": true,
+   "variant_of": "SIPHON",
+   "n_min": 1,
+   "n_max": 15
+  },
+  {
+   "id": "X011",
+   "keyword": "GRIMRECKLESS",
+   "tier": 1,
+   "school": "attack",
+   "text": "GRIMRECKLESS n: Deal n damage. You also take half of n (round up) damage. You take 1 damage at the start of your next turn. Target: one enemy. n: 1-30. Cost: half of n (round up).",
+   "has_n": true,
+   "targets": [
+    "enemy"
+   ],
+   "cost_per_n": 0.5,
+   "cost_flat": 0,
+   "distractor": true,
+   "xl": true,
+   "variant_of": "RECKLESS",
+   "n_min": 1,
+   "n_max": 30
+  },
+  {
+   "id": "X012",
+   "keyword": "LONERECKLESS",
+   "tier": 1,
+   "school": "attack",
+   "text": "LONERECKLESS n: Deal n damage. You also take half of n (round up) damage. It only works if the enemy has full health. Target: one enemy. n: 1-30. Cost: half of n (round up).",
+   "has_n": true,
+   "targets": [
+    "enemy"
+   ],
+   "cost_per_n": 0.5,
+   "cost_flat": 0,
+   "distractor": true,
+   "xl": true,
+   "variant_of": "RECKLESS",
+   "n_min": 1,
+   "n_max": 30
+  },
+  {
+   "id": "X013",
+   "keyword": "GRIMEXECUTE",
+   "tier": 1,
+   "school": "attack",
+   "text": "GRIMEXECUTE n: Deal n damage. If the enemy is below half health, deal double instead. You lose 2 health. Target: one enemy. n: 1-15. Cost: 2 x n.",
+   "has_n": true,
+   "targets": [
+    "enemy"
+   ],
+   "cost_per_n": 2,
+   "cost_flat": 0,
+   "distractor": true,
+   "xl": true,
+   "variant_of": "EXECUTE",
+   "n_min": 1,
+   "n_max": 15
+  },
+  {
+   "id": "X014",
+   "keyword": "LONEEXECUTE",
+   "tier": 1,
+   "school": "attack",
+   "text": "LONEEXECUTE n: Deal n damage. If the enemy is below half health, deal double instead. It only works if this is the last card you play this turn. Target: one enemy. n: 1-15. Cost: 2 x n.",
+   "has_n": true,
+   "targets": [
+    "enemy"
+   ],
+   "cost_per_n": 2,
+   "cost_flat": 0,
+   "distractor": true,
+   "xl": true,
+   "variant_of": "EXECUTE",
+   "n_min": 1,
+   "n_max": 15
+  },
+  {
+   "id": "X015",
+   "keyword": "GRIMGUARD",
+   "tier": 1,
+   "school": "defense",
+   "text": "GRIMGUARD n: Gain n shield. Shield blocks damage and disappears at the start of your next turn. You discard 1 random card. Target: yourself. n: 1-30. Cost: n.",
+   "has_n": true,
+   "targets": [
+    "self"
+   ],
+   "cost_per_n": 1,
+   "cost_flat": 0,
+   "distractor": true,
+   "xl": true,
+   "variant_of": "GUARD",
+   "n_min": 1,
+   "n_max": 30
+  },
+  {
+   "id": "X016",
+   "keyword": "LONEGUARD",
+   "tier": 1,
+   "school": "defense",
+   "text": "LONEGUARD n: Gain n shield. Shield blocks damage and disappears at the start of your next turn. It only works if you have 3 or fewer cards in your hand. Target: yourself. n: 1-30. Cost: n.",
+   "has_n": true,
+   "targets": [
+    "self"
+   ],
+   "cost_per_n": 1,
+   "cost_flat": 0,
+   "distractor": true,
+   "xl": true,
+   "variant_of": "GUARD",
+   "n_min": 1,
+   "n_max": 30
+  },
+  {
+   "id": "X017",
+   "keyword": "GRIMBULWARK",
+   "tier": 1,
+   "school": "defense",
+   "text": "GRIMBULWARK n: Gain n shield that does not disappear until it is used up. Your next card this turn costs 1 more energy. Target: yourself. n: 1-15. Cost: 2 x n.",
+   "has_n": true,
+   "targets": [
+    "self"
+   ],
+   "cost_per_n": 2,
+   "cost_flat": 0,
+   "distractor": true,
+   "xl": true,
+   "variant_of": "BULWARK",
+   "n_min": 1,
+   "n_max": 15
+  },
+  {
+   "id": "X018",
+   "keyword": "LONEBULWARK",
+   "tier": 1,
+   "school": "defense",
+   "text": "LONEBULWARK n: Gain n shield that does not disappear until it is used up. It only works if the enemy has no shield. Target: yourself. n: 1-15. Cost: 2 x n.",
+   "has_n": true,
+   "targets": [
+    "self"
+   ],
+   "cost_per_n": 2,
+   "cost_flat": 0,
+   "distractor": true,
+   "xl": true,
+   "variant_of": "BULWARK",
+   "n_min": 1,
+   "n_max": 15
+  },
+  {
+   "id": "X019",
+   "keyword": "GRIMMEND",
+   "tier": 1,
+   "school": "healing",
+   "text": "GRIMMEND n: Heal yourself by n. The enemy gains 3 shield. Target: yourself. n: 1-30. Cost: n.",
+   "has_n": true,
+   "targets": [
+    "self"
+   ],
+   "cost_per_n": 1,
+   "cost_flat": 0,
+   "distractor": true,
+   "xl": true,
+   "variant_of": "MEND",
+   "n_min": 1,
+   "n_max": 30
+  },
+  {
+   "id": "X020",
+   "keyword": "LONEMEND",
+   "tier": 1,
+   "school": "healing",
+   "text": "LONEMEND n: Heal yourself by n. It only works if you played another card before it this turn. Target: yourself. n: 1-30. Cost: n.",
+   "has_n": true,
+   "targets": [
+    "self"
+   ],
+   "cost_per_n": 1,
+   "cost_flat": 0,
+   "distractor": true,
+   "xl": true,
+   "variant_of": "MEND",
+   "n_min": 1,
+   "n_max": 30
+  },
+  {
+   "id": "X021",
+   "keyword": "GRIMRENEW",
+   "tier": 1,
+   "school": "healing",
+   "text": "GRIMRENEW n: Heal yourself by n at the start of each of your next 3 turns. You cannot play another card this turn. Target: yourself. n: 1-10. Cost: 2 x n.",
+   "has_n": true,
+   "targets": [
+    "self"
+   ],
+   "cost_per_n": 2,
+   "cost_flat": 0,
+   "distractor": true,
+   "xl": true,
+   "variant_of": "RENEW",
+   "n_min": 1,
+   "n_max": 10
+  },
+  {
+   "id": "X022",
+   "keyword": "LONERENEW",
+   "tier": 1,
+   "school": "healing",
+   "text": "LONERENEW n: Heal yourself by n at the start of each of your next 3 turns. It only works if the enemy has full health. Target: yourself. n: 1-10. Cost: 2 x n.",
+   "has_n": true,
+   "targets": [
+    "self"
+   ],
+   "cost_per_n": 2,
+   "cost_flat": 0,
+   "distractor": true,
+   "xl": true,
+   "variant_of": "RENEW",
+   "n_min": 1,
+   "n_max": 10
+  },
+  {
+   "id": "X023",
+   "keyword": "GRIMDODGE",
+   "tier": 1,
+   "school": "defense",
+   "text": "GRIMDODGE: The next attack against you this turn misses. You take 1 damage at the start of your next turn. Target: yourself. No n. Cost: 3.",
+   "has_n": false,
+   "targets": [
+    "self"
+   ],
+   "cost_per_n": 0,
+   "cost_flat": 3,
+   "distractor": true,
+   "xl": true,
+   "variant_of": "DODGE"
+  },
+  {
+   "id": "X024",
+   "keyword": "LONEDODGE",
+   "tier": 1,
+   "school": "defense",
+   "text": "LONEDODGE: The next attack against you this turn misses. It only works if this is the last card you play this turn. Target: yourself. No n. Cost: 3.",
+   "has_n": false,
+   "targets": [
+    "self"
+   ],
+   "cost_per_n": 0,
+   "cost_flat": 3,
+   "distractor": true,
+   "xl": true,
+   "variant_of": "DODGE"
+  },
+  {
+   "id": "X025",
+   "keyword": "GRIMCLEANSE",
+   "tier": 1,
+   "school": "healing",
+   "text": "GRIMCLEANSE: Remove all negative effects from yourself. You lose 2 health. Target: yourself. No n. Cost: 2.",
+   "has_n": false,
+   "targets": [
+    "self"
+   ],
+   "cost_per_n": 0,
+   "cost_flat": 2,
+   "distractor": true,
+   "xl": true,
+   "variant_of": "CLEANSE"
+  },
+  {
+   "id": "X026",
+   "keyword": "LONECLEANSE",
+   "tier": 1,
+   "school": "healing",
+   "text": "LONECLEANSE: Remove all negative effects from yourself. It only works if you have 3 or fewer cards in your hand. Target: yourself. No n. Cost: 2.",
+   "has_n": false,
+   "targets": [
+    "self"
+   ],
+   "cost_per_n": 0,
+   "cost_flat": 2,
+   "distractor": true,
+   "xl": true,
+   "variant_of": "CLEANSE"
+  },
+  {
+   "id": "X027",
+   "keyword": "GRIMDRAW",
+   "tier": 1,
+   "school": "cards",
+   "text": "GRIMDRAW n: Draw n cards. You discard 1 random card. Target: yourself. n: 1-5. Cost: 2 x n.",
+   "has_n": true,
+   "targets": [
+    "self"
+   ],
+   "cost_per_n": 2,
+   "cost_flat": 0,
+   "distractor": true,
+   "xl": true,
+   "variant_of": "DRAW",
+   "n_min": 1,
+   "n_max": 5
+  },
+  {
+   "id": "X028",
+   "keyword": "LONEDRAW",
+   "tier": 1,
+   "school": "cards",
+   "text": "LONEDRAW n: Draw n cards. It only works if the enemy has no shield. Target: yourself. n: 1-5. Cost: 2 x n.",
+   "has_n": true,
+   "targets": [
+    "self"
+   ],
+   "cost_per_n": 2,
+   "cost_flat": 0,
+   "distractor": true,
+   "xl": true,
+   "variant_of": "DRAW",
+   "n_min": 1,
+   "n_max": 5
+  },
+  {
+   "id": "X029",
+   "keyword": "GRIMDISCARD",
+   "tier": 1,
+   "school": "cards",
+   "text": "GRIMDISCARD n: The enemy discards n random cards. Your next card this turn costs 1 more energy. Target: one enemy. n: 1-3. Cost: 3 x n.",
+   "has_n": true,
+   "targets": [
+    "enemy"
+   ],
+   "cost_per_n": 3,
+   "cost_flat": 0,
+   "distractor": true,
+   "xl": true,
+   "variant_of": "DISCARD",
+   "n_min": 1,
+   "n_max": 3
+  },
+  {
+   "id": "X030",
+   "keyword": "LONEDISCARD",
+   "tier": 1,
+   "school": "cards",
+   "text": "LONEDISCARD n: The enemy discards n random cards. It only works if you played another card before it this turn. Target: one enemy. n: 1-3. Cost: 3 x n.",
+   "has_n": true,
+   "targets": [
+    "enemy"
+   ],
+   "cost_per_n": 3,
+   "cost_flat": 0,
+   "distractor": true,
+   "xl": true,
+   "variant_of": "DISCARD",
+   "n_min": 1,
+   "n_max": 3
+  },
+  {
+   "id": "X031",
+   "keyword": "GRIMSCRY",
+   "tier": 1,
+   "school": "cards",
+   "text": "GRIMSCRY n: Look at the top n cards of your deck and put them back in any order. The enemy gains 3 shield. Target: yourself. n: 1-5. Cost: n.",
+   "has_n": true,
+   "targets": [
+    "self"
+   ],
+   "cost_per_n": 1,
+   "cost_flat": 0,
+   "distractor": true,
+   "xl": true,
+   "variant_of": "SCRY",
+   "n_min": 1,
+   "n_max": 5
+  },
+  {
+   "id": "X032",
+   "keyword": "LONESCRY",
+   "tier": 1,
+   "school": "cards",
+   "text": "LONESCRY n: Look at the top n cards of your deck and put them back in any order. It only works if the enemy has full health. Target: yourself. n: 1-5. Cost: n.",
+   "has_n": true,
+   "targets": [
+    "self"
+   ],
+   "cost_per_n": 1,
+   "cost_flat": 0,
+   "distractor": true,
+   "xl": true,
+   "variant_of": "SCRY",
+   "n_min": 1,
+   "n_max": 5
+  },
+  {
+   "id": "X033",
+   "keyword": "GRIMRECYCLE",
+   "tier": 1,
+   "school": "cards",
+   "text": "GRIMRECYCLE: Return the last card you played to your hand. You cannot play another card this turn. Target: yourself. No n. Cost: 4.",
+   "has_n": false,
+   "targets": [
+    "self"
+   ],
+   "cost_per_n": 0,
+   "cost_flat": 4,
+   "distractor": true,
+   "xl": true,
+   "variant_of": "RECYCLE"
+  },
+  {
+   "id": "X034",
+   "keyword": "LONERECYCLE",
+   "tier": 1,
+   "school": "cards",
+   "text": "LONERECYCLE: Return the last card you played to your hand. It only works if this is the last card you play this turn. Target: yourself. No n. Cost: 4.",
+   "has_n": false,
+   "targets": [
+    "self"
+   ],
+   "cost_per_n": 0,
+   "cost_flat": 4,
+   "distractor": true,
+   "xl": true,
+   "variant_of": "RECYCLE"
+  },
+  {
+   "id": "X035",
+   "keyword": "GRIMFOCUS",
+   "tier": 1,
+   "school": "energy",
+   "text": "GRIMFOCUS n: Gain n extra energy next turn. You take 1 damage at the start of your next turn. Target: yourself. n: 1-3. Cost: 2 x n.",
+   "has_n": true,
+   "targets": [
+    "self"
+   ],
+   "cost_per_n": 2,
+   "cost_flat": 0,
+   "distractor": true,
+   "xl": true,
+   "variant_of": "FOCUS",
+   "n_min": 1,
+   "n_max": 3
+  },
+  {
+   "id": "X036",
+   "keyword": "LONEFOCUS",
+   "tier": 1,
+   "school": "energy",
+   "text": "LONEFOCUS n: Gain n extra energy next turn. It only works if you have 3 or fewer cards in your hand. Target: yourself. n: 1-3. Cost: 2 x n.",
+   "has_n": true,
+   "targets": [
+    "self"
+   ],
+   "cost_per_n": 2,
+   "cost_flat": 0,
+   "distractor": true,
+   "xl": true,
+   "variant_of": "FOCUS",
+   "n_min": 1,
+   "n_max": 3
+  },
+  {
+   "id": "X037",
+   "keyword": "GRIMRALLY",
+   "tier": 1,
+   "school": "energy",
+   "text": "GRIMRALLY n: Gain n energy right now. You lose 2 health. Target: yourself. n: 1-3. Cost: 3 x n.",
+   "has_n": true,
+   "targets": [
+    "self"
+   ],
+   "cost_per_n": 3,
+   "cost_flat": 0,
+   "distractor": true,
+   "xl": true,
+   "variant_of": "RALLY",
+   "n_min": 1,
+   "n_max": 3
+  },
+  {
+   "id": "X038",
+   "keyword": "LONERALLY",
+   "tier": 1,
+   "school": "energy",
+   "text": "LONERALLY n: Gain n energy right now. It only works if the enemy has no shield. Target: yourself. n: 1-3. Cost: 3 x n.",
+   "has_n": true,
+   "targets": [
+    "self"
+   ],
+   "cost_per_n": 3,
+   "cost_flat": 0,
+   "distractor": true,
+   "xl": true,
+   "variant_of": "RALLY",
+   "n_min": 1,
+   "n_max": 3
+  },
+  {
+   "id": "X039",
+   "keyword": "GRIMHASTE",
+   "tier": 1,
+   "school": "energy",
+   "text": "GRIMHASTE: You can play one extra card this turn. You discard 1 random card. Target: yourself. No n. Cost: 5.",
+   "has_n": false,
+   "targets": [
+    "self"
+   ],
+   "cost_per_n": 0,
+   "cost_flat": 5,
+   "distractor": true,
+   "xl": true,
+   "variant_of": "HASTE"
+  },
+  {
+   "id": "X040",
+   "keyword": "LONEHASTE",
+   "tier": 1,
+   "school": "energy",
+   "text": "LONEHASTE: You can play one extra card this turn. It only works if you played another card before it this turn. Target: yourself. No n. Cost: 5.",
+   "has_n": false,
+   "targets": [
+    "self"
+   ],
+   "cost_per_n": 0,
+   "cost_flat": 5,
+   "distractor": true,
+   "xl": true,
+   "variant_of": "HASTE"
+  },
+  {
+   "id": "X041",
+   "keyword": "GRIMEMPOWER",
+   "tier": 1,
+   "school": "buff",
+   "text": "GRIMEMPOWER n: Your next attack deals n more damage. Your next card this turn costs 1 more energy. Target: yourself. n: 1-10. Cost: n.",
+   "has_n": true,
+   "targets": [
+    "self"
+   ],
+   "cost_per_n": 1,
+   "cost_flat": 0,
+   "distractor": true,
+   "xl": true,
+   "variant_of": "EMPOWER",
+   "n_min": 1,
+   "n_max": 10
+  },
+  {
+   "id": "X042",
+   "keyword": "LONEEMPOWER",
+   "tier": 1,
+   "school": "buff",
+   "text": "LONEEMPOWER n: Your next attack deals n more damage. It only works if the enemy has full health. Target: yourself. n: 1-10. Cost: n.",
+   "has_n": true,
+   "targets": [
+    "self"
+   ],
+   "cost_per_n": 1,
+   "cost_flat": 0,
+   "distractor": true,
+   "xl": true,
+   "variant_of": "EMPOWER",
+   "n_min": 1,
+   "n_max": 10
+  },
+  {
+   "id": "X043",
+   "keyword": "GRIMSHATTER",
+   "tier": 1,
+   "school": "attack",
+   "text": "GRIMSHATTER: Remove all shield from the enemy. The enemy gains 3 shield. Target: one enemy. No n. Cost: 3.",
+   "has_n": false,
+   "targets": [
+    "enemy"
+   ],
+   "cost_per_n": 0,
+   "cost_flat": 3,
+   "distractor": true,
+   "xl": true,
+   "variant_of": "SHATTER"
+  },
+  {
+   "id": "X044",
+   "keyword": "LONESHATTER",
+   "tier": 1,
+   "school": "attack",
+   "text": "LONESHATTER: Remove all shield from the enemy. It only works if this is the last card you play this turn. Target: one enemy. No n. Cost: 3.",
+   "has_n": false,
+   "targets": [
+    "enemy"
+   ],
+   "cost_per_n": 0,
+   "cost_flat": 3,
+   "distractor": true,
+   "xl": true,
+   "variant_of": "SHATTER"
+  },
+  {
+   "id": "X045",
+   "keyword": "GRIMIGNITE",
+   "tier": 2,
+   "school": "fire",
+   "text": "GRIMIGNITE n: The target is Burning for n turns. A Burning enemy takes 2 damage at the start of each of its turns. You cannot play another card this turn. Target: one enemy or all enemies. n: 1-5. Cost: 2 x n.",
+   "has_n": true,
+   "targets": [
+    "enemy",
+    "all_enemies"
+   ],
+   "cost_per_n": 2,
+   "cost_flat": 0,
+   "distractor": true,
+   "xl": true,
+   "variant_of": "IGNITE",
+   "n_min": 1,
+   "n_max": 5
+  },
+  {
+   "id": "X046",
+   "keyword": "LONEIGNITE",
+   "tier": 2,
+   "school": "fire",
+   "text": "LONEIGNITE n: The target is Burning for n turns. A Burning enemy takes 2 damage at the start of each of its turns. It only works if you have 3 or fewer cards in your hand. Target: one enemy or all enemies. n: 1-5. Cost: 2 x n.",
+   "has_n": true,
+   "targets": [
+    "enemy",
+    "all_enemies"
+   ],
+   "cost_per_n": 2,
+   "cost_flat": 0,
+   "distractor": true,
+   "xl": true,
+   "variant_of": "IGNITE",
+   "n_min": 1,
+   "n_max": 5
+  },
+  {
+   "id": "X047",
+   "keyword": "GRIMBLAZE",
+   "tier": 2,
+   "school": "fire",
+   "text": "GRIMBLAZE n: The target is Burning for n turns, but this Burning deals 3 damage per turn instead of 2. You take 1 damage at the start of your next turn. Target: one enemy. n: 1-3. Cost: 3 x n.",
+   "has_n": true,
+   "targets": [
+    "enemy"
+   ],
+   "cost_per_n": 3,
+   "cost_flat": 0,
+   "distractor": true,
+   "xl": true,
+   "variant_of": "BLAZE",
+   "n_min": 1,
+   "n_max": 3
+  },
+  {
+   "id": "X048",
+   "keyword": "LONEBLAZE",
+   "tier": 2,
+   "school": "fire",
+   "text": "LONEBLAZE n: The target is Burning for n turns, but this Burning deals 3 damage per turn instead of 2. It only works if the enemy has no shield. Target: one enemy. n: 1-3. Cost: 3 x n.",
+   "has_n": true,
+   "targets": [
+    "enemy"
+   ],
+   "cost_per_n": 3,
+   "cost_flat": 0,
+   "distractor": true,
+   "xl": true,
+   "variant_of": "BLAZE",
+   "n_min": 1,
+   "n_max": 3
+  },
+  {
+   "id": "X049",
+   "keyword": "GRIMSCORCH",
+   "tier": 2,
+   "school": "fire",
+   "text": "GRIMSCORCH n: Deal n damage. If the enemy is Burning, deal n more damage. You lose 2 health. Target: one enemy. n: 1-15. Cost: 1.",
+   "has_n": true,
+   "targets": [
+    "enemy"
+   ],
+   "cost_per_n": 1.5,
+   "cost_flat": 0,
+   "distractor": true,
+   "xl": true,
+   "variant_of": "SCORCH",
+   "n_min": 1,
+   "n_max": 15
+  },
+  {
+   "id": "X050",
+   "keyword": "LONESCORCH",
+   "tier": 2,
+   "school": "fire",
+   "text": "LONESCORCH n: Deal n damage. If the enemy is Burning, deal n more damage. It only works if you played another card before it this turn. Target: one enemy. n: 1-15. Cost: 1.",
+   "has_n": true,
+   "targets": [
+    "enemy"
+   ],
+   "cost_per_n": 1.5,
+   "cost_flat": 0,
+   "distractor": true,
+   "xl": true,
+   "variant_of": "SCORCH",
+   "n_min": 1,
+   "n_max": 15
+  },
+  {
+   "id": "X051",
+   "keyword": "GRIMEMBER",
+   "tier": 2,
+   "school": "fire",
+   "text": "GRIMEMBER n: Deal n damage. If the enemy is not Burning, it becomes Burning for 1 turn. You discard 1 random card. Target: one enemy. n: 1-10. Cost: 1.",
+   "has_n": true,
+   "targets": [
+    "enemy"
+   ],
+   "cost_per_n": 1.5,
+   "cost_flat": 0,
+   "distractor": true,
+   "xl": true,
+   "variant_of": "EMBER",
+   "n_min": 1,
+   "n_max": 10
+  },
+  {
+   "id": "X052",
+   "keyword": "LONEEMBER",
+   "tier": 2,
+   "school": "fire",
+   "text": "LONEEMBER n: Deal n damage. If the enemy is not Burning, it becomes Burning for 1 turn. It only works if the enemy has full health. Target: one enemy. n: 1-10. Cost: 1.",
+   "has_n": true,
+   "targets": [
+    "enemy"
+   ],
+   "cost_per_n": 1.5,
+   "cost_flat": 0,
+   "distractor": true,
+   "xl": true,
+   "variant_of": "EMBER",
+   "n_min": 1,
+   "n_max": 10
+  },
+  {
+   "id": "X053",
+   "keyword": "GRIMFLARE",
+   "tier": 2,
+   "school": "fire",
+   "text": "GRIMFLARE n: Every Burning enemy takes n damage. Your next card this turn costs 1 more energy. Target: all enemies. n: 1-10. Cost: n.",
+   "has_n": true,
+   "targets": [
+    "all_enemies"
+   ],
+   "cost_per_n": 1,
+   "cost_flat": 0,
+   "distractor": true,
+   "xl": true,
+   "variant_of": "FLARE",
+   "n_min": 1,
+   "n_max": 10
+  },
+  {
+   "id": "X054",
+   "keyword": "LONEFLARE",
+   "tier": 2,
+   "school": "fire",
+   "text": "LONEFLARE n: Every Burning enemy takes n damage. It only works if this is the last card you play this turn. Target: all enemies. n: 1-10. Cost: n.",
+   "has_n": true,
+   "targets": [
+    "all_enemies"
+   ],
+   "cost_per_n": 1,
+   "cost_flat": 0,
+   "distractor": true,
+   "xl": true,
+   "variant_of": "FLARE",
+   "n_min": 1,
+   "n_max": 10
+  },
+  {
+   "id": "X055",
+   "keyword": "GRIMCHILL",
+   "tier": 2,
+   "school": "ice",
+   "text": "GRIMCHILL n: The target is Chilled for n turns. A Chilled enemy's attacks deal 2 less damage. The enemy gains 3 shield. Target: one enemy or all enemies. n: 1-5. Cost: 2 x n.",
+   "has_n": true,
+   "targets": [
+    "enemy",
+    "all_enemies"
+   ],
+   "cost_per_n": 2,
+   "cost_flat": 0,
+   "distractor": true,
+   "xl": true,
+   "variant_of": "CHILL",
+   "n_min": 1,
+   "n_max": 5
+  },
+  {
+   "id": "X056",
+   "keyword": "LONECHILL",
+   "tier": 2,
+   "school": "ice",
+   "text": "LONECHILL n: The target is Chilled for n turns. A Chilled enemy's attacks deal 2 less damage. It only works if you have 3 or fewer cards in your hand. Target: one enemy or all enemies. n: 1-5. Cost: 2 x n.",
+   "has_n": true,
+   "targets": [
+    "enemy",
+    "all_enemies"
+   ],
+   "cost_per_n": 2,
+   "cost_flat": 0,
+   "distractor": true,
+   "xl": true,
+   "variant_of": "CHILL",
+   "n_min": 1,
+   "n_max": 5
+  },
+  {
+   "id": "X057",
+   "keyword": "GRIMFREEZE",
+   "tier": 2,
+   "school": "ice",
+   "text": "GRIMFREEZE: The enemy skips its next turn. You cannot play another card this turn. Target: one enemy. No n. Cost: 8.",
+   "has_n": false,
+   "targets": [
+    "enemy"
+   ],
+   "cost_per_n": 0,
+   "cost_flat": 8,
+   "distractor": true,
+   "xl": true,
+   "variant_of": "FREEZE"
+  },
+  {
+   "id": "X058",
+   "keyword": "LONEFREEZE",
+   "tier": 2,
+   "school": "ice",
+   "text": "LONEFREEZE: The enemy skips its next turn. It only works if the enemy has no shield. Target: one enemy. No n. Cost: 8.",
+   "has_n": false,
+   "targets": [
+    "enemy"
+   ],
+   "cost_per_n": 0,
+   "cost_flat": 8,
+   "distractor": true,
+   "xl": true,
+   "variant_of": "FREEZE"
+  },
+  {
+   "id": "X059",
+   "keyword": "GRIMGLACIER",
+   "tier": 2,
+   "school": "ice",
+   "text": "GRIMGLACIER n: Gain n shield. The next enemy that hits you becomes Chilled for 1 turn. You take 1 damage at the start of your next turn. Target: yourself. n: 1-15. Cost: 2 x n + 2.",
+   "has_n": true,
+   "targets": [
+    "self"
+   ],
+   "cost_per_n": 2,
+   "cost_flat": 2,
+   "distractor": true,
+   "xl": true,
+   "variant_of": "GLACIER",
+   "n_min": 1,
+   "n_max": 15
+  },
+  {
+   "id": "X060",
+   "keyword": "LONEGLACIER",
+   "tier": 2,
+   "school": "ice",
+   "text": "LONEGLACIER n: Gain n shield. The next enemy that hits you becomes Chilled for 1 turn. It only works if you played another card before it this turn. Target: yourself. n: 1-15. Cost: 2 x n + 2.",
+   "has_n": true,
+   "targets": [
+    "self"
+   ],
+   "cost_per_n": 2,
+   "cost_flat": 2,
+   "distractor": true,
+   "xl": true,
+   "variant_of": "GLACIER",
+   "n_min": 1,
+   "n_max": 15
+  },
+  {
+   "id": "X061",
+   "keyword": "GRIMPOISON",
+   "tier": 2,
+   "school": "poison",
+   "text": "GRIMPOISON n: The target loses n health at the end of each of its turns, for 3 turns. You lose 2 health. Target: one enemy or all enemies. n: 1-5. Cost: 2 x n.",
+   "has_n": true,
+   "targets": [
+    "enemy",
+    "all_enemies"
+   ],
+   "cost_per_n": 2,
+   "cost_flat": 0,
+   "distractor": true,
+   "xl": true,
+   "variant_of": "POISON",
+   "n_min": 1,
+   "n_max": 5
+  },
+  {
+   "id": "X062",
+   "keyword": "LONEPOISON",
+   "tier": 2,
+   "school": "poison",
+   "text": "LONEPOISON n: The target loses n health at the end of each of its turns, for 3 turns. It only works if the enemy has full health. Target: one enemy or all enemies. n: 1-5. Cost: 2 x n.",
+   "has_n": true,
+   "targets": [
+    "enemy",
+    "all_enemies"
+   ],
+   "cost_per_n": 2,
+   "cost_flat": 0,
+   "distractor": true,
+   "xl": true,
+   "variant_of": "POISON",
+   "n_min": 1,
+   "n_max": 5
+  },
+  {
+   "id": "X063",
+   "keyword": "GRIMVENOM",
+   "tier": 2,
+   "school": "poison",
+   "text": "GRIMVENOM n: For n turns, the enemy is Poisoned: it loses 2 health at the end of each turn and its healing is cut in half. You discard 1 random card. Target: one enemy. n: 1-4. Cost: 3 x n.",
+   "has_n": true,
+   "targets": [
+    "enemy"
+   ],
+   "cost_per_n": 3,
+   "cost_flat": 0,
+   "distractor": true,
+   "xl": true,
+   "variant_of": "VENOM",
+   "n_min": 1,
+   "n_max": 4
+  },
+  {
+   "id": "X064",
+   "keyword": "LONEVENOM",
+   "tier": 2,
+   "school": "poison",
+   "text": "LONEVENOM n: For n turns, the enemy is Poisoned: it loses 2 health at the end of each turn and its healing is cut in half. It only works if this is the last card you play this turn. Target: one enemy. n: 1-4. Cost: 3 x n.",
+   "has_n": true,
+   "targets": [
+    "enemy"
+   ],
+   "cost_per_n": 3,
+   "cost_flat": 0,
+   "distractor": true,
+   "xl": true,
+   "variant_of": "VENOM",
+   "n_min": 1,
+   "n_max": 4
+  },
+  {
+   "id": "X065",
+   "keyword": "GRIMWEAKEN",
+   "tier": 2,
+   "school": "curse",
+   "text": "GRIMWEAKEN n: For n turns, the target deals 25% less damage. Your next card this turn costs 1 more energy. Target: one enemy or all enemies. n: 1-5. Cost: 2 x n.",
+   "has_n": true,
+   "targets": [
+    "enemy",
+    "all_enemies"
+   ],
+   "cost_per_n": 2,
+   "cost_flat": 0,
+   "distractor": true,
+   "xl": true,
+   "variant_of": "WEAKEN",
+   "n_min": 1,
+   "n_max": 5
+  },
+  {
+   "id": "X066",
+   "keyword": "LONEWEAKEN",
+   "tier": 2,
+   "school": "curse",
+   "text": "LONEWEAKEN n: For n turns, the target deals 25% less damage. It only works if you have 3 or fewer cards in your hand. Target: one enemy or all enemies. n: 1-5. Cost: 2 x n.",
+   "has_n": true,
+   "targets": [
+    "enemy",
+    "all_enemies"
+   ],
+   "cost_per_n": 2,
+   "cost_flat": 0,
+   "distractor": true,
+   "xl": true,
+   "variant_of": "WEAKEN",
+   "n_min": 1,
+   "n_max": 5
+  },
+  {
+   "id": "X067",
+   "keyword": "GRIMEXPOSE",
+   "tier": 2,
+   "school": "curse",
+   "text": "GRIMEXPOSE n: For n turns, the enemy takes 50% more damage. The enemy gains 3 shield. Target: one enemy. n: 1-3. Cost: 3 x n.",
+   "has_n": true,
+   "targets": [
+    "enemy"
+   ],
+   "cost_per_n": 3,
+   "cost_flat": 0,
+   "distractor": true,
+   "xl": true,
+   "variant_of": "EXPOSE",
+   "n_min": 1,
+   "n_max": 3
+  },
+  {
+   "id": "X068",
+   "keyword": "LONEEXPOSE",
+   "tier": 2,
+   "school": "curse",
+   "text": "LONEEXPOSE n: For n turns, the enemy takes 50% more damage. It only works if the enemy has no shield. Target: one enemy. n: 1-3. Cost: 3 x n.",
+   "has_n": true,
+   "targets": [
+    "enemy"
+   ],
+   "cost_per_n": 3,
+   "cost_flat": 0,
+   "distractor": true,
+   "xl": true,
+   "variant_of": "EXPOSE",
+   "n_min": 1,
+   "n_max": 3
+  },
+  {
+   "id": "X069",
+   "keyword": "GRIMSILENCE",
+   "tier": 2,
+   "school": "curse",
+   "text": "GRIMSILENCE n: For n turns, the enemy cannot use special abilities. You cannot play another card this turn. Target: one enemy. n: 1-2. Cost: 4 x n.",
+   "has_n": true,
+   "targets": [
+    "enemy"
+   ],
+   "cost_per_n": 4,
+   "cost_flat": 0,
+   "distractor": true,
+   "xl": true,
+   "variant_of": "SILENCE",
+   "n_min": 1,
+   "n_max": 2
+  },
+  {
+   "id": "X070",
+   "keyword": "LONESILENCE",
+   "tier": 2,
+   "school": "curse",
+   "text": "LONESILENCE n: For n turns, the enemy cannot use special abilities. It only works if you played another card before it this turn. Target: one enemy. n: 1-2. Cost: 4 x n.",
+   "has_n": true,
+   "targets": [
+    "enemy"
+   ],
+   "cost_per_n": 4,
+   "cost_flat": 0,
+   "distractor": true,
+   "xl": true,
+   "variant_of": "SILENCE",
+   "n_min": 1,
+   "n_max": 2
+  },
+  {
+   "id": "X071",
+   "keyword": "GRIMCURSE",
+   "tier": 2,
+   "school": "curse",
+   "text": "GRIMCURSE n: For n turns, the enemy cannot heal. You take 1 damage at the start of your next turn. Target: one enemy. n: 1-3. Cost: 2 x n.",
+   "has_n": true,
+   "targets": [
+    "enemy"
+   ],
+   "cost_per_n": 2,
+   "cost_flat": 0,
+   "distractor": true,
+   "xl": true,
+   "variant_of": "CURSE",
+   "n_min": 1,
+   "n_max": 3
+  },
+  {
+   "id": "X072",
+   "keyword": "LONECURSE",
+   "tier": 2,
+   "school": "curse",
+   "text": "LONECURSE n: For n turns, the enemy cannot heal. It only works if the enemy has full health. Target: one enemy. n: 1-3. Cost: 2 x n.",
+   "has_n": true,
+   "targets": [
+    "enemy"
+   ],
+   "cost_per_n": 2,
+   "cost_flat": 0,
+   "distractor": true,
+   "xl": true,
+   "variant_of": "CURSE",
+   "n_min": 1,
+   "n_max": 3
+  },
+  {
+   "id": "X073",
+   "keyword": "GRIMSLOW",
+   "tier": 2,
+   "school": "curse",
+   "text": "GRIMSLOW n: For n turns, the enemy plays one fewer card each turn. You lose 2 health. Target: one enemy. n: 1-2. Cost: 4 x n.",
+   "has_n": true,
+   "targets": [
+    "enemy"
+   ],
+   "cost_per_n": 4,
+   "cost_flat": 0,
+   "distractor": true,
+   "xl": true,
+   "variant_of": "SLOW",
+   "n_min": 1,
+   "n_max": 2
+  },
+  {
+   "id": "X074",
+   "keyword": "LONESLOW",
+   "tier": 2,
+   "school": "curse",
+   "text": "LONESLOW n: For n turns, the enemy plays one fewer card each turn. It only works if this is the last card you play this turn. Target: one enemy. n: 1-2. Cost: 4 x n.",
+   "has_n": true,
+   "targets": [
+    "enemy"
+   ],
+   "cost_per_n": 4,
+   "cost_flat": 0,
+   "distractor": true,
+   "xl": true,
+   "variant_of": "SLOW",
+   "n_min": 1,
+   "n_max": 2
+  },
+  {
+   "id": "X075",
+   "keyword": "GRIMDAZE",
+   "tier": 2,
+   "school": "curse",
+   "text": "GRIMDAZE: The enemy's next card costs 2 more energy. You discard 1 random card. Target: one enemy. No n. Cost: 3.",
+   "has_n": false,
+   "targets": [
+    "enemy"
+   ],
+   "cost_per_n": 0,
+   "cost_flat": 3,
+   "distractor": true,
+   "xl": true,
+   "variant_of": "DAZE"
+  },
+  {
+   "id": "X076",
+   "keyword": "LONEDAZE",
+   "tier": 2,
+   "school": "curse",
+   "text": "LONEDAZE: The enemy's next card costs 2 more energy. It only works if you have 3 or fewer cards in your hand. Target: one enemy. No n. Cost: 3.",
+   "has_n": false,
+   "targets": [
+    "enemy"
+   ],
+   "cost_per_n": 0,
+   "cost_flat": 3,
+   "distractor": true,
+   "xl": true,
+   "variant_of": "DAZE"
+  },
+  {
+   "id": "X077",
+   "keyword": "GRIMTHORNS",
+   "tier": 2,
+   "school": "defense",
+   "text": "GRIMTHORNS n: For 2 turns, every enemy that hits you takes n damage. Your next card this turn costs 1 more energy. Target: yourself. n: 1-10. Cost: 2 x n.",
+   "has_n": true,
+   "targets": [
+    "self"
+   ],
+   "cost_per_n": 2,
+   "cost_flat": 0,
+   "distractor": true,
+   "xl": true,
+   "variant_of": "THORNS",
+   "n_min": 1,
+   "n_max": 10
+  },
+  {
+   "id": "X078",
+   "keyword": "LONETHORNS",
+   "tier": 2,
+   "school": "defense",
+   "text": "LONETHORNS n: For 2 turns, every enemy that hits you takes n damage. It only works if the enemy has no shield. Target: yourself. n: 1-10. Cost: 2 x n.",
+   "has_n": true,
+   "targets": [
+    "self"
+   ],
+   "cost_per_n": 2,
+   "cost_flat": 0,
+   "distractor": true,
+   "xl": true,
+   "variant_of": "THORNS",
+   "n_min": 1,
+   "n_max": 10
+  },
+  {
+   "id": "X079",
+   "keyword": "GRIMFORTIFY",
+   "tier": 2,
+   "school": "defense",
+   "text": "GRIMFORTIFY n: For n turns, all shield you gain is doubled. The enemy gains 3 shield. Target: yourself. n: 1-3. Cost: 3 x n.",
+   "has_n": true,
+   "targets": [
+    "self"
+   ],
+   "cost_per_n": 3,
+   "cost_flat": 0,
+   "distractor": true,
+   "xl": true,
+   "variant_of": "FORTIFY",
+   "n_min": 1,
+   "n_max": 3
+  },
+  {
+   "id": "X080",
+   "keyword": "LONEFORTIFY",
+   "tier": 2,
+   "school": "defense",
+   "text": "LONEFORTIFY n: For n turns, all shield you gain is doubled. It only works if you played another card before it this turn. Target: yourself. n: 1-3. Cost: 3 x n.",
+   "has_n": true,
+   "targets": [
+    "self"
+   ],
+   "cost_per_n": 3,
+   "cost_flat": 0,
+   "distractor": true,
+   "xl": true,
+   "variant_of": "FORTIFY",
+   "n_min": 1,
+   "n_max": 3
+  },
+  {
+   "id": "X081",
+   "keyword": "GRIMWARD",
+   "tier": 2,
+   "school": "defense",
+   "text": "GRIMWARD n: The next n negative effects put on you are blocked. You cannot play another card this turn. Target: yourself. n: 1-3. Cost: 3 x n.",
+   "has_n": true,
+   "targets": [
+    "self"
+   ],
+   "cost_per_n": 3,
+   "cost_flat": 0,
+   "distractor": true,
+   "xl": true,
+   "variant_of": "WARD",
+   "n_min": 1,
+   "n_max": 3
+  },
+  {
+   "id": "X082",
+   "keyword": "LONEWARD",
+   "tier": 2,
+   "school": "defense",
+   "text": "LONEWARD n: The next n negative effects put on you are blocked. It only works if the enemy has full health. Target: yourself. n: 1-3. Cost: 3 x n.",
+   "has_n": true,
+   "targets": [
+    "self"
+   ],
+   "cost_per_n": 3,
+   "cost_flat": 0,
+   "distractor": true,
+   "xl": true,
+   "variant_of": "WARD",
+   "n_min": 1,
+   "n_max": 3
+  },
+  {
+   "id": "X083",
+   "keyword": "GRIMMIRROR",
+   "tier": 2,
+   "school": "defense",
+   "text": "GRIMMIRROR: The next negative effect put on you is sent back to the enemy instead. You take 1 damage at the start of your next turn. Target: yourself. No n. Cost: 6.",
+   "has_n": false,
+   "targets": [
+    "self"
+   ],
+   "cost_per_n": 0,
+   "cost_flat": 6,
+   "distractor": true,
+   "xl": true,
+   "variant_of": "MIRROR"
+  },
+  {
+   "id": "X084",
+   "keyword": "LONEMIRROR",
+   "tier": 2,
+   "school": "defense",
+   "text": "LONEMIRROR: The next negative effect put on you is sent back to the enemy instead. It only works if this is the last card you play this turn. Target: yourself. No n. Cost: 6.",
+   "has_n": false,
+   "targets": [
+    "self"
+   ],
+   "cost_per_n": 0,
+   "cost_flat": 6,
+   "distractor": true,
+   "xl": true,
+   "variant_of": "MIRROR"
+  },
+  {
+   "id": "X085",
+   "keyword": "GRIMBANDAGE",
+   "tier": 2,
+   "school": "healing",
+   "text": "GRIMBANDAGE n: Heal yourself by n at the end of this turn. If your health is already full then, gain n shield instead. You lose 2 health. Target: yourself. n: 1-20. Cost: n + 1.",
+   "has_n": true,
+   "targets": [
+    "self"
+   ],
+   "cost_per_n": 1,
+   "cost_flat": 1,
+   "distractor": true,
+   "xl": true,
+   "variant_of": "BANDAGE",
+   "n_min": 1,
+   "n_max": 20
+  },
+  {
+   "id": "X086",
+   "keyword": "LONEBANDAGE",
+   "tier": 2,
+   "school": "healing",
+   "text": "LONEBANDAGE n: Heal yourself by n at the end of this turn. If your health is already full then, gain n shield instead. It only works if you have 3 or fewer cards in your hand. Target: yourself. n: 1-20. Cost: n + 1.",
+   "has_n": true,
+   "targets": [
+    "self"
+   ],
+   "cost_per_n": 1,
+   "cost_flat": 1,
+   "distractor": true,
+   "xl": true,
+   "variant_of": "BANDAGE",
+   "n_min": 1,
+   "n_max": 20
+  },
+  {
+   "id": "X087",
+   "keyword": "GRIMSALVAGE",
+   "tier": 2,
+   "school": "cards",
+   "text": "GRIMSALVAGE: Return a random card from your discard pile to your hand. You discard 1 random card. Target: yourself. No n. Cost: 4.",
+   "has_n": false,
+   "targets": [
+    "self"
+   ],
+   "cost_per_n": 0,
+   "cost_flat": 4,
+   "distractor": true,
+   "xl": true,
+   "variant_of": "SALVAGE"
+  },
+  {
+   "id": "X088",
+   "keyword": "LONESALVAGE",
+   "tier": 2,
+   "school": "cards",
+   "text": "LONESALVAGE: Return a random card from your discard pile to your hand. It only works if the enemy has no shield. Target: yourself. No n. Cost: 4.",
+   "has_n": false,
+   "targets": [
+    "self"
+   ],
+   "cost_per_n": 0,
+   "cost_flat": 4,
+   "distractor": true,
+   "xl": true,
+   "variant_of": "SALVAGE"
+  },
+  {
+   "id": "X089",
+   "keyword": "GRIMOVERCHARGE",
+   "tier": 2,
+   "school": "energy",
+   "text": "GRIMOVERCHARGE n: Gain n extra energy next turn, but take 3 damage now. Your next card this turn costs 1 more energy. Target: yourself. n: 1-3. Cost: n + 1.",
+   "has_n": true,
+   "targets": [
+    "self"
+   ],
+   "cost_per_n": 1,
+   "cost_flat": 1,
+   "distractor": true,
+   "xl": true,
+   "variant_of": "OVERCHARGE",
+   "n_min": 1,
+   "n_max": 3
+  },
+  {
+   "id": "X090",
+   "keyword": "LONEOVERCHARGE",
+   "tier": 2,
+   "school": "energy",
+   "text": "LONEOVERCHARGE n: Gain n extra energy next turn, but take 3 damage now. It only works if you played another card before it this turn. Target: yourself. n: 1-3. Cost: n + 1.",
+   "has_n": true,
+   "targets": [
+    "self"
+   ],
+   "cost_per_n": 1,
+   "cost_flat": 1,
+   "distractor": true,
+   "xl": true,
+   "variant_of": "OVERCHARGE",
+   "n_min": 1,
+   "n_max": 3
+  },
+  {
+   "id": "X091",
+   "keyword": "GRIMBERSERK",
+   "tier": 2,
+   "school": "buff",
+   "text": "GRIMBERSERK n: For n turns, your attacks deal 3 more damage, but you take 2 more damage from attacks. The enemy gains 3 shield. Target: yourself. n: 1-3. Cost: 2 x n.",
+   "has_n": true,
+   "targets": [
+    "self"
+   ],
+   "cost_per_n": 2,
+   "cost_flat": 0,
+   "distractor": true,
+   "xl": true,
+   "variant_of": "BERSERK",
+   "n_min": 1,
+   "n_max": 3
+  },
+  {
+   "id": "X092",
+   "keyword": "LONEBERSERK",
+   "tier": 2,
+   "school": "buff",
+   "text": "LONEBERSERK n: For n turns, your attacks deal 3 more damage, but you take 2 more damage from attacks. It only works if the enemy has full health. Target: yourself. n: 1-3. Cost: 2 x n.",
+   "has_n": true,
+   "targets": [
+    "self"
+   ],
+   "cost_per_n": 2,
+   "cost_flat": 0,
+   "distractor": true,
+   "xl": true,
+   "variant_of": "BERSERK",
+   "n_min": 1,
+   "n_max": 3
+  },
+  {
+   "id": "X093",
+   "keyword": "GRIMCHAIN",
+   "tier": 2,
+   "school": "attack",
+   "text": "GRIMCHAIN n: Deal n damage to one enemy, then n minus 2 damage to a second enemy. You cannot play another card this turn. Target: one enemy. n: 3-15. Cost: 2 x n.",
+   "has_n": true,
+   "targets": [
+    "enemy"
+   ],
+   "cost_per_n": 2,
+   "cost_flat": 0,
+   "distractor": true,
+   "xl": true,
+   "variant_of": "CHAIN",
+   "n_min": 3,
+   "n_max": 15
+  },
+  {
+   "id": "X094",
+   "keyword": "LONECHAIN",
+   "tier": 2,
+   "school": "attack",
+   "text": "LONECHAIN n: Deal n damage to one enemy, then n minus 2 damage to a second enemy. It only works if this is the last card you play this turn. Target: one enemy. n: 3-15. Cost: 2 x n.",
+   "has_n": true,
+   "targets": [
+    "enemy"
+   ],
+   "cost_per_n": 2,
+   "cost_flat": 0,
+   "distractor": true,
+   "xl": true,
+   "variant_of": "CHAIN",
+   "n_min": 3,
+   "n_max": 15
+  },
+  {
+   "id": "X095",
+   "keyword": "GRIMBARRAGE",
+   "tier": 2,
+   "school": "attack",
+   "text": "GRIMBARRAGE n: Deal 2 damage n times, each time to a random enemy. You take 1 damage at the start of your next turn. Target: all enemies. n: 2-8. Cost: 2 x n.",
+   "has_n": true,
+   "targets": [
+    "all_enemies"
+   ],
+   "cost_per_n": 2,
+   "cost_flat": 0,
+   "distractor": true,
+   "xl": true,
+   "variant_of": "BARRAGE",
+   "n_min": 2,
+   "n_max": 8
+  },
+  {
+   "id": "X096",
+   "keyword": "LONEBARRAGE",
+   "tier": 2,
+   "school": "attack",
+   "text": "LONEBARRAGE n: Deal 2 damage n times, each time to a random enemy. It only works if you have 3 or fewer cards in your hand. Target: all enemies. n: 2-8. Cost: 2 x n.",
+   "has_n": true,
+   "targets": [
+    "all_enemies"
+   ],
+   "cost_per_n": 2,
+   "cost_flat": 0,
+   "distractor": true,
+   "xl": true,
+   "variant_of": "BARRAGE",
+   "n_min": 2,
+   "n_max": 8
+  },
+  {
+   "id": "X097",
+   "keyword": "GRIMECHO",
+   "tier": 3,
+   "school": "special",
+   "text": "GRIMECHO: Repeat the effect directly before this one on the same card (same keyword, n, target and condition). You lose 2 health. No n. Cost: the same as the repeated effect. GRIMECHO cannot be the first effect. GRIMECHO has no target and no condition.",
+   "has_n": false,
+   "targets": [],
+   "cost_per_n": 0,
+   "cost_flat": 0,
+   "distractor": true,
+   "xl": true,
+   "variant_of": "ECHO",
+   "position": "not_first",
+   "special": "echo",
+   "max_per_card": 1
+  },
+  {
+   "id": "X098",
+   "keyword": "LONEECHO",
+   "tier": 3,
+   "school": "special",
+   "text": "LONEECHO: Repeat the effect directly before this one on the same card (same keyword, n, target and condition). It only works if the enemy has no shield. No n. Cost: the same as the repeated effect. LONEECHO cannot be the first effect. LONEECHO has no target and no condition.",
+   "has_n": false,
+   "targets": [],
+   "cost_per_n": 0,
+   "cost_flat": 0,
+   "distractor": true,
+   "xl": true,
+   "variant_of": "ECHO",
+   "position": "not_first",
+   "special": "echo",
+   "max_per_card": 1
+  },
+  {
+   "id": "X099",
+   "keyword": "GRIMAFTERSHOCK",
+   "tier": 3,
+   "school": "attack",
+   "text": "GRIMAFTERSHOCK n: At the start of your next turn, deal n damage to the same enemy. You discard 1 random card. Target: one enemy. n: 1-10. Cost: n.",
+   "has_n": true,
+   "targets": [
+    "enemy"
+   ],
+   "cost_per_n": 1,
+   "cost_flat": 0,
+   "distractor": true,
+   "xl": true,
+   "variant_of": "AFTERSHOCK",
+   "n_min": 1,
+   "n_max": 10
+  },
+  {
+   "id": "X100",
+   "keyword": "LONEAFTERSHOCK",
+   "tier": 3,
+   "school": "attack",
+   "text": "LONEAFTERSHOCK n: At the start of your next turn, deal n damage to the same enemy. It only works if you played another card before it this turn. Target: one enemy. n: 1-10. Cost: n.",
+   "has_n": true,
+   "targets": [
+    "enemy"
+   ],
+   "cost_per_n": 1,
+   "cost_flat": 0,
+   "distractor": true,
+   "xl": true,
+   "variant_of": "AFTERSHOCK",
+   "n_min": 1,
+   "n_max": 10
+  },
+  {
+   "id": "X101",
+   "keyword": "GRIMDETONATE",
+   "tier": 3,
+   "school": "fire",
+   "text": "GRIMDETONATE: Remove all Burning from the enemy. Deal 4 damage for each turn of Burning that was removed. Your next card this turn costs 1 more energy. Target: one enemy. No n. Cost: 6.",
+   "has_n": false,
+   "targets": [
+    "enemy"
+   ],
+   "cost_per_n": 0,
+   "cost_flat": 6,
+   "distractor": true,
+   "xl": true,
+   "variant_of": "DETONATE"
+  },
+  {
+   "id": "X102",
+   "keyword": "LONEDETONATE",
+   "tier": 3,
+   "school": "fire",
+   "text": "LONEDETONATE: Remove all Burning from the enemy. Deal 4 damage for each turn of Burning that was removed. It only works if the enemy has full health. Target: one enemy. No n. Cost: 6.",
+   "has_n": false,
+   "targets": [
+    "enemy"
+   ],
+   "cost_per_n": 0,
+   "cost_flat": 6,
+   "distractor": true,
+   "xl": true,
+   "variant_of": "DETONATE"
+  },
+  {
+   "id": "X103",
+   "keyword": "GRIMFROSTBITE",
+   "tier": 3,
+   "school": "ice",
+   "text": "GRIMFROSTBITE n: Deal n damage. If the enemy is Chilled, it also skips its next turn. The enemy gains 3 shield. Target: one enemy. n: 1-10. Cost: 2 x n.",
+   "has_n": true,
+   "targets": [
+    "enemy"
+   ],
+   "cost_per_n": 2,
+   "cost_flat": 0,
+   "distractor": true,
+   "xl": true,
+   "variant_of": "FROSTBITE",
+   "n_min": 1,
+   "n_max": 10
+  },
+  {
+   "id": "X104",
+   "keyword": "LONEFROSTBITE",
+   "tier": 3,
+   "school": "ice",
+   "text": "LONEFROSTBITE n: Deal n damage. If the enemy is Chilled, it also skips its next turn. It only works if this is the last card you play this turn. Target: one enemy. n: 1-10. Cost: 2 x n.",
+   "has_n": true,
+   "targets": [
+    "enemy"
+   ],
+   "cost_per_n": 2,
+   "cost_flat": 0,
+   "distractor": true,
+   "xl": true,
+   "variant_of": "FROSTBITE",
+   "n_min": 1,
+   "n_max": 10
+  },
+  {
+   "id": "X105",
+   "keyword": "GRIMSACRIFICE",
+   "tier": 3,
+   "school": "defense",
+   "text": "GRIMSACRIFICE n: Lose n health. Gain 2 x n shield. You cannot play another card this turn. Target: yourself. n: 2-20. Cost: n.",
+   "has_n": true,
+   "targets": [
+    "self"
+   ],
+   "cost_per_n": 1,
+   "cost_flat": 0,
+   "distractor": true,
+   "xl": true,
+   "variant_of": "SACRIFICE",
+   "n_min": 2,
+   "n_max": 20
+  },
+  {
+   "id": "X106",
+   "keyword": "LONESACRIFICE",
+   "tier": 3,
+   "school": "defense",
+   "text": "LONESACRIFICE n: Lose n health. Gain 2 x n shield. It only works if you have 3 or fewer cards in your hand. Target: yourself. n: 2-20. Cost: n.",
+   "has_n": true,
+   "targets": [
+    "self"
+   ],
+   "cost_per_n": 1,
+   "cost_flat": 0,
+   "distractor": true,
+   "xl": true,
+   "variant_of": "SACRIFICE",
+   "n_min": 2,
+   "n_max": 20
+  },
+  {
+   "id": "X107",
+   "keyword": "GRIMBLOODPACT",
+   "tier": 3,
+   "school": "attack",
+   "text": "GRIMBLOODPACT n: Deal 2 x n damage. You lose n health. You take 1 damage at the start of your next turn. Target: one enemy. n: 1-10. Cost: n.",
+   "has_n": true,
+   "targets": [
+    "enemy"
+   ],
+   "cost_per_n": 1,
+   "cost_flat": 0,
+   "distractor": true,
+   "xl": true,
+   "variant_of": "BLOODPACT",
+   "n_min": 1,
+   "n_max": 10
+  },
+  {
+   "id": "X108",
+   "keyword": "LONEBLOODPACT",
+   "tier": 3,
+   "school": "attack",
+   "text": "LONEBLOODPACT n: Deal 2 x n damage. You lose n health. It only works if the enemy has no shield. Target: one enemy. n: 1-10. Cost: n.",
+   "has_n": true,
+   "targets": [
+    "enemy"
+   ],
+   "cost_per_n": 1,
+   "cost_flat": 0,
+   "distractor": true,
+   "xl": true,
+   "variant_of": "BLOODPACT",
+   "n_min": 1,
+   "n_max": 10
+  },
+  {
+   "id": "X109",
+   "keyword": "GRIMLEECH",
+   "tier": 3,
+   "school": "attack",
+   "text": "GRIMLEECH n: Deal n damage to every enemy and heal yourself by the total damage dealt. You lose 2 health. Target: all enemies. n: 1-8. Cost: 3 x n.",
+   "has_n": true,
+   "targets": [
+    "all_enemies"
+   ],
+   "cost_per_n": 3,
+   "cost_flat": 0,
+   "distractor": true,
+   "xl": true,
+   "variant_of": "LEECH",
+   "n_min": 1,
+   "n_max": 8
+  },
+  {
+   "id": "X110",
+   "keyword": "LONELEECH",
+   "tier": 3,
+   "school": "attack",
+   "text": "LONELEECH n: Deal n damage to every enemy and heal yourself by the total damage dealt. It only works if you played another card before it this turn. Target: all enemies. n: 1-8. Cost: 3 x n.",
+   "has_n": true,
+   "targets": [
+    "all_enemies"
+   ],
+   "cost_per_n": 3,
+   "cost_flat": 0,
+   "distractor": true,
+   "xl": true,
+   "variant_of": "LEECH",
+   "n_min": 1,
+   "n_max": 8
+  },
+  {
+   "id": "X111",
+   "keyword": "GRIMINFERNO",
+   "tier": 3,
+   "school": "fire",
+   "text": "GRIMINFERNO n: Every enemy is Burning for n turns, and this Burning deals 3 damage per turn. You discard 1 random card. Target: all enemies. n: 1-2. Cost: 5 x n.",
+   "has_n": true,
+   "targets": [
+    "all_enemies"
+   ],
+   "cost_per_n": 5,
+   "cost_flat": 0,
+   "distractor": true,
+   "xl": true,
+   "variant_of": "INFERNO",
+   "n_min": 1,
+   "n_max": 2
+  },
+  {
+   "id": "X112",
+   "keyword": "LONEINFERNO",
+   "tier": 3,
+   "school": "fire",
+   "text": "LONEINFERNO n: Every enemy is Burning for n turns, and this Burning deals 3 damage per turn. It only works if the enemy has full health. Target: all enemies. n: 1-2. Cost: 5 x n.",
+   "has_n": true,
+   "targets": [
+    "all_enemies"
+   ],
+   "cost_per_n": 5,
+   "cost_flat": 0,
+   "distractor": true,
+   "xl": true,
+   "variant_of": "INFERNO",
+   "n_min": 1,
+   "n_max": 2
+  },
+  {
+   "id": "X113",
+   "keyword": "GRIMMARK",
+   "tier": 3,
+   "school": "curse",
+   "text": "GRIMMARK n: For n turns, the enemy is Marked: the next damage effect against it is doubled. Your next card this turn costs 1 more energy. Target: one enemy. n: 1-2. Cost: 4 x n.",
+   "has_n": true,
+   "targets": [
+    "enemy"
+   ],
+   "cost_per_n": 4,
+   "cost_flat": 0,
+   "distractor": true,
+   "xl": true,
+   "variant_of": "MARK",
+   "n_min": 1,
+   "n_max": 2
+  },
+  {
+   "id": "X114",
+   "keyword": "LONEMARK",
+   "tier": 3,
+   "school": "curse",
+   "text": "LONEMARK n: For n turns, the enemy is Marked: the next damage effect against it is doubled. It only works if this is the last card you play this turn. Target: one enemy. n: 1-2. Cost: 4 x n.",
+   "has_n": true,
+   "targets": [
+    "enemy"
+   ],
+   "cost_per_n": 4,
+   "cost_flat": 0,
+   "distractor": true,
+   "xl": true,
+   "variant_of": "MARK",
+   "n_min": 1,
+   "n_max": 2
+  },
+  {
+   "id": "X115",
+   "keyword": "GRIMFUSE",
+   "tier": 3,
+   "school": "fire",
+   "text": "GRIMFUSE n: At the end of the enemy's next turn, deal n damage. If the enemy is Burning at that time, deal 2 x n instead. The enemy gains 3 shield. Target: one enemy. n: 1-15. Cost: 1.",
+   "has_n": true,
+   "targets": [
+    "enemy"
+   ],
+   "cost_per_n": 1.5,
+   "cost_flat": 0,
+   "distractor": true,
+   "xl": true,
+   "variant_of": "FUSE",
+   "n_min": 1,
+   "n_max": 15
+  },
+  {
+   "id": "X116",
+   "keyword": "LONEFUSE",
+   "tier": 3,
+   "school": "fire",
+   "text": "LONEFUSE n: At the end of the enemy's next turn, deal n damage. If the enemy is Burning at that time, deal 2 x n instead. It only works if you have 3 or fewer cards in your hand. Target: one enemy. n: 1-15. Cost: 1.",
+   "has_n": true,
+   "targets": [
+    "enemy"
+   ],
+   "cost_per_n": 1.5,
+   "cost_flat": 0,
+   "distractor": true,
+   "xl": true,
+   "variant_of": "FUSE",
+   "n_min": 1,
+   "n_max": 15
+  },
+  {
+   "id": "X117",
+   "keyword": "GRIMGAMBIT",
+   "tier": 3,
+   "school": "cards",
+   "text": "GRIMGAMBIT n: Draw n cards. At the end of this turn, discard n cards. You cannot play another card this turn. Target: yourself. n: 1-4. Cost: n.",
+   "has_n": true,
+   "targets": [
+    "self"
+   ],
+   "cost_per_n": 1,
+   "cost_flat": 0,
+   "distractor": true,
+   "xl": true,
+   "variant_of": "GAMBIT",
+   "n_min": 1,
+   "n_max": 4
+  },
+  {
+   "id": "X118",
+   "keyword": "LONEGAMBIT",
+   "tier": 3,
+   "school": "cards",
+   "text": "LONEGAMBIT n: Draw n cards. At the end of this turn, discard n cards. It only works if the enemy has no shield. Target: yourself. n: 1-4. Cost: n.",
+   "has_n": true,
+   "targets": [
+    "self"
+   ],
+   "cost_per_n": 1,
+   "cost_flat": 0,
+   "distractor": true,
+   "xl": true,
+   "variant_of": "GAMBIT",
+   "n_min": 1,
+   "n_max": 4
+  },
+  {
+   "id": "X119",
+   "keyword": "GRIMQUICKEN",
+   "tier": 3,
+   "school": "energy",
+   "text": "GRIMQUICKEN: The next card you play this turn costs 2 less energy (not below 0). You take 1 damage at the start of your next turn. Target: yourself. No n. Cost: 3.",
+   "has_n": false,
+   "targets": [
+    "self"
+   ],
+   "cost_per_n": 0,
+   "cost_flat": 3,
+   "distractor": true,
+   "xl": true,
+   "variant_of": "QUICKEN"
+  },
+  {
+   "id": "X120",
+   "keyword": "LONEQUICKEN",
+   "tier": 3,
+   "school": "energy",
+   "text": "LONEQUICKEN: The next card you play this turn costs 2 less energy (not below 0). It only works if you played another card before it this turn. Target: yourself. No n. Cost: 3.",
+   "has_n": false,
+   "targets": [
+    "self"
+   ],
+   "cost_per_n": 0,
+   "cost_flat": 3,
+   "distractor": true,
+   "xl": true,
+   "variant_of": "QUICKEN"
+  },
+  {
+   "id": "X121",
+   "keyword": "GRIMRESONATE",
+   "tier": 3,
+   "school": "attack",
+   "text": "GRIMRESONATE n: Deal n damage for each different negative status on the enemy (Burning, Chilled, Poisoned, Weakened, Exposed). You lose 2 health. Target: one enemy. n: 1-5. Cost: 3 x n.",
+   "has_n": true,
+   "targets": [
+    "enemy"
+   ],
+   "cost_per_n": 3,
+   "cost_flat": 0,
+   "distractor": true,
+   "xl": true,
+   "variant_of": "RESONATE",
+   "n_min": 1,
+   "n_max": 5
+  },
+  {
+   "id": "X122",
+   "keyword": "LONERESONATE",
+   "tier": 3,
+   "school": "attack",
+   "text": "LONERESONATE n: Deal n damage for each different negative status on the enemy (Burning, Chilled, Poisoned, Weakened, Exposed). It only works if the enemy has full health. Target: one enemy. n: 1-5. Cost: 3 x n.",
+   "has_n": true,
+   "targets": [
+    "enemy"
+   ],
+   "cost_per_n": 3,
+   "cost_flat": 0,
+   "distractor": true,
+   "xl": true,
+   "variant_of": "RESONATE",
+   "n_min": 1,
+   "n_max": 5
+  },
+  {
+   "id": "X123",
+   "keyword": "GRIMTRANSFER",
+   "tier": 3,
+   "school": "curse",
+   "text": "GRIMTRANSFER: Move all negative effects on you to the enemy. You discard 1 random card. Target: one enemy. No n. Cost: 7.",
+   "has_n": false,
+   "targets": [
+    "enemy"
+   ],
+   "cost_per_n": 0,
+   "cost_flat": 7,
+   "distractor": true,
+   "xl": true,
+   "variant_of": "TRANSFER"
+  },
+  {
+   "id": "X124",
+   "keyword": "LONETRANSFER",
+   "tier": 3,
+   "school": "curse",
+   "text": "LONETRANSFER: Move all negative effects on you to the enemy. It only works if this is the last card you play this turn. Target: one enemy. No n. Cost: 7.",
+   "has_n": false,
+   "targets": [
+    "enemy"
+   ],
+   "cost_per_n": 0,
+   "cost_flat": 7,
+   "distractor": true,
+   "xl": true,
+   "variant_of": "TRANSFER"
+  },
+  {
+   "id": "X125",
+   "keyword": "GRIMANCHOR",
+   "tier": 3,
+   "school": "curse",
+   "text": "GRIMANCHOR n: For n turns, the enemy cannot remove its negative effects. Your next card this turn costs 1 more energy. Target: one enemy. n: 1-3. Cost: 2 x n.",
+   "has_n": true,
+   "targets": [
+    "enemy"
+   ],
+   "cost_per_n": 2,
+   "cost_flat": 0,
+   "distractor": true,
+   "xl": true,
+   "variant_of": "ANCHOR",
+   "n_min": 1,
+   "n_max": 3
+  },
+  {
+   "id": "X126",
+   "keyword": "LONEANCHOR",
+   "tier": 3,
+   "school": "curse",
+   "text": "LONEANCHOR n: For n turns, the enemy cannot remove its negative effects. It only works if you have 3 or fewer cards in your hand. Target: one enemy. n: 1-3. Cost: 2 x n.",
+   "has_n": true,
+   "targets": [
+    "enemy"
+   ],
+   "cost_per_n": 2,
+   "cost_flat": 0,
+   "distractor": true,
+   "xl": true,
+   "variant_of": "ANCHOR",
+   "n_min": 1,
+   "n_max": 3
+  },
+  {
+   "id": "X127",
+   "keyword": "GRIMSHIELDBASH",
+   "tier": 3,
+   "school": "attack",
+   "text": "GRIMSHIELDBASH: Deal damage equal to the shield you have right now. The enemy gains 3 shield. Target: one enemy. No n. Cost: 5.",
+   "has_n": false,
+   "targets": [
+    "enemy"
+   ],
+   "cost_per_n": 0,
+   "cost_flat": 5,
+   "distractor": true,
+   "xl": true,
+   "variant_of": "SHIELDBASH"
+  },
+  {
+   "id": "X128",
+   "keyword": "LONESHIELDBASH",
+   "tier": 3,
+   "school": "attack",
+   "text": "LONESHIELDBASH: Deal damage equal to the shield you have right now. It only works if the enemy has no shield. Target: one enemy. No n. Cost: 5.",
+   "has_n": false,
+   "targets": [
+    "enemy"
+   ],
+   "cost_per_n": 0,
+   "cost_flat": 5,
+   "distractor": true,
+   "xl": true,
+   "variant_of": "SHIELDBASH"
+  },
+  {
+   "id": "X129",
+   "keyword": "GRIMPURGE",
+   "tier": 3,
+   "school": "curse",
+   "text": "GRIMPURGE: Remove all positive effects from the enemy. You cannot play another card this turn. Target: one enemy. No n. Cost: 4.",
+   "has_n": false,
+   "targets": [
+    "enemy"
+   ],
+   "cost_per_n": 0,
+   "cost_flat": 4,
+   "distractor": true,
+   "xl": true,
+   "variant_of": "PURGE"
+  },
+  {
+   "id": "X130",
+   "keyword": "LONEPURGE",
+   "tier": 3,
+   "school": "curse",
+   "text": "LONEPURGE: Remove all positive effects from the enemy. It only works if you played another card before it this turn. Target: one enemy. No n. Cost: 4.",
+   "has_n": false,
+   "targets": [
+    "enemy"
+   ],
+   "cost_per_n": 0,
+   "cost_flat": 4,
+   "distractor": true,
+   "xl": true,
+   "variant_of": "PURGE"
+  },
+  {
+   "id": "X131",
+   "keyword": "GRIMCATALYST",
+   "tier": 3,
+   "school": "special",
+   "text": "GRIMCATALYST: The next status effect on this card lasts 1 extra turn. You take 1 damage at the start of your next turn. No n. Cost: 3. GRIMCATALYST must be the first effect, and the card must also have a status effect. GRIMCATALYST has no target.",
+   "has_n": false,
+   "targets": [],
+   "cost_per_n": 0,
+   "cost_flat": 3,
+   "distractor": true,
+   "xl": true,
+   "variant_of": "CATALYST",
+   "position": "first",
+   "requires_group": "status"
+  },
+  {
+   "id": "X132",
+   "keyword": "LONECATALYST",
+   "tier": 3,
+   "school": "special",
+   "text": "LONECATALYST: The next status effect on this card lasts 1 extra turn. It only works if the enemy has full health. No n. Cost: 3. LONECATALYST must be the first effect, and the card must also have a status effect. LONECATALYST has no target.",
+   "has_n": false,
+   "targets": [],
+   "cost_per_n": 0,
+   "cost_flat": 3,
+   "distractor": true,
+   "xl": true,
+   "variant_of": "CATALYST",
+   "position": "first",
+   "requires_group": "status"
+  }
+ ],
+ "size_264": [
+  "STRIKE",
+  "PIERCE",
+  "VOLLEY",
+  "CLEAVE",
+  "SIPHON",
+  "RECKLESS",
+  "EXECUTE",
+  "GUARD",
+  "BULWARK",
+  "MEND",
+  "RENEW",
+  "DODGE",
+  "CLEANSE",
+  "DRAW",
+  "DISCARD",
+  "SCRY",
+  "RECYCLE",
+  "FOCUS",
+  "RALLY",
+  "HASTE",
+  "EMPOWER",
+  "SHATTER",
+  "IGNITE",
+  "BLAZE",
+  "SCORCH",
+  "EMBER",
+  "FLARE",
+  "CHILL",
+  "FREEZE",
+  "GLACIER",
+  "POISON",
+  "VENOM",
+  "WEAKEN",
+  "EXPOSE",
+  "SILENCE",
+  "CURSE",
+  "SLOW",
+  "DAZE",
+  "THORNS",
+  "FORTIFY",
+  "WARD",
+  "MIRROR",
+  "BANDAGE",
+  "SALVAGE",
+  "OVERCHARGE",
+  "BERSERK",
+  "CHAIN",
+  "BARRAGE",
+  "ECHO",
+  "AFTERSHOCK",
+  "DETONATE",
+  "FROSTBITE",
+  "SACRIFICE",
+  "BLOODPACT",
+  "LEECH",
+  "INFERNO",
+  "MARK",
+  "FUSE",
+  "GAMBIT",
+  "QUICKEN",
+  "RESONATE",
+  "TRANSFER",
+  "ANCHOR",
+  "SHIELDBASH",
+  "PURGE",
+  "CATALYST",
+  "STAGGER",
+  "GOUGE",
+  "RIPOSTE",
+  "LANCE",
+  "FLURRY",
+  "SUNDER",
+  "HEADBUTT",
+  "CRUSH",
+  "SNIPE",
+  "RAMPAGE",
+  "CLAW",
+  "BACKSTAB",
+  "PARRY",
+  "BARRIER",
+  "AEGIS",
+  "STONESKIN",
+  "EVADE",
+  "REFLECT",
+  "REINFORCE",
+  "BRACE",
+  "REVIVE",
+  "TRANSFUSE",
+  "REGROW",
+  "PURIFY",
+  "SOOTHE",
+  "LIFELINE",
+  "RUMMAGE",
+  "FORESIGHT",
+  "MULLIGAN",
+  "HOARD",
+  "PILFER",
+  "RETRIEVE",
+  "DUPLICATE",
+  "SURGE",
+  "SAP",
+  "MEDITATE",
+  "TEMPO",
+  "FRENZY",
+  "SHARPEN",
+  "OVERDRIVE",
+  "STEADY",
+  "KINDLE",
+  "SMOLDER",
+  "FIREWALL",
+  "EXTINGUISH",
+  "CINDER",
+  "FROST",
+  "SHIVER",
+  "ICEWALL",
+  "THAW",
+  "HAIL",
+  "WITHER",
+  "CONTAGION",
+  "ANTIDOTE",
+  "CORRODE",
+  "DOOM",
+  "HEX",
+  "CONFUSE",
+  "DISARM",
+  "BIND",
+  "NULLIFY",
+  "TORMENT",
+  "OVERLOAD",
+  "LASTSTAND",
+  "COMBO",
+  "SPELLBOUND",
+  "GRIMSTRIKE",
+  "LONESTRIKE",
+  "GRIMPIERCE",
+  "LONEPIERCE",
+  "GRIMVOLLEY",
+  "LONEVOLLEY",
+  "GRIMCLEAVE",
+  "LONECLEAVE",
+  "GRIMSIPHON",
+  "LONESIPHON",
+  "GRIMRECKLESS",
+  "LONERECKLESS",
+  "GRIMEXECUTE",
+  "LONEEXECUTE",
+  "GRIMGUARD",
+  "LONEGUARD",
+  "GRIMBULWARK",
+  "LONEBULWARK",
+  "GRIMMEND",
+  "LONEMEND",
+  "GRIMRENEW",
+  "LONERENEW",
+  "GRIMDODGE",
+  "LONEDODGE",
+  "GRIMCLEANSE",
+  "LONECLEANSE",
+  "GRIMDRAW",
+  "LONEDRAW",
+  "GRIMDISCARD",
+  "LONEDISCARD",
+  "GRIMSCRY",
+  "LONESCRY",
+  "GRIMRECYCLE",
+  "LONERECYCLE",
+  "GRIMFOCUS",
+  "LONEFOCUS",
+  "GRIMRALLY",
+  "LONERALLY",
+  "GRIMHASTE",
+  "LONEHASTE",
+  "GRIMEMPOWER",
+  "LONEEMPOWER",
+  "GRIMSHATTER",
+  "LONESHATTER",
+  "GRIMIGNITE",
+  "LONEIGNITE",
+  "GRIMBLAZE",
+  "LONEBLAZE",
+  "GRIMSCORCH",
+  "LONESCORCH",
+  "GRIMEMBER",
+  "LONEEMBER",
+  "GRIMFLARE",
+  "LONEFLARE",
+  "GRIMCHILL",
+  "LONECHILL",
+  "GRIMFREEZE",
+  "LONEFREEZE",
+  "GRIMGLACIER",
+  "LONEGLACIER",
+  "GRIMPOISON",
+  "LONEPOISON",
+  "GRIMVENOM",
+  "LONEVENOM",
+  "GRIMWEAKEN",
+  "LONEWEAKEN",
+  "GRIMEXPOSE",
+  "LONEEXPOSE",
+  "GRIMSILENCE",
+  "LONESILENCE",
+  "GRIMCURSE",
+  "LONECURSE",
+  "GRIMSLOW",
+  "LONESLOW",
+  "GRIMDAZE",
+  "LONEDAZE",
+  "GRIMTHORNS",
+  "LONETHORNS",
+  "GRIMFORTIFY",
+  "LONEFORTIFY",
+  "GRIMWARD",
+  "LONEWARD",
+  "GRIMMIRROR",
+  "LONEMIRROR",
+  "GRIMBANDAGE",
+  "LONEBANDAGE",
+  "GRIMSALVAGE",
+  "LONESALVAGE",
+  "GRIMOVERCHARGE",
+  "LONEOVERCHARGE",
+  "GRIMBERSERK",
+  "LONEBERSERK",
+  "GRIMCHAIN",
+  "LONECHAIN",
+  "GRIMBARRAGE",
+  "LONEBARRAGE",
+  "GRIMECHO",
+  "LONEECHO",
+  "GRIMAFTERSHOCK",
+  "LONEAFTERSHOCK",
+  "GRIMDETONATE",
+  "LONEDETONATE",
+  "GRIMFROSTBITE",
+  "LONEFROSTBITE",
+  "GRIMSACRIFICE",
+  "LONESACRIFICE",
+  "GRIMBLOODPACT",
+  "LONEBLOODPACT",
+  "GRIMLEECH",
+  "LONELEECH",
+  "GRIMINFERNO",
+  "LONEINFERNO",
+  "GRIMMARK",
+  "LONEMARK",
+  "GRIMFUSE",
+  "LONEFUSE",
+  "GRIMGAMBIT",
+  "LONEGAMBIT",
+  "GRIMQUICKEN",
+  "LONEQUICKEN",
+  "GRIMRESONATE",
+  "LONERESONATE",
+  "GRIMTRANSFER",
+  "LONETRANSFER",
+  "GRIMANCHOR",
+  "LONEANCHOR",
+  "GRIMSHIELDBASH",
+  "LONESHIELDBASH",
+  "GRIMPURGE",
+  "LONEPURGE",
+  "GRIMCATALYST",
+  "LONECATALYST"
+ ]
+}

@@ -13,6 +13,7 @@ const RETRY_ALLOWANCE := 0.15
 const RESET_HOUR := 2
 const SERVER_ERROR_RETRIES := 3
 const OLLAMA_NUM_PREDICT := 1024
+const SCORE_PATHS := ["nocheck", "check", "reject_on_violation"]
 
 var big: Dictionary = {}
 var all_rules: Dictionary = {}
@@ -25,6 +26,7 @@ var mode := "full"
 var gemini_calls := 0
 var max_calls := -1
 var schema_cache: Dictionary = {}
+var num_ctx := OLLAMA_NUM_CTX
 
 
 func _ready():
@@ -36,12 +38,12 @@ func _ready():
 
 func _big_args() -> Dictionary:
 	var out := {"provider": "gemini", "size": "66", "mode": "full", "runs": 3, "cards": [], "dryrun": false,
-		"selfcheck": false, "fetch": false, "hit_table": false, "budget": false, "daily_limit": DEFAULT_DAILY_LIMIT}
+		"selfcheck": false, "fetch": false, "hit_table": false, "budget": false, "rescore": false, "no_summary": false, "num_ctx": OLLAMA_NUM_CTX, "daily_limit": DEFAULT_DAILY_LIMIT}
 	var argv := OS.get_cmdline_user_args()
 	for i in argv.size():
 		var arg: String = argv[i]
 		var next: String = argv[i + 1] if i + 1 < argv.size() else ""
-		for key in ["provider", "size", "mode", "runs", "cards", "daily-limit"]:
+		for key in ["provider", "size", "mode", "runs", "cards", "daily-limit", "num-ctx"]:
 			var value := ""
 			if arg == "--" + key and next != "":
 				value = next
@@ -54,6 +56,8 @@ func _big_args() -> Dictionary:
 					out["runs"] = int(value)
 				"daily-limit":
 					out["daily_limit"] = int(value)
+				"num-ctx":
+					out["num_ctx"] = int(value)
 				"cards":
 					for part in value.split(",", false):
 						out["cards"].append(part.strip_edges())
@@ -70,6 +74,10 @@ func _big_args() -> Dictionary:
 				out["hit_table"] = true
 			"--budget":
 				out["budget"] = true
+			"--rescore":
+				out["rescore"] = true
+			"--no-summary":
+				out["no_summary"] = true
 	return out
 
 
@@ -78,9 +86,10 @@ func _big_main() -> int:
 	provider = args["provider"]
 	size_key = args["size"]
 	mode = args["mode"]
+	num_ctx = args["num_ctx"]
 	var runs: int = args["runs"]
 	if (provider != "gemini" and provider != "ollama") or not BIG_SIZES.has(size_key) or not BIG_MODES.has(mode) or runs < 1:
-		print("Usage: -- --provider gemini|ollama --size 47|66|132 --mode full|word|emb|emb9 [--runs N] [--cards A01,B02] [--dryrun] [--daily-limit 490] | --selfcheck | --fetch-embeddings | --hit-table | --budget")
+		print("Usage: -- --provider gemini|ollama --size 47|66|132 --mode full|word|emb|emb9 [--runs N] [--cards A01,B02] [--dryrun] [--daily-limit 490] [--num-ctx 8192] [--no-summary] | --selfcheck | --fetch-embeddings | --hit-table | --budget | --rescore")
 		return 1
 	if not _load_big():
 		return 1
@@ -98,6 +107,8 @@ func _big_main() -> int:
 		return 0
 	if args["hit_table"]:
 		return _hit_table()
+	if args["rescore"]:
+		return _rescore_all()
 
 	http = HTTPRequest.new()
 	http.timeout = OLLAMA_TIMEOUT_SEC if provider == "ollama" else REQUEST_TIMEOUT_SEC
@@ -146,7 +157,7 @@ func _big_main() -> int:
 
 	schema_cache = _schema()
 	var started := _timestamp(false)
-	print("=== Big rulebook eval: provider %s, model %s, size %s (%d rules), mode %s, runs %d, cards %d ===" % [provider, _model_name(), size_key, keywords.size(), mode, runs, cards.size()])
+	print("=== Big rulebook eval: provider %s, model %s, size %s (%d rules), mode %s, runs %d, cards %d, num_ctx %d ===" % [provider, _model_name(), size_key, keywords.size(), mode, runs, cards.size(), num_ctx])
 
 	var entries: Array = []
 	for run in range(1, runs + 1):
@@ -170,9 +181,9 @@ func _big_main() -> int:
 	var prefix := "dryrun_" if args["dryrun"] else ""
 	_print_big_table(runs, cards.size(), summary)
 	var result_path := _write_big_results(stamp, started, runs, cards.size(), entries, summary, prefix)
-	_write_big_review(stamp, entries, prefix)
-	if not args["dryrun"]:
-		_append_big_summary(runs, cards.size(), summary, result_path)
+	_write_big_review(result_path.trim_suffix(".json") + "_review.md", entries)
+	if not args["dryrun"] and not args["no_summary"]:
+		_rescore_all()
 	return 0
 
 
@@ -429,7 +440,7 @@ func _call_ollama(prompt: String, schema: Dictionary) -> Dictionary:
 		"stream": false,
 		"think": false,
 		"format": _schema_for_ollama(schema),
-		"options": {"temperature": 0, "seed": OLLAMA_SEED, "num_ctx": OLLAMA_NUM_CTX, "num_predict": OLLAMA_NUM_PREDICT}
+		"options": {"temperature": 0, "seed": OLLAMA_SEED, "num_ctx": num_ctx, "num_predict": OLLAMA_NUM_PREDICT}
 	})
 	var started := Time.get_ticks_msec()
 	var err := http.request(OLLAMA_URL, ["Content-Type: application/json"], HTTPClient.METHOD_POST, body)
@@ -457,7 +468,7 @@ func _call_ollama(prompt: String, schema: Dictionary) -> Dictionary:
 		"output_tokens": output_tokens,
 		"done_reason": done_reason,
 		"output_cut": done_reason == "length" or output_tokens >= OLLAMA_NUM_PREDICT,
-		"truncated": done_reason == "length" or prompt_tokens + output_tokens >= OLLAMA_NUM_CTX
+		"truncated": done_reason == "length" or prompt_tokens + output_tokens >= num_ctx
 	}
 	return {"ok": true, "text": str(json["message"].get("content", "")), "api_ms": api_ms, "meta": meta}
 
@@ -529,9 +540,11 @@ func _big_ask(card: Dictionary) -> Dictionary:
 		"prompt_chars": prompt.length(),
 		"first": {"output": null, "json_broken": false, "violations": [], "time_ms": 0, "llm_meta": null, "error": null},
 		"nocheck": _new_path(),
-		"check": _new_path()
+		"check": _new_path(),
+		"reject_on_violation": _new_path()
 	}
 	entry["check"].merge({"action": null, "retries": 0, "attempts": [], "json_broken_attempts": 0})
+	entry["reject_on_violation"]["action"] = null
 
 	var res: Dictionary = await _model_call(prompt)
 	var first: Dictionary = entry["first"]
@@ -541,6 +554,7 @@ func _big_ask(card: Dictionary) -> Dictionary:
 		first["error"] = res["error"]
 		entry["nocheck"]["error"] = res["error"]
 		entry["check"]["error"] = res["error"]
+		entry["reject_on_violation"]["error"] = res["error"]
 		return entry
 
 	var reply := _parse_reply(res["text"])
@@ -564,7 +578,50 @@ func _big_ask(card: Dictionary) -> Dictionary:
 
 	await _run_check(entry, prompt, reply, res)
 	_score_path(entry, entry["check"])
+	entry["reject_on_violation"] = _reject_path(entry)
+	_score_path(entry, entry["reject_on_violation"])
 	return entry
+
+
+func _reject_path(entry: Dictionary) -> Dictionary:
+	var p := _new_path()
+	p["action"] = null
+	var first: Dictionary = entry["first"]
+	p["time_ms"] = first["time_ms"]
+	if first["error"] != null:
+		p["error"] = first["error"]
+		return p
+	var reply = first["output"]
+	if reply == null:
+		p["action"] = "code_reject"
+		p["reason"] = "The first answer was not valid JSON for the required format."
+		p["reject"] = true
+		p["effects"] = []
+		return p
+	p["ai_cost"] = reply["cost"]
+	if reply["reject"]:
+		p["action"] = "ai_reject"
+		p["reason"] = reply["reason"]
+		p["reject"] = true
+		p["effects"] = []
+		return p
+	var effects := _plain_effects(reply["effects"])
+	var violations := _validate(effects)
+	if violations.is_empty():
+		p["action"] = "ok"
+		p["reason"] = reply["reason"]
+		p["reject"] = false
+		p["effects"] = effects
+		p["cost"] = _card_cost(effects)
+		return p
+	var messages: Array = []
+	for v in violations:
+		messages.append(v["message"])
+	p["action"] = "code_reject"
+	p["reason"] = "Rejected by the code on the first answer. Breaking: " + " ".join(PackedStringArray(messages))
+	p["reject"] = true
+	p["effects"] = []
+	return p
 
 
 func _run_check(entry: Dictionary, prompt: String, first_reply: Dictionary, first_res: Dictionary):
@@ -724,6 +781,7 @@ func _big_summary(runs: int, entries: Array) -> Dictionary:
 	var retried_cards := 0
 	var fixed := 0
 	var code_rejections := 0
+	var reject_code_rejections := 0
 	var first_broke_rules := 0
 	var json_broken := 0
 	var truncated := 0
@@ -746,6 +804,8 @@ func _big_summary(runs: int, entries: Array) -> Dictionary:
 				fixed += 1
 		if ck["action"] == "code_reject":
 			code_rejections += 1
+		if e["reject_on_violation"]["action"] == "code_reject":
+			reject_code_rejections += 1
 		var metas: Array = [e["first"]["llm_meta"]]
 		for a in ck["attempts"]:
 			if a["attempt"] > 0:
@@ -760,11 +820,13 @@ func _big_summary(runs: int, entries: Array) -> Dictionary:
 	return {
 		"nocheck": _path_summary(runs, entries, "nocheck"),
 		"check": _path_summary(runs, entries, "check"),
+		"reject_on_violation": _path_summary(runs, entries, "reject_on_violation"),
 		"rag_hit_rate": null if rag_total == 0 else _percent(rag_hits, rag_total),
 		"retries": retries,
 		"retried_cards": retried_cards,
 		"fixed_by_retry": fixed,
 		"code_rejections": code_rejections,
+		"reject_code_rejections": reject_code_rejections,
 		"first_answers_breaking_rules": first_broke_rules,
 		"json_broken": json_broken,
 		"context_truncated": truncated,
@@ -778,93 +840,172 @@ func _pct(v) -> String:
 	return "n/a" if v == null else "%.1f" % v
 
 
-func _pair(a, b) -> String:
-	return "%s / %s" % [str(a), str(b)]
+func _nested_trio(s: Dictionary, group: String, name: String) -> String:
+	var parts: Array = []
+	for key in SCORE_PATHS:
+		parts.append(_pct(s[key][group][name]))
+	return " / ".join(PackedStringArray(parts))
+
+
+func _flat_trio(s: Dictionary, name: String, fmt: String) -> String:
+	var parts: Array = []
+	for key in SCORE_PATHS:
+		parts.append(fmt % s[key][name])
+	return " / ".join(PackedStringArray(parts))
 
 
 func _summary_columns() -> Array:
-	var cols: Array = ["Time", "Provider", "Model", "Size", "Mode", "Runs", "Cards", "Accuracy no check (%)", "Accuracy with check (%)",
-		"Per run no check (%)", "Per run with check (%)", "Tier 1 (%)", "Tier 2 (%)", "Tier 3 (%)"]
+	var cols: Array = ["Time", "Provider", "Model", "Size", "Mode", "Runs", "Cards", "Accuracy no check (%)", "Accuracy retry (%)", "Accuracy reject (%)",
+		"Per run no check (%)", "Per run retry (%)", "Per run reject (%)", "Tier 1 (%)", "Tier 2 (%)", "Tier 3 (%)"]
 	for c in category_names:
 		cols.append("%s (%%)" % c)
 	cols.append_array(["Effects accuracy (%)", "Cost accuracy (%)", "Wrongly rejected", "Wrongly passed", "First answers breaking rules",
-		"Retries", "Cards retried", "Fixed by retry", "Code rejections", "RAG hit rate (%)", "Avg time/card no check (ms)",
-		"Avg time/card with check (ms)", "Broken JSON", "Output cut at limit", "Errors", "Gemini calls", "Results file"])
+		"Retries", "Cards retried", "Fixed by retry", "Code rejections", "RAG hit rate (%)", "Avg time/card (ms)", "Broken JSON",
+		"Output cut at limit", "Errors", "Gemini calls", "Results file"])
 	return cols
 
 
-func _summary_cells(runs: int, card_count: int, s: Dictionary, result_path: String) -> Array:
-	var nc: Dictionary = s["nocheck"]
-	var ck: Dictionary = s["check"]
-	var runs_nc: Array = []
-	var runs_ck: Array = []
-	for a in nc["per_run_accuracy"]:
-		runs_nc.append("%.1f" % a)
-	for a in ck["per_run_accuracy"]:
-		runs_ck.append("%.1f" % a)
-	var cells: Array = [_timestamp(false), provider, _model_name(), size_key, mode, str(runs), str(card_count),
-		"%.1f" % nc["avg_accuracy"], "%.1f" % ck["avg_accuracy"], " / ".join(PackedStringArray(runs_nc)), " / ".join(PackedStringArray(runs_ck))]
+func _summary_cells(runs: int, card_count: int, s: Dictionary, result_path: String, meta: Dictionary) -> Array:
+	var cells: Array = [meta["time"], meta["provider"], meta["model"], meta["size"], meta["mode"], str(runs), str(card_count)]
+	for key in SCORE_PATHS:
+		cells.append("%.1f" % s[key]["avg_accuracy"])
+	for key in SCORE_PATHS:
+		var parts: Array = []
+		for a in s[key]["per_run_accuracy"]:
+			parts.append("%.1f" % a)
+		cells.append(" / ".join(PackedStringArray(parts)))
 	for t in ["1", "2", "3"]:
-		cells.append(_pair(_pct(nc["tier_accuracy"][t]), _pct(ck["tier_accuracy"][t])))
+		cells.append(_nested_trio(s, "tier_accuracy", t))
 	for c in category_names:
-		cells.append(_pair(_pct(nc["category_accuracy"][c]), _pct(ck["category_accuracy"][c])))
-	cells.append(_pair("%.1f" % nc["effects_accuracy"], "%.1f" % ck["effects_accuracy"]))
-	cells.append(_pair("%.1f" % nc["cost_accuracy"], "%.1f" % ck["cost_accuracy"]))
-	cells.append(_pair(nc["wrong_rejects"], ck["wrong_rejects"]))
-	cells.append(_pair(nc["wrong_passes"], ck["wrong_passes"]))
+		cells.append(_nested_trio(s, "category_accuracy", c))
+	cells.append(_flat_trio(s, "effects_accuracy", "%.1f"))
+	cells.append(_flat_trio(s, "cost_accuracy", "%.1f"))
+	cells.append(_flat_trio(s, "wrong_rejects", "%d"))
+	cells.append(_flat_trio(s, "wrong_passes", "%d"))
 	cells.append(str(s["first_answers_breaking_rules"]))
 	cells.append(str(s["retries"]))
 	cells.append(str(s["retried_cards"]))
 	cells.append(str(s["fixed_by_retry"]))
-	cells.append(str(s["code_rejections"]))
+	cells.append("- / %d / %d" % [s["code_rejections"], s["reject_code_rejections"]])
 	cells.append(_pct(s["rag_hit_rate"]))
-	cells.append("%.0f" % nc["avg_time_ms"])
-	cells.append("%.0f" % ck["avg_time_ms"])
+	cells.append(_flat_trio(s, "avg_time_ms", "%.0f"))
 	cells.append(str(s["json_broken"]))
-	cells.append(str(s["output_cut"]) if provider == "ollama" else "n/a")
-	cells.append(_pair(nc["errors"], ck["errors"]))
+	cells.append(str(s["output_cut"]) if meta["provider"] == "ollama" else "n/a")
+	cells.append(_flat_trio(s, "errors", "%d"))
 	cells.append(str(s["gemini_calls"]))
 	cells.append(result_path.get_file())
 	return cells
 
 
+func _live_meta() -> Dictionary:
+	return {"time": _timestamp(false), "provider": provider, "model": _model_name(), "size": size_key, "mode": mode}
+
+
 func _print_big_table(runs: int, card_count: int, s: Dictionary):
 	var cols := _summary_columns()
-	var cells := _summary_cells(runs, card_count, s, "")
+	var cells := _summary_cells(runs, card_count, s, "", _live_meta())
 	print("")
 	for i in cols.size() - 1:
 		print("  %-32s %s" % [cols[i], cells[i]])
 	if provider == "ollama":
 		print("  %-32s %d (max prompt tokens %d)" % ["Context truncated", s["context_truncated"], s["max_prompt_tokens"]])
+	print("  (three numbers = no check / retry / reject)")
 	print("")
 
 
-func _append_big_summary(runs: int, card_count: int, s: Dictionary, result_path: String):
-	var exists := FileAccess.file_exists(BIG_SUMMARY_PATH)
-	var file := FileAccess.open(BIG_SUMMARY_PATH, FileAccess.READ_WRITE if exists else FileAccess.WRITE)
+func _write_big_summary(rows: Array):
+	var file := FileAccess.open(BIG_SUMMARY_PATH, FileAccess.WRITE)
 	if file == null:
 		push_error("Cannot write " + BIG_SUMMARY_PATH)
 		return
 	var cols := _summary_columns()
-	if exists:
-		file.seek_end()
-	else:
-		var sep: Array = []
-		for c in cols:
-			sep.append("---")
-		file.store_line("# Big Rulebook Eval Summary")
-		file.store_line("")
-		file.store_line("Each card gets one first answer from the AI. It is scored twice: \"no check\" takes the answer and the AI's cost as they are; \"with check\" runs the code check (retry up to %d times with the broken rules, then the code rejects) and the cost always comes from the code. Cells with two numbers are \"no check / with check\"." % MAX_REGENERATIONS)
-		file.store_line("")
-		file.store_line("An answer counts as correct when its effects match one accepted answer (in any order the rules allow) and the cost matches. Effects and cost accuracy are over cards that should not be rejected. Accuracy and time exclude cards that ended in an error. Time is model call time (with check includes retries); the 5s Gemini pacing waits are excluded.")
-		file.store_line("")
-		file.store_line("Modes: full = core rules + every rule of the size (alphabetical); word = word-overlap RAG (v3); emb = embedding RAG (v6); emb9 = embedding RAG with split pieces and condition pieces dropped (v9). RAG modes give the top %d rules of that size. Fixed by retry counts retried cards that ended correct." % RAG_RULE_COUNT)
-		file.store_line("")
-		file.store_line("| " + " | ".join(PackedStringArray(cols)) + " |")
-		file.store_line("| " + " | ".join(PackedStringArray(sep)) + " |")
-	file.store_line("| " + " | ".join(PackedStringArray(_summary_cells(runs, card_count, s, result_path))) + " |")
+	var sep: Array = []
+	for c in cols:
+		sep.append("---")
+	file.store_line("# Big Rulebook Eval Summary")
+	file.store_line("")
+	file.store_line("Each card gets one first answer from the AI. It is scored three ways. no check: the answer and the AI's cost as they are. retry: the code check (retry up to %d times with the broken rules, then the code rejects) and the cost comes from the code. reject: no second call; if the first answer breaks a rule the code rejects it, otherwise the code computes the cost. Cells with three numbers are \"no check / retry / reject\"." % MAX_REGENERATIONS)
+	file.store_line("")
+	file.store_line("An answer counts as correct when its effects match one accepted answer (in any order the rules allow) and the cost matches. Effects and cost accuracy are over cards that should not be rejected. Accuracy and time exclude cards that ended in an error. A first answer that is not valid JSON is an error in no check, and a code rejection in reject (and a failed attempt in retry). Time is model call time (retry includes the extra calls; reject uses the first call only); the 5s Gemini pacing waits are excluded.")
+	file.store_line("")
+	file.store_line("Modes: full = core rules + every rule of the size (alphabetical); word = word-overlap RAG (v3); emb = embedding RAG (v6); emb9 = embedding RAG with split pieces and condition pieces dropped (v9). RAG modes give the top %d rules of that size. Fixed by retry counts retried cards that ended correct. This file is rebuilt from the result files, so rerunning a job never leaves duplicate or half-written rows." % RAG_RULE_COUNT)
+	file.store_line("")
+	file.store_line("| " + " | ".join(PackedStringArray(cols)) + " |")
+	file.store_line("| " + " | ".join(PackedStringArray(sep)) + " |")
+	for cells in rows:
+		file.store_line("| " + " | ".join(PackedStringArray(cells)) + " |")
 	file.close()
-	print("Updated " + BIG_SUMMARY_PATH)
+	print("Wrote %s (%d rows)" % [BIG_SUMMARY_PATH, rows.size()])
+
+
+func _intify(node):
+	if typeof(node) == TYPE_FLOAT and node == floor(node) and absf(node) < 1e15:
+		return int(node)
+	if typeof(node) == TYPE_DICTIONARY:
+		for k in node:
+			node[k] = _intify(node[k])
+	elif typeof(node) == TYPE_ARRAY:
+		for i in node.size():
+			node[i] = _intify(node[i])
+	return node
+
+
+func _rescore_file(path: String) -> Dictionary:
+	var file := FileAccess.open(path, FileAccess.READ)
+	if file == null:
+		return {}
+	var doc = JSON.parse_string(file.get_as_text())
+	file.close()
+	if typeof(doc) != TYPE_DICTIONARY or not doc.get("complete", false) or typeof(doc.get("results")) != TYPE_ARRAY or doc["results"].is_empty():
+		return {}
+	for key in doc:
+		if key != "summary":
+			doc[key] = _intify(doc[key])
+	var entries: Array = doc["results"]
+	provider = doc["provider"]
+	size_key = str(int(doc["size"]))
+	mode = doc["mode"]
+	if entries[0].has("reject_on_violation") and doc["summary"].has("reject_on_violation"):
+		return doc
+	for e in entries:
+		e["reject_on_violation"] = _reject_path(e)
+		_score_path(e, e["reject_on_violation"])
+	var summary := _big_summary(int(doc["runs"]), entries)
+	summary["gemini_calls"] = int(doc.get("gemini_calls", 0))
+	doc["summary"] = summary
+	var out := FileAccess.open(path, FileAccess.WRITE)
+	if out == null:
+		push_error("Cannot write " + path)
+		return doc
+	out.store_string(JSON.stringify(doc, "\t"))
+	out.close()
+	_write_big_review(path.trim_suffix(".json") + "_review.md", entries)
+	print("Rescored " + path)
+	return doc
+
+
+func _rescore_all() -> int:
+	var dir := DirAccess.open(RESULTS_DIR)
+	if dir == null:
+		return 1
+	var names: Array = []
+	for fname in dir.get_files():
+		if fname.begins_with("big_") and fname.ends_with(".json"):
+			names.append(fname)
+	var rows: Array = []
+	for fname in names:
+		var path: String = RESULTS_DIR + "/" + fname
+		var doc := _rescore_file(path)
+		if doc.is_empty():
+			continue
+		var meta := {"time": doc["timestamp"], "provider": doc["provider"], "model": doc["model"], "size": str(int(doc["size"])), "mode": doc["mode"]}
+		rows.append({"time": doc["timestamp"], "cells": _summary_cells(int(doc["runs"]), int(doc["card_count"]), doc["summary"], path, meta)})
+	rows.sort_custom(func(a, b): return a["time"] < b["time"])
+	var cell_rows: Array = []
+	for r in rows:
+		cell_rows.append(r["cells"])
+	_write_big_summary(cell_rows)
+	return 0
 
 
 func _file_base(stamp: String, prefix: String) -> String:
@@ -891,6 +1032,7 @@ func _write_big_results(stamp: String, started: String, runs: int, card_count: i
 		"started": started,
 		"timestamp": _timestamp(false),
 		"gemini_calls": gemini_calls,
+		"num_ctx": num_ctx,
 		"summary": summary,
 		"results": entries
 	}, "\t"))
@@ -927,6 +1069,7 @@ func _describe_answer(p: Dictionary) -> String:
 func _big_review_block(e: Dictionary) -> String:
 	var nc: Dictionary = e["nocheck"]
 	var ck: Dictionary = e["check"]
+	var rv: Dictionary = e["reject_on_violation"]
 	var b := "### %s (run %d, tier %d, %s)\n\n" % [e["id"], e["run"], e["tier"], e["category"]]
 	b += "- Card: \"%s\"\n" % e["text"]
 	b += "- Expected: %s\n" % _describe_expected(e)
@@ -947,33 +1090,34 @@ func _big_review_block(e: Dictionary) -> String:
 		if a["output"] != null and a["output"]["reject"]:
 			check_text = "not run (AI rejected)"
 		b += "- Retry %d: %s | code check: %s\n" % [a["attempt"], out_text, check_text]
-	b += "- With check: %s -> %s (%s)\n" % [_describe_answer(ck), _verdict(e, ck), str(ck["action"])]
+	b += "- Retry check: %s -> %s (%s)\n" % [_describe_answer(ck), _verdict(e, ck), str(ck["action"])]
 	if ck["action"] == "code_reject":
 		b += "- Code reason: %s\n" % str(ck["reason"])
+	b += "- Reject on violation: %s -> %s (%s)\n" % [_describe_answer(rv), _verdict(e, rv), str(rv["action"])]
+	if rv["action"] == "code_reject":
+		b += "- Code reason: %s\n" % str(rv["reason"])
 	b += "\n"
 	return b
 
 
-func _write_big_review(stamp: String, entries: Array, prefix: String):
-	var both: Array = []
-	var only_nc: Array = []
-	var only_ck: Array = []
+func _write_big_review(path: String, entries: Array):
+	var all_wrong: Array = []
+	var some_wrong: Array = []
 	for e in entries:
-		var nc_wrong: bool = not e["nocheck"]["correct"]
-		var ck_wrong: bool = not e["check"]["correct"]
-		if nc_wrong and ck_wrong:
-			both.append(e)
-		elif nc_wrong:
-			only_nc.append(e)
-		elif ck_wrong:
-			only_ck.append(e)
+		var wrong := 0
+		for key in SCORE_PATHS:
+			if not e[key]["correct"]:
+				wrong += 1
+		if wrong == SCORE_PATHS.size():
+			all_wrong.append(e)
+		elif wrong > 0:
+			some_wrong.append(e)
 	var out := "# Big rulebook review: %s %s, size %s, mode %s\n\n" % [provider, _model_name(), size_key, mode]
-	out += "Written %s. Every card that was wrong in at least one of the two scorings (errors included).\n\n" % _timestamp(false)
-	for group in [["Wrong with and without the check", both], ["Wrong only without the check (the check fixed it)", only_nc], ["Wrong only with the check", only_ck]]:
+	out += "Every card that was wrong in at least one of the three scorings (no check, retry, reject on violation); errors count as wrong. The lines of each card show all three.\n\n"
+	for group in [["Wrong in all three", all_wrong], ["Wrong in some of the three", some_wrong]]:
 		out += "## %s (%d)\n\n" % [group[0], group[1].size()]
 		for e in group[1]:
 			out += _big_review_block(e)
-	var path := _file_base(stamp, prefix) + "_review.md"
 	var file := FileAccess.open(path, FileAccess.WRITE)
 	if file == null:
 		push_error("Cannot write " + path)
@@ -986,17 +1130,21 @@ func _write_big_review(stamp: String, entries: Array, prefix: String):
 func _print_big_progress(e: Dictionary):
 	var nc: Dictionary = e["nocheck"]
 	var ck: Dictionary = e["check"]
+	var rv: Dictionary = e["reject_on_violation"]
 	var extras := ""
 	if ck["retries"] > 0:
 		extras += " retries=%d" % ck["retries"]
 	if ck["action"] == "code_reject":
 		extras += " CODE_REJECT"
+	if rv["action"] == "code_reject":
+		extras += " FIRST_REJECT"
 	if e["first"]["error"] != null:
 		extras += " ERROR=" + str(e["first"]["error"]).left(120)
 	elif ck["error"] != null:
 		extras += " CHECK_ERROR=" + str(ck["error"]).left(120)
-	print("[r%d] %s (%s) first=%s | no check %s | with check %s %s | %dms%s" % [e["run"], e["id"], e["category"], _describe_answer(nc),
-		"OK" if nc["correct"] else "WRONG", _describe_answer(ck), "OK" if ck["correct"] else "WRONG", ck["time_ms"], extras])
+	print("[r%d] %s (%s) first=%s | no check %s | retry %s %s | reject %s %s | %dms%s" % [e["run"], e["id"], e["category"], _describe_answer(nc),
+		"OK" if nc["correct"] else "WRONG", _describe_answer(ck), "OK" if ck["correct"] else "WRONG", _describe_answer(rv),
+		"OK" if rv["correct"] else "WRONG", ck["time_ms"], extras])
 
 
 func _embed_chunked(texts: Array, task: String, counter: Dictionary) -> Dictionary:
@@ -1224,12 +1372,12 @@ func _usage_since_reset() -> Dictionary:
 				continue
 			if doc.get("provider", "gemini") == "ollama" or not doc.has("timestamp"):
 				continue
+			if doc.get("complete", false) and doc.has("gemini_calls") and not fname.begins_with("dryrun_") and doc["results"].size() >= 30:
+				retry_ratio = maxf(retry_ratio, float(int(doc["gemini_calls"]) - doc["results"].size()) / doc["results"].size())
 			if _pseudo_unix(doc["timestamp"]) < boundary:
 				continue
 			if doc.has("gemini_calls"):
 				used += int(doc["gemini_calls"])
-				if doc.get("complete", false) and doc["results"].size() > 0:
-					retry_ratio = maxf(retry_ratio, float(int(doc["gemini_calls"]) - doc["results"].size()) / doc["results"].size())
 				continue
 			for r in doc.get("results", []):
 				var attempts: Array = r.get("attempts", [])

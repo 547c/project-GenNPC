@@ -10,3 +10,27 @@
 [2026-11-05 06:44:29] START ollama size 66 emb9
 [2026-11-05 09:17:51] DONE ollama size 66 emb9 (exit 0, 153.4 min, Gemini calls 0) -> big_ollama_66_emb9_20261105_091751.json
 [2026-11-05 09:17:51] ===== Night run end (375.2 min, Gemini calls 302) =====
+[2026-11-11 02:27:32] [gemini] ===== Lane start (runs=3, daily Gemini limit=490, 5 jobs) =====
+[2026-11-11 02:27:32] [gemini] START gemini size 66 emb9
+[2026-11-11 02:27:56] [ollama] ===== Lane start (runs=3, daily Gemini limit=490, 4 jobs) =====
+[2026-11-11 02:27:58] [ollama] START ollama size 132 emb9
+[2026-11-11 02:58:05] [gemini]   Gemini budget: used since the last reset 0, planned 198 + retry allowance 125, limit 490
+[2026-11-11 02:58:05] [gemini] DONE gemini size 66 emb9 (exit 0, 30.5 min, Gemini calls 218) -> big_gemini_66_emb9_20261111_025804.json
+[2026-11-11 02:58:06] [gemini]   big_summary.md rebuilt
+[2026-11-11 02:58:06] [gemini] START gemini size 132 full
+[2026-11-11 02:58:07] [gemini]   Gemini budget: used since the last reset 218, planned 198 + retry allowance 125, limit 490
+[2026-11-11 02:58:07] [gemini]   gemini size 132 full could go over the daily limit now. Waiting for the reset.
+[2026-11-11 02:58:07] [gemini]   waiting until 2026-11-12 02:03 (daily Gemini reset at 2:00, plus 3 minutes)
+[2026-11-11 04:56:28] [ollama] DONE ollama size 132 emb9 (exit 0, 148.5 min, Gemini calls 0) -> big_ollama_132_emb9_20261111_045628.json
+[2026-11-11 04:56:29] [ollama]   big_summary.md rebuilt
+[2026-11-11 04:56:31] [ollama] START ollama size 47 emb9
+[2026-11-11 07:07:19] [ollama] DONE ollama size 47 emb9 (exit 0, 130.8 min, Gemini calls 0) -> big_ollama_47_emb9_20261111_070718.json
+[2026-11-11 07:07:20] [ollama]   big_summary.md rebuilt
+[2026-11-11 07:07:22] [ollama] START ollama size 47 full
+[2026-11-11 09:19:21] [ollama] DONE ollama size 47 full (exit 0, 132.0 min, Gemini calls 0) -> big_ollama_47_full_20261111_091920.json
+[2026-11-11 09:19:22] [ollama]   big_summary.md rebuilt
+[2026-11-11 09:19:24] [ollama] START ollama size 132 full
+[2026-11-11 11:30:55] [ollama] DONE ollama size 132 full (exit 0, 131.5 min, Gemini calls 0) -> big_ollama_132_full_20261111_113054.json
+[2026-11-11 11:30:56] [ollama]   big_summary.md rebuilt
+[2026-11-11 11:30:56] [ollama] ===== Lane end (543.0 min, Gemini calls 0) =====
+[2026-11-11 15:49:14] [gemini] ===== Lane end (801.7 min, Gemini calls 218) =====
