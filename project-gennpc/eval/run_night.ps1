@@ -24,7 +24,9 @@ $LaneJobs = [ordered]@{
         @{ Size = 132; Mode = "emb9" },
         @{ Size = 47; Mode = "emb9" },
         @{ Size = 47; Mode = "full" },
-        @{ Size = 132; Mode = "full"; NumCtx = 10240 }
+        @{ Size = 132; Mode = "full"; NumCtx = 10240 },
+        @{ Size = 264; Mode = "emb9" },
+        @{ Size = 264; Mode = "full"; NumCtx = 18432 }
     )
 }
 

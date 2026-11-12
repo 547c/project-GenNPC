@@ -1,11 +1,11 @@
 import json, math, sys
 # Reference rules check for big_rulebook_v1.json. Usage: python big_reference_check.py big_rulebook_v1.json
 DATA = json.load(open(sys.argv[1] if len(sys.argv) > 1 else "big_rulebook_v1.json", encoding="utf-8"))
-RULES = {r["keyword"]: r for r in DATA["rules"] + DATA["distractors"]}
+RULES = {r["keyword"]: r for r in DATA["rules"] + DATA["distractors"] + DATA.get("distractors_xl", [])}
 COND = set(DATA["conditions"]); DAMAGE = set(DATA["damage_group"]); STATUS = set(DATA["status_group"])
 
 def eff_cost(e, card):
-    if e["keyword"] == "ECHO":
+    if RULES[e["keyword"]].get("variant_of", e["keyword"]) == "ECHO":
         return eff_cost(card[card.index(e) - 1], card)
     r = RULES[e["keyword"]]
     c = math.ceil(r["cost_per_n"] * e["n"]) + r["cost_flat"] if r["has_n"] else r["cost_flat"]
@@ -21,9 +21,10 @@ def validate(card):
         k = e["keyword"]
         if k not in RULES: errs.append(f"unknown {k}"); continue
         r = RULES[k]
-        if k in ("ECHO", "CATALYST"):
+        family = r.get("variant_of", k)
+        if family in ("ECHO", "CATALYST"):
             if e["target"] != "none" or e["n"] is not None: errs.append(f"{k} target/n")
-            if k == "ECHO" and e["condition"] != "NONE": errs.append("ECHO condition")
+            if family == "ECHO" and e["condition"] != "NONE": errs.append(f"{k} condition")
         else:
             if e["target"] not in r["targets"]: errs.append(f"{k} target")
             if r["has_n"]:

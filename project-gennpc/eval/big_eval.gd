@@ -4,7 +4,7 @@ const BIG_DATA_PATH := "res://eval/big_rulebook_v1.json"
 const BIG_EMBED_PATH := "res://eval/embeddings_big_v1.json"
 const BIG_SUMMARY_PATH := RESULTS_DIR + "/big_summary.md"
 const BIG_HITS_PATH := RESULTS_DIR + "/big_rag_hits.md"
-const BIG_SIZES := ["47", "66", "132"]
+const BIG_SIZES := ["47", "66", "132", "264"]
 const BIG_MODES := ["full", "word", "emb", "emb9"]
 const RAG_MODES := ["word", "emb", "emb9"]
 const EMBED_BATCH_LIMIT := 100
@@ -89,7 +89,7 @@ func _big_main() -> int:
 	num_ctx = args["num_ctx"]
 	var runs: int = args["runs"]
 	if (provider != "gemini" and provider != "ollama") or not BIG_SIZES.has(size_key) or not BIG_MODES.has(mode) or runs < 1:
-		print("Usage: -- --provider gemini|ollama --size 47|66|132 --mode full|word|emb|emb9 [--runs N] [--cards A01,B02] [--dryrun] [--daily-limit 490] [--num-ctx 8192] [--no-summary] | --selfcheck | --fetch-embeddings | --hit-table | --budget | --rescore")
+		print("Usage: -- --provider gemini|ollama --size 47|66|132|264 --mode full|word|emb|emb9 [--runs N] [--cards A01,B02] [--dryrun] [--daily-limit 490] [--num-ctx 8192] [--no-summary] | --selfcheck | --fetch-embeddings | --hit-table | --budget | --rescore")
 		return 1
 	if not _load_big():
 		return 1
@@ -199,7 +199,7 @@ func _load_big() -> bool:
 		return false
 	big = parsed
 	all_rules = {}
-	for r in big["rules"] + big["distractors"]:
+	for r in big["rules"] + big["distractors"] + big.get("distractors_xl", []):
 		all_rules[r["keyword"]] = r
 	big_conditions = big["conditions"]
 	damage_group = big["damage_group"]
@@ -331,11 +331,12 @@ func _validate(effects: Array) -> Array:
 			continue
 		var r: Dictionary = all_rules[k]
 		var rt: String = r["text"]
-		if k == "ECHO" or k == "CATALYST":
+		var family: String = r.get("variant_of", k)
+		if family == "ECHO" or family == "CATALYST":
 			if e["target"] != "none" or e["n"] != null:
 				_add_violation(out, seen, "%s target/n" % k, "%s: target must be \"none\" and n must be null." % label, rt)
-			if k == "ECHO" and e["condition"] != "NONE":
-				_add_violation(out, seen, "ECHO condition", "%s: condition must be NONE." % label, rt)
+			if family == "ECHO" and e["condition"] != "NONE":
+				_add_violation(out, seen, "%s condition" % k, "%s: condition must be NONE." % label, rt)
 		else:
 			if not r["targets"].has(e["target"]):
 				_add_violation(out, seen, "%s target" % k, "%s: target \"%s\" is not allowed. Allowed targets: %s." % [label, e["target"], ", ".join(PackedStringArray(r["targets"]))], rt)
@@ -386,7 +387,7 @@ func _violation_codes(violations: Array) -> Array:
 
 func _effect_cost(effects: Array, i: int) -> int:
 	var e: Dictionary = effects[i]
-	if e["keyword"] == "ECHO":
+	if all_rules.get(e["keyword"], {}).get("variant_of", e["keyword"]) == "ECHO":
 		return _effect_cost(effects, i - 1) if i > 0 else 0
 	var r: Dictionary = all_rules[e["keyword"]]
 	var c := int(r["cost_flat"])
@@ -1170,13 +1171,61 @@ func _piece_texts() -> Dictionary:
 	return pieces
 
 
-func _fetch_big_embeddings() -> int:
-	if FileAccess.file_exists(BIG_EMBED_PATH):
+func _add_missing_embeddings() -> int:
+	var file := FileAccess.open(BIG_EMBED_PATH, FileAccess.READ)
+	var cached = JSON.parse_string(file.get_as_text())
+	file.close()
+	if typeof(cached) != TYPE_DICTIONARY:
+		print("%s is not valid JSON. Delete it and fetch again." % BIG_EMBED_PATH)
+		return 1
+	var missing: Array = []
+	for k in all_rules:
+		if not cached["rules"].has(k):
+			missing.append(k)
+		elif cached["rule_texts"][k] != all_rules[k]["text"]:
+			print("%s has an old text for the rule %s. Delete it and fetch again." % [BIG_EMBED_PATH, k])
+			return 1
+	if missing.is_empty():
 		if _load_big_embeddings():
 			print("%s already exists and matches the data. Not calling the embedding API again." % BIG_EMBED_PATH)
 			return 0
 		print("%s exists but does not match the data. Delete it and fetch again." % BIG_EMBED_PATH)
 		return 1
+	missing.sort()
+	var docs: Array = []
+	for k in missing:
+		docs.append(all_rules[k]["text"])
+	var counter := {"calls": 0}
+	var res: Dictionary = await _embed_chunked(docs, "RETRIEVAL_DOCUMENT", counter)
+	if not res["ok"]:
+		print("Embedding request failed: %s" % res["error"])
+		return 2
+	var dims := int(cached["dimensions"])
+	for vec in res["vectors"]:
+		if vec.size() != dims:
+			print("Embedding sizes differ: %d vs %d" % [vec.size(), dims])
+			return 2
+	for i in missing.size():
+		cached["rule_texts"][missing[i]] = docs[i]
+		cached["rules"][missing[i]] = res["vectors"][i]
+	cached["dimensions"] = dims
+	cached["fetch_log"] = _intify(cached["fetch_log"])
+	cached["fetch_log"].append({"time": _timestamp(false), "calls": counter["calls"], "added_rules": missing.size()})
+	var tmp_path := BIG_EMBED_PATH + ".tmp"
+	var out := FileAccess.open(tmp_path, FileAccess.WRITE)
+	if out == null:
+		push_error("Cannot write " + tmp_path)
+		return 1
+	out.store_string(JSON.stringify(cached, "", false, true))
+	out.close()
+	DirAccess.rename_absolute(ProjectSettings.globalize_path(tmp_path), ProjectSettings.globalize_path(BIG_EMBED_PATH))
+	print("Added %d rules to %s (%d embedding calls)." % [missing.size(), BIG_EMBED_PATH, counter["calls"]])
+	return 0
+
+
+func _fetch_big_embeddings() -> int:
+	if FileAccess.file_exists(BIG_EMBED_PATH):
+		return await _add_missing_embeddings()
 	var rule_keys: Array = all_rules.keys()
 	rule_keys.sort()
 	var cond_keys: Array = big_conditions.duplicate()

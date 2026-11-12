@@ -34,3 +34,25 @@
 [2026-11-11 11:30:56] [ollama]   big_summary.md rebuilt
 [2026-11-11 11:30:56] [ollama] ===== Lane end (543.0 min, Gemini calls 0) =====
 [2026-11-11 15:49:14] [gemini] ===== Lane end (801.7 min, Gemini calls 218) =====
+[2026-11-12 02:02:45] [gemini] ===== Lane start (runs=3, daily Gemini limit=490, 5 jobs) =====
+[2026-11-12 02:02:45] [gemini] SKIP gemini size 66 emb9 (already completed: big_gemini_66_emb9_20261111_025804.json)
+[2026-11-12 02:02:45] [gemini] START gemini size 132 full
+[2026-11-12 02:21:28] [ollama] ===== Lane start (runs=3, daily Gemini limit=490, 6 jobs) =====
+[2026-11-12 02:21:28] [ollama] SKIP ollama size 132 emb9 (already completed: big_ollama_132_emb9_20261111_045628.json)
+[2026-11-12 02:21:28] [ollama] SKIP ollama size 47 emb9 (already completed: big_ollama_47_emb9_20261111_070718.json)
+[2026-11-12 02:21:28] [ollama] SKIP ollama size 47 full (already completed: big_ollama_47_full_20261111_091920.json)
+[2026-11-12 02:21:28] [ollama] SKIP ollama size 132 full (already completed: big_ollama_132_full_20261111_113054.json)
+[2026-11-12 02:21:30] [ollama] START ollama size 264 emb9
+[2026-11-12 02:33:09] [gemini]   Gemini budget: used since the last reset 0, planned 198 + retry allowance 125, limit 490
+[2026-11-12 02:33:09] [gemini] DONE gemini size 132 full (exit 0, 30.4 min, Gemini calls 221) -> big_gemini_132_full_20261112_023308.json
+[2026-11-12 02:33:10] [gemini]   big_summary.md rebuilt
+[2026-11-12 02:33:10] [gemini] START gemini size 132 emb9
+[2026-11-12 02:33:11] [gemini]   Gemini budget: used since the last reset 223, planned 198 + retry allowance 125, limit 490
+[2026-11-12 02:33:11] [gemini]   gemini size 132 emb9 could go over the daily limit now. Waiting for the reset.
+[2026-11-12 02:33:11] [gemini]   waiting until 2026-11-13 02:03 (daily Gemini reset at 2:00, plus 3 minutes)
+[2026-11-12 04:25:45] [ollama] DONE ollama size 264 emb9 (exit 0, 124.3 min, Gemini calls 0) -> big_ollama_264_emb9_20261112_042544.json
+[2026-11-12 04:25:46] [ollama]   big_summary.md rebuilt
+[2026-11-12 04:25:48] [ollama] START ollama size 264 full
+[2026-11-12 06:23:10] [ollama] DONE ollama size 264 full (exit 0, 117.4 min, Gemini calls 0) -> big_ollama_264_full_20261112_062309.json
+[2026-11-12 06:23:11] [ollama]   big_summary.md rebuilt
+[2026-11-12 06:23:11] [ollama] ===== Lane end (241.7 min, Gemini calls 0) =====
