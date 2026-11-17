@@ -56,3 +56,39 @@
 [2026-11-12 06:23:10] [ollama] DONE ollama size 264 full (exit 0, 117.4 min, Gemini calls 0) -> big_ollama_264_full_20261112_062309.json
 [2026-11-12 06:23:11] [ollama]   big_summary.md rebuilt
 [2026-11-12 06:23:11] [ollama] ===== Lane end (241.7 min, Gemini calls 0) =====
+[2026-11-12 10:11:49] [gemini] ===== Lane end (489.1 min, Gemini calls 221) =====
+[2026-11-14 17:00:07] [gemini] ===== Lane start (runs=3, daily Gemini limit=490, 5 jobs) =====
+[2026-11-14 17:00:08] [gemini] SKIP gemini size 66 emb9 (already completed: big_gemini_66_emb9_20261111_025804.json)
+[2026-11-14 17:00:08] [gemini] SKIP gemini size 132 full (already completed: big_gemini_132_full_20261112_023308.json)
+[2026-11-14 17:00:08] [gemini] START gemini size 132 emb9
+[2026-11-14 17:22:32] [gemini]   Gemini budget: used since the last reset 0, planned 198 + retry allowance 125, limit 490
+[2026-11-14 17:22:32] [gemini] DONE gemini size 132 emb9 (exit 0, 22.4 min, Gemini calls 209) -> big_gemini_132_emb9_20261114_172231.json
+[2026-11-14 17:22:34] [gemini]   big_summary.md rebuilt
+[2026-11-14 17:22:34] [gemini] START gemini size 47 full
+[2026-11-14 17:22:36] [gemini]   Gemini budget: used since the last reset 209, planned 198 + retry allowance 125, limit 490
+[2026-11-14 17:22:36] [gemini]   gemini size 47 full could go over the daily limit now. Waiting for the reset.
+[2026-11-14 17:22:36] [gemini]   waiting until 2026-11-15 02:03 (daily Gemini reset at 2:00, plus 3 minutes)
+[2026-11-14 22:55:23] [gemini] ===== Lane end (355.3 min, Gemini calls 209) =====
+[2026-11-15 17:27:32] [gemini] ===== Lane start (runs=3, daily Gemini limit=490, 5 jobs) =====
+[2026-11-15 17:27:32] [gemini] SKIP gemini size 66 emb9 (already completed: big_gemini_66_emb9_20261111_025804.json)
+[2026-11-15 17:27:32] [gemini] SKIP gemini size 132 full (already completed: big_gemini_132_full_20261112_023308.json)
+[2026-11-15 17:27:32] [gemini] SKIP gemini size 132 emb9 (already completed: big_gemini_132_emb9_20261114_172231.json)
+[2026-11-15 17:27:32] [gemini] START gemini size 47 full
+[2026-11-15 17:48:37] [gemini]   Gemini budget: used since the last reset 0, planned 198 + retry allowance 125, limit 490
+[2026-11-15 17:48:37] [gemini] DONE gemini size 47 full (exit 0, 21.1 min, Gemini calls 209) -> big_gemini_47_full_20261115_174836.json
+[2026-11-15 17:48:38] [gemini]   big_summary.md rebuilt
+[2026-11-15 17:48:38] [gemini] START gemini size 47 emb9
+[2026-11-15 17:48:39] [gemini]   Gemini budget: used since the last reset 209, planned 198 + retry allowance 125, limit 490
+[2026-11-15 17:48:39] [gemini]   gemini size 47 emb9 could go over the daily limit now. Waiting for the reset.
+[2026-11-15 17:48:39] [gemini]   waiting until 2026-11-16 02:03 (daily Gemini reset at 2:00, plus 3 minutes)
+[2026-11-15 21:39:28] [gemini] ===== Lane end (251.9 min, Gemini calls 209) =====
+[2026-11-16 18:14:49] [gemini] ===== Lane start (runs=3, daily Gemini limit=490, 5 jobs) =====
+[2026-11-16 18:14:49] [gemini] SKIP gemini size 66 emb9 (already completed: big_gemini_66_emb9_20261111_025804.json)
+[2026-11-16 18:14:49] [gemini] SKIP gemini size 132 full (already completed: big_gemini_132_full_20261112_023308.json)
+[2026-11-16 18:14:49] [gemini] SKIP gemini size 132 emb9 (already completed: big_gemini_132_emb9_20261114_172231.json)
+[2026-11-16 18:14:49] [gemini] SKIP gemini size 47 full (already completed: big_gemini_47_full_20261115_174836.json)
+[2026-11-16 18:14:49] [gemini] START gemini size 47 emb9
+[2026-11-16 18:59:44] [gemini]   Gemini budget: used since the last reset 0, planned 198 + retry allowance 125, limit 490
+[2026-11-16 18:59:44] [gemini] DONE gemini size 47 emb9 (exit 0, 44.9 min, Gemini calls 222) -> big_gemini_47_emb9_20261116_185943.json
+[2026-11-16 18:59:45] [gemini]   big_summary.md rebuilt
+[2026-11-16 18:59:45] [gemini] ===== Lane end (44.9 min, Gemini calls 222) =====
